@@ -32,10 +32,6 @@ shopping)
 - Academic Director: Instructing the paper review session which are introduced in cs231n,
 cs224n
 
-### Coala Study(2nd Semester, 2019)
-- Played a role as a reader: taught team members about basic python skills and
-several python libraries such as requests, Selenium, BeautifulSoup, pyexcel, Numpy, Pandas, Scikit-Learn
-
 ### Projects in Courses
 - Communication Text Mining Project: Predicting whether movie will hit using IMDB comments
 in a week after it is released.
