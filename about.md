@@ -6,12 +6,42 @@ permalink: /about/
 
 <img src="{{ site.baseurl }}/assets/f3.jpg" title="Profile Picture" class="profile">
 
-Centrarium is a custom theme for Jekyll, made by [Ben Centra][bencentra] for his own blog. He'd be humbled if you liked it enough to use it as well! Installation and configuration instructions can be found in the [GitHub repository](https://github.com/bencentra/centrarium).
+## Education
+### Bachelor
+Yonsei University, Seoul
 
-This page is a good place to write about yourself, your project, your product, or whatever it is your site is for. You can replace the image above, or you can get rid of it entirely. 
+Applied Statistics and Computer Science Mar 2017 ~ Present
 
-You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/). And you can find the source code for Jekyll at [github.com/jekyll/jekyll](https://github.com/jekyll/jekyll)
+### Exchange Student
+National University of Singapore,
 
-[centrarium]: https://github.com/bencentra/centrarium
-[bencentra]: http://bencentra.com
-[jekyll]: https://github.com/jekyll/jekyll
+Applied Statistics and Probability Jan 2020 ~ May 2020
+
+## Work Experience
+### Data Analysist Internship at Ssgsag(July 2020 ~ Aug 2020) 
+- Built Recommender System using natural language processing techniques
+- Database Engineering, Visualization
+
+## Projects
+### Expanded Statistics Club toward Data Science (Sep 2018 ~ Dec 2020)
+- Data Science Project: Predicting violation proportion in US
+- Data Science Project: Predicting the housing transaction price in Seoul
+- Data Science Project: Predicting whether the company goes bankrupt
+- Data Science Project: Big Contest(Predicting the revenue of certain product in home
+shopping)
+- Academic Director: Instructing the paper review session which are introduced in cs231n,
+cs224n
+
+### Coala Study(2nd Semester, 2019)
+- Played a role as a reader: taught team members about basic python skills and
+several python libraries such as requests, Selenium, BeautifulSoup, pyexcel, Numpy, Pandas, Scikit-Learn
+
+### Projects in Courses
+- Communication Text Mining Project: Predicting whether movie will hit using IMDB comments
+in a week after it is released.
+- IT3011 Introduction to Machine Learning and its Applications 1st Semester, 2020 • NLP Project: Translating Text Sentiment through Emojis
+
+
+## EXTRA SKILLS
+### Programming: Python, Java, R, MySQL
+- Certificates: SQL Developer
