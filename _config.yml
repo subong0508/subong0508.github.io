@@ -25,6 +25,7 @@ logo: "/assets/logo.png"
 
 # Build settings
 markdown: kramdown
+katex: true
 paginate: 5
 paginate_path: "/page:num/"
 inter_post_navigation: false
