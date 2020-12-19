@@ -6,8 +6,8 @@
 </description>
     <link>http://subong.github.io//</link>
     <atom:link href="http://subong.github.io//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 19 Dec 2020 22:15:53 +0900</pubDate>
-    <lastBuildDate>Sat, 19 Dec 2020 22:15:53 +0900</lastBuildDate>
+    <pubDate>Sat, 19 Dec 2020 22:18:56 +0900</pubDate>
+    <lastBuildDate>Sat, 19 Dec 2020 22:18:56 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -204,6 +204,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&g
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;\lim_{x\to 0}{\frac{e^x-1}{2x}}
 \overset{\left[\frac{0}{0}\right]}{\underset{\mathrm{H}}{=}}
 \lim_{x\to 0}{\frac{e^x}{2}}={\frac{1}{2}}&lt;/script&gt;
+
 </description>
         <pubDate>Sat, 18 Apr 2015 17:43:59 +0900</pubDate>
         <link>http://subong.github.io//dummy/2015/04/18/dummy.html</link>
