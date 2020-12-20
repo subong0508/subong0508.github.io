@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        TeX: {
+          equationNumbers: {
+            autoNumber: "AMS"
+          }
+        },
+        tex2jax: {
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+      }
+    });
+    MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+          alert("Math Processing Error: "+message[1]);
+        });
+    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+          alert("Math Processing Error: "+message[1]);
+        });
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    
+  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Unsupervised Landmark Learning</title>
+  <meta name="description" content="Unsupervised Learning of Object Landmarks through Conditional Image Generation">
+  
+  <meta name="author" content="Jung Jaeeun">
+  <meta name="copyright" content="&copy; Jung Jaeeun 2020">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/monokai_sublime.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="Unsupervised Learning of Object Landmarks through Conditional Image Generation" />
+  <meta property="og:url" content="http://subong.github.io/" />
+  <meta property="og:site_name" content="Data Vision" />
+  <meta property="og:title" content="Unsupervised Landmark Learning" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://subong.github.io//assets/logo.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Unsupervised Landmark Learning">
+  <meta name="twitter:description" content="Unsupervised Learning of Object Landmarks through Conditional Image Generation">
+  <meta name="twitter:image" content="http://subong.github.io//assets/logo.png">
+  <meta name="twitter:url" content="http://subong.github.io/">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://subong.github.io//review/2020/12/20/Unsupervised-Landmark-Learning.html">
+  <link rel="alternate" type="application/rss+xml" title="Data Vision" href="http://subong.github.io//feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="Data Vision">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/posts/">Posts</a>
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container " >
+  <div class="scrim ">
+    <header class="post-header">
+      <h1 class="title">Unsupervised Landmark Learning</h1>
+      <p class="info">by <strong>Jung Jaeeun</strong></p>
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+ <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+
+<section class="post-meta">
+  <div class="post-date">December 20, 2020</div>
+  <div class="post-categories">
+  in 
+    
+    <a href="/category/review">Review</a>
+    
+  
+  </div>
+</section>  
+
+<article class="post-content">
+  <h1 id="unsupervised-learning-of-object-landmarks-through-conditional-image-generationhttpspapersnipsccpaper7657-unsupervised-learning-of-object-landmarks-through-conditional-image-generationpdf"><a href="https://papers.nips.cc/paper/7657-unsupervised-learning-of-object-landmarks-through-conditional-image-generation.pdf">Unsupervised Learning of Object Landmarks through Conditional Image Generation</a></h1>
+
+<h2 id="task-generate-the-target-image-given-the-source-image-and-the-encoded-target-image">Task: Generate the target image given the source image and the encoded target image.</h2>
+
+<h2 id="method">Method</h2>
+<h3 id="heatmaps-bottleneck">Heatmaps bottleneck</h3>
+<p>$\Phi(x)$: learn to extract keypoint-like structures</p>
+
+<p>$S_{u}(x;k)$: K heatmaps
+=&gt; $u_{k}^{*}(x) = \frac{\sum ue^{S_{u}(x;k)}}{\sum e^{S_{u}(x;k)}}$ (spatial softmax)</p>
+
+<p>$\Phi_{u}(x;k)$: Gaussian-like function centered at $u_{k}^{*}$</p>
+
+<h3 id="generator-perceptual-loss">Generator: Perceptual Loss</h3>
+<p>$\mathcal{L}(x’, \hat{x’}) = \sum_{l} \alpha_{l} \vert\vert\Gamma_{l}(x’)-\Gamma_{l}(\hat{x’})\vert\vert^{2}$: perceptual loss</p>
+
+<h2 id="overall-architecture">Overall Architecture</h2>
+<p><img src="../../../../img/Unsupervised-Landmark/cond.png" alt="model architecture" /></p>
+
+<h1 id="unsupervised-landmark-learning-from-unpaired-datahttpsarxivorgpdf200701053pdf"><a href="https://arxiv.org/pdf/2007.01053.pdf">Unsupervised Landmark Learning from unpaired data</a></h1>
+
+<h2 id="task-reconstructing-images-with-the-apprearance-and-pose-originated-from-different-images-and-establish-various-consistencies-among-these-reconstructed-images">Task: Reconstructing images with the apprearance and pose originated from different images and establish various consistencies among these reconstructed images</h2>
+
+<h2 id="method-1">Method</h2>
+<h3 id="cross-image-cycle-consistency-framework">Cross-Image cycle Consistency Framework</h3>
+<p>Given $I_{i}, I_{j}$: pair of images</p>
+
+<p>$\mathbf {a_{i}} = E_{a}(N(I_{i})), \mathbf {a_{j}} = E_{a}(N(I_{j}))$</p>
+
+<p>$\mathbf {p_{i}} = E_{p}(N(I_{i})), \mathbf {p_{j}} = E_{p}(N(I_{j}))$</p>
+
+<p>$I_{i, j} = D(\mathbf {a_{i}}, \mathbf {p_{j}}), I_{j, i} = D(\mathbf {a_{j}}, \mathbf {p_{i}})$</p>
+
+<p>$\mathbf {a_{i}}’ = E_{a}(N(I_{i, j})), \mathbf {a_{j}}’ = E_{a}(N(I_{j, i}))$</p>
+
+<p>$\mathbf {p_{i}}’ = E_{p}(N(I_{i,j})), \mathbf {p_{j}}’ = E_{p}(N(I_{i,j}))$</p>
+
+<p>$I_{i, j}’ = D(\mathbf {a_{i}}’, \mathbf {p_{j}}’), I_{j, i}’ = D(\mathbf {a_{j}}’, \mathbf {p_{i}}’)$</p>
+
+<p><strong>$\mathcal{L_{cycle}} = \mathcal{P}(I_{i}, I_{i}’)+\mathcal{P}(I_{j}, I_{j}’)$: P is perceptual loss implemented by VGG network</strong></p>
+
+<p><strong>$\mathcal{L_{inv}} = \vert\vert\mathbf {p_{i}}’ - \mathbf{p_{i}}\vert\vert ^ {2} + \vert\vert\mathbf {p_{j}}’ - \mathbf{p_{j}}\vert\vert ^ {2}$</strong></p>
+
+<h3 id="cross-image-flow-module">Cross-Image Flow Module</h3>
+
+<p>$T^{i \rightarrow j}$: the location correspondences</p>
+
+<p>$\mathbf{C}$: 4D tensor containing the element-wise cosine similiarity between two feature maps($\mathbf {f_{i}}’, \mathbf {f_{j}}’$)</p>
+
+<p>$\hat{C} = \mathbf {W_{1}} \bigotimes (\mathbf {W_{2}} \bigotimes \mathbf {C})$: 4D convolution using 2D convolutions consequently</p>
+
+<p>$S^{i \rightarrow j}(x_{j}, y_{j}) = softmax(\hat{\mathbf{C}}(*, *, x_{j}, y_{j}))$</p>
+
+<p>$T^{i \rightarrow j}(x_{j}, y_{j}) = argmax_{(x_{i}, y_{i})}S^{i \rightarrow j}(x_{j}, y_{j})$ (vice versa for j-&gt;i)</p>
+
+<p>Thus, transformation maps can reflect the semantic correlations between landmarks of two images.</p>
+
+<p><strong>$\mathcal{L_{equiv}} = \vert\vert\mathbf {p_{i}} - T^{i \rightarrow j}\circ\mathbf{p_{j}}\vert\vert ^ {2}+\vert\vert\mathbf {p_{j}} - T^{j \rightarrow i}\circ\mathbf{p_{i}}\vert\vert ^ {2}$</strong></p>
+
+<h3 id="final-loss-mathcalltotallambdacyclemathcallcyclelambdaequivmathcallequivlambdainvmathcallinv">Final Loss: $\mathcal{L_{total}}=\lambda_{cycle}\mathcal{L_{cycle}}+\lambda_{equiv}\mathcal{L_{equiv}}+\lambda_{inv}\mathcal{L_{inv}}$</h3>
+
+<h2 id="overall-architecture-1">Overall Architecture</h2>
+
+<p><img src="../../../../img/Unsupervised-Landmark/unpaired.png" alt="model architecture" /></p>
+
+<h1 id="unsupervised-part-based-disentangling-of-object-shape-and-appearancehttpsarxivorgpdf190306946pdf"><a href="https://arxiv.org/pdf/1903.06946.pdf">Unsupervised Part-Based Disentangling of Object Shape and Appearance</a></h1>
+
+</article>
+
+
+
+<section class="tags">
+  <strong>Tags:</strong> <a href="/tag/deeplearning">deeplearning</a>,&nbsp;<a href="/tag/unsupervisedlearning">unsupervisedlearning</a>
+</section>
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<section class="share">
+  <span>Share: </span>
+  
+    
+    
+    
+    
+    
+    
+    
+  
+</section>
+
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">Data Vision</h3>
+
+    <div class="site-navigation">
+      
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">About</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:subong0508@naver.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">subong0508@naver.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://github.com/subong0508" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">subong0508</span>
+            </a>
+          </li>
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">My personal blog for studying AI
+</p>
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+  // Syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+
+
+});
+
+</script>
+
+
+
+
+  </body>
+
+</html>

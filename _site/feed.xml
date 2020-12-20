@@ -6,9 +6,91 @@
 </description>
     <link>http://subong.github.io//</link>
     <atom:link href="http://subong.github.io//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 20 Dec 2020 16:49:41 +0900</pubDate>
-    <lastBuildDate>Sun, 20 Dec 2020 16:49:41 +0900</lastBuildDate>
+    <pubDate>Sun, 20 Dec 2020 23:53:50 +0900</pubDate>
+    <lastBuildDate>Sun, 20 Dec 2020 23:53:50 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>Unsupervised Landmark Learning</title>
+        <description>&lt;h1 id=&quot;unsupervised-learning-of-object-landmarks-through-conditional-image-generationhttpspapersnipsccpaper7657-unsupervised-learning-of-object-landmarks-through-conditional-image-generationpdf&quot;&gt;&lt;a href=&quot;https://papers.nips.cc/paper/7657-unsupervised-learning-of-object-landmarks-through-conditional-image-generation.pdf&quot;&gt;Unsupervised Learning of Object Landmarks through Conditional Image Generation&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h2 id=&quot;task-generate-the-target-image-given-the-source-image-and-the-encoded-target-image&quot;&gt;Task: Generate the target image given the source image and the encoded target image.&lt;/h2&gt;
+
+&lt;h2 id=&quot;method&quot;&gt;Method&lt;/h2&gt;
+&lt;h3 id=&quot;heatmaps-bottleneck&quot;&gt;Heatmaps bottleneck&lt;/h3&gt;
+&lt;p&gt;$\Phi(x)$: learn to extract keypoint-like structures&lt;/p&gt;
+
+&lt;p&gt;$S_{u}(x;k)$: K heatmaps
+=&amp;gt; $u_{k}^{*}(x) = \frac{\sum ue^{S_{u}(x;k)}}{\sum e^{S_{u}(x;k)}}$ (spatial softmax)&lt;/p&gt;
+
+&lt;p&gt;$\Phi_{u}(x;k)$: Gaussian-like function centered at $u_{k}^{*}$&lt;/p&gt;
+
+&lt;h3 id=&quot;generator-perceptual-loss&quot;&gt;Generator: Perceptual Loss&lt;/h3&gt;
+&lt;p&gt;$\mathcal{L}(x’, \hat{x’}) = \sum_{l} \alpha_{l} \vert\vert\Gamma_{l}(x’)-\Gamma_{l}(\hat{x’})\vert\vert^{2}$: perceptual loss&lt;/p&gt;
+
+&lt;h2 id=&quot;overall-architecture&quot;&gt;Overall Architecture&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;../../../../img/Unsupervised-Landmark/cond.png&quot; alt=&quot;model architecture&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;unsupervised-landmark-learning-from-unpaired-datahttpsarxivorgpdf200701053pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/2007.01053.pdf&quot;&gt;Unsupervised Landmark Learning from unpaired data&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h2 id=&quot;task-reconstructing-images-with-the-apprearance-and-pose-originated-from-different-images-and-establish-various-consistencies-among-these-reconstructed-images&quot;&gt;Task: Reconstructing images with the apprearance and pose originated from different images and establish various consistencies among these reconstructed images&lt;/h2&gt;
+
+&lt;h2 id=&quot;method-1&quot;&gt;Method&lt;/h2&gt;
+&lt;h3 id=&quot;cross-image-cycle-consistency-framework&quot;&gt;Cross-Image cycle Consistency Framework&lt;/h3&gt;
+&lt;p&gt;Given $I_{i}, I_{j}$: pair of images&lt;/p&gt;
+
+&lt;p&gt;$\mathbf {a_{i}} = E_{a}(N(I_{i})), \mathbf {a_{j}} = E_{a}(N(I_{j}))$&lt;/p&gt;
+
+&lt;p&gt;$\mathbf {p_{i}} = E_{p}(N(I_{i})), \mathbf {p_{j}} = E_{p}(N(I_{j}))$&lt;/p&gt;
+
+&lt;p&gt;$I_{i, j} = D(\mathbf {a_{i}}, \mathbf {p_{j}}), I_{j, i} = D(\mathbf {a_{j}}, \mathbf {p_{i}})$&lt;/p&gt;
+
+&lt;p&gt;$\mathbf {a_{i}}’ = E_{a}(N(I_{i, j})), \mathbf {a_{j}}’ = E_{a}(N(I_{j, i}))$&lt;/p&gt;
+
+&lt;p&gt;$\mathbf {p_{i}}’ = E_{p}(N(I_{i,j})), \mathbf {p_{j}}’ = E_{p}(N(I_{i,j}))$&lt;/p&gt;
+
+&lt;p&gt;$I_{i, j}’ = D(\mathbf {a_{i}}’, \mathbf {p_{j}}’), I_{j, i}’ = D(\mathbf {a_{j}}’, \mathbf {p_{i}}’)$&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;$\mathcal{L_{cycle}} = \mathcal{P}(I_{i}, I_{i}’)+\mathcal{P}(I_{j}, I_{j}’)$: P is perceptual loss implemented by VGG network&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;$\mathcal{L_{inv}} = \vert\vert\mathbf {p_{i}}’ - \mathbf{p_{i}}\vert\vert ^ {2} + \vert\vert\mathbf {p_{j}}’ - \mathbf{p_{j}}\vert\vert ^ {2}$&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;cross-image-flow-module&quot;&gt;Cross-Image Flow Module&lt;/h3&gt;
+
+&lt;p&gt;$T^{i \rightarrow j}$: the location correspondences&lt;/p&gt;
+
+&lt;p&gt;$\mathbf{C}$: 4D tensor containing the element-wise cosine similiarity between two feature maps($\mathbf {f_{i}}’, \mathbf {f_{j}}’$)&lt;/p&gt;
+
+&lt;p&gt;$\hat{C} = \mathbf {W_{1}} \bigotimes (\mathbf {W_{2}} \bigotimes \mathbf {C})$: 4D convolution using 2D convolutions consequently&lt;/p&gt;
+
+&lt;p&gt;$S^{i \rightarrow j}(x_{j}, y_{j}) = softmax(\hat{\mathbf{C}}(*, *, x_{j}, y_{j}))$&lt;/p&gt;
+
+&lt;p&gt;$T^{i \rightarrow j}(x_{j}, y_{j}) = argmax_{(x_{i}, y_{i})}S^{i \rightarrow j}(x_{j}, y_{j})$ (vice versa for j-&amp;gt;i)&lt;/p&gt;
+
+&lt;p&gt;Thus, transformation maps can reflect the semantic correlations between landmarks of two images.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;$\mathcal{L_{equiv}} = \vert\vert\mathbf {p_{i}} - T^{i \rightarrow j}\circ\mathbf{p_{j}}\vert\vert ^ {2}+\vert\vert\mathbf {p_{j}} - T^{j \rightarrow i}\circ\mathbf{p_{i}}\vert\vert ^ {2}$&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;final-loss-mathcalltotallambdacyclemathcallcyclelambdaequivmathcallequivlambdainvmathcallinv&quot;&gt;Final Loss: $\mathcal{L_{total}}=\lambda_{cycle}\mathcal{L_{cycle}}+\lambda_{equiv}\mathcal{L_{equiv}}+\lambda_{inv}\mathcal{L_{inv}}$&lt;/h3&gt;
+
+&lt;h2 id=&quot;overall-architecture-1&quot;&gt;Overall Architecture&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../../../img/Unsupervised-Landmark/unpaired.png&quot; alt=&quot;model architecture&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;unsupervised-part-based-disentangling-of-object-shape-and-appearancehttpsarxivorgpdf190306946pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/1903.06946.pdf&quot;&gt;Unsupervised Part-Based Disentangling of Object Shape and Appearance&lt;/a&gt;&lt;/h1&gt;
+</description>
+        <pubDate>Sun, 20 Dec 2020 00:00:00 +0900</pubDate>
+        <link>http://subong.github.io//review/2020/12/20/Unsupervised-Landmark-Learning.html</link>
+        <guid isPermaLink="true">http://subong.github.io//review/2020/12/20/Unsupervised-Landmark-Learning.html</guid>
+        
+        <category>deeplearning</category>
+        
+        <category>unsupervisedlearning</category>
+        
+        
+        <category>review</category>
+        
+      </item>
     
       <item>
         <title>DCGAN 리뷰</title>
@@ -304,7 +386,7 @@
 
 &lt;hr /&gt;
 
-&lt;p&gt;reference: &lt;a href=&quot;https://papers.nips.cc/paper/2014/file/5ca3e9b122f61f8f06494c97b1afccf3-Paper.pdf&quot;&gt;GAN paper,&lt;/a&gt; &lt;a href=&quot;https://jaejunyoo.blogspot.com/2019/05/part-i.html&quot;&gt;jaejunyoo.blogspot.com/2019/05/part-i.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;references: &lt;a href=&quot;https://papers.nips.cc/paper/2014/file/5ca3e9b122f61f8f06494c97b1afccf3-Paper.pdf&quot;&gt;GAN paper,&lt;/a&gt; &lt;a href=&quot;https://jaejunyoo.blogspot.com/2019/05/part-i.html&quot;&gt;jaejunyoo.blogspot.com/2019/05/part-i.html&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Sat, 19 Dec 2020 00:00:00 +0900</pubDate>
         <link>http://subong.github.io//review/2020/12/19/GAN.html</link>
