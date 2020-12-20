@@ -218,4 +218,4 @@ parameter를 최적화한다. 물론 인공신경망이 universal function appro
 
 ---
 
-reference: [GAN paper,](https://papers.nips.cc/paper/2014/file/5ca3e9b122f61f8f06494c97b1afccf3-Paper.pdf) [jaejunyoo.blogspot.com/2019/05/part-i.html](https://jaejunyoo.blogspot.com/2019/05/part-i.html)
+references: [GAN paper,](https://papers.nips.cc/paper/2014/file/5ca3e9b122f61f8f06494c97b1afccf3-Paper.pdf) [jaejunyoo.blogspot.com/2019/05/part-i.html](https://jaejunyoo.blogspot.com/2019/05/part-i.html)
