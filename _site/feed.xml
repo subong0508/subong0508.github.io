@@ -6,13 +6,13 @@
 </description>
     <link>http://subong.github.io//</link>
     <atom:link href="http://subong.github.io//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 20 Dec 2020 23:53:50 +0900</pubDate>
-    <lastBuildDate>Sun, 20 Dec 2020 23:53:50 +0900</lastBuildDate>
+    <pubDate>Tue, 22 Dec 2020 00:12:01 +0900</pubDate>
+    <lastBuildDate>Tue, 22 Dec 2020 00:12:01 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
         <title>Unsupervised Landmark Learning</title>
-        <description>&lt;h1 id=&quot;unsupervised-learning-of-object-landmarks-through-conditional-image-generationhttpspapersnipsccpaper7657-unsupervised-learning-of-object-landmarks-through-conditional-image-generationpdf&quot;&gt;&lt;a href=&quot;https://papers.nips.cc/paper/7657-unsupervised-learning-of-object-landmarks-through-conditional-image-generation.pdf&quot;&gt;Unsupervised Learning of Object Landmarks through Conditional Image Generation&lt;/a&gt;&lt;/h1&gt;
+        <description>&lt;h1 id=&quot;unsupervised-learning-of-object-landmarks-through-conditional-image-generationhttpspapersnipsccpaper7657-unsupervised-learning-of-object-landmarks-through-conditional-image-generationpdf&quot;&gt;&lt;a href=&quot;https://papers.nips.cc/paper/7657-unsupervised-learning-of-object-landmarks-through-conditional-image-generation.pdf&quot;&gt;1. Unsupervised Learning of Object Landmarks through Conditional Image Generation&lt;/a&gt;&lt;/h1&gt;
 
 &lt;h2 id=&quot;task-generate-the-target-image-given-the-source-image-and-the-encoded-target-image&quot;&gt;Task: Generate the target image given the source image and the encoded target image.&lt;/h2&gt;
 
@@ -31,7 +31,10 @@
 &lt;h2 id=&quot;overall-architecture&quot;&gt;Overall Architecture&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&quot;../../../../img/Unsupervised-Landmark/cond.png&quot; alt=&quot;model architecture&quot; /&gt;&lt;/p&gt;
 
-&lt;h1 id=&quot;unsupervised-landmark-learning-from-unpaired-datahttpsarxivorgpdf200701053pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/2007.01053.pdf&quot;&gt;Unsupervised Landmark Learning from unpaired data&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;By using K-heatmaps as a bottleneck having keypoints information and exploiting training method of conditional image generation, this paper achieved SOTA results of landmark detection&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;unsupervised-landmark-learning-from-unpaired-datahttpsarxivorgpdf200701053pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/2007.01053.pdf&quot;&gt;2. Unsupervised Landmark Learning from unpaired data&lt;/a&gt;&lt;/h1&gt;
 
 &lt;h2 id=&quot;task-reconstructing-images-with-the-apprearance-and-pose-originated-from-different-images-and-establish-various-consistencies-among-these-reconstructed-images&quot;&gt;Task: Reconstructing images with the apprearance and pose originated from different images and establish various consistencies among these reconstructed images&lt;/h2&gt;
 
@@ -47,7 +50,7 @@
 
 &lt;p&gt;$\mathbf {a_{i}}’ = E_{a}(N(I_{i, j})), \mathbf {a_{j}}’ = E_{a}(N(I_{j, i}))$&lt;/p&gt;
 
-&lt;p&gt;$\mathbf {p_{i}}’ = E_{p}(N(I_{i,j})), \mathbf {p_{j}}’ = E_{p}(N(I_{i,j}))$&lt;/p&gt;
+&lt;p&gt;$\mathbf {p_{i}}’ = E_{p}(N(I_{i,j})), \mathbf {p_{j}}’ = E_{p}(N(I_{j,i}))$&lt;/p&gt;
 
 &lt;p&gt;$I_{i, j}’ = D(\mathbf {a_{i}}’, \mathbf {p_{j}}’), I_{j, i}’ = D(\mathbf {a_{j}}’, \mathbf {p_{i}}’)$&lt;/p&gt;
 
@@ -55,7 +58,7 @@
 
 &lt;p&gt;&lt;strong&gt;$\mathcal{L_{inv}} = \vert\vert\mathbf {p_{i}}’ - \mathbf{p_{i}}\vert\vert ^ {2} + \vert\vert\mathbf {p_{j}}’ - \mathbf{p_{j}}\vert\vert ^ {2}$&lt;/strong&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;cross-image-flow-module&quot;&gt;Cross-Image Flow Module&lt;/h3&gt;
+&lt;h3 id=&quot;regularization-via-cross-image-flow-module&quot;&gt;Regularization via Cross-Image Flow Module&lt;/h3&gt;
 
 &lt;p&gt;$T^{i \rightarrow j}$: the location correspondences&lt;/p&gt;
 
@@ -69,7 +72,7 @@
 
 &lt;p&gt;Thus, transformation maps can reflect the semantic correlations between landmarks of two images.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;$\mathcal{L_{equiv}} = \vert\vert\mathbf {p_{i}} - T^{i \rightarrow j}\circ\mathbf{p_{j}}\vert\vert ^ {2}+\vert\vert\mathbf {p_{j}} - T^{j \rightarrow i}\circ\mathbf{p_{i}}\vert\vert ^ {2}$&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;$\mathcal{L_{equiv}} = \vert\vert\mathbf {p_{i}} - T^{j \rightarrow i}\circ\mathbf{p_{j}}\vert\vert ^ {2}+\vert\vert\mathbf {p_{j}} - T^{i \rightarrow j}\circ\mathbf{p_{i}}\vert\vert ^ {2}$&lt;/strong&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;final-loss-mathcalltotallambdacyclemathcallcyclelambdaequivmathcallequivlambdainvmathcallinv&quot;&gt;Final Loss: $\mathcal{L_{total}}=\lambda_{cycle}\mathcal{L_{cycle}}+\lambda_{equiv}\mathcal{L_{equiv}}+\lambda_{inv}\mathcal{L_{inv}}$&lt;/h3&gt;
 
@@ -77,7 +80,70 @@
 
 &lt;p&gt;&lt;img src=&quot;../../../../img/Unsupervised-Landmark/unpaired.png&quot; alt=&quot;model architecture&quot; /&gt;&lt;/p&gt;
 
-&lt;h1 id=&quot;unsupervised-part-based-disentangling-of-object-shape-and-appearancehttpsarxivorgpdf190306946pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/1903.06946.pdf&quot;&gt;Unsupervised Part-Based Disentangling of Object Shape and Appearance&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id=&quot;summary-1&quot;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Through techinique of balancing losses which can be categorized into meaningful embedding/invariance/equivariance, unpaired images can be used to locate landmarks&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;unsupervised-part-based-disentangling-of-object-shape-and-appearancehttpsarxivorgpdf190306946pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/1903.06946.pdf&quot;&gt;3. Unsupervised Part-Based Disentangling of Object Shape and Appearance&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h2 id=&quot;method-2&quot;&gt;Method&lt;/h2&gt;
+
+&lt;h3 id=&quot;part-based-representation&quot;&gt;Part-based Representation&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;part based factorization of representation: $\phi(x) := (\phi_{1}(x), \phi_{2}(x), …)^{\top}$ where $\phi_{i}(x)$ can be decomposed as $[\alpha_{i}(x), \sigma_{i}(x)]$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;invariance-and-equivariance&quot;&gt;Invariance and Equivariance&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;invariance: $i)\alpha_{i}(x \circ s)=\alpha_{i}(x)$, $ii)\sigma_{i}(a(x))=\sigma_{i}(x)$ =&amp;gt; &lt;strong&gt;$\mathcal {L_{rec}} = \vert\vert x - D([\alpha_{i=1,…}(x), \sigma_{i=1,…}(x)]) \vert\vert_{1}$&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;equivariance: $\sigma_{i}(x \circ s) = \sigma_{i}(x) \circ s$ =&amp;gt; &lt;strong&gt;$\mathcal {L_{equiv}} = \sum_{i} \lambda_{\mu} \vert\vert \mu[\sigma_{i}(x \circ s)] - \mu[\sigma_{i}(a(x))\circ s]\vert\vert_{2} + \lambda_{\sum} \vert\vert \sum[\sigma_{i}(x \circ s)] - \sum[\sigma_{i}(a(x))\circ s]\vert\vert_{1}$&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;total loss: $\mathcal {L} = \mathcal {L_{rec}} + \mathcal {L_{equiv}}$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;overall-architecture-2&quot;&gt;Overall Architecture&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../../../img/Unsupervised-Landmark/shape-appear.png&quot; alt=&quot;model architecture&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;where $f$ denotes localized image encoding&lt;/p&gt;
+
+&lt;h2 id=&quot;summary-2&quot;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;To sum up, shape stream extracts part shapes which are independent from appreances and appreance stream does same thing as well except it re-encodes part appearances using local features. In decoder, reconstruction is done by using approximate part shapes(normalized) and part appreances weighted on part shapes&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;self-supervised-learning-of-interpretable-keypoints-from-unlabelled-videoshttpswwwrobotsoxacukvggpublications2020jakab20jakab20pdf&quot;&gt;&lt;a href=&quot;https://www.robots.ox.ac.uk/~vgg/publications/2020/Jakab20/jakab20.pdf&quot;&gt;4. Self-supervised Learning of Interpretable Keypoints from Unlabelled Videos&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h2 id=&quot;task-recognizing-the-pose-of-objects-from-a-single-image-that-for-learning-uses-only-unlabelled-videos-and-a-weak-empirical-prior-on-the-objects-poses&quot;&gt;Task: Recognizing the pose of objects from a single image that for learning uses only unlabelled videos and a weak empirical prior on the objects poses&lt;/h2&gt;
+
+&lt;h2 id=&quot;method-3&quot;&gt;Method&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;${y} = \Phi({x})$: pose extracted from image&lt;/li&gt;
+  &lt;li&gt;$\Psi(\Phi(x), x’)$: conditional decoder network&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;dual-representation-of-pose--bottleneck&quot;&gt;Dual representation of pose &amp;amp; bottleneck&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;$\mathbf{p} = (p_{1}, …, p_{K})$: a vector of K 2D keypoint coordinates trained by $\eta(\mathbf {y})$&lt;/li&gt;
+  &lt;li&gt;$y* = \beta(\mathbf{p})_{u}$: a distance field from line segments that forms the skeleton image&lt;/li&gt;
+  &lt;li&gt;$x=\Psi(\beta \circ \eta \circ \Phi(x), x’)$: so as to prevent cheating by exploting dual representation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;loss&quot;&gt;Loss&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;$\mathcal{L_{perc}}=\frac{1}{N}\sum_{i=1}^{N}{\vert\vert \Gamma(\hat{x_{i}}) - \Gamma(x_{i}) \vert\vert ^ {2}}$: &lt;strong&gt;Auto-encoding&lt;/strong&gt; loss implemented by perceptual loss&lt;/li&gt;
+  &lt;li&gt;$\mathcal{L_{disc}}(D) = \frac{1}{M}\sum_{j=1}^{M} D(\bar{y_{j}})^{2} + \frac{1}{N}\sum_{i=1}^{N}{(1-D(y_{i}))^{2}}$: &lt;strong&gt;Difference adversarial loss&lt;/strong&gt; to match $p(y)\approx q(y)$, encourages the images $y$ ro be ‘skeleton-like’&lt;/li&gt;
+  &lt;li&gt;$\mathcal{L}(\Phi, \Psi, D) = \lambda_{disc}\mathcal{L_{disc}}(D)+\mathcal{L_{perc}}(\Psi, \Phi)$: &lt;strong&gt;Total Loss&lt;/strong&gt;, minimized w.r.t $\Phi, \Psi$ and maximised w.r.t $D$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;overall-architecture-3&quot;&gt;Overall Architecture&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../../../img/Unsupervised-Landmark/pose.png&quot; alt=&quot;model architecture&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;summary-3&quot;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;While using conditional image generator as a decoder, the method utilized in this paper forces encoder to grab meaningful pose information by exploiting dual representation and emprical prior&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;unsupervised-learning-of-landmarks-by-descriptor-vector-exchangehttpsarxivorgpdf190806427pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/1908.06427.pdf&quot;&gt;5. Unsupervised Learning of Landmarks by Descriptor Vector Exchange&lt;/a&gt;&lt;/h1&gt;
 </description>
         <pubDate>Sun, 20 Dec 2020 00:00:00 +0900</pubDate>
         <link>http://subong.github.io//review/2020/12/20/Unsupervised-Landmark-Learning.html</link>

@@ -33,7 +33,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Unsupervised Landmark Learning</title>
-  <meta name="description" content="Unsupervised Learning of Object Landmarks through Conditional Image Generation">
+  <meta name="description" content="1. Unsupervised Learning of Object Landmarks through Conditional Image Generation">
   
   <meta name="author" content="Jung Jaeeun">
   <meta name="copyright" content="&copy; Jung Jaeeun 2020">
@@ -67,7 +67,7 @@
 
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="Unsupervised Learning of Object Landmarks through Conditional Image Generation" />
+  <meta property="og:description" content="1. Unsupervised Learning of Object Landmarks through Conditional Image Generation" />
   <meta property="og:url" content="http://subong.github.io/" />
   <meta property="og:site_name" content="Data Vision" />
   <meta property="og:title" content="Unsupervised Landmark Learning" />
@@ -82,7 +82,7 @@
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Unsupervised Landmark Learning">
-  <meta name="twitter:description" content="Unsupervised Learning of Object Landmarks through Conditional Image Generation">
+  <meta name="twitter:description" content="1. Unsupervised Learning of Object Landmarks through Conditional Image Generation">
   <meta name="twitter:image" content="http://subong.github.io//assets/logo.png">
   <meta name="twitter:url" content="http://subong.github.io/">
   
@@ -163,7 +163,7 @@
 </section>  
 
 <article class="post-content">
-  <h1 id="unsupervised-learning-of-object-landmarks-through-conditional-image-generationhttpspapersnipsccpaper7657-unsupervised-learning-of-object-landmarks-through-conditional-image-generationpdf"><a href="https://papers.nips.cc/paper/7657-unsupervised-learning-of-object-landmarks-through-conditional-image-generation.pdf">Unsupervised Learning of Object Landmarks through Conditional Image Generation</a></h1>
+  <h1 id="unsupervised-learning-of-object-landmarks-through-conditional-image-generationhttpspapersnipsccpaper7657-unsupervised-learning-of-object-landmarks-through-conditional-image-generationpdf"><a href="https://papers.nips.cc/paper/7657-unsupervised-learning-of-object-landmarks-through-conditional-image-generation.pdf">1. Unsupervised Learning of Object Landmarks through Conditional Image Generation</a></h1>
 
 <h2 id="task-generate-the-target-image-given-the-source-image-and-the-encoded-target-image">Task: Generate the target image given the source image and the encoded target image.</h2>
 
@@ -182,7 +182,10 @@
 <h2 id="overall-architecture">Overall Architecture</h2>
 <p><img src="../../../../img/Unsupervised-Landmark/cond.png" alt="model architecture" /></p>
 
-<h1 id="unsupervised-landmark-learning-from-unpaired-datahttpsarxivorgpdf200701053pdf"><a href="https://arxiv.org/pdf/2007.01053.pdf">Unsupervised Landmark Learning from unpaired data</a></h1>
+<h2 id="summary">Summary</h2>
+<p><strong>By using K-heatmaps as a bottleneck having keypoints information and exploiting training method of conditional image generation, this paper achieved SOTA results of landmark detection</strong></p>
+
+<h1 id="unsupervised-landmark-learning-from-unpaired-datahttpsarxivorgpdf200701053pdf"><a href="https://arxiv.org/pdf/2007.01053.pdf">2. Unsupervised Landmark Learning from unpaired data</a></h1>
 
 <h2 id="task-reconstructing-images-with-the-apprearance-and-pose-originated-from-different-images-and-establish-various-consistencies-among-these-reconstructed-images">Task: Reconstructing images with the apprearance and pose originated from different images and establish various consistencies among these reconstructed images</h2>
 
@@ -198,7 +201,7 @@
 
 <p>$\mathbf {a_{i}}’ = E_{a}(N(I_{i, j})), \mathbf {a_{j}}’ = E_{a}(N(I_{j, i}))$</p>
 
-<p>$\mathbf {p_{i}}’ = E_{p}(N(I_{i,j})), \mathbf {p_{j}}’ = E_{p}(N(I_{i,j}))$</p>
+<p>$\mathbf {p_{i}}’ = E_{p}(N(I_{i,j})), \mathbf {p_{j}}’ = E_{p}(N(I_{j,i}))$</p>
 
 <p>$I_{i, j}’ = D(\mathbf {a_{i}}’, \mathbf {p_{j}}’), I_{j, i}’ = D(\mathbf {a_{j}}’, \mathbf {p_{i}}’)$</p>
 
@@ -206,7 +209,7 @@
 
 <p><strong>$\mathcal{L_{inv}} = \vert\vert\mathbf {p_{i}}’ - \mathbf{p_{i}}\vert\vert ^ {2} + \vert\vert\mathbf {p_{j}}’ - \mathbf{p_{j}}\vert\vert ^ {2}$</strong></p>
 
-<h3 id="cross-image-flow-module">Cross-Image Flow Module</h3>
+<h3 id="regularization-via-cross-image-flow-module">Regularization via Cross-Image Flow Module</h3>
 
 <p>$T^{i \rightarrow j}$: the location correspondences</p>
 
@@ -220,7 +223,7 @@
 
 <p>Thus, transformation maps can reflect the semantic correlations between landmarks of two images.</p>
 
-<p><strong>$\mathcal{L_{equiv}} = \vert\vert\mathbf {p_{i}} - T^{i \rightarrow j}\circ\mathbf{p_{j}}\vert\vert ^ {2}+\vert\vert\mathbf {p_{j}} - T^{j \rightarrow i}\circ\mathbf{p_{i}}\vert\vert ^ {2}$</strong></p>
+<p><strong>$\mathcal{L_{equiv}} = \vert\vert\mathbf {p_{i}} - T^{j \rightarrow i}\circ\mathbf{p_{j}}\vert\vert ^ {2}+\vert\vert\mathbf {p_{j}} - T^{i \rightarrow j}\circ\mathbf{p_{i}}\vert\vert ^ {2}$</strong></p>
 
 <h3 id="final-loss-mathcalltotallambdacyclemathcallcyclelambdaequivmathcallequivlambdainvmathcallinv">Final Loss: $\mathcal{L_{total}}=\lambda_{cycle}\mathcal{L_{cycle}}+\lambda_{equiv}\mathcal{L_{equiv}}+\lambda_{inv}\mathcal{L_{inv}}$</h3>
 
@@ -228,7 +231,70 @@
 
 <p><img src="../../../../img/Unsupervised-Landmark/unpaired.png" alt="model architecture" /></p>
 
-<h1 id="unsupervised-part-based-disentangling-of-object-shape-and-appearancehttpsarxivorgpdf190306946pdf"><a href="https://arxiv.org/pdf/1903.06946.pdf">Unsupervised Part-Based Disentangling of Object Shape and Appearance</a></h1>
+<h2 id="summary-1">Summary</h2>
+<p><strong>Through techinique of balancing losses which can be categorized into meaningful embedding/invariance/equivariance, unpaired images can be used to locate landmarks</strong></p>
+
+<h1 id="unsupervised-part-based-disentangling-of-object-shape-and-appearancehttpsarxivorgpdf190306946pdf"><a href="https://arxiv.org/pdf/1903.06946.pdf">3. Unsupervised Part-Based Disentangling of Object Shape and Appearance</a></h1>
+
+<h2 id="method-2">Method</h2>
+
+<h3 id="part-based-representation">Part-based Representation</h3>
+
+<ul>
+  <li>part based factorization of representation: $\phi(x) := (\phi_{1}(x), \phi_{2}(x), …)^{\top}$ where $\phi_{i}(x)$ can be decomposed as $[\alpha_{i}(x), \sigma_{i}(x)]$</li>
+</ul>
+
+<h3 id="invariance-and-equivariance">Invariance and Equivariance</h3>
+
+<ul>
+  <li>invariance: $i)\alpha_{i}(x \circ s)=\alpha_{i}(x)$, $ii)\sigma_{i}(a(x))=\sigma_{i}(x)$ =&gt; <strong>$\mathcal {L_{rec}} = \vert\vert x - D([\alpha_{i=1,…}(x), \sigma_{i=1,…}(x)]) \vert\vert_{1}$</strong></li>
+  <li>equivariance: $\sigma_{i}(x \circ s) = \sigma_{i}(x) \circ s$ =&gt; <strong>$\mathcal {L_{equiv}} = \sum_{i} \lambda_{\mu} \vert\vert \mu[\sigma_{i}(x \circ s)] - \mu[\sigma_{i}(a(x))\circ s]\vert\vert_{2} + \lambda_{\sum} \vert\vert \sum[\sigma_{i}(x \circ s)] - \sum[\sigma_{i}(a(x))\circ s]\vert\vert_{1}$</strong></li>
+  <li>total loss: $\mathcal {L} = \mathcal {L_{rec}} + \mathcal {L_{equiv}}$</li>
+</ul>
+
+<h2 id="overall-architecture-2">Overall Architecture</h2>
+
+<p><img src="../../../../img/Unsupervised-Landmark/shape-appear.png" alt="model architecture" /></p>
+
+<p>where $f$ denotes localized image encoding</p>
+
+<h2 id="summary-2">Summary</h2>
+<p><strong>To sum up, shape stream extracts part shapes which are independent from appreances and appreance stream does same thing as well except it re-encodes part appearances using local features. In decoder, reconstruction is done by using approximate part shapes(normalized) and part appreances weighted on part shapes</strong></p>
+
+<h1 id="self-supervised-learning-of-interpretable-keypoints-from-unlabelled-videoshttpswwwrobotsoxacukvggpublications2020jakab20jakab20pdf"><a href="https://www.robots.ox.ac.uk/~vgg/publications/2020/Jakab20/jakab20.pdf">4. Self-supervised Learning of Interpretable Keypoints from Unlabelled Videos</a></h1>
+
+<h2 id="task-recognizing-the-pose-of-objects-from-a-single-image-that-for-learning-uses-only-unlabelled-videos-and-a-weak-empirical-prior-on-the-objects-poses">Task: Recognizing the pose of objects from a single image that for learning uses only unlabelled videos and a weak empirical prior on the objects poses</h2>
+
+<h2 id="method-3">Method</h2>
+
+<ul>
+  <li>${y} = \Phi({x})$: pose extracted from image</li>
+  <li>$\Psi(\Phi(x), x’)$: conditional decoder network</li>
+</ul>
+
+<h3 id="dual-representation-of-pose--bottleneck">Dual representation of pose &amp; bottleneck</h3>
+
+<ul>
+  <li>$\mathbf{p} = (p_{1}, …, p_{K})$: a vector of K 2D keypoint coordinates trained by $\eta(\mathbf {y})$</li>
+  <li>$y* = \beta(\mathbf{p})_{u}$: a distance field from line segments that forms the skeleton image</li>
+  <li>$x=\Psi(\beta \circ \eta \circ \Phi(x), x’)$: so as to prevent cheating by exploting dual representation</li>
+</ul>
+
+<h3 id="loss">Loss</h3>
+<ul>
+  <li>$\mathcal{L_{perc}}=\frac{1}{N}\sum_{i=1}^{N}{\vert\vert \Gamma(\hat{x_{i}}) - \Gamma(x_{i}) \vert\vert ^ {2}}$: <strong>Auto-encoding</strong> loss implemented by perceptual loss</li>
+  <li>$\mathcal{L_{disc}}(D) = \frac{1}{M}\sum_{j=1}^{M} D(\bar{y_{j}})^{2} + \frac{1}{N}\sum_{i=1}^{N}{(1-D(y_{i}))^{2}}$: <strong>Difference adversarial loss</strong> to match $p(y)\approx q(y)$, encourages the images $y$ ro be ‘skeleton-like’</li>
+  <li>$\mathcal{L}(\Phi, \Psi, D) = \lambda_{disc}\mathcal{L_{disc}}(D)+\mathcal{L_{perc}}(\Psi, \Phi)$: <strong>Total Loss</strong>, minimized w.r.t $\Phi, \Psi$ and maximised w.r.t $D$</li>
+</ul>
+
+<h2 id="overall-architecture-3">Overall Architecture</h2>
+
+<p><img src="../../../../img/Unsupervised-Landmark/pose.png" alt="model architecture" /></p>
+
+<h2 id="summary-3">Summary</h2>
+<p><strong>While using conditional image generator as a decoder, the method utilized in this paper forces encoder to grab meaningful pose information by exploiting dual representation and emprical prior</strong></p>
+
+<h1 id="unsupervised-learning-of-landmarks-by-descriptor-vector-exchangehttpsarxivorgpdf190806427pdf"><a href="https://arxiv.org/pdf/1908.06427.pdf">5. Unsupervised Learning of Landmarks by Descriptor Vector Exchange</a></h1>
 
 </article>
 
