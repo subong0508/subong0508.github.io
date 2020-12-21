@@ -131,6 +131,6 @@ where $f$ denotes localized image encoding
 ![model architecture](../../../../img/Unsupervised-Landmark/pose.png)
 
 ## Summary
-**While using conditional image generator as a decoder, the method utilized in this paper forces encoder to grab meaningful pose information by exploiting dual representation and emprical prior**
+**While using conditional image generator as a decoder, the method utilized in this paper forces encoder to grab meaningful pose information by exploiting dual representation and empirical prior**
 
 # [5. Unsupervised Learning of Landmarks by Descriptor Vector Exchange](https://arxiv.org/pdf/1908.06427.pdf)
