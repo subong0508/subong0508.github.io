@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        TeX: {
+          equationNumbers: {
+            autoNumber: "AMS"
+          }
+        },
+        tex2jax: {
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+      }
+    });
+    MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+          alert("Math Processing Error: "+message[1]);
+        });
+    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+          alert("Math Processing Error: "+message[1]);
+        });
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    
+  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>from Variational Inference to VAE</title>
+  <meta name="description" content="이번 포스팅에서는 Bayesian의 중요한 토픽인 Variational Inference부터 그와 연관된 Variational Auto-encoder까지 알아보려고 한다.">
+  
+  <meta name="author" content="Jung Jaeeun">
+  <meta name="copyright" content="&copy; Jung Jaeeun 2020">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/monokai_sublime.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="이번 포스팅에서는 Bayesian의 중요한 토픽인 Variational Inference부터 그와 연관된 Variational Auto-encoder까지 알아보려고 한다." />
+  <meta property="og:url" content="http://subong.github.io/" />
+  <meta property="og:site_name" content="Data Vision" />
+  <meta property="og:title" content="from Variational Inference to VAE" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://subong.github.io//assets/logo.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="from Variational Inference to VAE">
+  <meta name="twitter:description" content="이번 포스팅에서는 Bayesian의 중요한 토픽인 Variational Inference부터 그와 연관된 Variational Auto-encoder까지 알아보려고 한다.">
+  <meta name="twitter:image" content="http://subong.github.io//assets/logo.png">
+  <meta name="twitter:url" content="http://subong.github.io/">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://subong.github.io//scribbles/2020/12/22/from-Variational-Inference-to-VAE.html">
+  <link rel="alternate" type="application/rss+xml" title="Data Vision" href="http://subong.github.io//feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="Data Vision">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/posts/">Posts</a>
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container " >
+  <div class="scrim ">
+    <header class="post-header">
+      <h1 class="title">from Variational Inference to VAE</h1>
+      <p class="info">by <strong>Jung Jaeeun</strong></p>
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+ <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+
+<section class="post-meta">
+  <div class="post-date">December 22, 2020</div>
+  <div class="post-categories">
+  in 
+    
+    <a href="/category/Scribbles">Scribbles</a>
+    
+  
+  </div>
+</section>  
+
+<article class="post-content">
+  <p>이번 포스팅에서는 Bayesian의 중요한 토픽인 Variational Inference부터 그와 연관된 Variational Auto-encoder까지 알아보려고 한다.</p>
+
+<h1 id="bayesian-framework">Bayesian Framework</h1>
+
+<p>먼저, 베이지안의 기본적인 사고방식부터 알고 가자. 빈도론자와 베이지안의 가장 큰 차이점은 우리가 추정하고자하는 parameter를 확률변수로 보냐/아니냐이다. 빈도론자는 고정된 상수라고 보고 베이지안은 어떤 확률분포를 따르는 확률변수라고 생각한다.</p>
+
+<p>예를 들어, 우리나라 사람들의 키를 수집한 데이터가 있다고 가정하자. 아무래도 우리가 관심있어 하는 parameter는 우리나라 사람들의 평균 키일 것이다. 빈도론자들은 이 평균 키($\mu$라고 하자.)가 고정된 상수(ex: 168cm)라고 가정하고 ML 방식으로 모수를 추정한다. 그에 비해, 베이지안은 $\mu$에 대한 사전 분포를 먼저 정의한 후(이를 prior belief라고 한다.) 주어진 데이터로 부터 사후분포를 추정한다.</p>
+
+<p>우리나라 사람들의 평균 키가 매우 작다고 믿는 베이지안은 평균이 160cm인 정규분포를 사전분포로 가정할 것이다. 그런데 데이터에 180cm 이상인 사람들이 많다면 데이터를 본 이후 사후분포는 평균이 170cm 정도인 정규분포가 된다. 한편, 빈도론자는 평균 키는 185cm구나!라고 결론을 지을 것이다.</p>
+
+<p>글이 길어졌는데, 여튼 베이지안의 핵심은 <strong>데이터에 사전믿음을 결합한다는 것</strong>에 있다.</p>
+
+<p>우리가 추정하고자 하는 모수를 $\theta$, 데이터를 $x$라고 할 때 결국 <strong>베이지안의 목표는 사전분포 + 데이터로부터 사후분포를 추론하는 것이다.</strong> 즉, 다음과 같다.</p>
+
+<p>$p(\theta\vert X) = \frac{\prod_{i=1}^{n}{p(x_{i}\vert\theta)p(\theta)}}{\int {\prod_{i=1}^{n}{p(x_{i}\vert\theta)p(\theta)}}} \text{ where } x_{i}’s \text{ are i.i.d samples}$</p>
+
+<p>그럼 이제 본격적으로 베이지안 입장에서 본 머신러닝 모델에 대해서 이야기해보도록 하자. $x$를 features, $y$를 class label/latent vector, $\theta$를 추정할 parameter로 정의하겠다. 그렇다면 우리가 관심있는 분포는 $x$가 given일 때 $y, \theta$의 결합 분포에 해당한다.</p>
+
+<ul>
+  <li>$p(y, \theta \vert x) = p(y \vert \theta, x)p(\theta) \text{ } \because x \perp\theta$</li>
+  <li>$p(\theta \vert X, Y) = \frac{p(Y \vert X, \theta)p(\theta)}{\int p(Y \vert X, \theta)p(\theta)}\text{ where X, Y denote whole training set}$</li>
+  <li>test: $p(y \vert x, X, Y) = \int{ p(y \vert x, \theta)p(\theta \vert X, Y)d\theta}$</li>
+</ul>
+
+<p>그러나 바로 여기에서 문제가 생긴다.  $p(\theta \vert X, Y)$를 구하기 위해서는 분모에 있는 적분이 가능해야 하는데, 
+$p(y \vert x, \theta)$와 $p)(\theta)$가 conjugate하지 않으면 대부분의 경우에서 적분이 어렵다는 것. test시에도 마찬가지.</p>
+
+<p>(<strong><a href="https://en.wikipedia.org/wiki/Conjugate_prior">conjugate prior</a></strong>: conjugacy에 대해서는 자세히 언급하지 않겠지만, 궁금하신 분들은 이 링크를 참조하길 바란다. 대표적인 conjugate distributions은 beta-binom, poission-gamma 등이 있다.)</p>
+
+<p>여튼, conjugacy가 없다면 posterior distribution(사후분포)을 구하기가 매우 힘들고 빈도론자들 처럼 $\theta$에 대한 point estimation을 할 수 밖에 없다. 이 경우를 Poor Bayes라고도 한다고… test시에도 이러한 point estimation을 통해 얻어진 $\theta_{MP}$를 가지고 $y$에 대한 추론을 하게 된다.</p>
+
+<ul>
+  <li>$\theta_{MP} = argmax_{\theta}p(\theta \vert X, Y) = argmax_{\theta}P(Y \vert X, \theta)p(\theta)$</li>
+  <li>$p(y \vert x, X, Y) \approx p(y \vert x, \theta_{MP})$</li>
+</ul>
+
+<p>덧붙여서 말하자면, 빈도론자들이 overfitting을 막기 위해 쓰는 regularization 기법(ex: L2-loss)가 사실 이 Poor Bayes와 본질적으로 동등하다.</p>
+
+<h1 id="variational-inference">Variational Inference</h1>
+<h2 id="main-goal-to-estimate-ptheta-vert-x">Main Goal: to estimate $p(\theta \vert x)$</h2>
+
+<p>그러면 conjugacy가 없고, 다시 말해 analytical하게 푸는 것이 불가능한 상황에서 우리는 어떻게 해야할까? 방법은 크게 두 가지로 나뉜다.</p>
+
+<ol>
+  <li><strong>variational inference</strong>: $q(\theta) \approx p(\theta \vert x)$</li>
+  <li><strong>sampling based method</strong>: $p(x \vert \theta)p(\theta)$로 부터 샘플링하는 방법. MCMC 등이 있으나 시간이 오래 걸린다.</li>
+</ol>
+
+<p>우리는 여기서 첫 번째 방법인 variational inference에 대해 알아보려고 한다. approximate posterior를 가정하고, true posterior과 최대한 가깝게 approximate posterior를 추정하는 방법이다. 분포의 거리를 측정하기 위해 우리는 KL-divergence를 사용한다. KL-divergence는 워낙 유명한 토픽이고 서치하기도 쉬우니까 생략..</p>
+
+<p>$\hat{q}(\theta) = argmin_{q}D_{KL}(q(\theta) \vert\vert p(\theta \vert x)) = argmin_{q} \int q(\theta)log\frac{q(\theta)}{p(\theta \vert x)}d\theta$</p>
+
+<ul>
+  <li>문제1: $p(\theta \vert x)$를 모른다.</li>
+  <li>문제2: 분포에 대한 optimization은 어떻게 할 수 있나?</li>
+</ul>
+
+<p><strong>Sol)</strong></p>
+
+<p>$logp(x) = E_{q(\theta)}[logp(x)] = \int q(\theta)logp(x)d\theta = \int q(\theta)log\frac{p(x, \theta)}{p(\theta \vert x)}d\theta= \int q(\theta)log\frac{p(x, \theta)}{p(\theta \vert x)}\frac{q(\theta)}{q(\theta)}d\theta$</p>
+
+<p>$= \int q(\theta) log\frac{p(x, \theta)}{q(\theta)}d\theta + \int q(\theta) log\frac{q(\theta)}{p(\theta \vert x)}d\theta = \mathcal{L}(q(\theta)) + D_{KL}(q(\theta) \vert\vert p(\theta \vert x))$</p>
+
+<p>따라서, $D_{KL}(q(\theta) \vert\vert p(\theta \vert x))$를 maximize하는 문제는 $\mathcal{L}(q(\theta))$를 minimize하는 문제와 동등해진다.</p>
+
+<p>$\mathcal{L}(q(\theta)) = \int q(\theta) log\frac{p(x, \theta)}{q(\theta)}d\theta = \int q(\theta) log\frac{p(x \vert \theta)p(\theta)}{q(\theta)}d\theta$</p>
+
+<p><b><font color="red">$= E_{q(\theta)}[logp(x \vert \theta)] - D_{KL}(q(\theta) \vert\vert p(\theta)) = \text{data likelihood + KL-regularizer term}$</font></b></p>
+
+<p>이제 남은 부분은 $q(\theta)$를 어떻게 최적화하는지인데, 크게 두 가지 방법이 있다.</p>
+
+<ol>
+  <li><strong><a href="https://en.wikipedia.org/wiki/Variational_Bayesian_methods">mean field approximation</a></strong>: $\theta$끼리 독립일 때 사용하는 방법.</li>
+  <li><strong>parametric approximation</strong>: 대부분의 neural network에서 사용하는 방법. $q(\theta)=q(\theta \vert \lambda)$라고 정의한 후 $\lambda$에 대해서 최적화.</li>
+</ol>
+
+<p>지금까지 배운 것들을 요약해보자면 다음과 같다.</p>
+
+<ul>
+  <li>Full Bayesian inference: $p(\theta \vert x)$</li>
+  <li>MP inference: $\theta_{MP} = argmax_{\theta}p(\theta \vert X, Y)$</li>
+  <li>Mean field variational inference:  $p(\theta \vert x) \approx q(\theta) = \prod_{j=1}^{j=m}q_{j}(\theta_{j})$</li>
+  <li>Parametric variational inference: $p(\theta \vert x) \approx q(\theta) = q(\theta \vert \lambda)$</li>
+</ul>
+
+<h1 id="latent-variable-models">Latent Variable Models</h1>
+
+<h1 id="stochastic-variational-inference-and-vae">Stochastic Variational Inference and VAE</h1>
+
+</article>
+
+
+
+<section class="tags">
+  <strong>Tags:</strong> <a href="/tag/bayesian">bayesian</a>,&nbsp;<a href="/tag/deep-learning">deep-learning</a>,&nbsp;<a href="/tag/variational-inference">variational-inference</a>
+</section>
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<section class="share">
+  <span>Share: </span>
+  
+    
+    
+    
+    
+    
+    
+    
+  
+</section>
+
+	<section class="post-navigation">
+		<span class="prev-post">
+			
+				<a href="/review/2020/12/20/Unsupervised-Landmark-Learning.html">
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-square fa-stack-2x"></i>
+						<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+					</span>
+					<span class="page-number">Unsupervised Landmark Learning</span>
+				</a>
+			
+		</span>
+		<span class="next-post">
+			
+		</span>
+	</section>
+
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">Data Vision</h3>
+
+    <div class="site-navigation">
+      
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">About</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:subong0508@naver.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">subong0508@naver.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://github.com/subong0508" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">subong0508</span>
+            </a>
+          </li>
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">My personal blog for studying AI
+</p>
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+  // Syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+
+
+});
+
+</script>
+
+
+
+
+  </body>
+
+</html>

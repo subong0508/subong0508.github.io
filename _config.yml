@@ -28,7 +28,7 @@ markdown: kramdown
 katex: true
 paginate: 5
 paginate_path: "/page:num/"
-inter_post_navigation: false
+inter_post_navigation: true
 highlightjs_theme: "monokai_sublime"
 highlighter: rouge
 lsi: false

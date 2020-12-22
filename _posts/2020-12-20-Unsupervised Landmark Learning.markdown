@@ -4,7 +4,7 @@ title:  Unsupervised Landmark Learning
 date:   2020-12-20
 author: Jung Jaeeun
 categories: review
-tags: deeplearning unsupervisedlearning 
+tags: deep-learning unsupervised-learning 
 use_math: true
 ---
 
