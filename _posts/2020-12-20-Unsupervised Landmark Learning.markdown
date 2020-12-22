@@ -134,3 +134,52 @@ where $f$ denotes localized image encoding
 **While using conditional image generator as a decoder, the method utilized in this paper forces encoder to grab meaningful pose information by exploiting dual representation and empirical prior**
 
 # [5. Unsupervised Learning of Landmarks by Descriptor Vector Exchange](https://arxiv.org/pdf/1908.06427.pdf)
+
+## Method
+
+- equivariance constraint: $\Phi_{u}(x) = \Phi_{gu}(x) \text{ where } \Phi \text{ correspondes to dense embedding}$
+- probabilistic formulation: $p(v \vert u;\Phi, x, x')= \frac{e^{<\Phi_{u}(x), \Phi_{v}(x)>}}{\int_{\Omega} e^{<\Phi_{u}(x), \Phi_{t}(x)>}dt}$
+- $\mathcal {L}(\Phi;x, x', g) = E_{u, v}[\vert\vert v - gu \vert\vert]$
+
+### Vector exchangeability
+
+- $x_{\alpha}$: auxiliary image that belongs to same-category in $u, v$
+- $\hat {\Phi_{u}(x\vert x_{\alpha})} = \int \Phi_{w}(x_{\alpha})p(w \vert u; \Phi, x, x_{\alpha})dw$
+- new probabilistic formulation: $p(v \vert u;\Phi, x, x')= \frac{e^{<\hat{\Phi_{u}}(x), \Phi_{v}(x)>}}{\int_{\Omega} e^{<\hat{\Phi_{u}}(x), \Phi_{t}(x)>}dt}$
+
+## Overall Architecture
+
+![model architecture](../../../../img/Unsupervised-Landmark/DVE.png)
+
+## Summary
+**DVE captures dense embedding of an image which acts as an invariant descriptor vector by enforcing it's robustness via intra-class variants(auxiliary images), in which it learns equivariance and intra-class invariance simultaneously**
+
+# [6. Unsupervised Learning of Facial Landmarks based on Inter-Intra Subject Consistencies](https://arxiv.org/pdf/2004.07936.pdf)
+
+## Method
+1. *Landmark Detector*: using visual feature maps $S \in \mathbf{R}^{H \times W \times K}$,  
+the predicted $k$-th landmark location $u_{k}$ is weighted average of the spatial locations $i$  
+$\Phi_{H}(x;k) = \exp(-\frac{1}{2\sigma^{2}} \vert\vert u-u_{k} \vert\vert ^ {2})$: Gaussian-like probabilistic heatmap centered at $u_{k}$  
+2. *Inter-Intra Image Generator*
+- $x', x^{a}$: deformed image, auxiliary image
+- $\mathcal {F_{s}} = \Phi_{E}(x) \in \mathbf {R^{H \times W \times D}}$: a visual feature map
+- $\mathcal {I_{a}} = \Psi(\mathcal {F_{s}}, \Phi_{H}(x^{a})) = \Psi(\Phi_{E}(x), \Phi_{H}(x^{a}))$
+- $\mathcal {I} = \Psi(\mathcal {F_{t}}, \Phi_{H}(x')) = \Psi(\Phi_{E}(\mathcal {I_{a}}), \Phi_{H}(x'))$
+3. *Cycle Backward Path*: both $X$ and $X'$ are reconstructed through it's counterpart
+
+### Training
+- reconstruction loss: $\mathcal {L_{R}}(\mathcal{I}, \mathcal{I_{gt}}) = \vert\vert \mathcal{I}-\mathcal{I_{gt}} \vert\vert ^{2}$
+- perceptual loss: $\mathcal {L_{P}}(\mathcal{I}, \mathcal{I_{gt}}) = \sum_{l} \vert\vert VGG^{l}(\mathcal{I}) - VGG^{l}(\mathcal{I_{gt}})\vert\vert ^ {2}$
+- total loss: $\mathcal{L} = \mathcal{L_{R}}(\mathcal{I_{x}}, x)+\mathcal{L_{R}}(\mathcal{I_{x'}}, x')+\mathcal{L_{P}}(\mathcal{I_{x}}, x)+\mathcal{L_{P}}(\mathcal{I_{x'}}, x')$
+
+## Overall Architecture
+
+![model architecture](../../../../img/Unsupervised-Landmark/inter-intra.png)
+
+## Summary
+**By inserting auxiliary image's structure when reconstructing the target image, this method gives the model intra-subject consistency and reinforeces inter-subject consistency via cycle backward path**
+
+# [7. Unsupervised Disentanglement of Pose, Appearance and Background from Images and Videos](https://arxiv.org/pdf/2001.09518.pdf)
+
+
+# [8. Unsupervised Discovery of Object Landmarks via Contrastive Learning](https://arxiv.org/pdf/2006.14787.pdf)

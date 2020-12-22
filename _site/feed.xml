@@ -6,8 +6,8 @@
 </description>
     <link>http://subong.github.io//</link>
     <atom:link href="http://subong.github.io//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 22 Dec 2020 17:55:41 +0900</pubDate>
-    <lastBuildDate>Tue, 22 Dec 2020 17:55:41 +0900</lastBuildDate>
+    <pubDate>Wed, 23 Dec 2020 01:36:07 +0900</pubDate>
+    <lastBuildDate>Wed, 23 Dec 2020 01:36:07 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -20,13 +20,13 @@
 
 &lt;p&gt;예를 들어, 우리나라 사람들의 키를 수집한 데이터가 있다고 가정하자. 아무래도 우리가 관심있어 하는 parameter는 우리나라 사람들의 평균 키일 것이다. 빈도론자들은 이 평균 키($\mu$라고 하자.)가 고정된 상수(ex: 168cm)라고 가정하고 ML 방식으로 모수를 추정한다. 그에 비해, 베이지안은 $\mu$에 대한 사전 분포를 먼저 정의한 후(이를 prior belief라고 한다.) 주어진 데이터로 부터 사후분포를 추정한다.&lt;/p&gt;
 
-&lt;p&gt;우리나라 사람들의 평균 키가 매우 작다고 믿는 베이지안은 평균이 160cm인 정규분포를 사전분포로 가정할 것이다. 그런데 데이터에 180cm 이상인 사람들이 많다면 데이터를 본 이후 사후분포는 평균이 170cm 정도인 정규분포가 된다. 한편, 빈도론자는 평균 키는 185cm구나!라고 결론을 지을 것이다.&lt;/p&gt;
+&lt;p&gt;우리나라 사람들의 평균 키가 매우 작다고 믿는 베이지안은 평균이 160cm인 정규분포를 사전분포로 가정할 것이다. 그런데 데이터에 180cm 이상인 사람들이 많다면 데이터를 본 이후 사후분포는 평균이 175cm 정도인 정규분포가 된다. 한편, 빈도론자는 평균 키는 185cm구나!라고 결론을 지을 것이다.&lt;/p&gt;
 
 &lt;p&gt;글이 길어졌는데, 여튼 베이지안의 핵심은 &lt;strong&gt;데이터에 사전믿음을 결합한다는 것&lt;/strong&gt;에 있다.&lt;/p&gt;
 
 &lt;p&gt;우리가 추정하고자 하는 모수를 $\theta$, 데이터를 $x$라고 할 때 결국 &lt;strong&gt;베이지안의 목표는 사전분포 + 데이터로부터 사후분포를 추론하는 것이다.&lt;/strong&gt; 즉, 다음과 같다.&lt;/p&gt;
 
-&lt;p&gt;$p(\theta\vert X) = \frac{\prod_{i=1}^{n}{p(x_{i}\vert\theta)p(\theta)}}{\int {\prod_{i=1}^{n}{p(x_{i}\vert\theta)p(\theta)}}} \text{ where } x_{i}’s \text{ are i.i.d samples}$&lt;/p&gt;
+&lt;p&gt;$p(\theta\vert X) = \frac{\prod_{i=1}^{n}{p(x_{i}\vert\theta)p(\theta)}}{\int {\prod_{i=1}^{n}{p(x_{i}\vert\theta)p(\theta)d\theta}}} \text{ where } x_{i}’s \text{ are i.i.d samples}$&lt;/p&gt;
 
 &lt;p&gt;그럼 이제 본격적으로 베이지안 입장에서 본 머신러닝 모델에 대해서 이야기해보도록 하자. $x$를 features, $y$를 class label/latent vector, $\theta$를 추정할 parameter로 정의하겠다. 그렇다면 우리가 관심있는 분포는 $x$가 given일 때 $y, \theta$의 결합 분포에 해당한다.&lt;/p&gt;
 
@@ -37,7 +37,7 @@
 &lt;/ul&gt;
 
 &lt;p&gt;그러나 바로 여기에서 문제가 생긴다.  $p(\theta \vert X, Y)$를 구하기 위해서는 분모에 있는 적분이 가능해야 하는데, 
-$p(y \vert x, \theta)$와 $p)(\theta)$가 conjugate하지 않으면 대부분의 경우에서 적분이 어렵다는 것. test시에도 마찬가지.&lt;/p&gt;
+$p(y \vert x, \theta)$와 $p(\theta)$가 conjugate하지 않으면 대부분의 경우에서 적분이 어렵다는 것. test시에도 마찬가지.&lt;/p&gt;
 
 &lt;p&gt;(&lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Conjugate_prior&quot;&gt;conjugate prior&lt;/a&gt;&lt;/strong&gt;: conjugacy에 대해서는 자세히 언급하지 않겠지만, 궁금하신 분들은 이 링크를 참조하길 바란다. 대표적인 conjugate distributions은 beta-binom, poission-gamma 등이 있다.)&lt;/p&gt;
 
@@ -93,7 +93,7 @@ $p(y \vert x, \theta)$와 $p)(\theta)$가 conjugate하지 않으면 대부분의
 &lt;ul&gt;
   &lt;li&gt;Full Bayesian inference: $p(\theta \vert x)$&lt;/li&gt;
   &lt;li&gt;MP inference: $\theta_{MP} = argmax_{\theta}p(\theta \vert X, Y)$&lt;/li&gt;
-  &lt;li&gt;Mean field variational inference:  $p(\theta \vert x) \approx q(\theta) = \prod_{j=1}^{j=m}q_{j}(\theta_{j})$&lt;/li&gt;
+  &lt;li&gt;Mean field variational inference:  $p(\theta \vert x) \approx q(\theta) = \prod_{j=1}^{m}q_{j}(\theta_{j})$&lt;/li&gt;
   &lt;li&gt;Parametric variational inference: $p(\theta \vert x) \approx q(\theta) = q(\theta \vert \lambda)$&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -250,6 +250,65 @@ $p(y \vert x, \theta)$와 $p)(\theta)$가 conjugate하지 않으면 대부분의
 &lt;p&gt;&lt;strong&gt;While using conditional image generator as a decoder, the method utilized in this paper forces encoder to grab meaningful pose information by exploiting dual representation and empirical prior&lt;/strong&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;unsupervised-learning-of-landmarks-by-descriptor-vector-exchangehttpsarxivorgpdf190806427pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/1908.06427.pdf&quot;&gt;5. Unsupervised Learning of Landmarks by Descriptor Vector Exchange&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h2 id=&quot;method-4&quot;&gt;Method&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;equivariance constraint: $\Phi_{u}(x) = \Phi_{gu}(x) \text{ where } \Phi \text{ correspondes to dense embedding}$&lt;/li&gt;
+  &lt;li&gt;probabilistic formulation: $p(v \vert u;\Phi, x, x’)= \frac{e^{&amp;lt;\Phi_{u}(x), \Phi_{v}(x)&amp;gt;}}{\int_{\Omega} e^{&amp;lt;\Phi_{u}(x), \Phi_{t}(x)&amp;gt;}dt}$&lt;/li&gt;
+  &lt;li&gt;$\mathcal {L}(\Phi;x, x’, g) = E_{u, v}[\vert\vert v - gu \vert\vert]$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;vector-exchangeability&quot;&gt;Vector exchangeability&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;$x_{\alpha}$: auxiliary image that belongs to same-category in $u, v$&lt;/li&gt;
+  &lt;li&gt;$\hat {\Phi_{u}(x\vert x_{\alpha})} = \int \Phi_{w}(x_{\alpha})p(w \vert u; \Phi, x, x_{\alpha})dw$&lt;/li&gt;
+  &lt;li&gt;new probabilistic formulation: $p(v \vert u;\Phi, x, x’)= \frac{e^{&amp;lt;\hat{\Phi_{u}}(x), \Phi_{v}(x)&amp;gt;}}{\int_{\Omega} e^{&amp;lt;\hat{\Phi_{u}}(x), \Phi_{t}(x)&amp;gt;}dt}$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;overall-architecture-4&quot;&gt;Overall Architecture&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../../../img/Unsupervised-Landmark/DVE.png&quot; alt=&quot;model architecture&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;summary-4&quot;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;DVE captures dense embedding of an image which acts as an invariant descriptor vector by enforcing it’s robustness via intra-class variants(auxiliary images), in which it learns equivariance and intra-class invariance simultaneously&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;unsupervised-learning-of-facial-landmarks-based-on-inter-intra-subject-consistencieshttpsarxivorgpdf200407936pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/2004.07936.pdf&quot;&gt;6. Unsupervised Learning of Facial Landmarks based on Inter-Intra Subject Consistencies&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h2 id=&quot;method-5&quot;&gt;Method&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;em&gt;Landmark Detector&lt;/em&gt;: using visual feature maps $S \in \mathbf{R}^{H \times W \times K}$,&lt;br /&gt;
+the predicted $k$-th landmark location $u_{k}$ is weighted average of the spatial locations $i$&lt;br /&gt;
+$\Phi_{H}(x;k) = \exp(-\frac{1}{2\sigma^{2}} \vert\vert u-u_{k} \vert\vert ^ {2})$: Gaussian-like probabilistic heatmap centered at $u_{k}$&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Inter-Intra Image Generator&lt;/em&gt;
+    &lt;ul&gt;
+      &lt;li&gt;$x’, x^{a}$: deformed image, auxiliary image&lt;/li&gt;
+      &lt;li&gt;$\mathcal {F_{s}} = \Phi_{E}(x) \in \mathbf {R^{H \times W \times D}}$: a visual feature map&lt;/li&gt;
+      &lt;li&gt;$\mathcal {I_{a}} = \Psi(\mathcal {F_{s}}, \Phi_{H}(x^{a})) = \Psi(\Phi_{E}(x), \Phi_{H}(x^{a}))$&lt;/li&gt;
+      &lt;li&gt;$\mathcal {I} = \Psi(\mathcal {F_{t}}, \Phi_{H}(x’)) = \Psi(\Phi_{E}(\mathcal {I_{a}}), \Phi_{H}(x’))$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Cycle Backward Path&lt;/em&gt;: both $X$ and $X’$ are reconstructed through it’s counterpart&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;training&quot;&gt;Training&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;reconstruction loss: $\mathcal {L_{R}}(\mathcal{I}, \mathcal{I_{gt}}) = \vert\vert \mathcal{I}-\mathcal{I_{gt}} \vert\vert ^{2}$&lt;/li&gt;
+  &lt;li&gt;perceptual loss: $\mathcal {L_{P}}(\mathcal{I}, \mathcal{I_{gt}}) = \sum_{l} \vert\vert VGG^{l}(\mathcal{I}) - VGG^{l}(\mathcal{I_{gt}})\vert\vert ^ {2}$&lt;/li&gt;
+  &lt;li&gt;total loss: $\mathcal{L} = \mathcal{L_{R}}(\mathcal{I_{x}}, x)+\mathcal{L_{R}}(\mathcal{I_{x’}}, x’)+\mathcal{L_{P}}(\mathcal{I_{x}}, x)+\mathcal{L_{P}}(\mathcal{I_{x’}}, x’)$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;overall-architecture-5&quot;&gt;Overall Architecture&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../../../img/Unsupervised-Landmark/inter-intra.png&quot; alt=&quot;model architecture&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;summary-5&quot;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;By inserting auxiliary image’s structure when reconstructing the target image, this method gives the model intra-subject consistency and reinforeces inter-subject consistency via cycle backward path&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;unsupervised-disentanglement-of-pose-appearance-and-background-from-images-and-videoshttpsarxivorgpdf200109518pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/2001.09518.pdf&quot;&gt;7. Unsupervised Disentanglement of Pose, Appearance and Background from Images and Videos&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h1 id=&quot;unsupervised-discovery-of-object-landmarks-via-contrastive-learninghttpsarxivorgpdf200614787pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/2006.14787.pdf&quot;&gt;8. Unsupervised Discovery of Object Landmarks via Contrastive Learning&lt;/a&gt;&lt;/h1&gt;
 </description>
         <pubDate>Sun, 20 Dec 2020 00:00:00 +0900</pubDate>
         <link>http://subong.github.io//review/2020/12/20/Unsupervised-Landmark-Learning.html</link>

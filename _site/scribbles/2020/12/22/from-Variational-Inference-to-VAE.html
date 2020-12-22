@@ -171,13 +171,13 @@
 
 <p>예를 들어, 우리나라 사람들의 키를 수집한 데이터가 있다고 가정하자. 아무래도 우리가 관심있어 하는 parameter는 우리나라 사람들의 평균 키일 것이다. 빈도론자들은 이 평균 키($\mu$라고 하자.)가 고정된 상수(ex: 168cm)라고 가정하고 ML 방식으로 모수를 추정한다. 그에 비해, 베이지안은 $\mu$에 대한 사전 분포를 먼저 정의한 후(이를 prior belief라고 한다.) 주어진 데이터로 부터 사후분포를 추정한다.</p>
 
-<p>우리나라 사람들의 평균 키가 매우 작다고 믿는 베이지안은 평균이 160cm인 정규분포를 사전분포로 가정할 것이다. 그런데 데이터에 180cm 이상인 사람들이 많다면 데이터를 본 이후 사후분포는 평균이 170cm 정도인 정규분포가 된다. 한편, 빈도론자는 평균 키는 185cm구나!라고 결론을 지을 것이다.</p>
+<p>우리나라 사람들의 평균 키가 매우 작다고 믿는 베이지안은 평균이 160cm인 정규분포를 사전분포로 가정할 것이다. 그런데 데이터에 180cm 이상인 사람들이 많다면 데이터를 본 이후 사후분포는 평균이 175cm 정도인 정규분포가 된다. 한편, 빈도론자는 평균 키는 185cm구나!라고 결론을 지을 것이다.</p>
 
 <p>글이 길어졌는데, 여튼 베이지안의 핵심은 <strong>데이터에 사전믿음을 결합한다는 것</strong>에 있다.</p>
 
 <p>우리가 추정하고자 하는 모수를 $\theta$, 데이터를 $x$라고 할 때 결국 <strong>베이지안의 목표는 사전분포 + 데이터로부터 사후분포를 추론하는 것이다.</strong> 즉, 다음과 같다.</p>
 
-<p>$p(\theta\vert X) = \frac{\prod_{i=1}^{n}{p(x_{i}\vert\theta)p(\theta)}}{\int {\prod_{i=1}^{n}{p(x_{i}\vert\theta)p(\theta)}}} \text{ where } x_{i}’s \text{ are i.i.d samples}$</p>
+<p>$p(\theta\vert X) = \frac{\prod_{i=1}^{n}{p(x_{i}\vert\theta)p(\theta)}}{\int {\prod_{i=1}^{n}{p(x_{i}\vert\theta)p(\theta)d\theta}}} \text{ where } x_{i}’s \text{ are i.i.d samples}$</p>
 
 <p>그럼 이제 본격적으로 베이지안 입장에서 본 머신러닝 모델에 대해서 이야기해보도록 하자. $x$를 features, $y$를 class label/latent vector, $\theta$를 추정할 parameter로 정의하겠다. 그렇다면 우리가 관심있는 분포는 $x$가 given일 때 $y, \theta$의 결합 분포에 해당한다.</p>
 
@@ -188,7 +188,7 @@
 </ul>
 
 <p>그러나 바로 여기에서 문제가 생긴다.  $p(\theta \vert X, Y)$를 구하기 위해서는 분모에 있는 적분이 가능해야 하는데, 
-$p(y \vert x, \theta)$와 $p)(\theta)$가 conjugate하지 않으면 대부분의 경우에서 적분이 어렵다는 것. test시에도 마찬가지.</p>
+$p(y \vert x, \theta)$와 $p(\theta)$가 conjugate하지 않으면 대부분의 경우에서 적분이 어렵다는 것. test시에도 마찬가지.</p>
 
 <p>(<strong><a href="https://en.wikipedia.org/wiki/Conjugate_prior">conjugate prior</a></strong>: conjugacy에 대해서는 자세히 언급하지 않겠지만, 궁금하신 분들은 이 링크를 참조하길 바란다. 대표적인 conjugate distributions은 beta-binom, poission-gamma 등이 있다.)</p>
 
@@ -244,7 +244,7 @@ $p(y \vert x, \theta)$와 $p)(\theta)$가 conjugate하지 않으면 대부분의
 <ul>
   <li>Full Bayesian inference: $p(\theta \vert x)$</li>
   <li>MP inference: $\theta_{MP} = argmax_{\theta}p(\theta \vert X, Y)$</li>
-  <li>Mean field variational inference:  $p(\theta \vert x) \approx q(\theta) = \prod_{j=1}^{j=m}q_{j}(\theta_{j})$</li>
+  <li>Mean field variational inference:  $p(\theta \vert x) \approx q(\theta) = \prod_{j=1}^{m}q_{j}(\theta_{j})$</li>
   <li>Parametric variational inference: $p(\theta \vert x) \approx q(\theta) = q(\theta \vert \lambda)$</li>
 </ul>
 
