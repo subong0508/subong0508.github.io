@@ -3,7 +3,7 @@ layout: post
 title:  from Variational Inference to VAE
 date:   2020-12-22
 author: Jung Jaeeun
-categories: Scribbles
+categories: Machine-learning
 tags: bayesian deep-learning variational-inference
 use_math: true
 ---
@@ -63,7 +63,7 @@ $logp(x) = E_{q(\theta)}[logp(x)] = \int q(\theta)logp(x)d\theta = \int q(\theta
 
  $= \int q(\theta) log\frac{p(x, \theta)}{q(\theta)}d\theta + \int q(\theta) log\frac{q(\theta)}{p(\theta \vert x)}d\theta = \mathcal{L}(q(\theta)) + D_{KL}(q(\theta) \vert\vert p(\theta \vert x))$
 
- 따라서, $D_{KL}(q(\theta) \vert\vert p(\theta \vert x))$를 maximize하는 문제는 $\mathcal{L}(q(\theta))$를 minimize하는 문제와 동등해진다.
+ 따라서, $D_{KL}(q(\theta) \vert\vert p(\theta \vert x))$를 minimize하는 문제는 $\mathcal{L}(q(\theta))$를 maximize하는 문제와 동등해진다.
 
  $\mathcal{L}(q(\theta)) = \int q(\theta) log\frac{p(x, \theta)}{q(\theta)}d\theta = \int q(\theta) log\frac{p(x \vert \theta)p(\theta)}{q(\theta)}d\theta$
 
@@ -83,4 +83,47 @@ $logp(x) = E_{q(\theta)}[logp(x)] = \int q(\theta)logp(x)d\theta = \int q(\theta
 
 # Latent Variable Models
 
+그럼 VAE를 배우기 전에 먼저 latent variable models에 대해서 짚고 넘어가자. variational inference에 대해서 신나게 공부하다가 갑자기 잠재변수모델이라니 조금 뜬금없어보이지만 VAE는 잠재변수 모델의 일종이기 때문에 반드시 짚고 넘어가야 한다.
+
+왜 **잠재변수**를 학습해야하는가? 이미지 데이터를 예로 들어보자. RGB 채널을 갖는 32x32 짜리 이미지 데이터는 32x32x3 = 3072 차원을 갖는다. 그러나 통상적으로 생각해보았을때, 3072 차원을 통째로 다 feature로 쓰기 보다는 이미지를 결정하는 잠재변수가 있다고 보고 이를 바탕으로 추론을 하는 것이 타당하다.
+
+예를 들어 MNIST 데이터에서 28x28=784개의 픽셀이 모두 의미있는 값이라고 보기보다는 숫자의 모양을 결정하는 변수(가장자리의 빈 정도, 선의 굽은 모양 등)가 있다고 보는 것이 맞다.
+
+![MNIST](https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/MnistExamples.png/440px-MnistExamples.png)
+
+잠재변수 모델을 설명하는데 가장 흔하게 쓰이는 분포가정이 **Mixture of Gaussians**이다. 즉, 여러개의 가우시안 분포가 혼합되어 있는 분포로 아래 그림과 같다.앞서 말한 대한민국 평균 키로 설명해보자면, 우리나라 사람들의 키의 분포는 남성/여성/성인/아동 등 여러 분포로 나뉠 수 있다.  ([이미지 출처](https://towardsdatascience.com/gaussian-mixture-models-explained-6986aaf5a95))
+
+![Mixture of Gaussians](https://miro.medium.com/max/1200/1*lTv7e4Cdlp738X_WFZyZHA.png)
+
+그럼 $i$번째 표본을 $x_{i}$라고 하고 그 표본이 속한 집단을 $z_{i}$(잠재변수)라고 해보자. 그러면 우리가 가진 데이터의 likelihood는 다음과 같이 나타낼 수 있다.
+
+$p(X, Z \vert \theta)=\prod_{i=1}^{n}p(x_{i}, z_{i} \vert \theta) = \prod_{i=1}^{n}p(x_{i} \vert z_{i},\theta)p(z_{i} \vert \theta) = \prod_{i=1}^{n}\pi_{z_{i}} \mathcal{N}(x_{i} \vert \mu_{z_{i}}, \sigma_{z_{i}}^{2})$
+
+여기서 $\pi_{j}=p(z_{i}=j)$로 $j$번째 그룹에 속할 확률을 의미하고 추정해야 할 파라미터는 $\theta = ( \mu_{j}, \sigma_{j}, \pi_{j} )_{j=1}^{K}$를 뜻한다.
+
+만약 $X, Z$를 모두 안다면 $\hat{\theta} = argmax_{\theta}logP(X, Z \vert \theta)$로 쉽게 추정할 수 있겠지만 **문제는 우리는 Z를 모른다는 것이다. 따라서 우리는 $X$의 log likelihood를 최대화**하게 되고 목표식은 아래와 같다.
+
+$logP(X \vert \theta)=\int q(Z)logP(X \vert \theta)dZ=\int q(Z) log \frac{P(X, Z \vert \theta)}{P(Z \vert \theta)} \frac{q(Z)}{q(Z)}dZ = \mathcal{L(q(Z))}+D_{KL}(q(Z) \vert\vert p(Z \vert \theta))$
+
+항상 KL-divergence는 0 이상이므로 $logP(X \vert \theta)$의 lower-bound는 $\mathcal{L}(q(Z))$가 된다. **이를 Variational lower bound 또는 ELBO라고 칭한다.** 결국, 우리는 이 하한값을 maximize하는 $q, \theta$를 찾는 것으로 목표를 바꾸게 된다. <font color='red'>결국, 잠재변수만 추가되었을 뿐 위에서 배운 variational inference와 완전히 똑같은 문제다!</font>
+
+이를 푸는 방법으로 **EM 알고리즘**이 존재한다. EM은 Expectation-Maximization의 약자로, 이름 그대로 Expectation step과 Maximization step이 있다.
+
+1. E-step: $q(Z)$를 추론하는 과정으로, 이때 $\theta=\theta_{0}$으로 고정된다.  
+$q(Z) = argmax_{q}\mathcal{L}(q, \theta_{0}) = argmin_{q}D_{KL}(q(z) \vert\vert p(z \vert \theta))=p(Z \vert X, \theta_{0})$  
+자세히 풀어서 설명하자면 다음과 같다. $q(Z)$는 Multinomial 분포임을 기억하자.  
+$q(z_{i}=k)=p(z_{i}=k \vert x, \theta) = \frac{p(x_{i} \vert k, \theta)p(z_{i}=k \vert \theta)}{\sum_{l=1}^{K}p(x_{i} \vert l, \theta)p(z_{i}=l \vert \theta)}$
+2. M-step: $q(Z)$를 고정시켜놓고 $\theta$를 추론하는 과정이다.  
+$\hat{\theta} = argmax_{\theta} \mathcal{L}(q, \theta) = argmax_{\theta} \mathbf{E_{Z}}[logp(X, Z \vert \theta)]=\sum_{i=1}^{n}\sum_{k=1}^{K}q(z_{i}=k)logp(x_{i}, k \vert \theta)$
+3. repeat 1, 2 until convergence.
+
+자, 여기서 드는 의문점이 있다. 위의 상황에서는 $Z$가 categorical variable이니까 단순합으로 E-step에서 $P(Z \vert X, \theta)$를 계산할 수 있다. **하지만 $Z$가 만약 continuous variable이라면? $p(x \vert z, \theta), p(z \vert \theta)$가 conjugate 하지 않다면 intractable 하게 된다!**
+
+continuous latent variable을 학습하는 것은 dimension reduction(차원축소) 또는 **representation learning**에 해당하고 사실 머신러닝에서 매우매우 중요하면서도 어려운 부분이다. 적분으로 인한 intractable 문제를 VAE에서는 어떻게 해결하는지 다음 섹션에서 알아보겠다.
+
 # Stochastic Variational Inference and VAE
+
+우리는 지금까지 Bayesian framework를 이용한 variational inference와 latent variable model에 대해서 배웠다. 실제로 관측되지 않는 잠재변수를 모델링하기 위해 variational inference를 사용($q(Z)$를 추론)해 학습을 진행하는 방법이었다. 하지만 사후분포를 추론할 때 처럼 잠재변수 $Z$가 continuous 하다면 intractability 문제에 직면하게 된다. 앞서 잠깐 언급한 바와 같이 이 문제를 해결하기 위해 여러 sampling 방법들이 고안되었다. 하지만 역시 시간이 많이 걸리고.. neural network처럼 복잡하고 거의 무한대 차원을 가지고 있는 모델에서는 variance가 너무 커진다.
+
+
+
