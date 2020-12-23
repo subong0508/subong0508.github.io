@@ -6,8 +6,8 @@
 </description>
     <link>http://subong.github.io//</link>
     <atom:link href="http://subong.github.io//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 23 Dec 2020 18:42:49 +0900</pubDate>
-    <lastBuildDate>Wed, 23 Dec 2020 18:42:49 +0900</lastBuildDate>
+    <pubDate>Thu, 24 Dec 2020 00:29:13 +0900</pubDate>
+    <lastBuildDate>Thu, 24 Dec 2020 00:29:13 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -141,7 +141,7 @@ $\hat{\theta} = argmax_{\theta} \mathcal{L}(q, \theta) = argmax_{\theta} \mathbf
 
 &lt;h1 id=&quot;stochastic-variational-inference-and-vae&quot;&gt;Stochastic Variational Inference and VAE&lt;/h1&gt;
 
-&lt;p&gt;우리는 지금까지 Bayesian framework를 이용한 variational inference와 latent variable model에 대해서 배웠다. 실제로 관측되지 않는 잠재변수를 모델링하기 위해 variational inference를 사용($q(Z)$를 추론)해 학습을 진행하는 방법이었다. 하지만 사후분포를 추론할 때 처럼 잠재변수 $Z$가 continuous 하다면 intractability 문제에 직면하게 된다.&lt;/p&gt;
+&lt;p&gt;우리는 지금까지 Bayesian framework를 이용한 variational inference와 latent variable model에 대해서 배웠다. 실제로 관측되지 않는 잠재변수를 모델링하기 위해 variational inference를 사용($q(Z)$를 추론)해 학습을 진행하는 방법이었다. 하지만 사후분포를 추론할 때 처럼 잠재변수 $Z$가 continuous 하다면 intractability 문제에 직면하게 된다. 앞서 잠깐 언급한 바와 같이 이 문제를 해결하기 위해 여러 sampling 방법들이 고안되었다. 하지만 역시 시간이 많이 걸리고.. neural network처럼 복잡하고 거의 무한대 차원을 가지고 있는 모델에서는 variance가 너무 커진다.&lt;/p&gt;
 
 </description>
         <pubDate>Tue, 22 Dec 2020 00:00:00 +0900</pubDate>
@@ -352,6 +352,36 @@ $\Phi_{H}(x;k) = \exp(-\frac{1}{2\sigma^{2}} \vert\vert u-u_{k} \vert\vert ^ {2}
 &lt;h1 id=&quot;unsupervised-disentanglement-of-pose-appearance-and-background-from-images-and-videoshttpsarxivorgpdf200109518pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/2001.09518.pdf&quot;&gt;7. Unsupervised Disentanglement of Pose, Appearance and Background from Images and Videos&lt;/a&gt;&lt;/h1&gt;
 
 &lt;h1 id=&quot;unsupervised-discovery-of-object-landmarks-via-contrastive-learninghttpsarxivorgpdf200614787pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/2006.14787.pdf&quot;&gt;8. Unsupervised Discovery of Object Landmarks via Contrastive Learning&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h2 id=&quot;method-6&quot;&gt;Method&lt;/h2&gt;
+
+&lt;h3 id=&quot;contrastive-learning&quot;&gt;Contrastive learning&lt;/h3&gt;
+&lt;p&gt;The goal is to learn: $\langle\Phi(x), \Phi(x’)\rangle \gg \langle\Phi(x), \Phi(z)\rangle$&lt;/p&gt;
+
+&lt;h3 id=&quot;traditional-methods&quot;&gt;Traditional methods&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Equivariant learning: enforces model to be robust to geometric/photometric transformations&lt;/li&gt;
+  &lt;li&gt;Invariant learning: encourages the representations to be invariant to transformations while being distinctive across images&lt;/li&gt;
+  &lt;li&gt;Trade off: Equivariant learning makes model to be less deeper(due to pooling operation), while invariant learning makes model to be more deeper(to capture more sophisticated features).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;novel-approach-incorporating-1-2&quot;&gt;Novel approach: incorporating 1, 2&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;$\mathcal{L_{NCE}} = -log\frac{\exp{(\langle \Phi(x), \Phi(x’) \rangle)}}{\sum_{i=1}^{N}\exp{(\langle \Phi(x), \Phi(x_{i}) \rangle)}}$&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Hypercolumns&lt;/strong&gt;: $\Phi_{u}(x) = \Phi_{u}^{k_{1}}(x) \bigoplus \Phi_{u}^{k_{2}}(x) … \bigoplus \Phi_{u}^{k_{n}}(x)$&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;overall-architecture-6&quot;&gt;Overall Architecture&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../../../img/Unsupervised-Landmark/contrastive.png&quot; alt=&quot;model architecture&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;summary-6&quot;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;In contrast to traditional approach that can be categorized into equivariant/invariant learning, the method used in this paper incorporates both approachs by using contrastive learning technique. To be specific, it trains invariant representations using constrastive learning and then extracts hypercolumn representation to detect landmarks.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;brul-barycenter-regularized-unsupervised-landmark-extractionhttpsarxivorgpdf200611643pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/2006.11643.pdf&quot;&gt;9. BRULÉ: Barycenter-Regularized Unsupervised Landmark Extraction&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h1 id=&quot;unsupervised-learning-of-object-frames-by-dense-equivariant-image-labellinghttpsarxivorgpdf170602932pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/1706.02932.pdf&quot;&gt;10. Unsupervised learning of object frames by dense equivariant image labelling&lt;/a&gt;&lt;/h1&gt;
+
 </description>
         <pubDate>Sun, 20 Dec 2020 00:00:00 +0900</pubDate>
         <link>http://subong.github.io//review/2020/12/20/Unsupervised-Landmark-Learning.html</link>

@@ -355,6 +355,36 @@ $\Phi_{H}(x;k) = \exp(-\frac{1}{2\sigma^{2}} \vert\vert u-u_{k} \vert\vert ^ {2}
 
 <h1 id="unsupervised-discovery-of-object-landmarks-via-contrastive-learninghttpsarxivorgpdf200614787pdf"><a href="https://arxiv.org/pdf/2006.14787.pdf">8. Unsupervised Discovery of Object Landmarks via Contrastive Learning</a></h1>
 
+<h2 id="method-6">Method</h2>
+
+<h3 id="contrastive-learning">Contrastive learning</h3>
+<p>The goal is to learn: $\langle\Phi(x), \Phi(x’)\rangle \gg \langle\Phi(x), \Phi(z)\rangle$</p>
+
+<h3 id="traditional-methods">Traditional methods</h3>
+<ul>
+  <li>Equivariant learning: enforces model to be robust to geometric/photometric transformations</li>
+  <li>Invariant learning: encourages the representations to be invariant to transformations while being distinctive across images</li>
+  <li>Trade off: Equivariant learning makes model to be less deeper(due to pooling operation), while invariant learning makes model to be more deeper(to capture more sophisticated features).</li>
+</ul>
+
+<h3 id="novel-approach-incorporating-1-2">Novel approach: incorporating 1, 2</h3>
+<ol>
+  <li>$\mathcal{L_{NCE}} = -log\frac{\exp{(\langle \Phi(x), \Phi(x’) \rangle)}}{\sum_{i=1}^{N}\exp{(\langle \Phi(x), \Phi(x_{i}) \rangle)}}$</li>
+  <li><strong>Hypercolumns</strong>: $\Phi_{u}(x) = \Phi_{u}^{k_{1}}(x) \bigoplus \Phi_{u}^{k_{2}}(x) … \bigoplus \Phi_{u}^{k_{n}}(x)$</li>
+</ol>
+
+<h2 id="overall-architecture-6">Overall Architecture</h2>
+
+<p><img src="../../../../img/Unsupervised-Landmark/contrastive.png" alt="model architecture" /></p>
+
+<h2 id="summary-6">Summary</h2>
+<p><strong>In contrast to traditional approach that can be categorized into equivariant/invariant learning, the method used in this paper incorporates both approachs by using contrastive learning technique. To be specific, it trains invariant representations using constrastive learning and then extracts hypercolumn representation to detect landmarks.</strong></p>
+
+<h1 id="brul-barycenter-regularized-unsupervised-landmark-extractionhttpsarxivorgpdf200611643pdf"><a href="https://arxiv.org/pdf/2006.11643.pdf">9. BRULÉ: Barycenter-Regularized Unsupervised Landmark Extraction</a></h1>
+
+<h1 id="unsupervised-learning-of-object-frames-by-dense-equivariant-image-labellinghttpsarxivorgpdf170602932pdf"><a href="https://arxiv.org/pdf/1706.02932.pdf">10. Unsupervised learning of object frames by dense equivariant image labelling</a></h1>
+
+
 </article>
 
 

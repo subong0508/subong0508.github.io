@@ -181,5 +181,37 @@ $\Phi_{H}(x;k) = \exp(-\frac{1}{2\sigma^{2}} \vert\vert u-u_{k} \vert\vert ^ {2}
 
 # [7. Unsupervised Disentanglement of Pose, Appearance and Background from Images and Videos](https://arxiv.org/pdf/2001.09518.pdf)
 
-
 # [8. Unsupervised Discovery of Object Landmarks via Contrastive Learning](https://arxiv.org/pdf/2006.14787.pdf)
+
+## Method
+
+### Contrastive learning
+The goal is to learn: $\langle\Phi(x), \Phi(x')\rangle \gg \langle\Phi(x), \Phi(z)\rangle$
+
+### Traditional methods
+- Equivariant learning: enforces model to be robust to geometric/photometric transformations
+- Invariant learning: encourages the representations to be invariant to transformations while being distinctive across images
+- Trade off: Equivariant learning makes model to be less deeper(due to pooling operation), while invariant learning makes model to be more deeper(to capture more sophisticated features).
+
+
+### Novel approach: incorporating 1, 2
+1. $\mathcal{L_{NCE}} = -log\frac{\exp{(\langle \Phi(x), \Phi(x') \rangle)}}{\sum_{i=1}^{N}\exp{(\langle \Phi(x), \Phi(x_{i}) \rangle)}}$
+2. **Hypercolumns**: $\Phi_{u}(x) = \Phi_{u}^{k_{1}}(x) \bigoplus \Phi_{u}^{k_{2}}(x) ... \bigoplus \Phi_{u}^{k_{n}}(x)$
+
+## Overall Architecture
+
+![model architecture](../../../../img/Unsupervised-Landmark/contrastive.png)
+
+## Summary
+**In contrast to traditional approach that can be categorized into equivariant/invariant learning, the method used in this paper incorporates both approachs by using contrastive learning technique. To be specific, it trains invariant representations using constrastive learning and then extracts hypercolumn representation to detect landmarks.**
+
+# [9. BRULÉ: Barycenter-Regularized Unsupervised Landmark Extraction](https://arxiv.org/pdf/2006.11643.pdf)
+
+# [10. Unsupervised learning of object frames by dense equivariant image labelling](https://arxiv.org/pdf/1706.02932.pdf)
+
+
+
+
+
+
+
