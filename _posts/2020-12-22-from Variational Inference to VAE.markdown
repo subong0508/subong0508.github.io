@@ -138,7 +138,7 @@ continuous latent variable을 학습하는 것은 dimension reduction(차원축�
 
 지금까지와 같이, 맨 마지막 KL-term을 제외한 나머지 것들이 lower bound가 된다. **결국, $logP(X)$를 최대화하는 목표는 lower bound를 최대화하는 목표로 바뀌고 이는 동시에 두 번째 목표까지 이루게 된다!** lower bound 식은 아래와 같다.
 
-**$\mathcal{L}(\theta, \phi; x^{(i)} = D_{KL}(q(z \vert x^{(i)}) \vert\vert p(z))+\mathbb{E_{q(z \vert x^{(i)})}}[logp(x^{(i)} \vert z)]$**
+**$\mathcal{L}(\theta, \phi; x^{(i)}) = D_{KL}(q(z \vert x^{(i)}) \vert\vert p(z))+\mathbb{E_{q(z \vert x^{(i)})}}[logp(x^{(i)} \vert z)]$**
 
 **앞부분은 prior과 approximate posterior와의 KL term이고, 뒷부분은 decoder probability에 해당한다.** 대부분 잠재변수 Z의 prior 분포를 $\mathcal{N}[0, 1]$와 같은 다루기 쉬운 분포로 정한다. 그러면 $q(z \vert x)$는 어떻게 정의했을까? VAE original paper에서는 다변량 정규분포로 정의하는데, 다음과 같다.
 
