@@ -6,9 +6,32 @@
 </description>
     <link>http://subong.github.io//</link>
     <atom:link href="http://subong.github.io//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 24 Dec 2020 17:56:55 +0900</pubDate>
-    <lastBuildDate>Thu, 24 Dec 2020 17:56:55 +0900</lastBuildDate>
+    <pubDate>Thu, 24 Dec 2020 23:33:17 +0900</pubDate>
+    <lastBuildDate>Thu, 24 Dec 2020 23:33:17 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>Normalizing Flow</title>
+        <description>
+</description>
+        <pubDate>Tue, 22 Dec 2020 00:00:00 +0900</pubDate>
+        <link>http://subong.github.io//review/2020/12/22/Normalizing-Flows.html</link>
+        <guid isPermaLink="true">http://subong.github.io//review/2020/12/22/Normalizing-Flows.html</guid>
+        
+        <category>normalizing-flow</category>
+        
+        <category>deep-learning</category>
+        
+        <category>NICE</category>
+        
+        <category>RealNVP</category>
+        
+        <category>Glow</category>
+        
+        
+        <category>Review</category>
+        
+      </item>
     
       <item>
         <title>from Variational Inference to VAE</title>
@@ -157,7 +180,7 @@ $\hat{\theta} = argmax_{\theta} \mathcal{L}(q, \theta) = argmax_{\theta} \mathbb
 
 &lt;p&gt;지금까지와 같이, 맨 마지막 KL-term을 제외한 나머지 것들이 lower bound가 된다. &lt;strong&gt;결국, $logP(X)$를 최대화하는 목표는 lower bound를 최대화하는 목표로 바뀌고 이는 동시에 두 번째 목표까지 이루게 된다!&lt;/strong&gt; lower bound 식은 아래와 같다.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;$\mathcal{L}(\theta, \phi; x^{(i)} = D_{KL}(q(z \vert x^{(i)}) \vert\vert p(z))+\mathbb{E_{q(z \vert x^{(i)})}}[logp(x^{(i)} \vert z)]$&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;$\mathcal{L}(\theta, \phi; x^{(i)}) = D_{KL}(q(z \vert x^{(i)}) \vert\vert p(z))+\mathbb{E_{q(z \vert x^{(i)})}}[logp(x^{(i)} \vert z)]$&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;앞부분은 prior과 approximate posterior와의 KL term이고, 뒷부분은 decoder probability에 해당한다.&lt;/strong&gt; 대부분 잠재변수 Z의 prior 분포를 $\mathcal{N}[0, 1]$와 같은 다루기 쉬운 분포로 정한다. 그러면 $q(z \vert x)$는 어떻게 정의했을까? VAE original paper에서는 다변량 정규분포로 정의하는데, 다음과 같다.&lt;/p&gt;
 
@@ -426,6 +449,33 @@ $\Phi_{H}(x;k) = \exp(-\frac{1}{2\sigma^{2}} \vert\vert u-u_{k} \vert\vert ^ {2}
 
 &lt;h1 id=&quot;unsupervised-learning-of-object-frames-by-dense-equivariant-image-labellinghttpsarxivorgpdf170602932pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/1706.02932.pdf&quot;&gt;10. Unsupervised learning of object frames by dense equivariant image labelling&lt;/a&gt;&lt;/h1&gt;
 
+&lt;h2 id=&quot;method-7&quot;&gt;Method&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;invariant constraint: $\Phi(\mathbb{x}, u) = \Phi(g\mathbb{x}, gu)$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Motivated by invariant constraints, the similarity $\langle \Phi(\mathbb{x}, u), \Phi(\mathbb{x’}, gu)\rangle$ should be larger than the similarity $\langle \Phi(\mathbb{x}, u), \Phi(\mathbb{x’}, v)\rangle$ where $g$ is an arbitrary optical flow module.&lt;/p&gt;
+
+&lt;h3 id=&quot;loss-1&quot;&gt;Loss&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;$\mathcal{L_{\log}}(\Phi \vert \mathbb{x}, \mathbb{x’}, g) = -\frac{1}{HW}\sum_{u}\log p(gu \vert u; \mathbb{x}, \mathbb{x’}, \Phi)$&lt;/li&gt;
+  &lt;li&gt;$\mathcal{L_{\text{dist}}}(\Phi \vert \mathbb{x}, \mathbb{x’}, g) = \frac{1}{HW}\sum_{u}\sum_{v} \vert\vert v-gu \vert\vert_{2}^{\gamma} p(v \vert u; \mathbb{x}, \mathbb{x’}, \Phi)$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;overall-architecture-7&quot;&gt;Overall Architecture&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../../../img/Unsupervised-Landmark/dense-labelling.png&quot; alt=&quot;model architecture&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;unsupervised-learning-of-object-landmarks-by-factorized-spatial-embeddingshttpsarxivorgpdf170502193pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/1705.02193.pdf&quot;&gt;11. Unsupervised learning of object landmarks by factorized spatial embeddings&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h1 id=&quot;deforming-autoencoders-unsupervised-disentangling-of-shape-and-appearancehttpsarxivorgpdf180606503pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/1806.06503.pdf&quot;&gt;12. Deforming Autoencoders: Unsupervised Disentangling of Shape and Appearance&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h1 id=&quot;self-supervised-learning-of-a-facial-attribute-embedding-from-videohttpsarxivorgpdf180806882pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/1808.06882.pdf&quot;&gt;13. Self-supervised learning of a facial attribute embedding from video&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h1 id=&quot;unsupervised-discovery-of-object-landmarks-as-structural-representationshttpsarxivorgpdf180404412pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/1804.04412.pdf&quot;&gt;14. Unsupervised Discovery of Object Landmarks as Structural Representations&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h1 id=&quot;cross-domain-correspondence-learning-for-exemplar-based-image-translationhttpsarxivorgpdf200405571pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/2004.05571.pdf&quot;&gt;15. Cross-domain Correspondence Learning for Exemplar-based Image Translation&lt;/a&gt;&lt;/h1&gt;
 </description>
         <pubDate>Sun, 20 Dec 2020 00:00:00 +0900</pubDate>
         <link>http://subong.github.io//review/2020/12/20/Unsupervised-Landmark-Learning.html</link>

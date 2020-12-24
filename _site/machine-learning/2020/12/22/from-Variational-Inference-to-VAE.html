@@ -125,6 +125,8 @@
           <li class="nav-link"><a href="/posts/">Posts</a>
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -308,7 +310,7 @@ $\hat{\theta} = argmax_{\theta} \mathcal{L}(q, \theta) = argmax_{\theta} \mathbb
 
 <p>지금까지와 같이, 맨 마지막 KL-term을 제외한 나머지 것들이 lower bound가 된다. <strong>결국, $logP(X)$를 최대화하는 목표는 lower bound를 최대화하는 목표로 바뀌고 이는 동시에 두 번째 목표까지 이루게 된다!</strong> lower bound 식은 아래와 같다.</p>
 
-<p><strong>$\mathcal{L}(\theta, \phi; x^{(i)} = D_{KL}(q(z \vert x^{(i)}) \vert\vert p(z))+\mathbb{E_{q(z \vert x^{(i)})}}[logp(x^{(i)} \vert z)]$</strong></p>
+<p><strong>$\mathcal{L}(\theta, \phi; x^{(i)}) = D_{KL}(q(z \vert x^{(i)}) \vert\vert p(z))+\mathbb{E_{q(z \vert x^{(i)})}}[logp(x^{(i)} \vert z)]$</strong></p>
 
 <p><strong>앞부분은 prior과 approximate posterior와의 KL term이고, 뒷부분은 decoder probability에 해당한다.</strong> 대부분 잠재변수 Z의 prior 분포를 $\mathcal{N}[0, 1]$와 같은 다루기 쉬운 분포로 정한다. 그러면 $q(z \vert x)$는 어떻게 정의했을까? VAE original paper에서는 다변량 정규분포로 정의하는데, 다음과 같다.</p>
 
@@ -380,6 +382,14 @@ $\hat{\theta} = argmax_{\theta} \mathcal{L}(q, \theta) = argmax_{\theta} \mathbb
 		</span>
 		<span class="next-post">
 			
+				<a href="/review/2020/12/22/Normalizing-Flows.html">
+					<span class="page-number">Normalizing Flow</span>
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-square fa-stack-2x"></i>
+						<i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
+					</span>
+				</a>
+			
 		</span>
 	</section>
 
@@ -414,6 +424,8 @@ $\hat{\theta} = argmax_{\theta} \mathcal{L}(q, \theta) = argmax_{\theta} \mathbb
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
       </ul>

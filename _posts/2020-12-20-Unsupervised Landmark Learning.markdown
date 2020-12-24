@@ -209,9 +209,27 @@ The goal is to learn: $\langle\Phi(x), \Phi(x')\rangle \gg \langle\Phi(x), \Phi(
 
 # [10. Unsupervised learning of object frames by dense equivariant image labelling](https://arxiv.org/pdf/1706.02932.pdf)
 
+## Method
+
+- invariant constraint: $\Phi(\mathbb{x}, u) = \Phi(g\mathbb{x}, gu)$
+
+Motivated by invariant constraints, the similarity $\langle \Phi(\mathbb{x}, u), \Phi(\mathbb{x'}, gu)\rangle$ should be larger than the similarity $\langle \Phi(\mathbb{x}, u), \Phi(\mathbb{x'}, v)\rangle$ where $g$ is an arbitrary optical flow module.
+
+### Loss
+- $\mathcal{L_{\log}}(\Phi \vert \mathbb{x}, \mathbb{x'}, g) = -\frac{1}{HW}\sum_{u}\log p(gu \vert u; \mathbb{x}, \mathbb{x'}, \Phi)$
+- $\mathcal{L_{\text{dist}}}(\Phi \vert \mathbb{x}, \mathbb{x'}, g) = \frac{1}{HW}\sum_{u}\sum_{v} \vert\vert v-gu \vert\vert_{2}^{\gamma} p(v \vert u; \mathbb{x}, \mathbb{x'}, \Phi)$
+
+## Overall Architecture
+
+![model architecture](../../../../img/Unsupervised-Landmark/dense-labelling.png)
+
+# [11. Unsupervised learning of object landmarks by factorized spatial embeddings](https://arxiv.org/pdf/1705.02193.pdf)
 
 
+# [12. Deforming Autoencoders: Unsupervised Disentangling of Shape and Appearance](https://arxiv.org/pdf/1806.06503.pdf)
 
+# [13. Self-supervised learning of a facial attribute embedding from video](https://arxiv.org/pdf/1808.06882.pdf)
 
+# [14. Unsupervised Discovery of Object Landmarks as Structural Representations](https://arxiv.org/pdf/1804.04412.pdf)
 
-
+# [15. Cross-domain Correspondence Learning for Exemplar-based Image Translation](https://arxiv.org/pdf/2004.05571.pdf)

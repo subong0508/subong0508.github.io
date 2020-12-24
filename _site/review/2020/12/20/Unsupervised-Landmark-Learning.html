@@ -125,6 +125,8 @@
           <li class="nav-link"><a href="/posts/">Posts</a>
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -384,6 +386,33 @@ $\Phi_{H}(x;k) = \exp(-\frac{1}{2\sigma^{2}} \vert\vert u-u_{k} \vert\vert ^ {2}
 
 <h1 id="unsupervised-learning-of-object-frames-by-dense-equivariant-image-labellinghttpsarxivorgpdf170602932pdf"><a href="https://arxiv.org/pdf/1706.02932.pdf">10. Unsupervised learning of object frames by dense equivariant image labelling</a></h1>
 
+<h2 id="method-7">Method</h2>
+
+<ul>
+  <li>invariant constraint: $\Phi(\mathbb{x}, u) = \Phi(g\mathbb{x}, gu)$</li>
+</ul>
+
+<p>Motivated by invariant constraints, the similarity $\langle \Phi(\mathbb{x}, u), \Phi(\mathbb{x’}, gu)\rangle$ should be larger than the similarity $\langle \Phi(\mathbb{x}, u), \Phi(\mathbb{x’}, v)\rangle$ where $g$ is an arbitrary optical flow module.</p>
+
+<h3 id="loss-1">Loss</h3>
+<ul>
+  <li>$\mathcal{L_{\log}}(\Phi \vert \mathbb{x}, \mathbb{x’}, g) = -\frac{1}{HW}\sum_{u}\log p(gu \vert u; \mathbb{x}, \mathbb{x’}, \Phi)$</li>
+  <li>$\mathcal{L_{\text{dist}}}(\Phi \vert \mathbb{x}, \mathbb{x’}, g) = \frac{1}{HW}\sum_{u}\sum_{v} \vert\vert v-gu \vert\vert_{2}^{\gamma} p(v \vert u; \mathbb{x}, \mathbb{x’}, \Phi)$</li>
+</ul>
+
+<h2 id="overall-architecture-7">Overall Architecture</h2>
+
+<p><img src="../../../../img/Unsupervised-Landmark/dense-labelling.png" alt="model architecture" /></p>
+
+<h1 id="unsupervised-learning-of-object-landmarks-by-factorized-spatial-embeddingshttpsarxivorgpdf170502193pdf"><a href="https://arxiv.org/pdf/1705.02193.pdf">11. Unsupervised learning of object landmarks by factorized spatial embeddings</a></h1>
+
+<h1 id="deforming-autoencoders-unsupervised-disentangling-of-shape-and-appearancehttpsarxivorgpdf180606503pdf"><a href="https://arxiv.org/pdf/1806.06503.pdf">12. Deforming Autoencoders: Unsupervised Disentangling of Shape and Appearance</a></h1>
+
+<h1 id="self-supervised-learning-of-a-facial-attribute-embedding-from-videohttpsarxivorgpdf180806882pdf"><a href="https://arxiv.org/pdf/1808.06882.pdf">13. Self-supervised learning of a facial attribute embedding from video</a></h1>
+
+<h1 id="unsupervised-discovery-of-object-landmarks-as-structural-representationshttpsarxivorgpdf180404412pdf"><a href="https://arxiv.org/pdf/1804.04412.pdf">14. Unsupervised Discovery of Object Landmarks as Structural Representations</a></h1>
+
+<h1 id="cross-domain-correspondence-learning-for-exemplar-based-image-translationhttpsarxivorgpdf200405571pdf"><a href="https://arxiv.org/pdf/2004.05571.pdf">15. Cross-domain Correspondence Learning for Exemplar-based Image Translation</a></h1>
 
 </article>
 
@@ -468,6 +497,8 @@ $\Phi_{H}(x;k) = \exp(-\frac{1}{2\sigma^{2}} \vert\vert u-u_{k} \vert\vert ^ {2}
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
       </ul>

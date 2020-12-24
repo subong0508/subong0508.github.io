@@ -3,13 +3,37 @@
 
   <head>
   
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        TeX: {
+          equationNumbers: {
+            autoNumber: "AMS"
+          }
+        },
+        tex2jax: {
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+      }
+    });
+    MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+          alert("Math Processing Error: "+message[1]);
+        });
+    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+          alert("Math Processing Error: "+message[1]);
+        });
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    
+  
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>deep-learning</title>
-  <meta name="description" content="My personal blog for studying AI
-">
+  <title>Normalizing Flow</title>
+  <meta name="description" content="">
   
   <meta name="author" content="Jung Jaeeun">
   <meta name="copyright" content="&copy; Jung Jaeeun 2020">
@@ -43,11 +67,10 @@
 
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="My personal blog for studying AI
-" />
+  <meta property="og:description" content="" />
   <meta property="og:url" content="http://subong.github.io/" />
   <meta property="og:site_name" content="Data Vision" />
-  <meta property="og:title" content="deep-learning" />
+  <meta property="og:title" content="Normalizing Flow" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="http://subong.github.io//assets/logo.png" />
   <meta property="og:image:type" content="image/png" />
@@ -58,9 +81,8 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="deep-learning">
-  <meta name="twitter:description" content="My personal blog for studying AI
-">
+  <meta name="twitter:title" content="Normalizing Flow">
+  <meta name="twitter:description" content="">
   <meta name="twitter:image" content="http://subong.github.io//assets/logo.png">
   <meta name="twitter:url" content="http://subong.github.io/">
   
@@ -69,7 +91,7 @@
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://subong.github.io//tag/deep-learning/">
+  <link rel="canonical" href="http://subong.github.io//review/2020/12/22/Normalizing-Flows.html">
   <link rel="alternate" type="application/rss+xml" title="Data Vision" href="http://subong.github.io//feed.xml" />
 </head>
 
@@ -103,6 +125,8 @@
           <li class="nav-link"><a href="/posts/">Posts</a>
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -110,38 +134,88 @@
 
 
     <div class="page-content">
-        <div class="wrapper">
-<div class="page">
+        <div class="post">
 
-  <header class="post-header">
-    <h1 class="post-title">Posts in "Deep-learning"</h1>
-  </header>
+<div class="post-header-container " >
+  <div class="scrim ">
+    <header class="post-header">
+      <h1 class="title">Normalizing Flow</h1>
+      <p class="info">by <strong>Jung Jaeeun</strong></p>
+    </header>
+  </div>
+</div>
 
-  <span class="page-divider">
+<div class="wrapper">
+
+ <span class="page-divider">
   <span class="one"></span>
   <span class="two"></span>
 </span>
+ 
+
+<section class="post-meta">
+  <div class="post-date">December 22, 2020</div>
+  <div class="post-categories">
+  in 
+    
+    <a href="/category/Review">Review</a>
+    
+  
+  </div>
+</section>  
+
+<article class="post-content">
+  
+
+</article>
 
 
-  <article class="post-content">
-    <ul class="posts-list">
-      
-      <li><strong><a class="post-link" href="/review/2020/12/22/Normalizing-Flows.html">Normalizing Flow</a></strong><span class="post-date"> - December 22, 2020</span></li>
-      
-      <li><strong><a class="post-link" href="/machine-learning/2020/12/22/from-Variational-Inference-to-VAE.html">from Variational Inference to VAE</a></strong><span class="post-date"> - December 22, 2020</span></li>
-      
-      <li><strong><a class="post-link" href="/review/2020/12/20/Unsupervised-Landmark-Learning.html">Unsupervised Landmark Learning</a></strong><span class="post-date"> - December 20, 2020</span></li>
-      
-      <li><strong><a class="post-link" href="/review/2020/12/20/DCGAN.html">DCGAN 리뷰</a></strong><span class="post-date"> - December 20, 2020</span></li>
-      
-      <li><strong><a class="post-link" href="/review/2020/12/19/GAN.html">GAN 리뷰</a></strong><span class="post-date"> - December 19, 2020</span></li>
-      
-    </ul>
-  </article>
+
+<section class="tags">
+  <strong>Tags:</strong> <a href="/tag/normalizing-flow">normalizing-flow</a>,&nbsp;<a href="/tag/deep-learning">deep-learning</a>,&nbsp;<a href="/tag/NICE">NICE</a>,&nbsp;<a href="/tag/RealNVP">RealNVP</a>,&nbsp;<a href="/tag/Glow">Glow</a>
+</section>
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<section class="share">
+  <span>Share: </span>
+  
+    
+    
+    
+    
+    
+    
+    
+  
+</section>
+
+	<section class="post-navigation">
+		<span class="prev-post">
+			
+				<a href="/machine-learning/2020/12/22/from-Variational-Inference-to-VAE.html">
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-square fa-stack-2x"></i>
+						<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+					</span>
+					<span class="page-number">from Variational Inference to VAE</span>
+				</a>
+			
+		</span>
+		<span class="next-post">
+			
+		</span>
+	</section>
+
+
+
 
 </div>
 </div>
-<br>
 
     </div>
 
@@ -168,6 +242,8 @@
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
       </ul>
