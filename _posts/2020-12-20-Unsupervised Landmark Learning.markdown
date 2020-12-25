@@ -8,7 +8,7 @@ tags: deep-learning unsupervised-learning
 use_math: true
 ---
 
-# [1. Unsupervised Learning of Object Landmarks through Conditional Image Generation](https://papers.nips.cc/paper/7657-unsupervised-learning-of-object-landmarks-through-conditional-image-generation.pdf)
+# [*1. Unsupervised Learning of Object Landmarks through Conditional Image Generation](https://papers.nips.cc/paper/7657-unsupervised-learning-of-object-landmarks-through-conditional-image-generation.pdf)
 
 ## Task: Generate the target image given the source image and the encoded target image. 
 
@@ -31,7 +31,7 @@ $\mathcal{L}(x', \hat{x'}) = \sum_{l} \alpha_{l} \vert\vert\Gamma_{l}(x')-\Gamma
 **By using K-heatmaps as a bottleneck having keypoints information and exploiting training method of conditional image generation, this paper achieved SOTA results of landmark detection**
 
 
-# [2. Unsupervised Landmark Learning from unpaired data](https://arxiv.org/pdf/2007.01053.pdf)
+# [*2. Unsupervised Landmark Learning from unpaired data](https://arxiv.org/pdf/2007.01053.pdf)
 
 ## Task: Reconstructing images with the apprearance and pose originated from different images and establish various consistencies among these reconstructed images
 
@@ -81,7 +81,7 @@ Thus, transformation maps can reflect the semantic correlations between landmark
 ## Summary
 **Through techinique of balancing losses which can be categorized into meaningful embedding/invariance/equivariance, unpaired images can be used to locate landmarks**
 
-# [3. Unsupervised Part-Based Disentangling of Object Shape and Appearance](https://arxiv.org/pdf/1903.06946.pdf)
+# [*3. Unsupervised Part-Based Disentangling of Object Shape and Appearance](https://arxiv.org/pdf/1903.06946.pdf)
 
 ## Method
 
@@ -106,7 +106,7 @@ where $f$ denotes localized image encoding
 **To sum up, shape stream extracts part shapes which are independent from appreances and appreance stream does same thing as well except it re-encodes part appearances using local features. In decoder, reconstruction is done by using approximate part shapes(normalized) and part appreances weighted on part shapes**
 
 
-# [4. Self-supervised Learning of Interpretable Keypoints from Unlabelled Videos](https://www.robots.ox.ac.uk/~vgg/publications/2020/Jakab20/jakab20.pdf)
+# [*4. Self-supervised Learning of Interpretable Keypoints from Unlabelled Videos](https://www.robots.ox.ac.uk/~vgg/publications/2020/Jakab20/jakab20.pdf)
 
 ## Task: Recognizing the pose of objects from a single image that for learning uses only unlabelled videos and a weak empirical prior on the objects poses
 
@@ -181,7 +181,7 @@ $\Phi_{H}(x;k) = \exp(-\frac{1}{2\sigma^{2}} \vert\vert u-u_{k} \vert\vert ^ {2}
 
 # [7. Unsupervised Disentanglement of Pose, Appearance and Background from Images and Videos](https://arxiv.org/pdf/2001.09518.pdf)
 
-# [8. Unsupervised Discovery of Object Landmarks via Contrastive Learning](https://arxiv.org/pdf/2006.14787.pdf)
+# [*8. Unsupervised Discovery of Object Landmarks via Contrastive Learning](https://arxiv.org/pdf/2006.14787.pdf)
 
 ## Method
 
@@ -207,7 +207,7 @@ The goal is to learn: $\langle\Phi(x), \Phi(x')\rangle \gg \langle\Phi(x), \Phi(
 
 # [9. BRULÉ: Barycenter-Regularized Unsupervised Landmark Extraction](https://arxiv.org/pdf/2006.11643.pdf)
 
-# [10. Unsupervised learning of object frames by dense equivariant image labelling](https://arxiv.org/pdf/1706.02932.pdf)
+# [*10. Unsupervised learning of object frames by dense equivariant image labelling](https://arxiv.org/pdf/1706.02932.pdf)
 
 ## Method
 
@@ -223,13 +223,39 @@ Motivated by invariant constraints, the similarity $\langle \Phi(\mathbb{x}, u),
 
 ![model architecture](../../../../img/Unsupervised-Landmark/dense-labelling.png)
 
-# [11. Unsupervised learning of object landmarks by factorized spatial embeddings](https://arxiv.org/pdf/1705.02193.pdf)
+# [*11. Unsupervised learning of object landmarks by factorized spatial embeddings](https://arxiv.org/pdf/1705.02193.pdf)
 
+## Method
+
+### Deformable objects: Equivariance
+$\forall r \in S_{0} : \Phi(r;\mathbb{x} \circ g) = g(\Phi(r;\mathbb{x}))$
+### Semantically consistent network
+- $\Psi(\mathbb{x}) \in \mathbb{R^{H \times W \times K}}$: score maps
+- $p(u \vert \mathbb{x}, r) = \frac{e ^ {\Psi(\mathbb{x})}}{\sum_{v} e^{\Psi(\mathbb{x})}}$
+- $u_{r}^{*} = \sum_{u} up(u \vert \mathbb{x}, r)$
+
+=> $\mathcal{L_{align}} = \frac{1}{K}\sum_{r=1}^{K}\sum_{uv} \vert\vert u-g(v) \vert\vert ^ {2}p(u \vert \mathbb{x}, r)p(v \vert \mathbb{x'}, r)$
+
+### Diversity Loss: penalize the mutual overlap
+- $\mathcal{L_{div}}(x) = \frac{1}{K^{2}} \sum_{r=1}^{K}\sum_{r'=1}^{K} \sum_{u}p(u \vert \mathbb{x}, r)p(u \vert \mathbb{x}, r')$
+- $\mathcal{L_{div}'}(x)=K - \sum_{u} \max_{r=1,...,K}\sum_{\delta_{u}}p(mu+\delta_{u} \vert \mathbb{x}, r)$: $m \times m$ sum pooling
+
+### Total Loss
+$\mathcal{L_{total}} = \lambda\mathcal{R}(\Psi) + \frac{1}{N} \sum_{i=1}^{N}\mathcal{L_{align}'}(\mathbb{x}, \mathbb{x_{i}}, g_{i};\Psi) + \gamma \mathcal{L_{div}''}(\mathbb{x_{i}};\Psi) + \gamma \mathcal{L_{div}''}(\mathbb{x'_{i}};\Psi)$
+
+## Overall Architecture
+
+![model architecture](../../../../img/Unsupervised-Landmark/spa.png)
+
+## Summary
+**By factorzing deformations, we can learn intrinsic reference frame for the object**
 
 # [12. Deforming Autoencoders: Unsupervised Disentangling of Shape and Appearance](https://arxiv.org/pdf/1806.06503.pdf)
 
+
+
 # [13. Self-supervised learning of a facial attribute embedding from video](https://arxiv.org/pdf/1808.06882.pdf)
 
-# [14. Unsupervised Discovery of Object Landmarks as Structural Representations](https://arxiv.org/pdf/1804.04412.pdf)
+# [*14. Unsupervised Discovery of Object Landmarks as Structural Representations](https://arxiv.org/pdf/1804.04412.pdf)
 
 # [15. Cross-domain Correspondence Learning for Exemplar-based Image Translation](https://arxiv.org/pdf/2004.05571.pdf)

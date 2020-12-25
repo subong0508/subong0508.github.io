@@ -59,6 +59,9 @@ descriptions:
   - cat: review
     desc: "My review of paper regarding AI"
 
+  - cat: machine-learning
+    desc: "Several machine-learning methods used in AI"
+
 # Social icons and sharing options
 #
 # Social settings are used in two places:

@@ -6,8 +6,8 @@
 </description>
     <link>http://subong.github.io//</link>
     <atom:link href="http://subong.github.io//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 24 Dec 2020 23:33:17 +0900</pubDate>
-    <lastBuildDate>Thu, 24 Dec 2020 23:33:17 +0900</lastBuildDate>
+    <pubDate>Fri, 25 Dec 2020 20:02:02 +0900</pubDate>
+    <lastBuildDate>Fri, 25 Dec 2020 20:02:02 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -15,8 +15,8 @@
         <description>
 </description>
         <pubDate>Tue, 22 Dec 2020 00:00:00 +0900</pubDate>
-        <link>http://subong.github.io//review/2020/12/22/Normalizing-Flows.html</link>
-        <guid isPermaLink="true">http://subong.github.io//review/2020/12/22/Normalizing-Flows.html</guid>
+        <link>http://subong.github.io//machine-learning/2020/12/22/Normalizing-Flows.html</link>
+        <guid isPermaLink="true">http://subong.github.io//machine-learning/2020/12/22/Normalizing-Flows.html</guid>
         
         <category>normalizing-flow</category>
         
@@ -29,7 +29,7 @@
         <category>Glow</category>
         
         
-        <category>Review</category>
+        <category>Machine-learning</category>
         
       </item>
     
@@ -228,7 +228,7 @@ $\hat{\theta} = argmax_{\theta} \mathcal{L}(q, \theta) = argmax_{\theta} \mathbb
     
       <item>
         <title>Unsupervised Landmark Learning</title>
-        <description>&lt;h1 id=&quot;unsupervised-learning-of-object-landmarks-through-conditional-image-generationhttpspapersnipsccpaper7657-unsupervised-learning-of-object-landmarks-through-conditional-image-generationpdf&quot;&gt;&lt;a href=&quot;https://papers.nips.cc/paper/7657-unsupervised-learning-of-object-landmarks-through-conditional-image-generation.pdf&quot;&gt;1. Unsupervised Learning of Object Landmarks through Conditional Image Generation&lt;/a&gt;&lt;/h1&gt;
+        <description>&lt;h1 id=&quot;unsupervised-learning-of-object-landmarks-through-conditional-image-generationhttpspapersnipsccpaper7657-unsupervised-learning-of-object-landmarks-through-conditional-image-generationpdf&quot;&gt;&lt;a href=&quot;https://papers.nips.cc/paper/7657-unsupervised-learning-of-object-landmarks-through-conditional-image-generation.pdf&quot;&gt;*1. Unsupervised Learning of Object Landmarks through Conditional Image Generation&lt;/a&gt;&lt;/h1&gt;
 
 &lt;h2 id=&quot;task-generate-the-target-image-given-the-source-image-and-the-encoded-target-image&quot;&gt;Task: Generate the target image given the source image and the encoded target image.&lt;/h2&gt;
 
@@ -250,7 +250,7 @@ $\hat{\theta} = argmax_{\theta} \mathcal{L}(q, \theta) = argmax_{\theta} \mathbb
 &lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;By using K-heatmaps as a bottleneck having keypoints information and exploiting training method of conditional image generation, this paper achieved SOTA results of landmark detection&lt;/strong&gt;&lt;/p&gt;
 
-&lt;h1 id=&quot;unsupervised-landmark-learning-from-unpaired-datahttpsarxivorgpdf200701053pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/2007.01053.pdf&quot;&gt;2. Unsupervised Landmark Learning from unpaired data&lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id=&quot;unsupervised-landmark-learning-from-unpaired-datahttpsarxivorgpdf200701053pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/2007.01053.pdf&quot;&gt;*2. Unsupervised Landmark Learning from unpaired data&lt;/a&gt;&lt;/h1&gt;
 
 &lt;h2 id=&quot;task-reconstructing-images-with-the-apprearance-and-pose-originated-from-different-images-and-establish-various-consistencies-among-these-reconstructed-images&quot;&gt;Task: Reconstructing images with the apprearance and pose originated from different images and establish various consistencies among these reconstructed images&lt;/h2&gt;
 
@@ -299,7 +299,7 @@ $\hat{\theta} = argmax_{\theta} \mathcal{L}(q, \theta) = argmax_{\theta} \mathbb
 &lt;h2 id=&quot;summary-1&quot;&gt;Summary&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Through techinique of balancing losses which can be categorized into meaningful embedding/invariance/equivariance, unpaired images can be used to locate landmarks&lt;/strong&gt;&lt;/p&gt;
 
-&lt;h1 id=&quot;unsupervised-part-based-disentangling-of-object-shape-and-appearancehttpsarxivorgpdf190306946pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/1903.06946.pdf&quot;&gt;3. Unsupervised Part-Based Disentangling of Object Shape and Appearance&lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id=&quot;unsupervised-part-based-disentangling-of-object-shape-and-appearancehttpsarxivorgpdf190306946pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/1903.06946.pdf&quot;&gt;*3. Unsupervised Part-Based Disentangling of Object Shape and Appearance&lt;/a&gt;&lt;/h1&gt;
 
 &lt;h2 id=&quot;method-2&quot;&gt;Method&lt;/h2&gt;
 
@@ -326,7 +326,7 @@ $\hat{\theta} = argmax_{\theta} \mathcal{L}(q, \theta) = argmax_{\theta} \mathbb
 &lt;h2 id=&quot;summary-2&quot;&gt;Summary&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;To sum up, shape stream extracts part shapes which are independent from appreances and appreance stream does same thing as well except it re-encodes part appearances using local features. In decoder, reconstruction is done by using approximate part shapes(normalized) and part appreances weighted on part shapes&lt;/strong&gt;&lt;/p&gt;
 
-&lt;h1 id=&quot;self-supervised-learning-of-interpretable-keypoints-from-unlabelled-videoshttpswwwrobotsoxacukvggpublications2020jakab20jakab20pdf&quot;&gt;&lt;a href=&quot;https://www.robots.ox.ac.uk/~vgg/publications/2020/Jakab20/jakab20.pdf&quot;&gt;4. Self-supervised Learning of Interpretable Keypoints from Unlabelled Videos&lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id=&quot;self-supervised-learning-of-interpretable-keypoints-from-unlabelled-videoshttpswwwrobotsoxacukvggpublications2020jakab20jakab20pdf&quot;&gt;&lt;a href=&quot;https://www.robots.ox.ac.uk/~vgg/publications/2020/Jakab20/jakab20.pdf&quot;&gt;*4. Self-supervised Learning of Interpretable Keypoints from Unlabelled Videos&lt;/a&gt;&lt;/h1&gt;
 
 &lt;h2 id=&quot;task-recognizing-the-pose-of-objects-from-a-single-image-that-for-learning-uses-only-unlabelled-videos-and-a-weak-empirical-prior-on-the-objects-poses&quot;&gt;Task: Recognizing the pose of objects from a single image that for learning uses only unlabelled videos and a weak empirical prior on the objects poses&lt;/h2&gt;
 
@@ -418,7 +418,7 @@ $\Phi_{H}(x;k) = \exp(-\frac{1}{2\sigma^{2}} \vert\vert u-u_{k} \vert\vert ^ {2}
 
 &lt;h1 id=&quot;unsupervised-disentanglement-of-pose-appearance-and-background-from-images-and-videoshttpsarxivorgpdf200109518pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/2001.09518.pdf&quot;&gt;7. Unsupervised Disentanglement of Pose, Appearance and Background from Images and Videos&lt;/a&gt;&lt;/h1&gt;
 
-&lt;h1 id=&quot;unsupervised-discovery-of-object-landmarks-via-contrastive-learninghttpsarxivorgpdf200614787pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/2006.14787.pdf&quot;&gt;8. Unsupervised Discovery of Object Landmarks via Contrastive Learning&lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id=&quot;unsupervised-discovery-of-object-landmarks-via-contrastive-learninghttpsarxivorgpdf200614787pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/2006.14787.pdf&quot;&gt;*8. Unsupervised Discovery of Object Landmarks via Contrastive Learning&lt;/a&gt;&lt;/h1&gt;
 
 &lt;h2 id=&quot;method-6&quot;&gt;Method&lt;/h2&gt;
 
@@ -447,7 +447,7 @@ $\Phi_{H}(x;k) = \exp(-\frac{1}{2\sigma^{2}} \vert\vert u-u_{k} \vert\vert ^ {2}
 
 &lt;h1 id=&quot;brul-barycenter-regularized-unsupervised-landmark-extractionhttpsarxivorgpdf200611643pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/2006.11643.pdf&quot;&gt;9. BRULÉ: Barycenter-Regularized Unsupervised Landmark Extraction&lt;/a&gt;&lt;/h1&gt;
 
-&lt;h1 id=&quot;unsupervised-learning-of-object-frames-by-dense-equivariant-image-labellinghttpsarxivorgpdf170602932pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/1706.02932.pdf&quot;&gt;10. Unsupervised learning of object frames by dense equivariant image labelling&lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id=&quot;unsupervised-learning-of-object-frames-by-dense-equivariant-image-labellinghttpsarxivorgpdf170602932pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/1706.02932.pdf&quot;&gt;*10. Unsupervised learning of object frames by dense equivariant image labelling&lt;/a&gt;&lt;/h1&gt;
 
 &lt;h2 id=&quot;method-7&quot;&gt;Method&lt;/h2&gt;
 
@@ -467,13 +467,42 @@ $\Phi_{H}(x;k) = \exp(-\frac{1}{2\sigma^{2}} \vert\vert u-u_{k} \vert\vert ^ {2}
 
 &lt;p&gt;&lt;img src=&quot;../../../../img/Unsupervised-Landmark/dense-labelling.png&quot; alt=&quot;model architecture&quot; /&gt;&lt;/p&gt;
 
-&lt;h1 id=&quot;unsupervised-learning-of-object-landmarks-by-factorized-spatial-embeddingshttpsarxivorgpdf170502193pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/1705.02193.pdf&quot;&gt;11. Unsupervised learning of object landmarks by factorized spatial embeddings&lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id=&quot;unsupervised-learning-of-object-landmarks-by-factorized-spatial-embeddingshttpsarxivorgpdf170502193pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/1705.02193.pdf&quot;&gt;*11. Unsupervised learning of object landmarks by factorized spatial embeddings&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h2 id=&quot;method-8&quot;&gt;Method&lt;/h2&gt;
+
+&lt;h3 id=&quot;deformable-objects-equivariance&quot;&gt;Deformable objects: Equivariance&lt;/h3&gt;
+&lt;p&gt;$\forall r \in S_{0} : \Phi(r;\mathbb{x} \circ g) = g(\Phi(r;\mathbb{x}))$&lt;/p&gt;
+&lt;h3 id=&quot;semantically-consistent-network&quot;&gt;Semantically consistent network&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;$\Psi(\mathbb{x}) \in \mathbb{R^{H \times W \times K}}$: score maps&lt;/li&gt;
+  &lt;li&gt;$p(u \vert \mathbb{x}, r) = \frac{e ^ {\Psi(\mathbb{x})}}{\sum_{v} e^{\Psi(\mathbb{x})}}$&lt;/li&gt;
+  &lt;li&gt;$u_{r}^{*} = \sum_{u} up(u \vert \mathbb{x}, r)$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;=&amp;gt; $\mathcal{L_{align}} = \frac{1}{K}\sum_{r=1}^{K}\sum_{uv} \vert\vert u-g(v) \vert\vert ^ {2}p(u \vert \mathbb{x}, r)p(v \vert \mathbb{x’}, r)$&lt;/p&gt;
+
+&lt;h3 id=&quot;diversity-loss-penalize-the-mutual-overlap&quot;&gt;Diversity Loss: penalize the mutual overlap&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;$\mathcal{L_{div}}(x) = \frac{1}{K^{2}} \sum_{r=1}^{K}\sum_{r’=1}^{K} \sum_{u}p(u \vert \mathbb{x}, r)p(u \vert \mathbb{x}, r’)$&lt;/li&gt;
+  &lt;li&gt;$\mathcal{L_{div}’}(x)=K - \sum_{u} \max_{r=1,…,K}\sum_{\delta_{u}}p(mu+\delta_{u} \vert \mathbb{x}, r)$: $m \times m$ sum pooling&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;total-loss&quot;&gt;Total Loss&lt;/h3&gt;
+&lt;p&gt;$\mathcal{L_{total}} = \lambda\mathcal{R}(\Psi) + \frac{1}{N} \sum_{i=1}^{N}\mathcal{L_{align}’}(\mathbb{x}, \mathbb{x_{i}}, g_{i};\Psi) + \gamma \mathcal{L_{div}’’}(\mathbb{x_{i}};\Psi) + \gamma \mathcal{L_{div}’’}(\mathbb{x’_{i}};\Psi)$&lt;/p&gt;
+
+&lt;h2 id=&quot;overall-architecture-8&quot;&gt;Overall Architecture&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../../../img/Unsupervised-Landmark/spa.png&quot; alt=&quot;model architecture&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;summary-7&quot;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;By factorzing deformations, we can learn intrinsic reference frame for the object&lt;/strong&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;deforming-autoencoders-unsupervised-disentangling-of-shape-and-appearancehttpsarxivorgpdf180606503pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/1806.06503.pdf&quot;&gt;12. Deforming Autoencoders: Unsupervised Disentangling of Shape and Appearance&lt;/a&gt;&lt;/h1&gt;
 
 &lt;h1 id=&quot;self-supervised-learning-of-a-facial-attribute-embedding-from-videohttpsarxivorgpdf180806882pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/1808.06882.pdf&quot;&gt;13. Self-supervised learning of a facial attribute embedding from video&lt;/a&gt;&lt;/h1&gt;
 
-&lt;h1 id=&quot;unsupervised-discovery-of-object-landmarks-as-structural-representationshttpsarxivorgpdf180404412pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/1804.04412.pdf&quot;&gt;14. Unsupervised Discovery of Object Landmarks as Structural Representations&lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id=&quot;unsupervised-discovery-of-object-landmarks-as-structural-representationshttpsarxivorgpdf180404412pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/1804.04412.pdf&quot;&gt;*14. Unsupervised Discovery of Object Landmarks as Structural Representations&lt;/a&gt;&lt;/h1&gt;
 
 &lt;h1 id=&quot;cross-domain-correspondence-learning-for-exemplar-based-image-translationhttpsarxivorgpdf200405571pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/2004.05571.pdf&quot;&gt;15. Cross-domain Correspondence Learning for Exemplar-based Image Translation&lt;/a&gt;&lt;/h1&gt;
 </description>
