@@ -3,7 +3,7 @@ layout: post
 title:  from Variational Inference to VAE
 date:   2020-12-22
 author: Jung Jaeeun
-categories: Machine-learning
+categories: generative-models
 tags: bayesian deep-learning variational-inference
 use_math: true
 ---

@@ -3,7 +3,7 @@ layout: post
 title:  "GAN 리뷰"
 date:   2020-12-19
 author: Jung Jaeeun
-categories: review
+categories: generative-models
 tags: GAN deep-learning generative-model
 use_math: true
 ---

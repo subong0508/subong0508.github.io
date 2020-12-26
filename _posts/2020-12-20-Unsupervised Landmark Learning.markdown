@@ -252,10 +252,48 @@ $\mathcal{L_{total}} = \lambda\mathcal{R}(\Psi) + \frac{1}{N} \sum_{i=1}^{N}\mat
 
 # [12. Deforming Autoencoders: Unsupervised Disentangling of Shape and Appearance](https://arxiv.org/pdf/1806.06503.pdf)
 
-
-
 # [13. Self-supervised learning of a facial attribute embedding from video](https://arxiv.org/pdf/1808.06882.pdf)
 
+## Method
+### Multi-source frames architecture: predicting a confidence heatmap
+### Curriculum Strategy: stop training when samples fall into 90th-100th percentile range.
+
+## Overall Architecture
+
+![model architecture](../../../../img/Unsupervised-Landmark/facial-embeds.png)
+
 # [*14. Unsupervised Discovery of Object Landmarks as Structural Representations](https://arxiv.org/pdf/1804.04412.pdf)
+
+## Method
+
+### Architecture of landmark detector
+
+- $\mathbf{R} = hourglass_{l}(\mathbf{I};\theta_{l}) \in \mathbb{R}^{W \times H \times(K+1)}$: raw detection score map
+- $\mathbf{D_{k}}(u,v)$: normalized $\mathbf{R}$ across the channels
+=> Taking $\mathbf{D_{k}}$ as a weighting map, $(x_{k}, y_{k})$ is the $k$-th landmark
+- $l = [x_{1}, y_{1}, ..., x_{k}, y_{k}]^{\top} = \text{landmark}(\mathbf{I};\theta_{l})$
+
+### Visual concept of landmarks
+- Concentration constraint: $\mathcal{L_{conc}} = 2\pi e (\sigma_{det, u}^{2}, \sigma_{det, v}^{2})$ 
+
+=> $\bar{D_{k}}(u, v)=(1/WH)\mathcal{N}((u, v);(x_{k}, y_{k}), \sigma_{det}^{2}\mathbb{I})$
+
+- Separation constraint: $\mathcal{L_{sep}} = \sum_{k \neq k'}^{1, ..., K}\exp(-\frac{\vert\vert (x_{k'}, y_{k'}) - (x_{k}, y_{k}) \vert\vert ^{2}}{2\sigma_{sep}^{2}})$
+
+- Equivariance constarint: $\mathcal{L_{equiv}} = \sum_{k=1}^{K} \vert\vert g(x_{k}', y_{k}') - (x_{k}, y_{k}) \vert\vert ^ {2}$
+
+### Local latent descriptors
+
+$\mathbf{F} = hourglass_{f}(\mathbf{I};\theta_{f}) \in \mathbb{R}^{W \times H \times S}$
+
+Then take $\mathbf{f_{k}}$ as inner product of $\bar{D_{k}}(u, v), \mathbf{F}(u, v)$ multiplied by landmark-specific operator $\mathbf{W_{k}}$
+
+### Landmark-based decoder
+
+### Total Loss: $\lambda_{recon}L_{recon}+\lambda_{conc}L_{conc}+\lambda_{sep}L_{sep}+\lambda_{equiv}L_{equiv}$
+
+## Overall Architecture
+
+![model architecture](../../../../img/Unsupervised-Landmark/struct.png)
 
 # [15. Cross-domain Correspondence Learning for Exemplar-based Image Translation](https://arxiv.org/pdf/2004.05571.pdf)

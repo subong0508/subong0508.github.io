@@ -125,8 +125,6 @@
           <li class="nav-link"><a href="/posts/">Posts</a>
           
         
-          
-        
       </ul>
     </nav>
   </div>
@@ -439,7 +437,56 @@ $\Phi_{H}(x;k) = \exp(-\frac{1}{2\sigma^{2}} \vert\vert u-u_{k} \vert\vert ^ {2}
 
 <h1 id="self-supervised-learning-of-a-facial-attribute-embedding-from-videohttpsarxivorgpdf180806882pdf"><a href="https://arxiv.org/pdf/1808.06882.pdf">13. Self-supervised learning of a facial attribute embedding from video</a></h1>
 
+<h2 id="method-9">Method</h2>
+<h3 id="multi-source-frames-architecture-predicting-a-confidence-heatmap">Multi-source frames architecture: predicting a confidence heatmap</h3>
+<h3 id="curriculum-strategy-stop-training-when-samples-fall-into-90th-100th-percentile-range">Curriculum Strategy: stop training when samples fall into 90th-100th percentile range.</h3>
+
+<h2 id="overall-architecture-9">Overall Architecture</h2>
+
+<p><img src="../../../../img/Unsupervised-Landmark/facial-embeds.png" alt="model architecture" /></p>
+
 <h1 id="unsupervised-discovery-of-object-landmarks-as-structural-representationshttpsarxivorgpdf180404412pdf"><a href="https://arxiv.org/pdf/1804.04412.pdf">*14. Unsupervised Discovery of Object Landmarks as Structural Representations</a></h1>
+
+<h2 id="method-10">Method</h2>
+
+<h3 id="architecture-of-landmark-detector">Architecture of landmark detector</h3>
+
+<ul>
+  <li>$\mathbf{R} = hourglass_{l}(\mathbf{I};\theta_{l}) \in \mathbb{R}^{W \times H \times(K+1)}$: raw detection score map</li>
+  <li>$\mathbf{D_{k}}(u,v)$: normalized $\mathbf{R}$ across the channels
+=&gt; Taking $\mathbf{D_{k}}$ as a weighting map, $(x_{k}, y_{k})$ is the $k$-th landmark</li>
+  <li>$l = [x_{1}, y_{1}, …, x_{k}, y_{k}]^{\top} = \text{landmark}(\mathbf{I};\theta_{l})$</li>
+</ul>
+
+<h3 id="visual-concept-of-landmarks">Visual concept of landmarks</h3>
+<ul>
+  <li>Concentration constraint: $\mathcal{L_{conc}} = 2\pi e (\sigma_{det, u}^{2}, \sigma_{det, v}^{2})$</li>
+</ul>
+
+<p>=&gt; $\bar{D_{k}}(u, v)=(1/WH)\mathcal{N}((u, v);(x_{k}, y_{k}), \sigma_{det}^{2}\mathbb{I})$</p>
+
+<ul>
+  <li>
+    <p>Separation constraint: $\mathcal{L_{sep}} = \sum_{k \neq k’}^{1, …, K}\exp(-\frac{\vert\vert (x_{k’}, y_{k’}) - (x_{k}, y_{k}) \vert\vert ^{2}}{2\sigma_{sep}^{2}})$</p>
+  </li>
+  <li>
+    <p>Equivariance constarint: $\mathcal{L_{equiv}} = \sum_{k=1}^{K} \vert\vert g(x_{k}’, y_{k}’) - (x_{k}, y_{k}) \vert\vert ^ {2}$</p>
+  </li>
+</ul>
+
+<h3 id="local-latent-descriptors">Local latent descriptors</h3>
+
+<p>$\mathbf{F} = hourglass_{f}(\mathbf{I};\theta_{f}) \in \mathbb{R}^{W \times H \times S}$</p>
+
+<p>Then take $\mathbf{f_{k}}$ as inner product of $\bar{D_{k}}(u, v), \mathbf{F}(u, v)$ multiplied by landmark-specific operator $\mathbf{W_{k}}$</p>
+
+<h3 id="landmark-based-decoder">Landmark-based decoder</h3>
+
+<h3 id="total-loss-lambdareconlreconlambdaconclconclambdaseplseplambdaequivlequiv">Total Loss: $\lambda_{recon}L_{recon}+\lambda_{conc}L_{conc}+\lambda_{sep}L_{sep}+\lambda_{equiv}L_{equiv}$</h3>
+
+<h2 id="overall-architecture-10">Overall Architecture</h2>
+
+<p><img src="../../../../img/Unsupervised-Landmark/struct.png" alt="model architecture" /></p>
 
 <h1 id="cross-domain-correspondence-learning-for-exemplar-based-image-translationhttpsarxivorgpdf200405571pdf"><a href="https://arxiv.org/pdf/2004.05571.pdf">15. Cross-domain Correspondence Learning for Exemplar-based Image Translation</a></h1>
 
@@ -473,7 +520,7 @@ $\Phi_{H}(x;k) = \exp(-\frac{1}{2\sigma^{2}} \vert\vert u-u_{k} \vert\vert ^ {2}
 	<section class="post-navigation">
 		<span class="prev-post">
 			
-				<a href="/review/2020/12/20/DCGAN.html">
+				<a href="/generative-models/2020/12/20/DCGAN.html">
 					<span class="fa-stack fa-lg">
 						<i class="fa fa-square fa-stack-2x"></i>
 						<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
@@ -484,7 +531,7 @@ $\Phi_{H}(x;k) = \exp(-\frac{1}{2\sigma^{2}} \vert\vert u-u_{k} \vert\vert ^ {2}
 		</span>
 		<span class="next-post">
 			
-				<a href="/machine-learning/2020/12/22/from-Variational-Inference-to-VAE.html">
+				<a href="/generative-models/2020/12/22/from-Variational-Inference-to-VAE.html">
 					<span class="page-number">from Variational Inference to VAE</span>
 					<span class="fa-stack fa-lg">
 						<i class="fa fa-square fa-stack-2x"></i>
@@ -526,8 +573,6 @@ $\Phi_{H}(x;k) = \exp(-\frac{1}{2\sigma^{2}} \vert\vert u-u_{k} \vert\vert ^ {2}
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
-        
-        
         
         
       </ul>

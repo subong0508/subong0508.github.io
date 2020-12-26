@@ -57,10 +57,10 @@ descriptions:
     desc: "Posts describing Jekyll setup techniques."
 
   - cat: review
-    desc: "My review of paper regarding AI"
+    desc: 
 
-  - cat: machine-learning
-    desc: "Several machine-learning methods used in AI"
+  - cat: generative-models
+    desc: 
 
 # Social icons and sharing options
 #

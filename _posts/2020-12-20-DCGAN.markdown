@@ -3,7 +3,7 @@ layout: post
 title:  "DCGAN 리뷰"
 date:   2020-12-20
 author: Jung Jaeeun
-categories: review
+categories: generative-models
 tags: DCGAN GAN deep-learning generative-model
 use_math: true
 ---

@@ -6,32 +6,9 @@
 </description>
     <link>http://subong.github.io//</link>
     <atom:link href="http://subong.github.io//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 25 Dec 2020 20:04:33 +0900</pubDate>
-    <lastBuildDate>Fri, 25 Dec 2020 20:04:33 +0900</lastBuildDate>
+    <pubDate>Sat, 26 Dec 2020 20:21:50 +0900</pubDate>
+    <lastBuildDate>Sat, 26 Dec 2020 20:21:50 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
-    
-      <item>
-        <title>Normalizing Flow</title>
-        <description>
-</description>
-        <pubDate>Tue, 22 Dec 2020 00:00:00 +0900</pubDate>
-        <link>http://subong.github.io//machine-learning/2020/12/22/Normalizing-Flows.html</link>
-        <guid isPermaLink="true">http://subong.github.io//machine-learning/2020/12/22/Normalizing-Flows.html</guid>
-        
-        <category>normalizing-flow</category>
-        
-        <category>deep-learning</category>
-        
-        <category>NICE</category>
-        
-        <category>RealNVP</category>
-        
-        <category>Glow</category>
-        
-        
-        <category>Machine-learning</category>
-        
-      </item>
     
       <item>
         <title>from Variational Inference to VAE</title>
@@ -212,8 +189,8 @@ $\hat{\theta} = argmax_{\theta} \mathcal{L}(q, \theta) = argmax_{\theta} \mathbb
 &lt;p&gt;이번 포스팅에서는 Bayesian의 중요한 토픽인 Variational Inference부터 그와 연관된 Variational Auto-encoder까지 알아보았다. intractible posterior를 estimate하기 위한 기법 중의 하나가 Variational Inference였고 EM 알고리즘 등을 통해 잠재변수 모델에 활용됨을 알 수 있었다. VAE는 이를 활용한 생성모델+잠재변수 모델로 보다 시각화/설명이 용이하지만 흐린 이미지를 생성한다는 것까지 살펴보았다. 앞으로도 representation learning의 중요성은 더 부각될 것 같다. 열심히 공부해야지..&lt;/p&gt;
 </description>
         <pubDate>Tue, 22 Dec 2020 00:00:00 +0900</pubDate>
-        <link>http://subong.github.io//machine-learning/2020/12/22/from-Variational-Inference-to-VAE.html</link>
-        <guid isPermaLink="true">http://subong.github.io//machine-learning/2020/12/22/from-Variational-Inference-to-VAE.html</guid>
+        <link>http://subong.github.io//generative-models/2020/12/22/from-Variational-Inference-to-VAE.html</link>
+        <guid isPermaLink="true">http://subong.github.io//generative-models/2020/12/22/from-Variational-Inference-to-VAE.html</guid>
         
         <category>bayesian</category>
         
@@ -222,7 +199,7 @@ $\hat{\theta} = argmax_{\theta} \mathcal{L}(q, \theta) = argmax_{\theta} \mathbb
         <category>variational-inference</category>
         
         
-        <category>Machine-learning</category>
+        <category>generative-models</category>
         
       </item>
     
@@ -502,7 +479,56 @@ $\Phi_{H}(x;k) = \exp(-\frac{1}{2\sigma^{2}} \vert\vert u-u_{k} \vert\vert ^ {2}
 
 &lt;h1 id=&quot;self-supervised-learning-of-a-facial-attribute-embedding-from-videohttpsarxivorgpdf180806882pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/1808.06882.pdf&quot;&gt;13. Self-supervised learning of a facial attribute embedding from video&lt;/a&gt;&lt;/h1&gt;
 
+&lt;h2 id=&quot;method-9&quot;&gt;Method&lt;/h2&gt;
+&lt;h3 id=&quot;multi-source-frames-architecture-predicting-a-confidence-heatmap&quot;&gt;Multi-source frames architecture: predicting a confidence heatmap&lt;/h3&gt;
+&lt;h3 id=&quot;curriculum-strategy-stop-training-when-samples-fall-into-90th-100th-percentile-range&quot;&gt;Curriculum Strategy: stop training when samples fall into 90th-100th percentile range.&lt;/h3&gt;
+
+&lt;h2 id=&quot;overall-architecture-9&quot;&gt;Overall Architecture&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../../../img/Unsupervised-Landmark/facial-embeds.png&quot; alt=&quot;model architecture&quot; /&gt;&lt;/p&gt;
+
 &lt;h1 id=&quot;unsupervised-discovery-of-object-landmarks-as-structural-representationshttpsarxivorgpdf180404412pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/1804.04412.pdf&quot;&gt;*14. Unsupervised Discovery of Object Landmarks as Structural Representations&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h2 id=&quot;method-10&quot;&gt;Method&lt;/h2&gt;
+
+&lt;h3 id=&quot;architecture-of-landmark-detector&quot;&gt;Architecture of landmark detector&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;$\mathbf{R} = hourglass_{l}(\mathbf{I};\theta_{l}) \in \mathbb{R}^{W \times H \times(K+1)}$: raw detection score map&lt;/li&gt;
+  &lt;li&gt;$\mathbf{D_{k}}(u,v)$: normalized $\mathbf{R}$ across the channels
+=&amp;gt; Taking $\mathbf{D_{k}}$ as a weighting map, $(x_{k}, y_{k})$ is the $k$-th landmark&lt;/li&gt;
+  &lt;li&gt;$l = [x_{1}, y_{1}, …, x_{k}, y_{k}]^{\top} = \text{landmark}(\mathbf{I};\theta_{l})$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;visual-concept-of-landmarks&quot;&gt;Visual concept of landmarks&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Concentration constraint: $\mathcal{L_{conc}} = 2\pi e (\sigma_{det, u}^{2}, \sigma_{det, v}^{2})$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;=&amp;gt; $\bar{D_{k}}(u, v)=(1/WH)\mathcal{N}((u, v);(x_{k}, y_{k}), \sigma_{det}^{2}\mathbb{I})$&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Separation constraint: $\mathcal{L_{sep}} = \sum_{k \neq k’}^{1, …, K}\exp(-\frac{\vert\vert (x_{k’}, y_{k’}) - (x_{k}, y_{k}) \vert\vert ^{2}}{2\sigma_{sep}^{2}})$&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Equivariance constarint: $\mathcal{L_{equiv}} = \sum_{k=1}^{K} \vert\vert g(x_{k}’, y_{k}’) - (x_{k}, y_{k}) \vert\vert ^ {2}$&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;local-latent-descriptors&quot;&gt;Local latent descriptors&lt;/h3&gt;
+
+&lt;p&gt;$\mathbf{F} = hourglass_{f}(\mathbf{I};\theta_{f}) \in \mathbb{R}^{W \times H \times S}$&lt;/p&gt;
+
+&lt;p&gt;Then take $\mathbf{f_{k}}$ as inner product of $\bar{D_{k}}(u, v), \mathbf{F}(u, v)$ multiplied by landmark-specific operator $\mathbf{W_{k}}$&lt;/p&gt;
+
+&lt;h3 id=&quot;landmark-based-decoder&quot;&gt;Landmark-based decoder&lt;/h3&gt;
+
+&lt;h3 id=&quot;total-loss-lambdareconlreconlambdaconclconclambdaseplseplambdaequivlequiv&quot;&gt;Total Loss: $\lambda_{recon}L_{recon}+\lambda_{conc}L_{conc}+\lambda_{sep}L_{sep}+\lambda_{equiv}L_{equiv}$&lt;/h3&gt;
+
+&lt;h2 id=&quot;overall-architecture-10&quot;&gt;Overall Architecture&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../../../img/Unsupervised-Landmark/struct.png&quot; alt=&quot;model architecture&quot; /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;cross-domain-correspondence-learning-for-exemplar-based-image-translationhttpsarxivorgpdf200405571pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/2004.05571.pdf&quot;&gt;15. Cross-domain Correspondence Learning for Exemplar-based Image Translation&lt;/a&gt;&lt;/h1&gt;
 </description>
@@ -577,8 +603,8 @@ $\Phi_{H}(x;k) = \exp(-\frac{1}{2\sigma^{2}} \vert\vert u-u_{k} \vert\vert ^ {2}
 &lt;p&gt;reference: &lt;a href=&quot;https://arxiv.org/pdf/1511.06434.pdf&quot;&gt;Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Sun, 20 Dec 2020 00:00:00 +0900</pubDate>
-        <link>http://subong.github.io//review/2020/12/20/DCGAN.html</link>
-        <guid isPermaLink="true">http://subong.github.io//review/2020/12/20/DCGAN.html</guid>
+        <link>http://subong.github.io//generative-models/2020/12/20/DCGAN.html</link>
+        <guid isPermaLink="true">http://subong.github.io//generative-models/2020/12/20/DCGAN.html</guid>
         
         <category>DCGAN</category>
         
@@ -589,7 +615,7 @@ $\Phi_{H}(x;k) = \exp(-\frac{1}{2\sigma^{2}} \vert\vert u-u_{k} \vert\vert ^ {2}
         <category>generative-model</category>
         
         
-        <category>review</category>
+        <category>generative-models</category>
         
       </item>
     
@@ -816,8 +842,8 @@ $\Phi_{H}(x;k) = \exp(-\frac{1}{2\sigma^{2}} \vert\vert u-u_{k} \vert\vert ^ {2}
 &lt;p&gt;references: &lt;a href=&quot;https://papers.nips.cc/paper/2014/file/5ca3e9b122f61f8f06494c97b1afccf3-Paper.pdf&quot;&gt;GAN paper,&lt;/a&gt; &lt;a href=&quot;https://jaejunyoo.blogspot.com/2019/05/part-i.html&quot;&gt;jaejunyoo.blogspot.com/2019/05/part-i.html&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Sat, 19 Dec 2020 00:00:00 +0900</pubDate>
-        <link>http://subong.github.io//review/2020/12/19/GAN.html</link>
-        <guid isPermaLink="true">http://subong.github.io//review/2020/12/19/GAN.html</guid>
+        <link>http://subong.github.io//generative-models/2020/12/19/GAN.html</link>
+        <guid isPermaLink="true">http://subong.github.io//generative-models/2020/12/19/GAN.html</guid>
         
         <category>GAN</category>
         
@@ -826,7 +852,7 @@ $\Phi_{H}(x;k) = \exp(-\frac{1}{2\sigma^{2}} \vert\vert u-u_{k} \vert\vert ^ {2}
         <category>generative-model</category>
         
         
-        <category>review</category>
+        <category>generative-models</category>
         
       </item>
     
