@@ -32,8 +32,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>DCGAN 리뷰</title>
-  <meta name="description" content="이 포스팅에서 리뷰할 DCGAN은 사실 GAN을 더욱 더 유명하게 만들어준 논문으로, 이 논문이 publish된 이후로 대부분의 GAN 아키텍쳐는 DCGAN의 아키텍쳐를 따른다.">
+  <title>Improved Techniques for Training GANs</title>
+  <meta name="description" content="오늘 리뷰할 논문은 Improved Techniques for Training GANs로, 이 논문은 아래와 같이 크게 세 가지 내용으로 이루어져 있다.">
   
   <meta name="author" content="Jung Jaeeun">
   <meta name="copyright" content="&copy; Jung Jaeeun 2020">
@@ -67,10 +67,10 @@
 
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="이 포스팅에서 리뷰할 DCGAN은 사실 GAN을 더욱 더 유명하게 만들어준 논문으로, 이 논문이 publish된 이후로 대부분의 GAN 아키텍쳐는 DCGAN의 아키텍쳐를 따른다." />
+  <meta property="og:description" content="오늘 리뷰할 논문은 Improved Techniques for Training GANs로, 이 논문은 아래와 같이 크게 세 가지 내용으로 이루어져 있다." />
   <meta property="og:url" content="http://subong.github.io/" />
   <meta property="og:site_name" content="Data Vision" />
-  <meta property="og:title" content="DCGAN 리뷰" />
+  <meta property="og:title" content="Improved Techniques for Training GANs" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="http://subong.github.io//assets/logo.png" />
   <meta property="og:image:type" content="image/png" />
@@ -81,8 +81,8 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="DCGAN 리뷰">
-  <meta name="twitter:description" content="이 포스팅에서 리뷰할 DCGAN은 사실 GAN을 더욱 더 유명하게 만들어준 논문으로, 이 논문이 publish된 이후로 대부분의 GAN 아키텍쳐는 DCGAN의 아키텍쳐를 따른다.">
+  <meta name="twitter:title" content="Improved Techniques for Training GANs">
+  <meta name="twitter:description" content="오늘 리뷰할 논문은 Improved Techniques for Training GANs로, 이 논문은 아래와 같이 크게 세 가지 내용으로 이루어져 있다.">
   <meta name="twitter:image" content="http://subong.github.io//assets/logo.png">
   <meta name="twitter:url" content="http://subong.github.io/">
   
@@ -91,7 +91,7 @@
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://subong.github.io//generative-models/2020/12/20/DCGAN.html">
+  <link rel="canonical" href="http://subong.github.io//generative-models/2020/12/27/Improved-Techniques-for-Training-GANs.html">
   <link rel="alternate" type="application/rss+xml" title="Data Vision" href="http://subong.github.io//feed.xml" />
 </head>
 
@@ -139,7 +139,7 @@
 <div class="post-header-container " >
   <div class="scrim ">
     <header class="post-header">
-      <h1 class="title">DCGAN 리뷰</h1>
+      <h1 class="title">Improved Techniques for Training GANs</h1>
       <p class="info">by <strong>Jung Jaeeun</strong></p>
     </header>
   </div>
@@ -154,7 +154,7 @@
  
 
 <section class="post-meta">
-  <div class="post-date">December 20, 2020</div>
+  <div class="post-date">December 27, 2020</div>
   <div class="post-categories">
   in 
     
@@ -165,67 +165,72 @@
 </section>  
 
 <article class="post-content">
-  <p>이 포스팅에서 리뷰할 DCGAN은 사실 GAN을 더욱 더 유명하게 만들어준 논문으로, 이 논문이 publish된 이후로 대부분의 GAN 아키텍쳐는 DCGAN의 아키텍쳐를 따른다.</p>
+  <p>오늘 리뷰할 논문은 Improved Techniques for Training GANs로, 이 논문은 아래와 같이 크게 세 가지 내용으로 이루어져 있다.</p>
 
-<p>기존 CNN을 이용한 DNN에 architectural contraints를 더해줌으로써 hierarchical representation을 학습할 수 있는 것이 이 논문의 주요 내용이다.</p>
+<ol>
+  <li>GAN의 convergence를 위한 휴리스틱한 방법론들</li>
+  <li>사람이 측정한 것과 비슷하게 이미지 퀄리티를 측정하는 방법</li>
+  <li>Semi-supervised learning에 GAN을 이용하는 법과 그 중요성</li>
+</ol>
 
-<p>먼저, unsupervised learning의 의의를 설명해보자면 labeled dataset은 구하기 어려운 것에 비해 unlabeled dataset은 구하기가 매우 쉽다. 따라서 구하기 쉬운 대용량의 unlabeled dataset을 이용해 reusable한 feature representation을 학습할 수 있다면 supervised learning에도 유용히 쓰일 수 있고, 우리의 데이터의 분포를 이해할 수 있다.</p>
+<p>편의상 generator를 G, discriminator를 D라고 칭하겠다.</p>
 
-<p>이 논문의 proposal은 아래와 같다.</p>
-<ul>
-  <li><strong>CNN을 이용한 GAN에 여러 constraints를 더 해줌으로써 GAN의 unstability 해결</strong></li>
-  <li><strong>학습된 discriminator를 이미지 분류 문제에 적용했더니 좋은 성능을 보임</strong></li>
-  <li><strong>GAN의 필터를 시각화함으로써 explainability 확장</strong></li>
-  <li><strong>generator는 Word2vec처럼 흥미로운 vector arithmetic 성질이 존재</strong> ex) king+woman =&gt; queen</li>
-</ul>
+<h2 id="toward-convergent-gan-training">Toward Convergent GAN Training</h2>
 
-<p>그렇다면 해당 논문의 핵심이라고 할 수 있는 architectural constraints는 무엇일까? 사실 나는 굉장히 대단할 거라고 생각했는데 생각보다 간단해서 놀랐다..</p>
+<h3 id="feature-matching">Feature Matching</h3>
 
-<p><img src="../../../../img/dcgan/1.png" alt="architectural constraints" /></p>
+<p>D의 direct output에 맞춰 업데이트되는 G와 다르게 이 논문에서는 새로운 objective를 설정했다. $\mathbf{f(x)}$를 D의 intermediate layer output이라고 했을 때, G의 새로운 목표는 $\vert\vert \mathbb{E_{x \thicksim p_{data}}}\mathbf{f(x)} - \mathbb{E_{z \thicksim p_{z}}}\mathbf{f}(G(z))\vert\vert^{2}$를 최소화하는 것이 된다.(D는 기존의 방식대로 학습됨) <strong>즉, 직접적인 비용이 아니라 D가 기대하는 feature에 G를 맞추는 것이다.</strong></p>
 
-<ul>
-  <li><strong>strided convolution: 이미지 본연의 spatial upsampling을 학습한다.</strong></li>
-  <li><strong>FC layer 대신 feature map을 flatten해서 사용</strong></li>
-  <li><strong>Batch Normalization: mode collapsing 방지</strong> (단, generator output layer와 discriminator input layer에는 적용하지 않음)</li>
-</ul>
+<h3 id="minibatch-discrimination">Minibatch discrimination</h3>
 
-<p>결과적으로는 아래와 같은 구조가 된다.
-<img src="../../../../img/dcgan/dcgan.png" alt="dcgan" /></p>
+<p>GAN에서 흔하게 나타나는 현상이 mode collapsing으로 D가 제일 헷갈리는 sample 하나만 G가 생성하는 것이다. 이 논문에서는 이러한 현상을 막기 위해서 D가 여러 샘플을 보게 하는 학습 기법을 <em>minibatch discrimination</em>이라고 칭한다.</p>
 
-<p>100-dimension의 uniform distribution을 따르는 랜덤 벡터 Z를 4차원텐서(N x C x H x W)로 reshape 해준 다음 Transpose Convolution을 이용해서 계속 upsampling 해주고, 마지막엔 기본 RGB 이미지처럼 64x64x3으로 바꿔준다.</p>
+<p>구체적인 학습 방법은 이렇다. $\mathbf{f(x_{i})} \in \mathbb{R}^{A}$에 matrix $T \in \mathbb{R}^{A \times B \times C}$를 곱힌 결과를 $M_{i} \in \mathbb{R}^{B \times C}$라고 하자. 이 $M_{i}$의 행들간의 $L$-1 distance를 구하고 그 값에다가 negative exponential을 취한 값을 모두 합해서 학습에 사용한다.</p>
 
-<p>이후론 학습에 사용된 여러 테크닉들이 나오는데, 대부분 generator가 학습 데이터를 그냥 외워버리는 것을 방지하거나/아님을 증명하기 위한 것들이다.</p>
+<p>$\sigma(x_{i, b})= \sum_{j=1}^{n} c_{b}(x_{i}, x_{j}) = \sum_{j=1}^{n} \exp(- \vert\vert M_{i, b} - M_{j, b} \vert\vert)\in \mathbb{R}$</p>
 
-<p>작은 학습률(0.0002) + minibatch SGD를 이용하여 1 epoch 동안 학습을 진행했는데 성과가 좋았다는 것과 5 epoch 이후 오히려 underfitting이 일어났다는 것이 generator가 제대로 학습하고 있다는 증거에 해당한다.</p>
+<p>$\sigma(x_{i}) = [\sigma(x_{i, 1}), …, \sigma(x_{i, B})] \in \mathbb{R}^{B}$</p>
 
-<p>또한 개인적으로 인상깊었던 것은 duplication을 방지하기 위해 de-noising autoencoder를 이용해 이미지를 코드화한후 비슷한 코드끼리 제거했다는 것(semantic-hashing)이다.</p>
+<p>$\sigma(\mathbb{X}) \in \mathbb{R}^{n \times B}$</p>
 
-<p>다음 섹션에서는 실제 데이터에 적용한 emprical validation을 열거한다. 앞서 말한 image classification task를 위해 discriminator의 모든 feature map을 사용하여 CIFAR-10을 분류한 결과 82.8%의 정확도를 달성했다고 한다.</p>
+<p>$\sigma(\mathbb{x_{i}})$를 $\mathbf{f(x_{i})}$에 concat해서 D의 next layer에 정보를 전달한다. 따라서 D는 현재 판단하는 sample뿐만 아니라 minibatch를 <em>side information</em>으로 사용한다.</p>
 
-<p>마지막 섹션에서는 generator가 학습한 representation의 validity를 입증한다. Z의 grid를 나눠서 이미지를 생성해보기도하고, discriminator의 필터를 시각화해보기도 하는데 제일 재미있었던 것은 특정 사물은 잊도록(forgetting) 해보는 실험이었다. 150개의 학습 데이터중 52개의 이미지에서 창문에 대한 bounding box를 수동으로 라벨링하고 generator의 마지막에서 두번째 convolution layer를 이용해 창문이 있는지/없는지 로지스틱 회귀를 fit한다. 이때 기준은 바운딩 박스안의 activation 값이 positive, 랜덤 이미지에서는 negative 값을 가지는지 여부로 정했다고 한다.</p>
+<h3 id="historical-averaging">Historical averaging</h3>
 
-<p>이 모델을 이용해서 회귀계수 값이 0보다 큰 feature map은 drop한 후(random new samples로 대체)  generation을 진행한 결과는 다음과 같다.</p>
+<p>이 기술은 cost에 $\vert\vert \mathbf{\theta} - \frac{1}{t}\sum_{i=1}^{t}\mathbf{\theta}[i]\vert\vert^{2}$ term을 포함하는 것이다. 이렇게 함으로써 online-learning의 효과를 갖게 되고 전에 배웠던 학습 정보를 잃지 않게 된다.</p>
 
-<p><img src="../../../../img/dcgan/4.png" alt="windows" /></p>
+<h3 id="one-sided-label-smoothing">One-sided label smoothing</h3>
 
-<p>사실 DCGAN 하면 제일 유명한 것 vector arthimetic properties에 관한 것일텐데.. 너무 유명하니까 생략하겠음..</p>
+<p>이 발상은 positive targets 갯수가 $\alpha$개, negative targets 갯수가 $\beta$개 일때 optimal D가 $D(x) = \frac{\alpha p_{data}(x) + \beta p_{model}(x)}{p_{data}(x) + p_{model}(x)}$가 되고 $p_{data}$가 0이고 $p_{model}$이 매우 클 때 G가 제대로 학습이 되지 않는다는 점에서 착안했다. 따라서 positive labels만 $\alpha$, negative labels는 0으로 smoothing 한다.</p>
 
-<p>마지막으로는 future work에 대해 설명하는데, 학습을 오래 시킬수록 오히려 oscillating mode가 생긴다고 한다.</p>
+<h3 id="virtual-batch-normalization">Virtual batch normalization</h3>
 
-<p><br /></p>
+<p>DCGAN에서 batch normalization이 GAN의 성능을 크게 향상시킨다고 입증했지만 batch에 따라 성능이 크게 좌우된다. 따라서 학습을 시작할 때 <em>reference batch</em>를 만들어서 <em>reference batch</em>에 collect된 통계량을 통해 정규화를 진행한다.</p>
 
-<hr />
+<h2 id="assessment-of-image-quality">Assessment of image quality</h2>
 
-<p><br /></p>
+<p>원래는 GAN의 성능을 측정하기 위해 human anotators를 사용했는데, 이 논문에서는 <strong>Inception module</strong> 이라는 human evaluation과 correlation이 높은 새로운 대안을 제시한다.</p>
 
-<p>reference: <a href="https://arxiv.org/pdf/1511.06434.pdf">Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks</a></p>
+<p>우리는 우리 model이 $p(y \vert x)$는 low entropy를 갖고, $\int p(y \vert x = G(z))dx$가 high entropy를 갖기를 기대한다. 따라서 $\exp (\mathbb{E_{x}} KL(p(y \vert x) \vert\vert p(y)))$를 새로운 metric으로 제시한다. 막상 이 metric을 학습에 사용해서는 큰 효과를 보지 못했지만, human evaluation과 human judgement와 큰 양의 상관관계가 있다고 한다.</p>
+
+<h2 id="semi-supervised-learning">Semi-supervised learning</h2>
+
+<p>image를 K개의 클래스로 분류하는 classifier를 생각해보자. 이 모델의 마지막 레이어에서는 K-dimensional logit이 아웃풋이 된다. 즉, $[l_{1}, …, l_{K}]$을 통해 $p(y=j \vert x) = \frac{\exp (l_{j})}{\sum_{k=1}^{K} \exp(l_{k})}$를 구한다.</p>
+
+<p>여기서, G가 생성해낸 새로운 클래스를 $K+1$로 명명하고 classifier는 $p_{model}(y=K+1 \vert x)$까지 구분하도록 바뀐다. <strong>이로써 classifier는 unlabeled data(G에 의해 생성된 데이터)까지 활용하여 학습할 수 있다.</strong> 새로운 Loss function은 아래처럼 바뀐다.</p>
+
+<p><img src="../../../../img/gans/new-loss.png" alt="new loss" /></p>
+
+<p>사실 $L_{unsupervised}$는 G가 그럴듯한 이미지를 생성할 때만 도움이 된다. 이를 강제하는 방식은 D를 classifier로 바꾸고 G, D를 동시에 학습시키는 것이다. 이 방식으로 학습된 G를 통해 생성된 이미지는 human annotators로부터 좋은 평가를 받았다고 한다. 필자들은 본능적으로 사람이 이미지를 보았을 때 특정한 카테고리로 분류한다는 점에서 이런 결과가 나왔다고 설명한다. D로 하여금 <em>objectness</em>를 측정하게 하는 것이다.</p>
+
+<p>위에 열거한 기법들을 통해 필자들은 큰 발전을 이루었다고 말하고 있다. 물론 이 기법들은 대부분 empirical results에 의존하고, 마땅히 이렇다할 이론적 근거들은 없다. 하지만 minibatch discrimination 같은 기법은 GAN 뿐만 아니라 다른 neural network에도 사용될 수 있을 것 같다.</p>
 
 </article>
 
 
 
 <section class="tags">
-  <strong>Tags:</strong> <a href="/tag/DCGAN">DCGAN</a>,&nbsp;<a href="/tag/GAN">GAN</a>,&nbsp;<a href="/tag/deep-learning">deep-learning</a>,&nbsp;<a href="/tag/generative-model">generative-model</a>
+  <strong>Tags:</strong> <a href="/tag/GAN">GAN</a>,&nbsp;<a href="/tag/deep-learning">deep-learning</a>
 </section>
 
 
@@ -250,24 +255,16 @@
 	<section class="post-navigation">
 		<span class="prev-post">
 			
-				<a href="/generative-models/2020/12/19/GAN.html">
+				<a href="/generative-models/2020/12/22/from-Variational-Inference-to-VAE.html">
 					<span class="fa-stack fa-lg">
 						<i class="fa fa-square fa-stack-2x"></i>
 						<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
 					</span>
-					<span class="page-number">GAN 리뷰</span>
+					<span class="page-number">from Variational Inference to VAE</span>
 				</a>
 			
 		</span>
 		<span class="next-post">
-			
-				<a href="/review/2020/12/20/Unsupervised-Landmark-Learning.html">
-					<span class="page-number">Unsupervised Landmark Learning</span>
-					<span class="fa-stack fa-lg">
-						<i class="fa fa-square fa-stack-2x"></i>
-						<i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
-					</span>
-				</a>
 			
 		</span>
 	</section>
