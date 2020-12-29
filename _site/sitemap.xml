@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://subong.github.io//generative-models/2020/12/27/Wasserstein-GAN.html</loc>
+<lastmod>2020-12-27T00:00:00+09:00</lastmod>
+</url>
+<url>
 <loc>http://subong.github.io//generative-models/2020/12/27/Improved-Techniques-for-Training-GANs.html</loc>
 <lastmod>2020-12-27T00:00:00+09:00</lastmod>
 </url>
