@@ -6,8 +6,8 @@
 </description>
     <link>http://subong.github.io//</link>
     <atom:link href="http://subong.github.io//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 29 Dec 2020 20:18:05 +0900</pubDate>
-    <lastBuildDate>Tue, 29 Dec 2020 20:18:05 +0900</lastBuildDate>
+    <pubDate>Tue, 29 Dec 2020 20:29:52 +0900</pubDate>
+    <lastBuildDate>Tue, 29 Dec 2020 20:29:52 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -125,9 +125,9 @@
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&quot;https://arxiv.org/pdf/1701.07875.pdf&quot;&gt;Wasserstein GAN&lt;/a&gt;&lt;/p&gt;
 </description>
-        <pubDate>Sun, 27 Dec 2020 00:00:00 +0900</pubDate>
-        <link>http://subong.github.io//generative-models/2020/12/27/Wasserstein-GAN.html</link>
-        <guid isPermaLink="true">http://subong.github.io//generative-models/2020/12/27/Wasserstein-GAN.html</guid>
+        <pubDate>Tue, 29 Dec 2020 00:00:00 +0900</pubDate>
+        <link>http://subong.github.io//generative-models/2020/12/29/Wasserstein-GAN.html</link>
+        <guid isPermaLink="true">http://subong.github.io//generative-models/2020/12/29/Wasserstein-GAN.html</guid>
         
         <category>GAN</category>
         

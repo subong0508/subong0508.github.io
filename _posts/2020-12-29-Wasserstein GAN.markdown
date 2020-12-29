@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Wasserstein GAN
-date:   2020-12-27
+date:   2020-12-29
 author: Jung Jaeeun
 categories: generative-models 
 tags: GAN WGAN Wasserstein-GAN deep-learning 
