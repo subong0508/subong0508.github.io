@@ -92,7 +92,7 @@ InfoGAN의 학습이 잘 되었다면 lower bound가 $H(c)$로 maximize 됩니�
 
 MNIST에 대해 살펴보겠습니다. $c_{1} \thicksim Cat(K=10, p=0.1)$을 사용했고 $c_{2}, c_{3}$은 continous variations를 나타내기 위한 변수로 사용했다고 합니다.
 
-![InfoGAN MNIST](../../../../img/gans/infogan-MNIST.png)
+![InfoGAN MNIST](../../../../img/gans/infogan-mnist.png)
 
 우리의 예상대로 $c_{1}$은 digit type을 나타내는 피쳐에 해당합니다. 그리고 $c_{2}, c_{3}$는 각각 rotation, width에 해당하는 피쳐가 되겠습니다. 
 
