@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-<img src="{{ site.baseurl }}/assets/f3.jpg" title="Profile Picture" class="profile">
+<!-- <img src="{{ site.baseurl }}/assets/f3.jpg" title="Profile Picture" class="profile"> -->
 
 ## Education
 ### Bachelor
