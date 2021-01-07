@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: http://subong0508.github.io/sitemap.xml
