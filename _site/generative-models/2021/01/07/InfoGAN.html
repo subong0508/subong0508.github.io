@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        TeX: {
+          equationNumbers: {
+            autoNumber: "AMS"
+          }
+        },
+        tex2jax: {
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+      }
+    });
+    MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+          alert("Math Processing Error: "+message[1]);
+        });
+    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+          alert("Math Processing Error: "+message[1]);
+        });
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    
+  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>InfoGAN</title>
+  <meta name="description" content="이번 포스팅에서는 InfoGAN에 대해서 알아보겠습니다. GAN에 대한 설명은 생략하겠습니다.">
+  
+  <meta name="author" content="Jung Jaeeun">
+  <meta name="copyright" content="&copy; Jung Jaeeun 2021">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/monokai_sublime.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="이번 포스팅에서는 InfoGAN에 대해서 알아보겠습니다. GAN에 대한 설명은 생략하겠습니다." />
+  <meta property="og:url" content="http://subong.github.io/" />
+  <meta property="og:site_name" content="Data Vision" />
+  <meta property="og:title" content="InfoGAN" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://subong.github.io//assets/logo.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="InfoGAN">
+  <meta name="twitter:description" content="이번 포스팅에서는 InfoGAN에 대해서 알아보겠습니다. GAN에 대한 설명은 생략하겠습니다.">
+  <meta name="twitter:image" content="http://subong.github.io//assets/logo.png">
+  <meta name="twitter:url" content="http://subong.github.io/">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://subong.github.io//generative-models/2021/01/07/InfoGAN.html">
+  <link rel="alternate" type="application/rss+xml" title="Data Vision" href="http://subong.github.io//feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="Data Vision">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/posts/">Posts</a>
+          
+        
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container " >
+  <div class="scrim ">
+    <header class="post-header">
+      <h1 class="title">InfoGAN</h1>
+      <p class="info">by <strong>Jung Jaeeun</strong></p>
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+ <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+
+<section class="post-meta">
+  <div class="post-date">January 7, 2021</div>
+  <div class="post-categories">
+  in 
+    
+    <a href="/category/generative-models">Generative-models</a>
+    
+  
+  </div>
+</section>  
+
+<article class="post-content">
+  <p>이번 포스팅에서는 InfoGAN에 대해서 알아보겠습니다. GAN에 대한 설명은 생략하겠습니다.</p>
+
+<p>먼저, InfoGAN의 motivation 부터 알아보려고 합니다. GAN을 통해 우리는 latent variable $z$에서 실제 데이터 $x$로 가는 mapping을 학습합니다. 그래서 $z$를 latent representation이라고 합니다. 그러나 아쉽게도 GAN은 entangled representation을 학습합니다. 아래는 disentagled/entagled의 차이점을 시각화한 그림입니다. (<a href="https://science.sciencemag.org/content/295/5552/7/tab-figures-data">이미지 출처</a>) <br /><br /></p>
+
+<p><img src="https://science.sciencemag.org/content/sci/295/5552/7/F1.medium.gif" alt="swiss roll" /> <br /><br /></p>
+
+<p>D보다는 B에서 manifold가 깔끔하게 학습되었고, GAN을 통해서 이런 깔끔한 manifold, 즉 <strong>disentangled</strong> representaion을 학습함으로써 이미지의 퀄리티와 explainability를 동시에 향상시켰다는 것이 이 논문의 주요 내용입니다.</p>
+
+<h2 id="mutual-information-for-inducing-latent-codes">Mutual Information for Inducing Latent Codes</h2>
+
+<p>원래 GAN에서는 input noise vector로 $z$를 넣어줍니다. 대부분 $z$는 $\mathcal{N}[\mathbf{0}, \sigma^{2} \mathbf{I}]$를 따른다고 가정합니다. generator는 어떤 제한없이 $z$를 그대로 받아서 이미지를 생성하게 됩니다. 결과적으로, $z$의 각 차원이 데이터의 semantic feature와 대응되지 않는다는 문제점이 생깁니다.</p>
+
+<p>하지만 실제로 이미지 데이터는 semantically meaningful factors로 분해될 수 있습니다. 예를 들어, MNIST에서는 숫자의 휘어진 정도 또는 numerical identity(0-9)가 있겠습니다. 이런 특징들을 $z$가 잡을 수 있다면 훨씬 해석이 쉬운 동시에 원하는 이미지를 생성하기도 쉬울 것입니다.</p>
+
+<p>이 논문에서는, input noise vector를 크게 두 파트로 분류합니다.</p>
+<ol>
+  <li>$z$: incompressible한 noise</li>
+  <li>$c$: latent code - data의 semantic feature에 해당합니다.</li>
+</ol>
+
+<p>여기서 $c$는 factored distribution을 가정합니다. 왜냐하면 이미지의 각 salient feature가 독립이라고 가정하는 것이 합리적이기 때문입니다. 수식으로 나타내면 다음과 같습니다.</p>
+
+<p>$P(c_{1}, …, c_{L}) = \prod_{i=1}^{L}P(c_{i})$</p>
+
+<p>우리는 generator에 $z, c$를 인풋으로 넣어줍니다. 그러면 generator는 $G(z, c)$로 표현할 수 있습니다.</p>
+
+<p>이제 이 논문에 key idea를 설명하겠습니다. 이 논문은 <strong>latent code $c$와 $G(z, c)$간에 high mutual information이 있어야 한다는 제약조건을 상정합니다. 따라서, $I(c;G(z, c))$는 높아야 합니다.</strong></p>
+
+<p>$I(X;Y)$란 $Y$가 관측되었을 때 $X$의 불확실성이 감소되는 정도를 의미합니다. 만약 $X$, $Y$가 indepentdent하다면 $I(X;Y)=0$이 성립합니다. 만약 information theory에 대해서 생소하다면 <a href="https://en.wikipedia.org/wiki/Conditional_entropy">링크</a>를 참조하면 좋을 것 같습니다.</p>
+
+<p>따라서 우리의 목표는 다음과 같습니다.</p>
+
+<p>$\min_{G}\max_{D}V_{I}(D, G) = V(D, G)-\lambda I(c;G(z,c))$</p>
+
+<p>여기서 regularization term에 해당하는 $\lambda I(c;G(z,c))$는 latent code $c$의 information이 generation process에서 소실되지 않도록 강제합니다.</p>
+
+<h2 id="variational-mutual-information-maximization">Variational Mutual Information Maximization</h2>
+
+<p>하지만 실제로 $I(c;G(z,c))$를 직접 최대화하는 것에는 어려움이 있습니다. 왜냐하면 $P(c \vert x)$를 알아야 하기 때문입니다. <strong>따라서 우리는 variational lower bound 테크닉을 이용해서 $P(c \vert x)$를 $Q(c \vert x)$로 근사합니다.</strong> 이제 variational lower bound에 대해서 알아보겠습니다.</p>
+
+<p>$I(c;G(z,c))=H(c)-H(c\vert G(z, c)=\mathbb{E_{x \thicksim G(z, c)}}[\mathbb{E_{c’ \thicksim P(c \vert x)}[log P(c’ \vert x)]}] + H(c)$</p>
+
+<p>$=\mathbb{E_{x \thicksim G(z, c)}}[D_{KL}(P(c’ \vert x) \vert\vert Q(c’ \vert x))] +\mathbb{E_{c’ \thicksim P(c \vert x)}}[log Q(c’ \vert x)] + H(c)$</p>
+
+<p>$\geq \mathbb{E_{x \thicksim G(z, c)}}[\mathbb{E_{c’ \thicksim P(c \vert x)}}[log Q(c’ \vert x)]] + H(c)$</p>
+
+<p><br /><font color="red">$\mathcal{L_{I}}(G, Q) = \mathbb{E_{x \thicksim G(z, c)}}[\mathbb{E_{c' \thicksim P(c \vert x)}}[log Q(c' \vert x)]] + H(c)$</font><br /><br /></p>
+
+<p>여기서도 문제가 발생합니다. $\mathbb{E_{c’ \thicksim P(c \vert x)}}[log Q(c’ \vert x)]$에 $P(c \vert x)$가 들어간다는 점입니다. 하지만 수리통계학의 <em>lemma</em>에 의해 해결가능합니다. (<a href="http://aoliver.org/correct-proof-of-infogan-lemma">링크</a>에 자세히 나와있습니다.) 구체적인 수식을 살펴보겠습니다. $G(z, c)$는 $P_{G}(x \vert z, c)$로 새로 나타낼 수 있습니다.</p>
+
+<p>$\mathbb{E_{x \thicksim G(z, c)}}[\mathbb{E_{c’ \thicksim P(c \vert x)}}[log Q(c’ \vert x)]] = \mathbb{E_{x \thicksim P_{G}(x \vert z, c), c’ \thicksim P(c’ \vert x)}}[logQ(c’ \vert x)]$</p>
+
+<p>$=\mathbb{E_{x \thicksim P_{G}(x \vert z, c), c \thicksim x, c’ \thicksim P(c’ \vert x)}}[logQ(c’ \vert x)] = \mathbb{E_{x \thicksim P_{G}(x \vert z, c), c \thicksim p(c), }}[logQ(c’ \vert x)]$</p>
+
+<p>$=\mathbb{E_{x \thicksim G(z, c), c \thicksim p(c)}}[logQ(c’ \vert x)]$</p>
+
+<p><br /><font color="red">${L_{I}}(G, Q) = \mathbb{E_{x \thicksim G(z, c), c \thicksim p(c)}}[logQ(c' \vert x)] + H(c)$</font><br /><br /></p>
+
+<p>그러면 이제 마지막식은 Monte Carlo simulation으로 손쉽게 구할 수 있고 최종목표식은 다음과 같습니다.</p>
+
+<p>$\min_{G}\max_{D}V_{I}(D, G) = V(D, G)-\lambda{L_{I}}(G, Q)$</p>
+
+<p>수식으로만 보니 와닿지 않기 때문에 이 논문을 요약하여 한장의 그림으로 나타내어 보았습니다.</p>
+
+<p><img src="../../../../img/gans/infoGAN.png" alt="InfoGAN structrure" /></p>
+
+<p><strong>핵심은 generator로 하여금 semantic feature/latent code c를 복원할 수 있을 만큼 생성을 해라!가 되겠습니다.</strong></p>
+
+<h2 id="implementation">Implementation</h2>
+
+<p>실제로 코드로 구현할 때는 $Q$를 neural network로 구현하되 $D$와 모든 convolution layer를 공유하고 $Q(c \vert x)$를 위한 FC layer만 추가해주었다고 합니다. 이로써 $Q$에 대한 cost는 vanilla GAN과 거의 동일해집니다.</p>
+
+<p>$c_{i}$가 categorical 변수일 때는 $Q(c _{i}\vert x)$를 구하는데 softmax nonlinearity를 이용했고 continuous 변수일 때는 factored Gaussian으로 충분했다고 합니다.</p>
+
+<p>또한 $\lambda$에 대한 튜닝도 쉬웠다고 하는데요. $c_{i}$가 categorical 변수일 때는 $\lambda$를 1로 두고, continuous 변수일 때는 그것보다 작은 값을 이용했다고 언급하고 있습니다. 마지막으로 GAN structure는 DC-GAN을 이용했습니다.</p>
+
+<h2 id="experiments">Experiments</h2>
+
+<h3 id="mutual-information-maximization">Mutual Information Maximization</h3>
+
+<p>InfoGAN의 학습이 잘 되었다면 lower bound가 $H(c)$로 maximize 됩니다. 이말인즉슨 bound가 tight한 동시에 maximal mutual information을 얻었다는 뜻입니다. 원논문의 Fig1이 이를 시각화해서 보여주고 있습니다. 화질이 좋지 않아서 첨부하진 않았습니다. vanilla GAN은 lower bound가 $H(c)$로 maximize되지 않지만 InfoGAN은 빠르게 수렴하고 있습니다. 이는 vanilla GAN에서 generator는 이미지의 semantic feature를 잡아내지 못함을 뜻합니다.</p>
+
+<h2 id="disentangled-representation">Disentangled Representation</h2>
+
+<p>MNIST에 대해 살펴보겠습니다. $c_{1} \thicksim Cat(K=10, p=0.1)$을 사용했고 $c_{2}, c_{3}$은 continous variations를 나타내기 위한 변수로 사용했다고 합니다.</p>
+
+<p><img src="../../../../img/gans/infogan-MNIST.png" alt="InfoGAN MNIST" /></p>
+
+<p>우리의 예상대로 $c_{1}$은 digit type을 나타내는 피쳐에 해당합니다. 그리고 $c_{2}, c_{3}$는 각각 rotation, width에 해당하는 피쳐가 되겠습니다.</p>
+
+<p>다른 데이터셋을 시각화한 결과가 궁금하시다면 원논문을 참조하시면 됩니다. latent code $c$가 이미지의 semantic feature를 잘 잡아냄을 알 수 있습니다.</p>
+
+<h2 id="reference">Reference</h2>
+
+<p><a href="https://arxiv.org/pdf/1606.03657.pdf">InfoGAN: Interpretable Representation Learning by
+Information Maximizing Generative Adversarial Nets</a></p>
+
+</article>
+
+
+
+<section class="tags">
+  <strong>Tags:</strong> <a href="/tag/GAN">GAN</a>,&nbsp;<a href="/tag/InfoGAN">InfoGAN</a>,&nbsp;<a href="/tag/deep-learning">deep-learning</a>,&nbsp;<a href="/tag/representation-learning">representation-learning</a>
+</section>
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<section class="share">
+  <span>Share: </span>
+  
+    
+    
+    
+    
+    
+    
+    
+  
+</section>
+
+	<section class="post-navigation">
+		<span class="prev-post">
+			
+				<a href="/generative-models/2020/12/29/Wasserstein-GAN.html">
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-square fa-stack-2x"></i>
+						<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+					</span>
+					<span class="page-number">Wasserstein GAN</span>
+				</a>
+			
+		</span>
+		<span class="next-post">
+			
+		</span>
+	</section>
+
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">Data Vision</h3>
+
+    <div class="site-navigation">
+      
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">About</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:subong0508@naver.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">subong0508@naver.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://github.com/subong0508" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">subong0508</span>
+            </a>
+          </li>
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">My personal blog for studying AI
+</p>
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+  // Syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+
+
+});
+
+</script>
+
+
+
+
+  </body>
+
+</html>
