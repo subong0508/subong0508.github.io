@@ -4,10 +4,10 @@
     <title>Data Vision</title>
     <description>My personal blog for studying AI
 </description>
-    <link>http://subong.github.io/</link>
-    <atom:link href="http://subong.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 09 Jan 2021 14:14:13 +0900</pubDate>
-    <lastBuildDate>Sat, 09 Jan 2021 14:14:13 +0900</lastBuildDate>
+    <link>http://subong0508.github.io/</link>
+    <atom:link href="http://subong0508.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sat, 09 Jan 2021 14:29:43 +0900</pubDate>
+    <lastBuildDate>Sat, 09 Jan 2021 14:29:43 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -110,8 +110,8 @@
 Information Maximizing Generative Adversarial Nets&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Thu, 07 Jan 2021 00:00:00 +0900</pubDate>
-        <link>http://subong.github.io/generative-models/2021/01/07/InfoGAN.html</link>
-        <guid isPermaLink="true">http://subong.github.io/generative-models/2021/01/07/InfoGAN.html</guid>
+        <link>http://subong0508.github.io/generative-models/2021/01/07/InfoGAN.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/generative-models/2021/01/07/InfoGAN.html</guid>
         
         <category>GAN</category>
         
@@ -242,8 +242,8 @@ Information Maximizing Generative Adversarial Nets&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://arxiv.org/pdf/1701.07875.pdf&quot;&gt;Wasserstein GAN&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Tue, 29 Dec 2020 00:00:00 +0900</pubDate>
-        <link>http://subong.github.io/generative-models/2020/12/29/Wasserstein-GAN.html</link>
-        <guid isPermaLink="true">http://subong.github.io/generative-models/2020/12/29/Wasserstein-GAN.html</guid>
+        <link>http://subong0508.github.io/generative-models/2020/12/29/Wasserstein-GAN.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/generative-models/2020/12/29/Wasserstein-GAN.html</guid>
         
         <category>GAN</category>
         
@@ -321,8 +321,8 @@ Information Maximizing Generative Adversarial Nets&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;위에 열거한 기법들을 통해 필자들은 큰 발전을 이루었다고 말하고 있다. 물론 이 기법들은 대부분 empirical results에 의존하고, 마땅히 이렇다할 이론적 근거들은 없다. 하지만 minibatch discrimination 같은 기법은 GAN 뿐만 아니라 다른 neural network에도 사용될 수 있을 것 같다.&lt;/p&gt;
 </description>
         <pubDate>Sun, 27 Dec 2020 00:00:00 +0900</pubDate>
-        <link>http://subong.github.io/generative-models/2020/12/27/Improved-Techniques-for-Training-GANs.html</link>
-        <guid isPermaLink="true">http://subong.github.io/generative-models/2020/12/27/Improved-Techniques-for-Training-GANs.html</guid>
+        <link>http://subong0508.github.io/generative-models/2020/12/27/Improved-Techniques-for-Training-GANs.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/generative-models/2020/12/27/Improved-Techniques-for-Training-GANs.html</guid>
         
         <category>GAN</category>
         
@@ -512,8 +512,8 @@ $\hat{\theta} = argmax_{\theta} \mathcal{L}(q, \theta) = argmax_{\theta} \mathbb
 &lt;p&gt;이번 포스팅에서는 Bayesian의 중요한 토픽인 Variational Inference부터 그와 연관된 Variational Auto-encoder까지 알아보았다. intractible posterior를 estimate하기 위한 기법 중의 하나가 Variational Inference였고 EM 알고리즘 등을 통해 잠재변수 모델에 활용됨을 알 수 있었다. VAE는 이를 활용한 생성모델+잠재변수 모델로 보다 시각화/설명이 용이하지만 흐린 이미지를 생성한다는 것까지 살펴보았다. 앞으로도 representation learning의 중요성은 더 부각될 것 같다. 열심히 공부해야지..&lt;/p&gt;
 </description>
         <pubDate>Tue, 22 Dec 2020 00:00:00 +0900</pubDate>
-        <link>http://subong.github.io/generative-models/2020/12/22/from-Variational-Inference-to-VAE.html</link>
-        <guid isPermaLink="true">http://subong.github.io/generative-models/2020/12/22/from-Variational-Inference-to-VAE.html</guid>
+        <link>http://subong0508.github.io/generative-models/2020/12/22/from-Variational-Inference-to-VAE.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/generative-models/2020/12/22/from-Variational-Inference-to-VAE.html</guid>
         
         <category>bayesian</category>
         
@@ -856,8 +856,8 @@ $\Phi_{H}(x;k) = \exp(-\frac{1}{2\sigma^{2}} \vert\vert u-u_{k} \vert\vert ^ {2}
 &lt;h1 id=&quot;cross-domain-correspondence-learning-for-exemplar-based-image-translationhttpsarxivorgpdf200405571pdf&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/2004.05571.pdf&quot;&gt;15. Cross-domain Correspondence Learning for Exemplar-based Image Translation&lt;/a&gt;&lt;/h1&gt;
 </description>
         <pubDate>Sun, 20 Dec 2020 00:00:00 +0900</pubDate>
-        <link>http://subong.github.io/review/2020/12/20/Unsupervised-Landmark-Learning.html</link>
-        <guid isPermaLink="true">http://subong.github.io/review/2020/12/20/Unsupervised-Landmark-Learning.html</guid>
+        <link>http://subong0508.github.io/review/2020/12/20/Unsupervised-Landmark-Learning.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/review/2020/12/20/Unsupervised-Landmark-Learning.html</guid>
         
         <category>deep-learning</category>
         
@@ -926,8 +926,8 @@ $\Phi_{H}(x;k) = \exp(-\frac{1}{2\sigma^{2}} \vert\vert u-u_{k} \vert\vert ^ {2}
 &lt;p&gt;reference: &lt;a href=&quot;https://arxiv.org/pdf/1511.06434.pdf&quot;&gt;Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Sun, 20 Dec 2020 00:00:00 +0900</pubDate>
-        <link>http://subong.github.io/generative-models/2020/12/20/DCGAN.html</link>
-        <guid isPermaLink="true">http://subong.github.io/generative-models/2020/12/20/DCGAN.html</guid>
+        <link>http://subong0508.github.io/generative-models/2020/12/20/DCGAN.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/generative-models/2020/12/20/DCGAN.html</guid>
         
         <category>DCGAN</category>
         
@@ -1165,8 +1165,8 @@ $\Phi_{H}(x;k) = \exp(-\frac{1}{2\sigma^{2}} \vert\vert u-u_{k} \vert\vert ^ {2}
 &lt;p&gt;references: &lt;a href=&quot;https://papers.nips.cc/paper/2014/file/5ca3e9b122f61f8f06494c97b1afccf3-Paper.pdf&quot;&gt;GAN paper,&lt;/a&gt; &lt;a href=&quot;https://jaejunyoo.blogspot.com/2019/05/part-i.html&quot;&gt;jaejunyoo.blogspot.com/2019/05/part-i.html&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Sat, 19 Dec 2020 00:00:00 +0900</pubDate>
-        <link>http://subong.github.io/generative-models/2020/12/19/GAN.html</link>
-        <guid isPermaLink="true">http://subong.github.io/generative-models/2020/12/19/GAN.html</guid>
+        <link>http://subong0508.github.io/generative-models/2020/12/19/GAN.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/generative-models/2020/12/19/GAN.html</guid>
         
         <category>GAN</category>
         
@@ -1237,8 +1237,8 @@ function demo(string, times) {
 
 </description>
         <pubDate>Sat, 18 Apr 2015 17:43:59 +0900</pubDate>
-        <link>http://subong.github.io/jekyll/2015/04/18/welcome-to-jekyll.html</link>
-        <guid isPermaLink="true">http://subong.github.io/jekyll/2015/04/18/welcome-to-jekyll.html</guid>
+        <link>http://subong0508.github.io/jekyll/2015/04/18/welcome-to-jekyll.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/jekyll/2015/04/18/welcome-to-jekyll.html</guid>
         
         <category>jekyll</category>
         
