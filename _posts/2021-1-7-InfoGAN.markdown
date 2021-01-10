@@ -58,9 +58,7 @@ $\geq \mathbb{E_{x \thicksim G(z, c)}}[\mathbb{E_{c' \thicksim P(c \vert x)}}[lo
 
 $\mathbb{E_{x \thicksim G(z, c)}}[\mathbb{E_{c' \thicksim P(c \vert x)}}[log Q(c' \vert x)]] = \mathbb{E_{x \thicksim P_{G}(x \vert z, c), c' \thicksim P(c' \vert x)}}[logQ(c' \vert x)]$
 
-$=\mathbb{E_{x \thicksim P_{G}(x \vert z, c), c \thicksim x, c' \thicksim P(c' \vert x)}}[logQ(c' \vert x)] = \mathbb{E_{x \thicksim P_{G}(x \vert z, c), c \thicksim p(c), }}[logQ(c' \vert x)]$
-
-$=\mathbb{E_{x \thicksim G(z, c), c \thicksim p(c)}}[logQ(c' \vert x)]$
+$=\mathbb{E_{x \thicksim P_{G}(x \vert z, c), c \thicksim x, c' \thicksim P(c' \vert x)}}[logQ(c' \vert x)]=\mathbb{E_{x \thicksim G(z, c), c \thicksim p(c)}}[logQ(c' \vert x)]$
 
 <br><font color='red'>${L_{I}}(G, Q) = \mathbb{E_{x \thicksim G(z, c), c \thicksim p(c)}}[logQ(c' \vert x)] + H(c)$</font><br><br>
 

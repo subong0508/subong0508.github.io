@@ -6,8 +6,8 @@
 </description>
     <link>http://subong0508.github.io/</link>
     <atom:link href="http://subong0508.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 09 Jan 2021 14:29:43 +0900</pubDate>
-    <lastBuildDate>Sat, 09 Jan 2021 14:29:43 +0900</lastBuildDate>
+    <pubDate>Sun, 10 Jan 2021 18:33:29 +0900</pubDate>
+    <lastBuildDate>Sun, 10 Jan 2021 18:33:29 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -64,9 +64,7 @@
 
 &lt;p&gt;$\mathbb{E_{x \thicksim G(z, c)}}[\mathbb{E_{c’ \thicksim P(c \vert x)}}[log Q(c’ \vert x)]] = \mathbb{E_{x \thicksim P_{G}(x \vert z, c), c’ \thicksim P(c’ \vert x)}}[logQ(c’ \vert x)]$&lt;/p&gt;
 
-&lt;p&gt;$=\mathbb{E_{x \thicksim P_{G}(x \vert z, c), c \thicksim x, c’ \thicksim P(c’ \vert x)}}[logQ(c’ \vert x)] = \mathbb{E_{x \thicksim P_{G}(x \vert z, c), c \thicksim p(c), }}[logQ(c’ \vert x)]$&lt;/p&gt;
-
-&lt;p&gt;$=\mathbb{E_{x \thicksim G(z, c), c \thicksim p(c)}}[logQ(c’ \vert x)]$&lt;/p&gt;
+&lt;p&gt;$=\mathbb{E_{x \thicksim P_{G}(x \vert z, c), c \thicksim x, c’ \thicksim P(c’ \vert x)}}[logQ(c’ \vert x)]=\mathbb{E_{x \thicksim G(z, c), c \thicksim p(c)}}[logQ(c’ \vert x)]$&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;font color=&quot;red&quot;&gt;${L_{I}}(G, Q) = \mathbb{E_{x \thicksim G(z, c), c \thicksim p(c)}}[logQ(c' \vert x)] + H(c)$&lt;/font&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
 
