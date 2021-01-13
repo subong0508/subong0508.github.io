@@ -13,7 +13,7 @@ Yonsei University, Seoul
 Applied Statistics and Computer Science Mar 2017 ~ Present
 
 ### Exchange Student
-National University of Singapore,
+National University of Singapore
 
 Applied Statistics and Probability Jan 2020 ~ May 2020
 
@@ -28,16 +28,18 @@ Applied Statistics and Probability Jan 2020 ~ May 2020
 - Data Science Project: Predicting the housing transaction price in Seoul
 - Data Science Project: Predicting whether the company goes bankrupt
 - Data Science Project: Big Contest(Predicting the revenue of certain product in home
-shopping)
+shopping)([link](https://github.com/YonseiESC/ESC-20SPRING/tree/master/%ED%8C%8C%EC%9D%B4%EB%84%90%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/5%EC%A1%B0))
 - Academic Director: Instructing the paper review session which are introduced in cs231n,
 cs224n
 
 ### Projects in Courses
-- Communication Text Mining Project: Predicting whether movie will hit using IMDB comments
+- **COM4206 Communication Text Mining Project 2nd Semester, 2019**: Predicting whether movie will hit using IMDB comments
 in a week after it is released.
-- IT3011 Introduction to Machine Learning and its Applications 1st Semester, 2020 • NLP Project: Translating Text Sentiment through Emojis
-
+- **IT3011 Introduction to Machine Learning and its Applications 1st Semester, 2020([link](https://github.com/subong0508/IT3011))**: NLP Project- Translating Text Sentiment through Emojis
+- **EE3314 Introduction to Artificial Intelligence([link](https://github.com/subong0508/CR-GAN)) 2nd Semester, 2020**: Computer Vision Project - Multiview Face Generation
 
 ## EXTRA SKILLS
-### Programming: Python, Java, R, MySQL
-- Certificates: SQL Developer
+
+### Programming: Python(proficient), R(advanced), Java(advanced), MySQL(advanced)
+
+### Certificates: SQL Developer
