@@ -36,7 +36,7 @@ cs224n
 - **COM4206 Communication Text Mining Project 2nd Semester, 2019**: Predicting whether movie will hit using IMDB comments
 in a week after it is released.
 - **IT3011 Introduction to Machine Learning and its Applications 1st Semester, 2020([link](https://github.com/subong0508/IT3011))**: NLP Project- Translating Text Sentiment through Emojis
-- **EE3314 Introduction to Artificial Intelligence([link](https://github.com/subong0508/CR-GAN)) 2nd Semester, 2020**: Computer Vision Project - Multiview Face Generation
+- **EE3314 Introduction to Artificial Intelligence 2nd Semester, 2020([link](https://github.com/subong0508/CR-GAN))**: Computer Vision Project - Multiview Face Generation
 
 ## EXTRA SKILLS
 
