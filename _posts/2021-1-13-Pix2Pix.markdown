@@ -58,6 +58,41 @@ D는 G가 생성한 전체 이미지를 보는 대신에, $N \times N$ 크기의
 
 # CycleGAN
 
+먼저, Cycle GAN으로 생성된 결과부터 보겠습니다.
+
+![cycle-gan](../../../../img/gans/cycle-img.png)
+
+지금부터 설명드릴 Cycle GAN은 Pix2Pix의 문제점인 data insuffiency를 해결한 논문입니다. Pix2Pix는 paired image dataset이 필요합니다. 그러나 실제로 그런 데이터는 흔하지 않습니다. 
+
+Cycle GAN은 **서로 다른 도메인**의 이미지들간 mapping을 구해주는 모델입니다. 즉, $G: X \rightarrow Y$라는 translator와 $F: Y \rightarrow X$라는 translator를 구해줍니다. $G^{-1}= F$의 관계가 성립합니다. 
+
+하지만 우리가 neural network에게 $G^{-1}= F$가 성립하도록 explicit하게 제재를 가해주는 방법이 없습니다. 따라서 이 논문들의 저자는 **Cycle Consistency Loss**를 더함으로써 $F(G(x)) \approxeq x$, $G(F(x)) \approxeq y$가 성립하도록 해주었습니다. 
+
+전체적인 네트워크 구조는 아래와 같습니다.
+
+![cycle-gan](../../../../img/gans/cycle-arc.png)
+
+## Objective
+
+### Adversarial Loss
+
+generated image가 target domain에서 왔는지 판별하는 D를 통해 adversarial 하게 학습합니다.
+
+![cycle-gan](../../../../img/gans/cycle-loss1.png)
+
+### Cycle Consistency Loss
+
+$G, F$가 역함수 관계에 있을 수 있도록 학습합니다. 이는 mode collapsing 문제도 해결해준다고 합니다.
+
+![cycle-gan](../../../../img/gans/cycle-loss2.png)
+
+### Full Objective
+
+![cycle-gan](../../../../img/gans/cycle-loss3.png)
+
+언급한 Loss를 모두 결합하면 위와 같습니다.
+
 # References
 [Image-to-Image Translation with Conditional Adversarial Networks](https://arxiv.org/pdf/1611.07004.pdf)
-[]()
+
+[Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks](https://arxiv.org/abs/1703.10593)
