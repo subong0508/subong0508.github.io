@@ -6,6 +6,7 @@ author: Jung Jaeeun
 categories: generative-models 
 tags: GAN Pix2Pix pix2pix CycleGAN deep-learning 
 use_math: true
+commtents: true
 ---
 
 이번 포스팅에서는 image-to-image translation model의 조상님격인 Pix2Pix와 CycleGAN에 대해서 알아보겠습니다. Pix2Pix를 먼저 다루고 그 후에 CycleGAN에 대해 다루려고 합니다.
