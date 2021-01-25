@@ -6,8 +6,8 @@
 </description>
     <link>http://subong0508.github.io/</link>
     <atom:link href="http://subong0508.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 25 Jan 2021 20:38:31 +0900</pubDate>
-    <lastBuildDate>Mon, 25 Jan 2021 20:38:31 +0900</lastBuildDate>
+    <pubDate>Mon, 25 Jan 2021 20:57:49 +0900</pubDate>
+    <lastBuildDate>Mon, 25 Jan 2021 20:57:49 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -100,6 +100,9 @@
 &lt;p&gt;&lt;a href=&quot;https://arxiv.org/pdf/1611.07004.pdf&quot;&gt;Image-to-Image Translation with Conditional Adversarial Networks&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://arxiv.org/abs/1703.10593&quot;&gt;Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;print(&quot;Hello world!&quot;)
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         <pubDate>Wed, 13 Jan 2021 00:00:00 +0900</pubDate>
         <link>http://subong0508.github.io/generative-models/2021/01/13/Pix2Pix.html</link>
