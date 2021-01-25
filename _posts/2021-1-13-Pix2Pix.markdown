@@ -97,7 +97,3 @@ $G, F$가 역함수 관계에 있을 수 있도록 학습합니다. 이는 mode 
 [Image-to-Image Translation with Conditional Adversarial Networks](https://arxiv.org/pdf/1611.07004.pdf)
 
 [Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks](https://arxiv.org/abs/1703.10593)
-
-```python3
-print("Hello world!")
-```
