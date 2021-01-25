@@ -10,11 +10,11 @@ exclude:
 
 # Site settings
 title: Data Vision
-subtitle: "My personal blog for studying AI"
+subtitle: "My personal blog for studying"
 email: subong0508@naver.com
 name: Jung Jaeeun
 description: >
-  My personal blog for studying AI
+  My personal blog for studying; mainly related to data
 # Base URL of site (i.e. /blog). It should always start with a slash,
 # and never end with a slash. Set it to a blank value if hosting at the
 # root of your server.
