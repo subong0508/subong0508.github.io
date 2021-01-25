@@ -2,13 +2,197 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Data Vision</title>
-    <description>My personal blog for studying AI
+    <description>My personal blog for studying; mainly related to data
 </description>
     <link>http://subong0508.github.io/</link>
     <atom:link href="http://subong0508.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 25 Jan 2021 21:11:42 +0900</pubDate>
-    <lastBuildDate>Mon, 25 Jan 2021 21:11:42 +0900</lastBuildDate>
+    <pubDate>Tue, 26 Jan 2021 01:02:16 +0900</pubDate>
+    <lastBuildDate>Tue, 26 Jan 2021 01:02:16 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>프로그래머스 Lv1 풀이 모음</title>
+        <description>&lt;h3 id=&quot;httpsprogrammerscokrlearncourses30lessons64061&quot;&gt;&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/64061&quot;&gt;크레인 인형뽑기 게임&lt;/a&gt;&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;def solution(board, moves):
+    answer = 0
+    n = len(board)
+    stack = []
+    for m in moves:
+        for i in range(n):
+            if board[i][m-1] != 0:
+                stack.append(board[i][m-1])
+                board[i][m-1] = 0
+                # 인형삭제
+                if len(stack) &amp;gt;= 2 and stack[-1] == stack[-2]:
+                    stack.pop()
+                    stack.pop()
+                    answer += 2
+                break
+    return answer
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;httpsprogrammerscokrlearncourses30lessons68644&quot;&gt;&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/68644&quot;&gt;두 개 뽑아서 더하기&lt;/a&gt;&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;def solution(numbers):
+    answer = set()
+    for i in range(len(numbers)):
+        for j in range(i+1, len(numbers)):
+            answer.add(numbers[i]+numbers[j])
+    answer = sorted(answer)
+    return answer
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;set 자료형으로 중복된 값이 삽입되지 않게 구현하였다. 시간복잡도는 $n^2 + n\log n \rightarrow O(n^2)$&lt;/p&gt;
+
+&lt;h3 id=&quot;httpsprogrammerscokrlearncourses30lessons42576&quot;&gt;&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/42576&quot;&gt;완주하지 못한 선수&lt;/a&gt;&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;def solution(participant, completion):
+    d = {}
+    for p in participant:
+        if p in d:
+            d[p] += 1
+        else:
+            d[p] = 1
+    
+    for c in completion:
+        d[c] -= 1
+    
+    for k in d:
+        if d[k] != 0:
+            answer = k
+            break
+    return answer
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;dictionary 자료형을 이용해서 돔영이인도 처리해주었음. 시간복잡도는 $3n \rightarrow O(n)$&lt;/p&gt;
+
+&lt;h3 id=&quot;httpsprogrammerscokrlearncourses30lessons72410&quot;&gt;&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/72410&quot;&gt;신규 아이디 추천&lt;/a&gt;&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;import string
+
+def solution(new_id):
+    # 1. 대문자-&amp;gt;소문자
+    new_id = new_id.lower()
+    # 2. 유효하지 않은 문자 제거
+    valid_str = list(string.ascii_lowercase) + list(map(str, range(10))) + ['-', '_', '.']
+    valid_str = set(valid_str)
+    tmp = ''
+    for i in range(len(new_id)):
+        # O(1)
+        if new_id[i] in valid_str:
+            tmp += new_id[i]
+    new_id = tmp
+    # 3. 마침표 두 번 치환
+    tmp = new_id
+    for i in range(len(new_id)):
+        if new_id[i] != '.':
+            continue
+        j = i
+        cnt = 0
+        while j &amp;lt; len(new_id) and new_id[j] == '.':
+            j += 1
+            cnt += 1
+        tmp = tmp.replace('.' * cnt, '.')
+    new_id = tmp
+    # 4. 처음이나 끝 '.' 제거
+    if len(new_id) &amp;gt; 0 and new_id[0] == '.':
+        new_id = new_id[1:]
+    if len(new_id) &amp;gt; 0 and new_id[-1] == '.':
+        new_id = new_id[:-1]
+    # 5. 빈 문자열이라면 'a' 대입
+    if new_id == '':
+        new_id = 'a'
+    # 6. 길이가 16자 이상이라면 15개까지만
+    if len(new_id) &amp;gt;= 16:
+        new_id = new_id[:15]
+        # 마지막 '.' 처리
+        if new_id[-1] == '.':
+            new_id = new_id[:-1]
+    # 길이가 2자 이하라면
+    if len(new_id) &amp;lt;= 2:
+        ch = new_id[-1]
+        while len(new_id) &amp;lt; 3:
+            new_id += ch
+    return new_id
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;3번에서 마침표가 여러번 나오는 걸 하나의 마침표로 치환해주는게 조금 복잡해서 애먹은 문제..&lt;/p&gt;
+
+&lt;h3 id=&quot;httpsprogrammerscokrlearncourses30lessons42840&quot;&gt;&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/42840&quot;&gt;모의고사&lt;/a&gt;&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;def solution(answers):
+    answer = []
+    st1 = [1, 2, 3, 4, 5]
+    st2 = [2, 1, 2, 3, 2, 4, 2, 5]
+    st3 = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5]
+    cnt1 = get_cnt(st1, answers)
+    cnt2 = get_cnt(st2, answers)
+    cnt3 = get_cnt(st3, answers)
+    cnts = [cnt1, cnt2, cnt3]
+    max_val = max(cnts)
+    for i in range(3):
+        if cnts[i] == max_val:
+            answer.append(i+1)
+    return answer
+
+def get_cnt(st, answers):
+    cnt = 0
+    for i in range(len(answers)):
+        if st[i % len(st)] == answers[i]:
+            cnt += 1
+    return cnt
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Mon, 25 Jan 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/01/25/Programmers-Lv1-1.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/01/25/Programmers-Lv1-1.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>Django 기본 명령어 모음</title>
+        <description>&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;# run server
+&amp;gt; python manage.py runserver {port_number}
+
+# app 만들기
+&amp;gt; python manage.py startapp {app_name}
+
+# migration
+&amp;gt; python manage.py makemigrations {app_name}
+&amp;gt; python manage.py migrate {app_name}
+
+# check
+&amp;gt; python manage.py sqlmigrate {app_name} 0001_initial
+&amp;gt; python manage.py dbshell
+&amp;gt; python manage.py showmigrations {app_name}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Mon, 25 Jan 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/django/2021/01/25/Django-commands.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/django/2021/01/25/Django-commands.html</guid>
+        
+        <category>python</category>
+        
+        <category>django</category>
+        
+        <category>backend</category>
+        
+        <category>server</category>
+        
+        
+        <category>django</category>
+        
+      </item>
     
       <item>
         <title>Pix2Pix, CycleGAN</title>
@@ -1284,76 +1468,6 @@ $\Phi_{H}(x;k) = \exp(-\frac{1}{2\sigma^{2}} \vert\vert u-u_{k} \vert\vert ^ {2}
         
         
         <category>generative-models</category>
-        
-      </item>
-    
-      <item>
-        <title>Welcome to Jekyll!</title>
-        <description>&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
-
-&lt;h2 id=&quot;adding-new-posts&quot;&gt;Adding New Posts&lt;/h2&gt;
-
-&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
-
-&lt;h3 id=&quot;tags-and-categories&quot;&gt;Tags and Categories&lt;/h3&gt;
-
-&lt;p&gt;If you list one or more categories or tags in the front matter of your post, they will be included with the post on the page as links. Clicking the link will bring you to an auto-generated archive page for the category or tag, created using the &lt;a href=&quot;https://github.com/jekyll/jekyll-archives&quot;&gt;jekyll-archive&lt;/a&gt; gem.&lt;/p&gt;
-
-&lt;h3 id=&quot;cover-images&quot;&gt;Cover Images&lt;/h3&gt;
-
-&lt;p&gt;To add a cover image to your post, set the “cover” property in the front matter with the relative URL of the image (i.e. &lt;code&gt;cover: &quot;/assets/cover_image.jpg&quot;&lt;/code&gt;).&lt;/p&gt;
-
-&lt;h3 id=&quot;code-snippets&quot;&gt;Code Snippets&lt;/h3&gt;
-
-&lt;p&gt;You can use &lt;a href=&quot;https://highlightjs.org/&quot;&gt;highlight.js&lt;/a&gt; to add syntax highlight code snippets:&lt;/p&gt;
-
-&lt;p&gt;Use the &lt;a href=&quot;https://github.com/Shopify/liquid/wiki/Liquid-for-Designers&quot;&gt;Liquid&lt;/a&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;highlight&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;lt;language&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt; tag to add syntax highlighting to code snippets.&lt;/p&gt;
-
-&lt;p&gt;For instance, this template…&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;{% highlight javascript %}    
-function demo(string, times) {    
-  for (var i = 0; i &lt;span class=&quot;nt&quot;&gt;&amp;lt; times&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;++)&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;    
-    &lt;span class=&quot;na&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;);&lt;/span&gt;    
-  &lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;    
-&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;    
-&lt;span class=&quot;na&quot;&gt;demo&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;(&quot;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;hello&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;world&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;!&quot;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;endhighlight&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;%}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;…will come out looking like this:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;demo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;times&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;times&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;demo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;hello, world!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Syntax highlighting is done using &lt;a href=&quot;https://highlightjs.org/&quot;&gt;highlight.js&lt;/a&gt;. You can change the active theme in &lt;a href=&quot;https://github.com/bencentra/centrarium/blob/2dcd73d09e104c3798202b0e14c1db9fa6e77bc7/_includes/head.html#L15&quot;&gt;head.html&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;images&quot;&gt;Images&lt;/h3&gt;
-
-&lt;p&gt;Lightbox has been enabled for images. To create the link that’ll launch the lightbox, add &lt;code&gt;data-lightbox&lt;/code&gt; and &lt;code&gt;data-title&lt;/code&gt; attributes to an &lt;code&gt;&amp;lt;a&amp;gt;&lt;/code&gt; tag around your &lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt; tag. The result is:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;//bencentra.com/assets/images/falcon9_large.jpg&quot; data-lightbox=&quot;falcon9-large&quot; data-title=&quot;Check out the Falcon 9 from SpaceX&quot;&gt;
-  &lt;img src=&quot;//bencentra.com/assets/images/falcon9_small.jpg&quot; title=&quot;Check out the Falcon 9 from SpaceX&quot; /&gt;
-&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;For more information, check out the &lt;a href=&quot;http://lokeshdhakar.com/projects/lightbox2/&quot;&gt;Lightbox&lt;/a&gt; website.&lt;/p&gt;
-
-&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://github.com/jekyll/jekyll-help&quot;&gt;Jekyll’s dedicated Help repository&lt;/a&gt;.&lt;/p&gt;
-
-</description>
-        <pubDate>Sat, 18 Apr 2015 17:43:59 +0900</pubDate>
-        <link>http://subong0508.github.io/jekyll/2015/04/18/welcome-to-jekyll.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/jekyll/2015/04/18/welcome-to-jekyll.html</guid>
-        
-        <category>jekyll</category>
-        
-        <category>welcome</category>
-        
-        
-        <category>Jekyll</category>
         
       </item>
     
