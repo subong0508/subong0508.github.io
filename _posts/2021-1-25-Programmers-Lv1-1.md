@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 프로그래머스 Lv1 추천문제 + 풀이 모음
+title: 프로그래머스 Lv1 추천문제 + 풀이 모음(미완성)
 date:  2021-1-25
 author: Jung Jaeeun
 categories: Problem-Solving
