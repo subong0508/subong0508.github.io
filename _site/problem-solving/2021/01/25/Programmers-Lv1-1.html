@@ -32,7 +32,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>프로그래머스 Lv1 추천문제 + 풀이 모음(미완성)</title>
+  <title>프로그래머스 Lv1 추천문제 + 풀이 모음</title>
   <meta name="description" content="추천문제">
   
   <meta name="author" content="Jung Jaeeun">
@@ -70,7 +70,7 @@
   <meta property="og:description" content="추천문제" />
   <meta property="og:url" content="http://subong0508.github.io" />
   <meta property="og:site_name" content="Data Vision" />
-  <meta property="og:title" content="프로그래머스 Lv1 추천문제 + 풀이 모음(미완성)" />
+  <meta property="og:title" content="프로그래머스 Lv1 추천문제 + 풀이 모음" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="http://subong0508.github.io/assets/logo.png" />
   <meta property="og:image:type" content="image/png" />
@@ -81,7 +81,7 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="프로그래머스 Lv1 추천문제 + 풀이 모음(미완성)">
+  <meta name="twitter:title" content="프로그래머스 Lv1 추천문제 + 풀이 모음">
   <meta name="twitter:description" content="추천문제">
   <meta name="twitter:image" content="http://subong0508.github.io/assets/logo.png">
   <meta name="twitter:url" content="http://subong0508.github.io">
@@ -141,7 +141,7 @@
 <div class="post-header-container " >
   <div class="scrim ">
     <header class="post-header">
-      <h1 class="title">프로그래머스 Lv1 추천문제 + 풀이 모음(미완성)</h1>
+      <h1 class="title">프로그래머스 Lv1 추천문제 + 풀이 모음</h1>
       <p class="info">by <strong>Jung Jaeeun</strong></p>
     </header>
   </div>
@@ -169,7 +169,7 @@
 <article class="post-content">
   <h2 id="section">추천문제</h2>
 
-<p>사실 코딩 수업을 들은 적이 있거나 독학한 적이 있으면 프로그래머스 Lv1은 손쉽게 풀 수 있다. 그리고 그 와중에서도 난이도 차이가 꽤나 많이 나서 추천문제만 모아보았다. 추천 문제들은 주로 구현 문제 또는 엣지 케이스에 잘 걸린다거나 효율성 테스트(시간복잡도 측정)에 걸리는 문제들이다.</p>
+<p>사실 코딩 수업을 들은 적이 있거나 독학한 적이 있으면 프로그래머스 Lv1은 손쉽게 풀 수 있다. 그리고 그 와중에서도 난이도 차이가 꽤나 많이 나서 추천문제만 모아보았다. 추천 문제들은 주로 구현 문제 또는 엣지 케이스에 잘 걸린다거나 효율성 테스트(시간복잡도 측정)에 걸리는 문제들이다. 그냥 내기준 다른 문제들보다 까다로운 문제들로 골라봤다.</p>
 
 <ul>
   <li><a href="https://programmers.co.kr/learn/courses/30/lessons/64061">크레인 인형뽑기 게임</a></li>
@@ -183,6 +183,10 @@
   <li><a href="https://programmers.co.kr/learn/courses/30/lessons/12926">시저 암호</a></li>
   <li><a href="https://programmers.co.kr/learn/courses/30/lessons/12930">이상한 문자 만들기</a></li>
   <li><a href="https://programmers.co.kr/learn/courses/30/lessons/67256">키패드 누르기</a></li>
+  <li><a href="https://programmers.co.kr/learn/courses/30/lessons/12982">예산</a></li>
+  <li><a href="https://programmers.co.kr/learn/courses/30/lessons/17681">[1차] 비밀지도</a></li>
+  <li><a href="https://programmers.co.kr/learn/courses/30/lessons/42889">실패율</a></li>
+  <li><a href="https://programmers.co.kr/learn/courses/30/lessons/17682">[1차] 다트 게임</a></li>
 </ul>
 
 <p><br /></p>
@@ -733,6 +737,200 @@ def distance(a, b):
 </code></pre>
 
 <p><code class="highlighter-rouge">numbers</code>안에 있는 0을 따로 예외처리해줘야 한다. 그 부분만 빼면 평범한 구현문제인듯하다.</p>
+
+<h3 id="httpsprogrammerscokrlearncourses30lessons12940"><a href="https://programmers.co.kr/learn/courses/30/lessons/12940">최대공약수와 최소공배수</a></h3>
+
+<pre><code class="language-python3">def solution(n, m):
+    gcd = find_gcd(max(n, m), min(n, m))
+    lcm = n * m / gcd
+    answer = [gcd, lcm]
+    return answer
+
+def find_gcd(m, n):
+    """m has to be greater than or equal to n"""
+    r = m % n
+    while r &gt; 0:
+        m, n = n, r
+        r = m % n
+    return n
+</code></pre>
+
+<h3 id="httpsprogrammerscokrlearncourses30lessons12943"><a href="https://programmers.co.kr/learn/courses/30/lessons/12943">콜라츠 추측</a></h3>
+
+<pre><code class="language-python3">def solution(num):
+    answer = 0
+    while num != 1:
+        answer += 1
+        if num % 2 == 0:
+            num //= 2
+        else:
+            num = num*3 + 1
+        if answer &gt;= 500:
+            answer = -1
+            break
+    return answer
+</code></pre>
+
+<h3 id="httpsprogrammerscokrlearncourses30lessons12944"><a href="https://programmers.co.kr/learn/courses/30/lessons/12944">평균 구하기</a></h3>
+
+<pre><code class="language-python3">def solution(arr):
+    cnt = len(arr)
+    total = sum(arr)
+    return total / cnt
+</code></pre>
+
+<h3 id="httpsprogrammerscokrlearncourses30lessons12947"><a href="https://programmers.co.kr/learn/courses/30/lessons/12947">하샤드 수</a></h3>
+
+<pre><code class="language-python3">def solution(x):
+    d = 0
+    x_str = str(x)
+    for ch in x_str:
+        d += int(ch)
+    return x % d == 0
+</code></pre>
+
+<h3 id="httpsprogrammerscokrlearncourses30lessons12948"><a href="https://programmers.co.kr/learn/courses/30/lessons/12948">핸드폰 번호 가리기</a></h3>
+
+<pre><code class="language-python3">def solution(phone_number):
+    answer = '*' * (len(phone_number)-4) + phone_number[-4:]
+    return answer
+</code></pre>
+
+<h3 id="httpsprogrammerscokrlearncourses30lessons12950"><a href="https://programmers.co.kr/learn/courses/30/lessons/12950">행렬의 덧셈</a></h3>
+
+<pre><code class="language-python3">def solution(arr1, arr2):
+    answer = [[0] * len(arr1[0]) for _ in range(len(arr1))]
+    for i in range(len(answer)):
+        for j in range(len(answer[0])):
+            answer[i][j] += (arr1[i][j] + arr2[i][j])
+    return answer
+</code></pre>
+
+<h3 id="x---n-httpsprogrammerscokrlearncourses30lessons12954"><a href="https://programmers.co.kr/learn/courses/30/lessons/12954">x만큼 간격이 있는 n개의 숫자</a></h3>
+
+<pre><code class="language-python3">def solution(x, n):
+    answer = [x*i for i in range(1, n+1)]
+    return answer
+</code></pre>
+
+<h3 id="httpsprogrammerscokrlearncourses30lessons12969"><a href="https://programmers.co.kr/learn/courses/30/lessons/12969">직사각형 별찍기</a></h3>
+
+<pre><code class="language-python3">a, b = map(int, input().strip().split(' '))
+for i in range(b):
+    for j in range(a):
+        print('*', end='')
+    print()
+</code></pre>
+
+<h3 id="httpsprogrammerscokrlearncourses30lessons12982"><a href="https://programmers.co.kr/learn/courses/30/lessons/12982">예산</a></h3>
+
+<pre><code class="language-python3">def solution(d, budget):
+    answer = 0
+    d.sort(reverse=True)
+    while d:
+        budget -= d.pop()
+        if budget == 0:
+            answer += 1
+            break
+        elif budget &lt; 0:
+            break
+        answer += 1
+    return answer
+</code></pre>
+
+<h3 id="httpsprogrammerscokrlearncourses30lessons17681"><a href="https://programmers.co.kr/learn/courses/30/lessons/17681">[1차] 비밀지도</a></h3>
+
+<pre><code class="language-python3">def solution(n, arr1, arr2):
+    answer = []
+    for a, b, in zip(arr1, arr2):
+        str1, str2 = bin(a)[2:], bin(b)[2:]
+        # 공백처리
+        if len(str1) &lt; n:
+            str1 = (n-len(str1)) * '0' + str1
+        if len(str2) &lt; n:
+            str2 = (n-len(str2)) * '0' + str2
+            
+        tmp = ['#' if ch1 == '1' or ch2 == '1' else ' ' for 
+              ch1, ch2 in zip(str1, str2)]
+        answer.append(''.join(tmp))
+    return answer
+</code></pre>
+
+<p>파이썬 내장함수인 <code class="highlighter-rouge">bin</code>을 사용하면 십진수를 이진법으로 쉽게 바꿔줄 수 있다. 또한 <code class="highlighter-rouge">n</code>에 맞게 패딩처리도 해줘야한다.</p>
+
+<h3 id="httpsprogrammerscokrlearncourses30lessons42889"><a href="https://programmers.co.kr/learn/courses/30/lessons/42889">실패율</a></h3>
+
+<pre><code class="language-python3">def solution(N, stages):
+    d = {i: 0 for i in range(1, N+1)}
+    total = len(stages)
+    cnt = 1
+    stages.sort()
+    prev = stages[0]
+    for i in range(1, len(stages)):
+        # 범위를 이미 넘어선 경우
+        if prev &gt; N:
+            break
+            
+        # 딕셔너리 업데이트
+        if stages[i] != prev:
+            d[prev] = cnt / total
+            total -= cnt
+            cnt = 1
+            prev = stages[i]
+        # 마지막 원소까지 d에 있는 경우
+        elif i == len(stages)-1 and prev in d:
+            cnt += 1
+            d[prev] = total / cnt
+        else:
+            cnt += 1
+            
+    # stable sort: reverse=True말고 -를 붙여주어야 한다.
+    answer = sorted(d.keys(), key=lambda x: -d[x])
+    return answer
+</code></pre>
+
+<p><code class="highlighter-rouge">stages</code>를 정렬해주고 직전의 값과 비교해주면서 딕셔너리를 업데이트 해주었다. 이때 <code class="highlighter-rouge">stages</code>에 <code class="highlighter-rouge">N</code>보다 큰 값이 있을 수도 있으니 예외처리를 해주고, <code class="highlighter-rouge">[4, 4, 4, 4]</code>같은 경우 마지막까지 범위안에 들어가므로 <code class="highlighter-rouge">elif</code>조건을 추가했다.</p>
+
+<p>마지막으로 <em>stable sort</em>를 위해 파이썬의 내장함수인 <code class="highlighter-rouge">sorted</code>를 사용했는데 <code class="highlighter-rouge">reverse=True</code>를 옵션으로 줘버리면 <em>reverse stable sort</em>가 되기 때문에 <code class="highlighter-rouge">key</code> 파라미터에 마이너스(-)를 적용한 람다함수를 값으로 주었다.</p>
+
+<h3 id="httpsprogrammerscokrlearncourses30lessons17682"><a href="https://programmers.co.kr/learn/courses/30/lessons/17682">[1차] 다트 게임</a></h3>
+
+<pre><code class="language-python3">def solution(dartResult):
+    answer = 0
+    # 점수들을 담은 스택
+    stack = []
+    for i, ch in enumerate(dartResult):
+        if ch.isdigit():
+            # 숫자가 이어지는 경우
+            if stack and dartResult[i-1].isdigit():
+                stack.append(stack.pop()*10 + int(ch))
+            else:
+                stack.append(int(ch))
+        elif ch in ('S', 'D', 'T'):
+            if ch == 'S':
+                m = 1
+            elif ch == 'D':
+                m = 2
+            elif ch == 'T':
+                m = 3
+            # 점수를 바꿔준다.
+            stack[-1]  = stack[-1] ** m
+        else:
+            # 스타상 처리
+            if ch == '*':
+                if len(stack) &gt;= 2:
+                    stack[-1] *= 2
+                    stack[-2] *= 2
+                else:
+                    stack[-1] *= 2
+            else: # 아차상 처리
+                stack[-1] *= -1
+        
+    answer = sum(stack)
+    return answer
+</code></pre>
+
+<p>지금까지 획득한 점수들을 담은 배열을 스택으로 생각하고 처리해주면 되는 문제였다.</p>
 
 </article>
 

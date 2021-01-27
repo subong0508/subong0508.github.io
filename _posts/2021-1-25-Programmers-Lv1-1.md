@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 프로그래머스 Lv1 추천문제 + 풀이 모음(미완성)
+title: 프로그래머스 Lv1 추천문제 + 풀이 모음
 date:  2021-1-25
 author: Jung Jaeeun
 categories: Problem-Solving
@@ -11,7 +11,7 @@ commtents: true
 
 ## 추천문제
 
-사실 코딩 수업을 들은 적이 있거나 독학한 적이 있으면 프로그래머스 Lv1은 손쉽게 풀 수 있다. 그리고 그 와중에서도 난이도 차이가 꽤나 많이 나서 추천문제만 모아보았다. 추천 문제들은 주로 구현 문제 또는 엣지 케이스에 잘 걸린다거나 효율성 테스트(시간복잡도 측정)에 걸리는 문제들이다.
+사실 코딩 수업을 들은 적이 있거나 독학한 적이 있으면 프로그래머스 Lv1은 손쉽게 풀 수 있다. 그리고 그 와중에서도 난이도 차이가 꽤나 많이 나서 추천문제만 모아보았다. 추천 문제들은 주로 구현 문제 또는 엣지 케이스에 잘 걸린다거나 효율성 테스트(시간복잡도 측정)에 걸리는 문제들이다. 그냥 내기준 다른 문제들보다 까다로운 문제들로 골라봤다.
 
 - [크레인 인형뽑기 게임](https://programmers.co.kr/learn/courses/30/lessons/64061)
 - [신규 아이디 추천](https://programmers.co.kr/learn/courses/30/lessons/72410)
@@ -24,6 +24,11 @@ commtents: true
 - [시저 암호](https://programmers.co.kr/learn/courses/30/lessons/12926)
 - [이상한 문자 만들기](https://programmers.co.kr/learn/courses/30/lessons/12930)
 - [키패드 누르기](https://programmers.co.kr/learn/courses/30/lessons/67256)
+- [예산](https://programmers.co.kr/learn/courses/30/lessons/12982)
+- [[1차] 비밀지도](https://programmers.co.kr/learn/courses/30/lessons/17681)
+- [실패율](https://programmers.co.kr/learn/courses/30/lessons/42889)
+- [[1차] 다트 게임](https://programmers.co.kr/learn/courses/30/lessons/17682)
+
 
 <br>
 
@@ -606,3 +611,209 @@ def distance(a, b):
 ```
 
 ```numbers```안에 있는 0을 따로 예외처리해줘야 한다. 그 부분만 빼면 평범한 구현문제인듯하다.
+
+### [최대공약수와 최소공배수](https://programmers.co.kr/learn/courses/30/lessons/12940)
+
+```python3
+def solution(n, m):
+    gcd = find_gcd(max(n, m), min(n, m))
+    lcm = n * m / gcd
+    answer = [gcd, lcm]
+    return answer
+
+def find_gcd(m, n):
+    """m has to be greater than or equal to n"""
+    r = m % n
+    while r > 0:
+        m, n = n, r
+        r = m % n
+    return n
+```
+
+### [콜라츠 추측](https://programmers.co.kr/learn/courses/30/lessons/12943)
+
+```python3
+def solution(num):
+    answer = 0
+    while num != 1:
+        answer += 1
+        if num % 2 == 0:
+            num //= 2
+        else:
+            num = num*3 + 1
+        if answer >= 500:
+            answer = -1
+            break
+    return answer
+```
+
+### [평균 구하기](https://programmers.co.kr/learn/courses/30/lessons/12944)
+
+```python3
+def solution(arr):
+    cnt = len(arr)
+    total = sum(arr)
+    return total / cnt
+```
+
+### [하샤드 수](https://programmers.co.kr/learn/courses/30/lessons/12947)
+
+```python3
+def solution(x):
+    d = 0
+    x_str = str(x)
+    for ch in x_str:
+        d += int(ch)
+    return x % d == 0
+```
+
+### [핸드폰 번호 가리기](https://programmers.co.kr/learn/courses/30/lessons/12948)
+
+```python3
+def solution(phone_number):
+    answer = '*' * (len(phone_number)-4) + phone_number[-4:]
+    return answer
+```
+
+### [행렬의 덧셈](https://programmers.co.kr/learn/courses/30/lessons/12950)
+
+```python3
+def solution(arr1, arr2):
+    answer = [[0] * len(arr1[0]) for _ in range(len(arr1))]
+    for i in range(len(answer)):
+        for j in range(len(answer[0])):
+            answer[i][j] += (arr1[i][j] + arr2[i][j])
+    return answer
+```
+
+### [x만큼 간격이 있는 n개의 숫자](https://programmers.co.kr/learn/courses/30/lessons/12954)
+
+```python3
+def solution(x, n):
+    answer = [x*i for i in range(1, n+1)]
+    return answer
+```
+
+### [직사각형 별찍기](https://programmers.co.kr/learn/courses/30/lessons/12969)
+
+```python3
+a, b = map(int, input().strip().split(' '))
+for i in range(b):
+    for j in range(a):
+        print('*', end='')
+    print()
+```
+
+### [예산](https://programmers.co.kr/learn/courses/30/lessons/12982)
+
+```python3
+def solution(d, budget):
+    answer = 0
+    d.sort(reverse=True)
+    while d:
+        budget -= d.pop()
+        if budget == 0:
+            answer += 1
+            break
+        elif budget < 0:
+            break
+        answer += 1
+    return answer
+```
+
+### [[1차] 비밀지도](https://programmers.co.kr/learn/courses/30/lessons/17681)
+
+```python3
+def solution(n, arr1, arr2):
+    answer = []
+    for a, b, in zip(arr1, arr2):
+        str1, str2 = bin(a)[2:], bin(b)[2:]
+        # 공백처리
+        if len(str1) < n:
+            str1 = (n-len(str1)) * '0' + str1
+        if len(str2) < n:
+            str2 = (n-len(str2)) * '0' + str2
+            
+        tmp = ['#' if ch1 == '1' or ch2 == '1' else ' ' for 
+              ch1, ch2 in zip(str1, str2)]
+        answer.append(''.join(tmp))
+    return answer
+```
+
+파이썬 내장함수인 ```bin```을 사용하면 십진수를 이진법으로 쉽게 바꿔줄 수 있다. 또한 ```n```에 맞게 패딩처리도 해줘야한다.
+
+### [실패율](https://programmers.co.kr/learn/courses/30/lessons/42889)
+
+```python3
+def solution(N, stages):
+    d = {i: 0 for i in range(1, N+1)}
+    total = len(stages)
+    cnt = 1
+    stages.sort()
+    prev = stages[0]
+    for i in range(1, len(stages)):
+        # 범위를 이미 넘어선 경우
+        if prev > N:
+            break
+            
+        # 딕셔너리 업데이트
+        if stages[i] != prev:
+            d[prev] = cnt / total
+            total -= cnt
+            cnt = 1
+            prev = stages[i]
+        # 마지막 원소까지 d에 있는 경우
+        elif i == len(stages)-1 and prev in d:
+            cnt += 1
+            d[prev] = total / cnt
+        else:
+            cnt += 1
+            
+    # stable sort: reverse=True말고 -를 붙여주어야 한다.
+    answer = sorted(d.keys(), key=lambda x: -d[x])
+    return answer
+```
+
+```stages```를 정렬해주고 직전의 값과 비교해주면서 딕셔너리를 업데이트 해주었다. 이때 ```stages```에 ```N```보다 큰 값이 있을 수도 있으니 예외처리를 해주고, ```[4, 4, 4, 4]```같은 경우 마지막까지 범위안에 들어가므로 ```elif```조건을 추가했다. 
+
+마지막으로 *stable sort*를 위해 파이썬의 내장함수인 ```sorted```를 사용했는데 ```reverse=True```를 옵션으로 줘버리면 *reverse stable sort*가 되기 때문에 ```key``` 파라미터에 마이너스(-)를 적용한 람다함수를 값으로 주었다.
+
+### [[1차] 다트 게임](https://programmers.co.kr/learn/courses/30/lessons/17682)
+
+```python3
+def solution(dartResult):
+    answer = 0
+    # 점수들을 담은 스택
+    stack = []
+    for i, ch in enumerate(dartResult):
+        if ch.isdigit():
+            # 숫자가 이어지는 경우
+            if stack and dartResult[i-1].isdigit():
+                stack.append(stack.pop()*10 + int(ch))
+            else:
+                stack.append(int(ch))
+        elif ch in ('S', 'D', 'T'):
+            if ch == 'S':
+                m = 1
+            elif ch == 'D':
+                m = 2
+            elif ch == 'T':
+                m = 3
+            # 점수를 바꿔준다.
+            stack[-1]  = stack[-1] ** m
+        else:
+            # 스타상 처리
+            if ch == '*':
+                if len(stack) >= 2:
+                    stack[-1] *= 2
+                    stack[-2] *= 2
+                else:
+                    stack[-1] *= 2
+            else: # 아차상 처리
+                stack[-1] *= -1
+        
+    answer = sum(stack)
+    return answer
+```
+
+지금까지 획득한 점수들을 담은 배열을 스택으로 생각하고 처리해주면 되는 문제였다.
