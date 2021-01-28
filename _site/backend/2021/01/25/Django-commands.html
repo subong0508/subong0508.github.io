@@ -7,9 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>server</title>
-  <meta name="description" content="My personal blog for studying; mainly related to data
-">
+  <title>Django 기본 명령어 모음</title>
+  <meta name="description" content="```python3run server  python manage.py runserver {port_number}">
   
   <meta name="author" content="Jung Jaeeun">
   <meta name="copyright" content="&copy; Jung Jaeeun 2021">
@@ -43,11 +42,10 @@
 
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="My personal blog for studying; mainly related to data
-" />
+  <meta property="og:description" content="```python3run server  python manage.py runserver {port_number}" />
   <meta property="og:url" content="http://subong0508.github.io" />
   <meta property="og:site_name" content="Data Vision" />
-  <meta property="og:title" content="server" />
+  <meta property="og:title" content="Django 기본 명령어 모음" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="http://subong0508.github.io/assets/logo.png" />
   <meta property="og:image:type" content="image/png" />
@@ -58,9 +56,8 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="server">
-  <meta name="twitter:description" content="My personal blog for studying; mainly related to data
-">
+  <meta name="twitter:title" content="Django 기본 명령어 모음">
+  <meta name="twitter:description" content="```python3run server  python manage.py runserver {port_number}">
   <meta name="twitter:image" content="http://subong0508.github.io/assets/logo.png">
   <meta name="twitter:url" content="http://subong0508.github.io">
   
@@ -69,7 +66,7 @@
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://subong0508.github.io/tag/server/">
+  <link rel="canonical" href="http://subong0508.github.io/backend/2021/01/25/Django-commands.html">
   <link rel="alternate" type="application/rss+xml" title="Data Vision" href="http://subong0508.github.io/feed.xml" />
 </head>
 
@@ -103,6 +100,12 @@
           <li class="nav-link"><a href="/posts/">Posts</a>
           
         
+          
+        
+          
+        
+          
+        
       </ul>
     </nav>
   </div>
@@ -110,30 +113,128 @@
 
 
     <div class="page-content">
-        <div class="wrapper">
-<div class="page">
+        <div class="post">
 
-  <header class="post-header">
-    <h1 class="post-title">Posts in "Server"</h1>
-  </header>
+<div class="post-header-container " >
+  <div class="scrim ">
+    <header class="post-header">
+      <h1 class="title">Django 기본 명령어 모음</h1>
+      <p class="info">by <strong>Jung Jaeeun</strong></p>
+    </header>
+  </div>
+</div>
 
-  <span class="page-divider">
+<div class="wrapper">
+
+ <span class="page-divider">
   <span class="one"></span>
   <span class="two"></span>
 </span>
+ 
+
+<section class="post-meta">
+  <div class="post-date">January 25, 2021</div>
+  <div class="post-categories">
+  in 
+    
+    <a href="/category/Backend">Backend</a>
+    
+  
+  </div>
+</section>  
+
+<article class="post-content">
+  <pre><code class="language-python3"># run server
+&gt; python manage.py runserver {port_number}
+
+# app 만들기
+&gt; python manage.py startapp {app_name}
+
+# migration
+&gt; python manage.py makemigrations {app_name}
+&gt; python manage.py migrate {app_name}
+
+# check
+&gt; python manage.py sqlmigrate {app_name} 0001_initial
+&gt; python manage.py dbshell
+&gt; python manage.py showmigrations {app_name}
+</code></pre>
+
+</article>
 
 
-  <article class="post-content">
-    <ul class="posts-list">
-      
-      <li><strong><a class="post-link" href="/backend/2021/01/25/Django-commands.html">Django 기본 명령어 모음</a></strong><span class="post-date"> - January 25, 2021</span></li>
-      
-    </ul>
-  </article>
+
+<section class="tags">
+  <strong>Tags:</strong> <a href="/tag/python">python</a>,&nbsp;<a href="/tag/django">django</a>,&nbsp;<a href="/tag/backend">backend</a>,&nbsp;<a href="/tag/server">server</a>
+</section>
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<section class="share">
+  <span>Share: </span>
+  
+    
+    
+    
+    
+    
+    
+    
+  
+</section>
+
+	<section class="post-navigation">
+		<span class="prev-post">
+			
+				<a href="/generative-models/2021/01/13/Pix2Pix.html">
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-square fa-stack-2x"></i>
+						<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+					</span>
+					<span class="page-number">Pix2Pix, CycleGAN</span>
+				</a>
+			
+		</span>
+		<span class="next-post">
+			
+				<a href="/problem-solving/2021/01/25/Programmers-Lv1-1.html">
+					<span class="page-number">프로그래머스 Lv1 추천문제 + 풀이 모음</span>
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-square fa-stack-2x"></i>
+						<i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
+					</span>
+				</a>
+			
+		</span>
+	</section>
+
+
+
+
+<section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'subong0508-github-io';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
 
 </div>
 </div>
-<br>
 
     </div>
 
@@ -160,6 +261,12 @@
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
+        
+        
+        
+        
         
         
       </ul>

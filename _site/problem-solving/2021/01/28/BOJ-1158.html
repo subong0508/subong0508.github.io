@@ -3,13 +3,37 @@
 
   <head>
   
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        TeX: {
+          equationNumbers: {
+            autoNumber: "AMS"
+          }
+        },
+        tex2jax: {
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+      }
+    });
+    MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+          alert("Math Processing Error: "+message[1]);
+        });
+    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+          alert("Math Processing Error: "+message[1]);
+        });
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    
+  
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>server</title>
-  <meta name="description" content="My personal blog for studying; mainly related to data
-">
+  <title>백준 Silver5 - 요세푸스 문제</title>
+  <meta name="description" content="백준 1158번">
   
   <meta name="author" content="Jung Jaeeun">
   <meta name="copyright" content="&copy; Jung Jaeeun 2021">
@@ -43,11 +67,10 @@
 
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="My personal blog for studying; mainly related to data
-" />
+  <meta property="og:description" content="백준 1158번" />
   <meta property="og:url" content="http://subong0508.github.io" />
   <meta property="og:site_name" content="Data Vision" />
-  <meta property="og:title" content="server" />
+  <meta property="og:title" content="백준 Silver5 - 요세푸스 문제" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="http://subong0508.github.io/assets/logo.png" />
   <meta property="og:image:type" content="image/png" />
@@ -58,9 +81,8 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="server">
-  <meta name="twitter:description" content="My personal blog for studying; mainly related to data
-">
+  <meta name="twitter:title" content="백준 Silver5 - 요세푸스 문제">
+  <meta name="twitter:description" content="백준 1158번">
   <meta name="twitter:image" content="http://subong0508.github.io/assets/logo.png">
   <meta name="twitter:url" content="http://subong0508.github.io">
   
@@ -69,7 +91,7 @@
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://subong0508.github.io/tag/server/">
+  <link rel="canonical" href="http://subong0508.github.io/problem-solving/2021/01/28/BOJ-1158.html">
   <link rel="alternate" type="application/rss+xml" title="Data Vision" href="http://subong0508.github.io/feed.xml" />
 </head>
 
@@ -103,6 +125,12 @@
           <li class="nav-link"><a href="/posts/">Posts</a>
           
         
+          
+        
+          
+        
+          
+        
       </ul>
     </nav>
   </div>
@@ -110,30 +138,160 @@
 
 
     <div class="page-content">
-        <div class="wrapper">
-<div class="page">
+        <div class="post">
 
-  <header class="post-header">
-    <h1 class="post-title">Posts in "Server"</h1>
-  </header>
+<div class="post-header-container " >
+  <div class="scrim ">
+    <header class="post-header">
+      <h1 class="title">백준 Silver5 - 요세푸스 문제</h1>
+      <p class="info">by <strong>Jung Jaeeun</strong></p>
+    </header>
+  </div>
+</div>
 
-  <span class="page-divider">
+<div class="wrapper">
+
+ <span class="page-divider">
   <span class="one"></span>
   <span class="two"></span>
 </span>
+ 
+
+<section class="post-meta">
+  <div class="post-date">January 28, 2021</div>
+  <div class="post-categories">
+  in 
+    
+    <a href="/category/Problem-Solving">Problem-solving</a>
+    
+  
+  </div>
+</section>  
+
+<article class="post-content">
+  <h3 id="httpswwwacmicpcnetproblem1158"><a href="https://www.acmicpc.net/problem/1158">백준 1158번</a></h3>
+
+<p><strong>문제</strong></p>
+
+<p>요세푸스 문제는 다음과 같다.</p>
+
+<p>1번부터 N번까지 N명의 사람이 원을 이루면서 앉아있고, 양의 정수 K(≤ N)가 주어진다. 이제 순서대로 K번째 사람을 제거한다. 한 사람이 제거되면 남은 사람들로 이루어진 원을 따라 이 과정을 계속해 나간다. 이 과정은 N명의 사람이 모두 제거될 때까지 계속된다. 원에서 사람들이 제거되는 순서를 (N, K)-요세푸스 순열이라고 한다. 예를 들어 (7, 3)-요세푸스 순열은 &lt;3, 6, 2, 7, 5, 1, 4&gt;이다.</p>
+
+<p>N과 K가 주어지면 (N, K)-요세푸스 순열을 구하는 프로그램을 작성하시오.</p>
+
+<p><strong>입력</strong></p>
+
+<p>첫째 줄에 N과 K가 빈 칸을 사이에 두고 순서대로 주어진다. (1 ≤ K ≤ N ≤ 5,000)</p>
+
+<p><strong>예시</strong></p>
+
+<p>입력</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>7 3
+</code></pre>
+</div>
+
+<p>출력</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;3, 6, 2, 7, 5, 1, 4&gt;
+</code></pre>
+</div>
+
+<p><strong>풀이</strong></p>
+
+<pre><code class="language-python3">n, k = map(int, input().split())
+arr = [i for i in range(1, n+1)]
+
+res = []
+idx = k-1
+while True:
+    item = arr.pop(idx)
+    res.append(str(item))
+    if not arr:
+        break
+    # 길이가 1 줄었으므로 한 발 물러선다.
+    idx = (idx-1) % len(arr)
+    for _ in range(k):
+        idx = (idx + 1) % len(arr)
+
+print('&lt;' + ', '.join(res) + '&gt;')
+</code></pre>
+
+</article>
 
 
-  <article class="post-content">
-    <ul class="posts-list">
-      
-      <li><strong><a class="post-link" href="/backend/2021/01/25/Django-commands.html">Django 기본 명령어 모음</a></strong><span class="post-date"> - January 25, 2021</span></li>
-      
-    </ul>
-  </article>
+
+<section class="tags">
+  <strong>Tags:</strong> <a href="/tag/python">python</a>,&nbsp;<a href="/tag/coding-test">coding-test</a>,&nbsp;<a href="/tag/programmers">programmers</a>,&nbsp;<a href="/tag/boj">boj</a>,&nbsp;<a href="/tag/baekjoon">baekjoon</a>
+</section>
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<section class="share">
+  <span>Share: </span>
+  
+    
+    
+    
+    
+    
+    
+    
+  
+</section>
+
+	<section class="post-navigation">
+		<span class="prev-post">
+			
+				<a href="/problem-solving/2021/01/25/Programmers-Lv1-1.html">
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-square fa-stack-2x"></i>
+						<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+					</span>
+					<span class="page-number">프로그래머스 Lv1 추천문제 + 풀이 모음</span>
+				</a>
+			
+		</span>
+		<span class="next-post">
+			
+				<a href="/problem-solving/2021/01/28/BOJ-17225.html">
+					<span class="page-number">백준 Silver1 - 세훈이의 선물가게</span>
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-square fa-stack-2x"></i>
+						<i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
+					</span>
+				</a>
+			
+		</span>
+	</section>
+
+
+
+
+<section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'subong0508-github-io';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
 
 </div>
 </div>
-<br>
 
     </div>
 
@@ -160,6 +318,12 @@
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
+        
+        
+        
+        
         
         
       </ul>

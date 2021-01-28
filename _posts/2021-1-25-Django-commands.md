@@ -3,7 +3,7 @@ layout: post
 title: Django 기본 명령어 모음
 date:  2021-1-25
 author: Jung Jaeeun
-categories: django
+categories: Backend
 tags: python django backend server
 comments: true
 ---
