@@ -6,9 +6,223 @@
 </description>
     <link>http://subong0508.github.io/</link>
     <atom:link href="http://subong0508.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 28 Jan 2021 19:23:55 +0900</pubDate>
-    <lastBuildDate>Thu, 28 Jan 2021 19:23:55 +0900</lastBuildDate>
+    <pubDate>Fri, 29 Jan 2021 13:38:10 +0900</pubDate>
+    <lastBuildDate>Fri, 29 Jan 2021 13:38:10 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>프로그래머스 Lv2 - 기능개발</title>
+        <description>&lt;h3 id=&quot;httpsprogrammerscokrlearncourses30lessons42586&quot;&gt;&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/42586&quot;&gt;프로그래머스 42586번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;문제 설명&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;프로그래머스 팀에서는 기능 개선 작업을 수행 중입니다. 각 기능은 진도가 100%일 때 서비스에 반영할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;또, 각 기능의 개발속도는 모두 다르기 때문에 뒤에 있는 기능이 앞에 있는 기능보다 먼저 개발될 수 있고, 이때 뒤에 있는 기능은 앞에 있는 기능이 배포될 때 함께 배포됩니다.&lt;/p&gt;
+
+&lt;p&gt;먼저 배포되어야 하는 순서대로 작업의 진도가 적힌 정수 배열 progresses와 각 작업의 개발 속도가 적힌 정수 배열 speeds가 주어질 때 각 배포마다 몇 개의 기능이 배포되는지를 return 하도록 solution 함수를 완성하세요.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;제한 사항&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;작업의 개수(progresses, speeds배열의 길이)는 100개 이하입니다.&lt;/li&gt;
+  &lt;li&gt;작업 진도는 100 미만의 자연수입니다.&lt;/li&gt;
+  &lt;li&gt;작업 속도는 100 이하의 자연수입니다.&lt;/li&gt;
+  &lt;li&gt;배포는 하루에 한 번만 할 수 있으며, 하루의 끝에 이루어진다고 가정합니다. 예를 들어 진도율이 95%인 작업의 개발 속도가 하루에 4%라면 배포는 2일 뒤에 이루어집니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;입출력 예&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;progresses&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;speeds&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;return&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[93, 30, 55]&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;[1, 30, 5]&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;[2, 1]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[95, 90, 99, 99, 80, 99]&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;[1, 1, 1, 1, 1, 1]&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;[1, 3, 2]&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;예시설명&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;입출력 예 #1
+첫 번째 기능은 93% 완료되어 있고 하루에 1%씩 작업이 가능하므로 7일간 작업 후 배포가 가능합니다.
+두 번째 기능은 30%가 완료되어 있고 하루에 30%씩 작업이 가능하므로 3일간 작업 후 배포가 가능합니다. 하지만 이전 첫 번째 기능이 아직 완성된 상태가 아니기 때문에 첫 번째 기능이 배포되는 7일째 배포됩니다.
+세 번째 기능은 55%가 완료되어 있고 하루에 5%씩 작업이 가능하므로 9일간 작업 후 배포가 가능합니다.&lt;/p&gt;
+
+&lt;p&gt;따라서 7일째에 2개의 기능, 9일째에 1개의 기능이 배포됩니다.&lt;/p&gt;
+
+&lt;p&gt;입출력 예 #2
+모든 기능이 하루에 1%씩 작업이 가능하므로, 작업이 끝나기까지 남은 일수는 각각 5일, 10일, 1일, 1일, 20일, 1일입니다. 어떤 기능이 먼저 완성되었더라도 앞에 있는 모든 기능이 완성되지 않으면 배포가 불가능합니다.&lt;/p&gt;
+
+&lt;p&gt;따라서 5일째에 1개의 기능, 10일째에 3개의 기능, 20일째에 2개의 기능이 배포됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from collections import deque
+
+def solution(progresses, speeds):
+    # popleft: O(1)를 위해 deque로 바꿔준다.
+    progresses = deque(progresses)
+    speeds = deque(speeds)
+    answer = []
+    while progresses:
+        while progresses[0] &amp;lt; 100:
+            progresses = deque(map(lambda x, y:  x+y, progresses,
+                              speeds))
+        cnt = 0
+        # 배포가 가능한 것들을 차례대로 배포
+        while progresses and progresses[0] &amp;gt;= 100:
+            progresses.popleft()
+            speeds.popleft()
+            cnt += 1
+        answer.append(cnt)
+    return answer
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;큐 구조를 이용해서 풀 수 있는 문제였다.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 28 Jan 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/01/28/PR-42586.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/01/28/PR-42586.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>프로그래머스 Lv2 - 주식가격</title>
+        <description>&lt;h3 id=&quot;httpsprogrammerscokrlearncourses30lessons42584languagepython3&quot;&gt;&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/42584?language=python3&quot;&gt;프로그래머스 42584번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;문제 설명&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;초 단위로 기록된 주식가격이 담긴 배열 prices가 매개변수로 주어질 때, 가격이 떨어지지 않은 기간은 몇 초인지를 return 하도록 solution 함수를 완성하세요&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;제한 사항&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;prices의 각 가격은 1 이상 10,000 이하인 자연수입니다.&lt;/li&gt;
+  &lt;li&gt;prices의 길이는 2 이상 100,000 이하입니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;입출력 예&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;prices&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;return&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[1, 2, 3, 2, 3]&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;[4, 3, 1, 1, 0]&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;입출력 예 설명&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;1초 시점의 ₩1은 끝까지 가격이 떨어지지 않았습니다.&lt;/li&gt;
+  &lt;li&gt;2초 시점의 ₩2은 끝까지 가격이 떨어지지 않았습니다.&lt;/li&gt;
+  &lt;li&gt;3초 시점의 ₩3은 1초뒤에 가격이 떨어집니다. 따라서 1초간 가격이 떨어지지 않은 것으로 봅니다.&lt;/li&gt;
+  &lt;li&gt;4초 시점의 ₩2은 1초간 가격이 떨어지지 않았습니다.&lt;/li&gt;
+  &lt;li&gt;5초 시점의 ₩3은 0초간 가격이 떨어지지 않았습니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;(틀린 풀이)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from collections import deque
+
+def solution(prices):
+    answer = [0] * len(prices)
+    for i in range(len(prices)-1):
+        prices_ = deque(prices[i:])
+        p = prices[i]
+        cnt = 0
+        while prices_ and prices_[0] &amp;gt;= p:
+            cnt += 1
+            prices_.popleft()
+        # 남아있는 경우
+        if prices_:
+            answer[i] = cnt
+        # 끝까지 안떨어진 경우
+        else:
+            answer[i] = cnt-1
+    return answer
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;이렇게 풀었더니 시간 복잡도가 $O(n^2)$이 되어서 효율성 테스트에서 틀려버리고 말았다.&lt;/p&gt;
+
+&lt;p&gt;그래서 &lt;a href=&quot;https://gurumee92.tistory.com/170&quot;&gt;링크&lt;/a&gt;의 풀이법을 참조했다.&lt;/p&gt;
+
+&lt;p&gt;(맞는 풀이)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;def solution(prices):
+    answer = [0] * len(prices)
+    stack = []
+    # i: 현재 시간
+    for i in range(len(prices)):
+        while stack and prices[i] &amp;lt; prices[stack[-1]]:
+            top = stack.pop()
+            answer[top] = i-top
+        stack.append(i)
+    while stack:
+        top = stack.pop()
+        answer[top] = len(prices)-1-top
+    return answer
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;이 문제의 핵심은 스택을 사용해서 스택에 주식이 안 떨어진 &lt;strong&gt;시간&lt;/strong&gt;을 저장하는 것이다. 주식이 떨어졌을 때는 스택에서 계속 &lt;code class=&quot;highlighter-rouge&quot;&gt;pop&lt;/code&gt; 연산을 수행하면서 마지막 시간을 체크해야한다.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 28 Jan 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/01/28/PR-42584.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/01/28/PR-42584.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
     
       <item>
         <title>스택, 큐 with Python</title>
@@ -84,8 +298,182 @@ while q:
       </item>
     
       <item>
+        <title>JSP 정리</title>
+        <description>&lt;p&gt;&lt;strong&gt;본 게시글은 인프런 강좌(&lt;a href=&quot;https://www.inflearn.com/course/%EC%8B%A4%EC%A0%84-jsp_renew/dashboard&quot;&gt;링크&lt;/a&gt;)를 듣고 요약한 글입니다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;servlet-&quot;&gt;Servlet 맵핑&lt;/h2&gt;
+&lt;h3 id=&quot;servlet--1&quot;&gt;Servlet 맵핑이란?&lt;/h3&gt;
+
+&lt;p&gt;유저가 full path를 입력하는 것은 번거롭고 보안에 취약하다. 따라서 mapping path를 만들어서 간결한 닉네임을 준다. 이 기법을 &lt;strong&gt;Servlet 맵핑&lt;/strong&gt;이라고 부른다.&lt;/p&gt;
+
+&lt;h3 id=&quot;webxml---&quot;&gt;web.xml 파일을 이용한 맵핑&lt;/h3&gt;
+
+&lt;p&gt;Servlet 파일이 다음과 같다고 하자.&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;com&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;servlet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;java.io.IOException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;java.io.PrintWriter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.servlet.ServletException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.servlet.annotation.WebServlet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.servlet.http.HttpServlet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.servlet.http.HttpServletRequest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.servlet.http.HttpServletResponse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nd&quot;&gt;@WebServlet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/HelloServlet&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;HelloServlet&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HttpServlet&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;serialVersionUID&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1L&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+       
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;HelloServlet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;kd&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;doGet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HttpServletRequest&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HttpServletResponse&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ServletException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IOException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;PrintWriter&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getWriter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;html&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;head&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;/head&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;p&amp;gt;Hello Servlet!&amp;lt;/p&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;/html&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;kd&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;doPost&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HttpServletRequest&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HttpServletResponse&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ServletException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IOException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;doGet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;web.xml 파일을 다음과 같이 바꿔보자.&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;web-app&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns:xsi=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xsi:schemaLocation=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;WebApp_ID&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;version=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;3.1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;display-name&amp;gt;&lt;/span&gt;prj5&lt;span class=&quot;nt&quot;&gt;&amp;lt;/display-name&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;welcome-file-list&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;welcome-file&amp;gt;&lt;/span&gt;index.html&lt;span class=&quot;nt&quot;&gt;&amp;lt;/welcome-file&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;welcome-file&amp;gt;&lt;/span&gt;index.htm&lt;span class=&quot;nt&quot;&gt;&amp;lt;/welcome-file&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;welcome-file&amp;gt;&lt;/span&gt;index.jsp&lt;span class=&quot;nt&quot;&gt;&amp;lt;/welcome-file&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;welcome-file&amp;gt;&lt;/span&gt;default.html&lt;span class=&quot;nt&quot;&gt;&amp;lt;/welcome-file&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;welcome-file&amp;gt;&lt;/span&gt;default.htm&lt;span class=&quot;nt&quot;&gt;&amp;lt;/welcome-file&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;welcome-file&amp;gt;&lt;/span&gt;default.jsp&lt;span class=&quot;nt&quot;&gt;&amp;lt;/welcome-file&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/welcome-file-list&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;servlet&amp;gt;&lt;/span&gt;
+   &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 가명 --&amp;gt;&lt;/span&gt;
+  	&lt;span class=&quot;nt&quot;&gt;&amp;lt;servlet-name&amp;gt;&lt;/span&gt;servletEx&lt;span class=&quot;nt&quot;&gt;&amp;lt;/servlet-name&amp;gt;&lt;/span&gt;
+  	&lt;span class=&quot;nt&quot;&gt;&amp;lt;servlet-class&amp;gt;&lt;/span&gt;com.servlet.HelloServlet&lt;span class=&quot;nt&quot;&gt;&amp;lt;/servlet-class&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/servlet&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;servlet-mapping&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;servlet-name&amp;gt;&lt;/span&gt;servletEx&lt;span class=&quot;nt&quot;&gt;&amp;lt;/servlet-name&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;url-pattern&amp;gt;&lt;/span&gt;/SE&lt;span class=&quot;nt&quot;&gt;&amp;lt;/url-pattern&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/servlet-mapping&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/web-app&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;이 방법은 &lt;code class=&quot;highlighter-rouge&quot;&gt;com.sevlet&lt;/code&gt; 패키지 안에 있는 &lt;code class=&quot;highlighter-rouge&quot;&gt;HelloServlet.java&lt;/code&gt; 파일에 &lt;code class=&quot;highlighter-rouge&quot;&gt;servletEx&lt;/code&gt;라는 가명을 붙여주고 url을 &lt;code class=&quot;highlighter-rouge&quot;&gt;/SE&lt;/code&gt;로 바꾼 과정이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;&quot;&gt;http://localhost:포트번호/프로젝트이름/SE&lt;/a&gt;로 가면 
+잘 작동되었음을 알 수 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;java-annotation--&quot;&gt;Java Annotation을 이용한 맵핑&lt;/h3&gt;
+
+&lt;p&gt;또는 간단하게 직접 java파일을 바꿔줄 수 있다.&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;com&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;servlet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;java.io.IOException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;java.io.PrintWriter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.servlet.ServletException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.servlet.annotation.WebServlet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.servlet.http.HttpServlet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.servlet.http.HttpServletRequest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.servlet.http.HttpServletResponse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+
+&lt;span class=&quot;nd&quot;&gt;@WebServlet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/SE1&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;HelloServlet&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HttpServlet&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;serialVersionUID&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1L&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+       
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;HelloServlet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;kd&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;doGet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HttpServletRequest&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HttpServletResponse&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ServletException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IOException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;PrintWriter&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getWriter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;html&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;head&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;/head&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;p&amp;gt;Hello Servlet!&amp;lt;/p&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;/html&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;kd&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;doPost&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HttpServletRequest&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HttpServletResponse&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ServletException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IOException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;doGet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;이렇게 하면 &lt;a href=&quot;&quot;&gt;http://localhost:포트번호/프로젝트이름/SE1&lt;/a&gt;로도 같은 페이지에 접근가능하다.&lt;/p&gt;
+
+&lt;h2 id=&quot;servlet-request-response&quot;&gt;Servlet request, response&lt;/h2&gt;
+
+&lt;h3 id=&quot;httpservlet&quot;&gt;HttpServlet&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;HttpServlet&lt;/code&gt;을 상속받아 http 프로토콜을 이용한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;httpservletrequest-httpservletresponse&quot;&gt;HttpServletRequest, HttpServletResponse&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;doGet, doPost&lt;/code&gt; 모두 &lt;code class=&quot;highlighter-rouge&quot;&gt;HttpServletRequest, HttpServletResponse&lt;/code&gt;를 파라미터로 받는다. &lt;code class=&quot;highlighter-rouge&quot;&gt;request&lt;/code&gt;는 요청에 대한 정보를 담고 있는 객체, &lt;code class=&quot;highlighter-rouge&quot;&gt;response&lt;/code&gt;는 응답에 대한 정보를 담고 있는 객체이다.&lt;/p&gt;
+
+&lt;p&gt;&amp;lt;&lt;code class=&quot;highlighter-rouge&quot;&gt;request&lt;/code&gt;의 주요 메소드&amp;gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;request.getCookies()&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;request.getSession()&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;request.getAttribute(null)&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;request.setAttribute(null, null)&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;request.getParameter(null)&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;request.getParameterNames()&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;request.getParameterValues(null)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&amp;lt;&lt;code class=&quot;highlighter-rouge&quot;&gt;response&lt;/code&gt;의 주요 메소드&amp;gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;response.addCookie(null)&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;response.getStatus()&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;response.sendRedirect(null)&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;response.getWriter()&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;response.getOutputStream()&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;servlet-life-cycle&quot;&gt;Servlet Life-Cycle&lt;/h2&gt;
+</description>
+        <pubDate>Thu, 28 Jan 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/backend/2021/01/28/JSP.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/backend/2021/01/28/JSP.html</guid>
+        
+        <category>backend</category>
+        
+        <category>server</category>
+        
+        <category>jsp</category>
+        
+        <category>servlet</category>
+        
+        
+        <category>Backend</category>
+        
+      </item>
+    
+      <item>
         <title>백준 Silver4 - 괄호</title>
-        <description>&lt;h3 id=&quot;silver4---httpswwwacmicpcnetproblem9012&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/9012&quot;&gt;백준 Silver4 - 괄호&lt;/a&gt;&lt;/h3&gt;
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem9012&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/9012&quot;&gt;백준 9012번&lt;/a&gt;&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;문제&lt;/strong&gt;&lt;/p&gt;
 
@@ -173,7 +561,7 @@ print(*res, sep='\n')
     
       <item>
         <title>백준 Silver4 - 카드2</title>
-        <description>&lt;h3 id=&quot;silver4---2httpswwwacmicpcnetproblem2164&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/2164&quot;&gt;백준 Silver4 - 카드2&lt;/a&gt;&lt;/h3&gt;
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem2164&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/2164&quot;&gt;백준 2164번&lt;/a&gt;&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;문제&lt;/strong&gt;&lt;br /&gt;
 N장의 카드가 있다. 각각의 카드는 차례로 1부터 N까지의 번호가 붙어 있으며, 1번 카드가 제일 위에, N번 카드가 제일 아래인 상태로 순서대로 카드가 놓여 있다.&lt;/p&gt;
@@ -226,7 +614,7 @@ print(q.pop())
     
       <item>
         <title>백준 Silver3 - 과제는 끝나지 않아!</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem17952&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/17952&quot;&gt;백준 17952&lt;/a&gt;&lt;/h3&gt;
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem17952&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/17952&quot;&gt;백준 17952번&lt;/a&gt;&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;문제&lt;/strong&gt;&lt;/p&gt;
 
@@ -1288,265 +1676,6 @@ for i in range(b):
         
         
         <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>Django 기본 명령어 모음</title>
-        <description>&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;# run server
-&amp;gt; python manage.py runserver {port_number}
-
-# app 만들기
-&amp;gt; python manage.py startapp {app_name}
-
-# migration
-&amp;gt; python manage.py makemigrations {app_name}
-&amp;gt; python manage.py migrate {app_name}
-
-# check
-&amp;gt; python manage.py sqlmigrate {app_name} 0001_initial
-&amp;gt; python manage.py dbshell
-&amp;gt; python manage.py showmigrations {app_name}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Mon, 25 Jan 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/backend/2021/01/25/Django-commands.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/backend/2021/01/25/Django-commands.html</guid>
-        
-        <category>python</category>
-        
-        <category>django</category>
-        
-        <category>backend</category>
-        
-        <category>server</category>
-        
-        
-        <category>Backend</category>
-        
-      </item>
-    
-      <item>
-        <title>Pix2Pix, CycleGAN</title>
-        <description>&lt;p&gt;이번 포스팅에서는 image-to-image translation model의 조상님격인 Pix2Pix와 CycleGAN에 대해서 알아보겠습니다. Pix2Pix를 먼저 다루고 그 후에 CycleGAN에 대해 다루려고 합니다.&lt;/p&gt;
-
-&lt;p&gt;아래는 Pix2Pix 원논문에 나와있는 image-to-image translation을 잘 보여주는 사진입니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../../../img/gans/img2img.png&quot; alt=&quot;image-to-image translation&quot; /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;pix2pix&quot;&gt;Pix2Pix&lt;/h1&gt;
-
-&lt;p&gt;vanilla GAN은 random noise vector $z$를 output image $y$로 보내는 mapping function $G: x \rightarrow y$를 학습합니다. 그러나 conditional GAN은 observed image $x$와 random noise vector $z$를 $y$로 보내는 mapping을 학습합니다. 즉, $G: { x, z } \rightarrow y$를 학습합니다. 이를 그림으로 나타내면 아래와 같습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../../../img/gans/training-pix2pix.png&quot; alt=&quot;Pix2Pix&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;objective&quot;&gt;Objective&lt;/h2&gt;
-
-&lt;p&gt;conditional GAN의 objective function은 아래와 같이 표현될 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;$\mathcal{L_\textbf{cGAN}}(G, D) = \underset{x, y}{\mathbb{E}}[\log D(x, y)] +\underset{x, z}{\mathbb{E}}[\log (1-D(x, G(x, z)))]$&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;즉, 기존 GAN과 다르게 D는 $x, y$가 진짜 이미지에서 온 pair인지 판별하게 됩니다.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;또한 GAN objective에 L1 loss를 추가해줌으로써 G로 하여금 D를 속일뿐만 아니라 output과 ground truth가 비슷하게 만드는 태스크를 추가합니다.&lt;/p&gt;
-
-&lt;p&gt;$\mathcal{L_\text{L1}}(G) = \mathbb{E}_{x,y,z}[\vert\vert y-G(x,z) \underset{1}{\vert\vert}]$&lt;/p&gt;
-
-&lt;p&gt;따라서 final objective는 아래와 같습니다.&lt;/p&gt;
-
-&lt;p&gt;$G^{*} = \arg \underset{G}{\min} \underset{D}{\max}\mathcal{L_\textbf{cGAN}}(G, D)+\lambda\mathcal{L_\text{L1}}(G)$&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;원래는 $z$에다가 Gaussian noise를 넣어주는 것이 정석인데, 여기서는 &lt;em&gt;dropout&lt;/em&gt;을 적용하는 것으로 대체합니다. train/test시에 모두 &lt;em&gt;dropout&lt;/em&gt;의 형태로 noise를 넣어주는 것입니다.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../../../img/gans/pix2pix-losses.png&quot; alt=&quot;Pix2Pix Losses&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;위의 두 loss term을 모두 합쳐준게 제일 결과가 좋습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;network-architecture&quot;&gt;Network Architecture&lt;/h2&gt;
-
-&lt;p&gt;구체적인 네트워크 구조에 대해서 설명하겠습니다. image-to-image translation model에서는 input과 output이 우리가 눈으로 보기에는 다른 구조를 가지지만 사실은 같은 underlying structure에서 rendering을 한 것이라고 주장합니다. &lt;strong&gt;따라서, input의 구조와 output의 구조가 align 되어야합니다.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;이 논문은 U-Net shape을 가진 G에 skip connection을 추가해줌으로써 encoder-decoder network의 information bottleneck 현상을 방지합니다. low-level information도 잘 전달되도록 하는 것이라고 볼 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;L1 Loss를 우리의 비용함수에 포함하는 것은 G가 low frequencies를 제대로 capture하도록 강제하는 것으로 볼 수 있습니다. 이로인해 D는 high-frequency structure만 잡아내면 되고, 이 논문의 저자들은 &lt;em&gt;PatchGAN&lt;/em&gt;이라는 새로운 구조를 도입합니다.&lt;/p&gt;
-
-&lt;p&gt;D는 G가 생성한 전체 이미지를 보는 대신에, $N \times N$ 크기의 patch를 보고 real/fake 여부를 판별합니다. 그 후에 이것들을 평균내 D의 output으로 넣어줍니다. 이렇게 함으로써 이미지의 high-frequency를 모델링했다고 합니다. 경험적으로 $70 \times 70$짜리 패치정도가 적당했다고 하네요.&lt;/p&gt;
-
-&lt;p&gt;또한 특이한 점은 test시에도 train data의 통계량을 사용하지 않고 test data의 통계량을 사용했다고 합니다. 개인적으로는 $z$를 dropout으로 넣었기때문에 이 방법이 더 효과적이었던 것 같습니다.&lt;/p&gt;
-
-&lt;p&gt;그 뒤에는 여러 실험결과가 나오는데, 저는 이 부분은 생략하고 CycleGAN으로 넘어가겠습니다.&lt;/p&gt;
-
-&lt;h1 id=&quot;cyclegan&quot;&gt;CycleGAN&lt;/h1&gt;
-
-&lt;p&gt;먼저, Cycle GAN으로 생성된 결과부터 보겠습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../../../img/gans/cycle-img.png&quot; alt=&quot;cycle-gan&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;지금부터 설명드릴 Cycle GAN은 Pix2Pix의 문제점인 data insuffiency를 해결한 논문입니다. Pix2Pix는 paired image dataset이 필요합니다. 그러나 실제로 그런 데이터는 흔하지 않습니다.&lt;/p&gt;
-
-&lt;p&gt;Cycle GAN은 &lt;strong&gt;서로 다른 도메인&lt;/strong&gt;의 이미지들간 mapping을 구해주는 모델입니다. 즉, $G: X \rightarrow Y$라는 translator와 $F: Y \rightarrow X$라는 translator를 구해줍니다. $G^{-1}= F$의 관계가 성립합니다.&lt;/p&gt;
-
-&lt;p&gt;하지만 우리가 neural network에게 $G^{-1}= F$가 성립하도록 explicit하게 제재를 가해주는 방법이 없습니다. 따라서 이 논문들의 저자는 &lt;strong&gt;Cycle Consistency Loss&lt;/strong&gt;를 더함으로써 $F(G(x)) \approxeq x$, $G(F(x)) \approxeq y$가 성립하도록 해주었습니다.&lt;/p&gt;
-
-&lt;p&gt;전체적인 네트워크 구조는 아래와 같습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../../../img/gans/cycle-arc.png&quot; alt=&quot;cycle-gan&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;objective-1&quot;&gt;Objective&lt;/h2&gt;
-
-&lt;h3 id=&quot;adversarial-loss&quot;&gt;Adversarial Loss&lt;/h3&gt;
-
-&lt;p&gt;generated image가 target domain에서 왔는지 판별하는 D를 통해 adversarial 하게 학습합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../../../img/gans/cycle-loss1.png&quot; alt=&quot;cycle-gan&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;cycle-consistency-loss&quot;&gt;Cycle Consistency Loss&lt;/h3&gt;
-
-&lt;p&gt;$G, F$가 역함수 관계에 있을 수 있도록 학습합니다. 이는 mode collapsing 문제도 해결해준다고 합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../../../img/gans/cycle-loss2.png&quot; alt=&quot;cycle-gan&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;full-objective&quot;&gt;Full Objective&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../../../img/gans/cycle-loss3.png&quot; alt=&quot;cycle-gan&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;언급한 Loss를 모두 결합하면 위와 같습니다.&lt;/p&gt;
-
-&lt;h1 id=&quot;references&quot;&gt;References&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&quot;https://arxiv.org/pdf/1611.07004.pdf&quot;&gt;Image-to-Image Translation with Conditional Adversarial Networks&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://arxiv.org/abs/1703.10593&quot;&gt;Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Wed, 13 Jan 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/generative-models/2021/01/13/Pix2Pix.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/generative-models/2021/01/13/Pix2Pix.html</guid>
-        
-        <category>GAN</category>
-        
-        <category>Pix2Pix</category>
-        
-        <category>pix2pix</category>
-        
-        <category>CycleGAN</category>
-        
-        <category>deep-learning</category>
-        
-        
-        <category>generative-models</category>
-        
-      </item>
-    
-      <item>
-        <title>InfoGAN</title>
-        <description>&lt;p&gt;이번 포스팅에서는 InfoGAN에 대해서 알아보겠습니다. GAN에 대한 설명은 생략하겠습니다.&lt;/p&gt;
-
-&lt;p&gt;먼저, InfoGAN의 motivation 부터 알아보려고 합니다. GAN을 통해 우리는 latent variable $z$에서 실제 데이터 $x$로 가는 mapping을 학습합니다. 그래서 $z$를 latent representation이라고 합니다. 그러나 아쉽게도 GAN은 entangled representation을 학습합니다. 아래는 disentagled/entagled의 차이점을 시각화한 그림입니다. (&lt;a href=&quot;https://science.sciencemag.org/content/295/5552/7/tab-figures-data&quot;&gt;이미지 출처&lt;/a&gt;) &lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://science.sciencemag.org/content/sci/295/5552/7/F1.medium.gif&quot; alt=&quot;swiss roll&quot; /&gt; &lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;D보다는 B에서 manifold가 깔끔하게 학습되었고, GAN을 통해서 이런 깔끔한 manifold, 즉 &lt;strong&gt;disentangled&lt;/strong&gt; representaion을 학습함으로써 이미지의 퀄리티와 explainability를 동시에 향상시켰다는 것이 이 논문의 주요 내용입니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;mutual-information-for-inducing-latent-codes&quot;&gt;Mutual Information for Inducing Latent Codes&lt;/h2&gt;
-
-&lt;p&gt;원래 GAN에서는 input noise vector로 $z$를 넣어줍니다. 대부분 $z$는 $\mathcal{N}[\mathbf{0}, \sigma^{2} \mathbf{I}]$를 따른다고 가정합니다. generator는 어떤 제한없이 $z$를 그대로 받아서 이미지를 생성하게 됩니다. 결과적으로, $z$의 각 차원이 데이터의 semantic feature와 대응되지 않는다는 문제점이 생깁니다.&lt;/p&gt;
-
-&lt;p&gt;하지만 실제로 이미지 데이터는 semantically meaningful factors로 분해될 수 있습니다. 예를 들어, MNIST에서는 숫자의 휘어진 정도 또는 numerical identity(0-9)가 있겠습니다. 이런 특징들을 $z$가 잡을 수 있다면 훨씬 해석이 쉬운 동시에 원하는 이미지를 생성하기도 쉬울 것입니다.&lt;/p&gt;
-
-&lt;p&gt;이 논문에서는, input noise vector를 크게 두 파트로 분류합니다.&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;$z$: incompressible한 noise&lt;/li&gt;
-  &lt;li&gt;$c$: latent code - data의 semantic feature에 해당합니다.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;여기서 $c$는 factored distribution을 가정합니다. 왜냐하면 이미지의 각 salient feature가 독립이라고 가정하는 것이 합리적이기 때문입니다. 수식으로 나타내면 다음과 같습니다.&lt;/p&gt;
-
-&lt;p&gt;$P(c_{1}, …, c_{L}) = \prod_{i=1}^{L}P(c_{i})$&lt;/p&gt;
-
-&lt;p&gt;우리는 generator에 $z, c$를 인풋으로 넣어줍니다. 그러면 generator는 $G(z, c)$로 표현할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;이제 이 논문에 key idea를 설명하겠습니다. 이 논문은 &lt;strong&gt;latent code $c$와 $G(z, c)$간에 high mutual information이 있어야 한다는 제약조건을 상정합니다. 따라서, $I(c;G(z, c))$는 높아야 합니다.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;$I(X;Y)$란 $Y$가 관측되었을 때 $X$의 불확실성이 감소되는 정도를 의미합니다. 만약 $X$, $Y$가 indepentdent하다면 $I(X;Y)=0$이 성립합니다. 만약 information theory에 대해서 생소하다면 &lt;a href=&quot;https://en.wikipedia.org/wiki/Conditional_entropy&quot;&gt;링크&lt;/a&gt;를 참조하면 좋을 것 같습니다.&lt;/p&gt;
-
-&lt;p&gt;따라서 우리의 목표는 다음과 같습니다.&lt;/p&gt;
-
-&lt;p&gt;$\min_{G}\max_{D}V_{I}(D, G) = V(D, G)-\lambda I(c;G(z,c))$&lt;/p&gt;
-
-&lt;p&gt;여기서 regularization term에 해당하는 $\lambda I(c;G(z,c))$는 latent code $c$의 information이 generation process에서 소실되지 않도록 강제합니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;variational-mutual-information-maximization&quot;&gt;Variational Mutual Information Maximization&lt;/h2&gt;
-
-&lt;p&gt;하지만 실제로 $I(c;G(z,c))$를 직접 최대화하는 것에는 어려움이 있습니다. 왜냐하면 $P(c \vert x)$를 알아야 하기 때문입니다. &lt;strong&gt;따라서 우리는 variational lower bound 테크닉을 이용해서 $P(c \vert x)$를 $Q(c \vert x)$로 근사합니다.&lt;/strong&gt; 이제 variational lower bound에 대해서 알아보겠습니다.&lt;/p&gt;
-
-&lt;p&gt;$I(c;G(z,c))=H(c)-H(c\vert G(z, c)=\mathbb{E_{x \thicksim G(z, c)}}[\mathbb{E_{c’ \thicksim P(c \vert x)}[log P(c’ \vert x)]}] + H(c)$&lt;/p&gt;
-
-&lt;p&gt;$=\mathbb{E_{x \thicksim G(z, c)}}[D_{KL}(P(c’ \vert x) \vert\vert Q(c’ \vert x))] +\mathbb{E_{c’ \thicksim P(c \vert x)}}[log Q(c’ \vert x)] + H(c)$&lt;/p&gt;
-
-&lt;p&gt;$\geq \mathbb{E_{x \thicksim G(z, c)}}[\mathbb{E_{c’ \thicksim P(c \vert x)}}[log Q(c’ \vert x)]] + H(c)$&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;font color=&quot;red&quot;&gt;$\mathcal{L_{I}}(G, Q) = \mathbb{E_{x \thicksim G(z, c)}}[\mathbb{E_{c' \thicksim P(c \vert x)}}[log Q(c' \vert x)]] + H(c)$&lt;/font&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;여기서도 문제가 발생합니다. $\mathbb{E_{c’ \thicksim P(c \vert x)}}[log Q(c’ \vert x)]$에 $P(c \vert x)$가 들어간다는 점입니다. 하지만 수리통계학의 &lt;em&gt;lemma&lt;/em&gt;에 의해 해결가능합니다. (&lt;a href=&quot;http://aoliver.org/correct-proof-of-infogan-lemma&quot;&gt;링크&lt;/a&gt;에 자세히 나와있습니다.) 구체적인 수식을 살펴보겠습니다. $G(z, c)$는 $P_{G}(x \vert z, c)$로 새로 나타낼 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;$\mathbb{E_{x \thicksim G(z, c)}}[\mathbb{E_{c’ \thicksim P(c \vert x)}}[log Q(c’ \vert x)]] = \mathbb{E_{x \thicksim P_{G}(x \vert z, c), c’ \thicksim P(c’ \vert x)}}[logQ(c’ \vert x)]$&lt;/p&gt;
-
-&lt;p&gt;$=\mathbb{E_{x \thicksim P_{G}(x \vert z, c), c \thicksim x, c’ \thicksim P(c’ \vert x)}}[logQ(c’ \vert x)]=\mathbb{E_{x \thicksim G(z, c), c \thicksim p(c)}}[logQ(c’ \vert x)]$&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;font color=&quot;red&quot;&gt;${L_{I}}(G, Q) = \mathbb{E_{x \thicksim G(z, c), c \thicksim p(c)}}[logQ(c' \vert x)] + H(c)$&lt;/font&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;그러면 이제 마지막식은 Monte Carlo simulation으로 손쉽게 구할 수 있고 최종목표식은 다음과 같습니다.&lt;/p&gt;
-
-&lt;p&gt;$\min_{G}\max_{D}V_{I}(D, G) = V(D, G)-\lambda{L_{I}}(G, Q)$&lt;/p&gt;
-
-&lt;p&gt;수식으로만 보니 와닿지 않기 때문에 이 논문을 요약하여 한장의 그림으로 나타내어 보았습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../../../img/gans/infoGAN.png&quot; alt=&quot;InfoGAN structrure&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;핵심은 generator로 하여금 semantic feature/latent code c를 복원할 수 있을 만큼 생성을 해라!가 되겠습니다.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;implementation&quot;&gt;Implementation&lt;/h2&gt;
-
-&lt;p&gt;실제로 코드로 구현할 때는 $Q$를 neural network로 구현하되 $D$와 모든 convolution layer를 공유하고 $Q(c \vert x)$를 위한 FC layer만 추가해주었다고 합니다. 이로써 $Q$에 대한 cost는 vanilla GAN과 거의 동일해집니다.&lt;/p&gt;
-
-&lt;p&gt;$c_{i}$가 categorical 변수일 때는 $Q(c _{i}\vert x)$를 구하는데 softmax nonlinearity를 이용했고 continuous 변수일 때는 factored Gaussian으로 충분했다고 합니다.&lt;/p&gt;
-
-&lt;p&gt;또한 $\lambda$에 대한 튜닝도 쉬웠다고 하는데요. $c_{i}$가 categorical 변수일 때는 $\lambda$를 1로 두고, continuous 변수일 때는 그것보다 작은 값을 이용했다고 언급하고 있습니다. 마지막으로 GAN structure는 DC-GAN을 이용했습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;experiments&quot;&gt;Experiments&lt;/h2&gt;
-
-&lt;h3 id=&quot;mutual-information-maximization&quot;&gt;Mutual Information Maximization&lt;/h3&gt;
-
-&lt;p&gt;InfoGAN의 학습이 잘 되었다면 lower bound가 $H(c)$로 maximize 됩니다. 이말인즉슨 bound가 tight한 동시에 maximal mutual information을 얻었다는 뜻입니다. 원논문의 Fig1이 이를 시각화해서 보여주고 있습니다. 화질이 좋지 않아서 첨부하진 않았습니다. vanilla GAN은 lower bound가 $H(c)$로 maximize되지 않지만 InfoGAN은 빠르게 수렴하고 있습니다. 이는 vanilla GAN에서 generator는 이미지의 semantic feature를 잡아내지 못함을 뜻합니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;disentangled-representation&quot;&gt;Disentangled Representation&lt;/h2&gt;
-
-&lt;p&gt;MNIST에 대해 살펴보겠습니다. $c_{1} \thicksim Cat(K=10, p=0.1)$을 사용했고 $c_{2}, c_{3}$은 continous variations를 나타내기 위한 변수로 사용했다고 합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../../../img/gans/infogan-mnist.png&quot; alt=&quot;InfoGAN MNIST&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;우리의 예상대로 $c_{1}$은 digit type을 나타내는 피쳐에 해당합니다. 그리고 $c_{2}, c_{3}$는 각각 rotation, width에 해당하는 피쳐가 되겠습니다.&lt;/p&gt;
-
-&lt;p&gt;다른 데이터셋을 시각화한 결과가 궁금하시다면 원논문을 참조하시면 됩니다. latent code $c$가 이미지의 semantic feature를 잘 잡아냄을 알 수 있습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://arxiv.org/pdf/1606.03657.pdf&quot;&gt;InfoGAN: Interpretable Representation Learning by
-Information Maximizing Generative Adversarial Nets&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Thu, 07 Jan 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/generative-models/2021/01/07/InfoGAN.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/generative-models/2021/01/07/InfoGAN.html</guid>
-        
-        <category>GAN</category>
-        
-        <category>InfoGAN</category>
-        
-        <category>deep-learning</category>
-        
-        <category>representation-learning</category>
-        
-        
-        <category>generative-models</category>
         
       </item>
     
