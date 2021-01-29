@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://subong0508.github.io/problem-solving/2021/01/29/PR-42842.html</loc>
+<lastmod>2021-01-29T00:00:00+09:00</lastmod>
+</url>
+<url>
 <loc>http://subong0508.github.io/problem-solving/2021/01/29/PR-42586.html</loc>
 <lastmod>2021-01-29T00:00:00+09:00</lastmod>
 </url>
@@ -26,6 +30,10 @@
 </url>
 <url>
 <loc>http://subong0508.github.io/problem-solving/2021/01/29/BOJ-1065.html</loc>
+<lastmod>2021-01-29T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>http://subong0508.github.io/problem-solving/2021/01/29/BOJ-1057.html</loc>
 <lastmod>2021-01-29T00:00:00+09:00</lastmod>
 </url>
 <url>

@@ -6,9 +6,59 @@
 </description>
     <link>http://subong0508.github.io/</link>
     <atom:link href="http://subong0508.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 29 Jan 2021 20:17:56 +0900</pubDate>
-    <lastBuildDate>Fri, 29 Jan 2021 20:17:56 +0900</lastBuildDate>
+    <pubDate>Sat, 30 Jan 2021 00:54:46 +0900</pubDate>
+    <lastBuildDate>Sat, 30 Jan 2021 00:54:46 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>프로그래머스 Lv2 - 카펫</title>
+        <description>&lt;h3 id=&quot;httpsprogrammerscokrlearncourses30lessons42842&quot;&gt;&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/42842&quot;&gt;프로그래머스 42842번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;def is_right(n, m , brown, yellow):
+    # n: 세로, m: 가로
+    brown_ = 2*m+2*(n-2)
+    yellow_ = n*m-brown_
+    return brown_ == brown and yellow_ == yellow
+
+def solution(brown, yellow):
+    # a: 세로, b: 가로
+    total = brown+yellow
+    arr = []
+    answer = []
+    # arr: total의 약수 페어를 모아놓은 배열
+    for i in range(1, total//2):
+        if total % i == 0:
+            a, b = i, total // i
+            arr.append((min(a, b), max(a, b)))
+    for a, b in arr:
+        if a*b == brown+yellow and is_right(a, b, brown, yellow):
+            answer.extend([b, a])
+            break
+    return answer
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;처음에는 이중 for loop으로 코드를 짰는데 시간복잡도에서 걸리는 것을 보고 시간복잡도를 $O(n)$으로 짰다. 이 문제의 핵심은 &lt;code class=&quot;highlighter-rouge&quot;&gt;brown+yellow&lt;/code&gt;의 약수를 $O(n)$으로 짜는 알고리즘인듯하다.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 29 Jan 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/01/29/PR-42842.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/01/29/PR-42842.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
     
       <item>
         <title>프로그래머스 Lv2 - 기능개발</title>
@@ -543,6 +593,66 @@ print(cnt)
       </item>
     
       <item>
+        <title>백준 Silver3 - 토너먼트</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem1057&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1057&quot;&gt;백준 1057번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n, a, b = map(int, input().split())
+arr = [False] * (n+1)
+arr[a] = True
+arr[b] = True
+cnt = 0
+match = False
+
+while not match:
+    n = len(arr)
+    cnt += 1
+    tmp = [False]
+    i = 1
+    while i+1 &amp;lt; n:
+        if arr[i] and arr[i+1]:
+            match = True
+            break
+        elif arr[i] or arr[i+1]:
+            tmp.append(True)
+        else:
+            tmp.append(False)
+        i += 2
+    # 홀수인 경우
+    if i == n-1:
+        tmp.append(arr[n-1])
+    # 더 이상 대진할 수 없음
+    if len(tmp) == 1:
+        break
+    arr = tmp
+
+if match:
+    print(cnt)
+else:
+    print(-1) 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;지민/한수를 각각 &lt;code class=&quot;highlighter-rouge&quot;&gt;True&lt;/code&gt;로 두고 나머지를 &lt;code class=&quot;highlighter-rouge&quot;&gt;False&lt;/code&gt;로 두면 나머지는 문제가 시키는 대로 하면 되는 문제였다.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 29 Jan 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/01/29/BOJ-1057.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/01/29/BOJ-1057.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
         <title>스택, 큐 with Python</title>
         <description>&lt;p&gt;이번 포스팅에서는 스택, 큐에 대한 개념을 알아보고 파이썬으로 간단하게 구현해보겠습니다.&lt;/p&gt;
 
@@ -612,268 +722,6 @@ while q:
         
         
         <category>Data-Structure</category>
-        
-      </item>
-    
-      <item>
-        <title>JSP 정리</title>
-        <description>&lt;p&gt;&lt;strong&gt;본 게시글은 인프런 강좌(&lt;a href=&quot;https://www.inflearn.com/course/%EC%8B%A4%EC%A0%84-jsp_renew/dashboard&quot;&gt;링크&lt;/a&gt;)를 듣고 요약한 글입니다.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;servlet-&quot;&gt;Servlet 맵핑&lt;/h2&gt;
-&lt;h3 id=&quot;servlet--1&quot;&gt;Servlet 맵핑이란?&lt;/h3&gt;
-
-&lt;p&gt;유저가 full path를 입력하는 것은 번거롭고 보안에 취약하다. 따라서 mapping path를 만들어서 간결한 닉네임을 준다. 이 기법을 &lt;strong&gt;Servlet 맵핑&lt;/strong&gt;이라고 부른다.&lt;/p&gt;
-
-&lt;h3 id=&quot;webxml---&quot;&gt;web.xml 파일을 이용한 맵핑&lt;/h3&gt;
-
-&lt;p&gt;Servlet 파일이 다음과 같다고 하자.&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;com&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;servlet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;java.io.IOException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;java.io.PrintWriter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.servlet.ServletException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.servlet.annotation.WebServlet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.servlet.http.HttpServlet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.servlet.http.HttpServletRequest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.servlet.http.HttpServletResponse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;nd&quot;&gt;@WebServlet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/HelloServlet&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;HelloServlet&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HttpServlet&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;serialVersionUID&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1L&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-       
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;HelloServlet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;kd&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-	&lt;span class=&quot;kd&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;doGet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HttpServletRequest&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HttpServletResponse&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ServletException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IOException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;PrintWriter&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getWriter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;html&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;head&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;/head&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;p&amp;gt;Hello Servlet!&amp;lt;/p&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;/html&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-	&lt;span class=&quot;kd&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;doPost&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HttpServletRequest&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HttpServletResponse&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ServletException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IOException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;doGet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;web.xml 파일을 다음과 같이 바꿔보자.&lt;/p&gt;
-
-&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;web-app&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns:xsi=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xsi:schemaLocation=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;WebApp_ID&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;version=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;3.1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;display-name&amp;gt;&lt;/span&gt;prj5&lt;span class=&quot;nt&quot;&gt;&amp;lt;/display-name&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;welcome-file-list&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;welcome-file&amp;gt;&lt;/span&gt;index.html&lt;span class=&quot;nt&quot;&gt;&amp;lt;/welcome-file&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;welcome-file&amp;gt;&lt;/span&gt;index.htm&lt;span class=&quot;nt&quot;&gt;&amp;lt;/welcome-file&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;welcome-file&amp;gt;&lt;/span&gt;index.jsp&lt;span class=&quot;nt&quot;&gt;&amp;lt;/welcome-file&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;welcome-file&amp;gt;&lt;/span&gt;default.html&lt;span class=&quot;nt&quot;&gt;&amp;lt;/welcome-file&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;welcome-file&amp;gt;&lt;/span&gt;default.htm&lt;span class=&quot;nt&quot;&gt;&amp;lt;/welcome-file&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;welcome-file&amp;gt;&lt;/span&gt;default.jsp&lt;span class=&quot;nt&quot;&gt;&amp;lt;/welcome-file&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/welcome-file-list&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;servlet&amp;gt;&lt;/span&gt;
-   &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 가명 --&amp;gt;&lt;/span&gt;
-  	&lt;span class=&quot;nt&quot;&gt;&amp;lt;servlet-name&amp;gt;&lt;/span&gt;servletEx&lt;span class=&quot;nt&quot;&gt;&amp;lt;/servlet-name&amp;gt;&lt;/span&gt;
-  	&lt;span class=&quot;nt&quot;&gt;&amp;lt;servlet-class&amp;gt;&lt;/span&gt;com.servlet.HelloServlet&lt;span class=&quot;nt&quot;&gt;&amp;lt;/servlet-class&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/servlet&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;servlet-mapping&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;servlet-name&amp;gt;&lt;/span&gt;servletEx&lt;span class=&quot;nt&quot;&gt;&amp;lt;/servlet-name&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;url-pattern&amp;gt;&lt;/span&gt;/SE&lt;span class=&quot;nt&quot;&gt;&amp;lt;/url-pattern&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/servlet-mapping&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/web-app&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;이 방법은 &lt;code class=&quot;highlighter-rouge&quot;&gt;com.sevlet&lt;/code&gt; 패키지 안에 있는 &lt;code class=&quot;highlighter-rouge&quot;&gt;HelloServlet.java&lt;/code&gt; 파일에 &lt;code class=&quot;highlighter-rouge&quot;&gt;servletEx&lt;/code&gt;라는 가명을 붙여주고 url을 &lt;code class=&quot;highlighter-rouge&quot;&gt;/SE&lt;/code&gt;로 바꾼 과정이다.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;&quot;&gt;http://localhost:포트번호/프로젝트이름/SE&lt;/a&gt;로 가면 
-잘 작동되었음을 알 수 있다.&lt;/p&gt;
-
-&lt;h3 id=&quot;java-annotation--&quot;&gt;Java Annotation을 이용한 맵핑&lt;/h3&gt;
-
-&lt;p&gt;또는 간단하게 직접 java파일을 바꿔줄 수 있다.&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;com&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;servlet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;java.io.IOException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;java.io.PrintWriter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.servlet.ServletException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.servlet.annotation.WebServlet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.servlet.http.HttpServlet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.servlet.http.HttpServletRequest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.servlet.http.HttpServletResponse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-
-&lt;span class=&quot;nd&quot;&gt;@WebServlet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/SE1&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;HelloServlet&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HttpServlet&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;serialVersionUID&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1L&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-       
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;HelloServlet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;kd&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-	&lt;span class=&quot;kd&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;doGet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HttpServletRequest&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HttpServletResponse&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ServletException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IOException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;PrintWriter&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getWriter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;html&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;head&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;/head&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;p&amp;gt;Hello Servlet!&amp;lt;/p&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;/html&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-	&lt;span class=&quot;kd&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;doPost&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HttpServletRequest&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HttpServletResponse&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ServletException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IOException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;doGet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;이렇게 하면 &lt;a href=&quot;&quot;&gt;http://localhost:포트번호/프로젝트이름/SE1&lt;/a&gt;로도 같은 페이지에 접근가능하다.&lt;/p&gt;
-
-&lt;h2 id=&quot;servlet-request-response&quot;&gt;Servlet request, response&lt;/h2&gt;
-
-&lt;h3 id=&quot;httpservlet&quot;&gt;HttpServlet&lt;/h3&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;HttpServlet&lt;/code&gt;을 상속받아 http 프로토콜을 이용한다.&lt;/p&gt;
-
-&lt;h3 id=&quot;httpservletrequest-httpservletresponse&quot;&gt;HttpServletRequest, HttpServletResponse&lt;/h3&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;doGet, doPost&lt;/code&gt; 모두 &lt;code class=&quot;highlighter-rouge&quot;&gt;HttpServletRequest, HttpServletResponse&lt;/code&gt;를 파라미터로 받는다. &lt;code class=&quot;highlighter-rouge&quot;&gt;request&lt;/code&gt;는 요청에 대한 정보를 담고 있는 객체, &lt;code class=&quot;highlighter-rouge&quot;&gt;response&lt;/code&gt;는 응답에 대한 정보를 담고 있는 객체이다.&lt;/p&gt;
-
-&lt;p&gt;&amp;lt;&lt;code class=&quot;highlighter-rouge&quot;&gt;request&lt;/code&gt;의 주요 메소드&amp;gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;request.getCookies()&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;request.getSession()&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;request.getAttribute(null)&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;request.setAttribute(null, null)&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;request.getParameter(null)&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;request.getParameterNames()&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;request.getParameterValues(null)&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&amp;lt;&lt;code class=&quot;highlighter-rouge&quot;&gt;response&lt;/code&gt;의 주요 메소드&amp;gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;response.addCookie(null)&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;response.getStatus()&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;response.sendRedirect(null)&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;response.getWriter()&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;response.getOutputStream()&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;servlet-life-cycle&quot;&gt;Servlet Life-Cycle&lt;/h2&gt;
-</description>
-        <pubDate>Thu, 28 Jan 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/backend/2021/01/28/JSP.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/backend/2021/01/28/JSP.html</guid>
-        
-        <category>backend</category>
-        
-        <category>server</category>
-        
-        <category>jsp</category>
-        
-        <category>servlet</category>
-        
-        
-        <category>Backend</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Silver4 - 괄호</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem9012&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/9012&quot;&gt;백준 9012번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;문제&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;괄호 문자열(Parenthesis String, PS)은 두 개의 괄호 기호인 ‘(’ 와 ‘)’ 만으로 구성되어 있는 문자열이다. 그 중에서 괄호의 모양이 바르게 구성된 문자열을 올바른 괄호 문자열(Valid PS, VPS)이라고 부른다. 한 쌍의 괄호 기호로 된 “( )” 문자열은 기본 VPS 이라고 부른다. 만일 x 가 VPS 라면 이것을 하나의 괄호에 넣은 새로운 문자열 “(x)”도 VPS 가 된다. 그리고 두 VPS x 와 y를 접합(concatenation)시킨 새로운 문자열 xy도 VPS 가 된다. 예를 들어 “(())()”와 “((()))” 는 VPS 이지만 “(()(”, “(())()))” , 그리고 “(()” 는 모두 VPS 가 아닌 문자열이다.&lt;/p&gt;
-
-&lt;p&gt;여러분은 입력으로 주어진 괄호 문자열이 VPS 인지 아닌지를 판단해서 그 결과를 YES 와 NO 로 나타내어야 한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;입력&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;입력 데이터는 표준 입력을 사용한다. 입력은 T개의 테스트 데이터로 주어진다. 입력의 첫 번째 줄에는 입력 데이터의 수를 나타내는 정수 T가 주어진다. 각 테스트 데이터의 첫째 줄에는 괄호 문자열이 한 줄에 주어진다. 하나의 괄호 문자열의 길이는 2 이상 50 이하이다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;출력&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;출력은 표준 출력을 사용한다. 만일 입력 괄호 문자열이 올바른 괄호 문자열(VPS)이면 “YES”, 아니면 “NO”를 한 줄에 하나씩 차례대로 출력해야 한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;예제&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;입력&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;6
-(())())
-(((()())()
-(()())((()))
-((()()(()))(((())))()
-()()()()(()()())()
-(()((())()(
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;출력&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;NO
-NO
-YES
-NO
-YES
-NO
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;t = int(input())
-res = []
-
-def is_vps(string):
-    stack = []
-    for ch in string:
-        if ch == '(':
-            stack.append(ch)
-        else:
-            if not stack or stack.pop() != '(':
-                return False
-    return len(stack) == 0
-
-
-for _ in range(t):
-    string = input()
-    if is_vps(string):
-        res.append(&quot;YES&quot;)
-    else:
-        res.append(&quot;NO&quot;)
-
-print(*res, sep='\n')
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Thu, 28 Jan 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/01/28/BOJ-9012.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/01/28/BOJ-9012.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
         
       </item>
     

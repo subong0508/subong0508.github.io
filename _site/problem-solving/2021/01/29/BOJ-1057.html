@@ -3,13 +3,37 @@
 
   <head>
   
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        TeX: {
+          equationNumbers: {
+            autoNumber: "AMS"
+          }
+        },
+        tex2jax: {
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+      }
+    });
+    MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+          alert("Math Processing Error: "+message[1]);
+        });
+    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+          alert("Math Processing Error: "+message[1]);
+        });
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    
+  
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>programmers</title>
-  <meta name="description" content="My personal blog for studying; mainly related to data
-">
+  <title>백준 Silver3 - 토너먼트</title>
+  <meta name="description" content="백준 1057번">
   
   <meta name="author" content="Jung Jaeeun">
   <meta name="copyright" content="&copy; Jung Jaeeun 2021">
@@ -43,11 +67,10 @@
 
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="My personal blog for studying; mainly related to data
-" />
+  <meta property="og:description" content="백준 1057번" />
   <meta property="og:url" content="http://subong0508.github.io" />
   <meta property="og:site_name" content="Data Vision" />
-  <meta property="og:title" content="programmers" />
+  <meta property="og:title" content="백준 Silver3 - 토너먼트" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="http://subong0508.github.io/assets/logo.png" />
   <meta property="og:image:type" content="image/png" />
@@ -58,9 +81,8 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="programmers">
-  <meta name="twitter:description" content="My personal blog for studying; mainly related to data
-">
+  <meta name="twitter:title" content="백준 Silver3 - 토너먼트">
+  <meta name="twitter:description" content="백준 1057번">
   <meta name="twitter:image" content="http://subong0508.github.io/assets/logo.png">
   <meta name="twitter:url" content="http://subong0508.github.io">
   
@@ -69,7 +91,7 @@
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://subong0508.github.io/tag/programmers/">
+  <link rel="canonical" href="http://subong0508.github.io/problem-solving/2021/01/29/BOJ-1057.html">
   <link rel="alternate" type="application/rss+xml" title="Data Vision" href="http://subong0508.github.io/feed.xml" />
 </head>
 
@@ -103,6 +125,16 @@
           <li class="nav-link"><a href="/posts/">Posts</a>
           
         
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
       </ul>
     </nav>
   </div>
@@ -110,60 +142,151 @@
 
 
     <div class="page-content">
-        <div class="wrapper">
-<div class="page">
+        <div class="post">
 
-  <header class="post-header">
-    <h1 class="post-title">Posts in "Programmers"</h1>
-  </header>
+<div class="post-header-container " >
+  <div class="scrim ">
+    <header class="post-header">
+      <h1 class="title">백준 Silver3 - 토너먼트</h1>
+      <p class="info">by <strong>Jung Jaeeun</strong></p>
+    </header>
+  </div>
+</div>
 
-  <span class="page-divider">
+<div class="wrapper">
+
+ <span class="page-divider">
   <span class="one"></span>
   <span class="two"></span>
 </span>
+ 
+
+<section class="post-meta">
+  <div class="post-date">January 29, 2021</div>
+  <div class="post-categories">
+  in 
+    
+    <a href="/category/Problem-Solving">Problem-solving</a>
+    
+  
+  </div>
+</section>  
+
+<article class="post-content">
+  <h3 id="httpswwwacmicpcnetproblem1057"><a href="https://www.acmicpc.net/problem/1057">백준 1057번</a></h3>
+
+<pre><code class="language-python3">n, a, b = map(int, input().split())
+arr = [False] * (n+1)
+arr[a] = True
+arr[b] = True
+cnt = 0
+match = False
+
+while not match:
+    n = len(arr)
+    cnt += 1
+    tmp = [False]
+    i = 1
+    while i+1 &lt; n:
+        if arr[i] and arr[i+1]:
+            match = True
+            break
+        elif arr[i] or arr[i+1]:
+            tmp.append(True)
+        else:
+            tmp.append(False)
+        i += 2
+    # 홀수인 경우
+    if i == n-1:
+        tmp.append(arr[n-1])
+    # 더 이상 대진할 수 없음
+    if len(tmp) == 1:
+        break
+    arr = tmp
+
+if match:
+    print(cnt)
+else:
+    print(-1) 
+</code></pre>
+
+<p>지민/한수를 각각 <code class="highlighter-rouge">True</code>로 두고 나머지를 <code class="highlighter-rouge">False</code>로 두면 나머지는 문제가 시키는 대로 하면 되는 문제였다.</p>
+
+</article>
 
 
-  <article class="post-content">
-    <ul class="posts-list">
-      
-      <li><strong><a class="post-link" href="/problem-solving/2021/01/29/PR-42842.html">프로그래머스 Lv2 - 카펫</a></strong><span class="post-date"> - January 29, 2021</span></li>
-      
-      <li><strong><a class="post-link" href="/problem-solving/2021/01/29/PR-42586.html">프로그래머스 Lv2 - 기능개발</a></strong><span class="post-date"> - January 29, 2021</span></li>
-      
-      <li><strong><a class="post-link" href="/problem-solving/2021/01/29/PR-42584.html">프로그래머스 Lv2 - 주식가격</a></strong><span class="post-date"> - January 29, 2021</span></li>
-      
-      <li><strong><a class="post-link" href="/problem-solving/2021/01/29/BOJ-2615.html">백준 Silver3 - 오목</a></strong><span class="post-date"> - January 29, 2021</span></li>
-      
-      <li><strong><a class="post-link" href="/problem-solving/2021/01/29/BOJ-16508.html">백준 Silver3 - 전공책</a></strong><span class="post-date"> - January 29, 2021</span></li>
-      
-      <li><strong><a class="post-link" href="/problem-solving/2021/01/29/BOJ-14501.html">백준 Silver4 - 퇴사</a></strong><span class="post-date"> - January 29, 2021</span></li>
-      
-      <li><strong><a class="post-link" href="/problem-solving/2021/01/29/BOJ-1436.html">백준 Silver5 - 영화감독 숌</a></strong><span class="post-date"> - January 29, 2021</span></li>
-      
-      <li><strong><a class="post-link" href="/problem-solving/2021/01/29/BOJ-1065.html">백준 Silver4 - 한수</a></strong><span class="post-date"> - January 29, 2021</span></li>
-      
-      <li><strong><a class="post-link" href="/problem-solving/2021/01/29/BOJ-1057.html">백준 Silver3 - 토너먼트</a></strong><span class="post-date"> - January 29, 2021</span></li>
-      
-      <li><strong><a class="post-link" href="/data-structure/2021/01/28/Stack,-Queue.html">스택, 큐 with Python</a></strong><span class="post-date"> - January 28, 2021</span></li>
-      
-      <li><strong><a class="post-link" href="/problem-solving/2021/01/28/BOJ-9012.html">백준 Silver4 - 괄호</a></strong><span class="post-date"> - January 28, 2021</span></li>
-      
-      <li><strong><a class="post-link" href="/problem-solving/2021/01/28/BOJ-2164.html">백준 Silver4 - 카드2</a></strong><span class="post-date"> - January 28, 2021</span></li>
-      
-      <li><strong><a class="post-link" href="/problem-solving/2021/01/28/BOJ-17952.html">백준 Silver3 - 과제는 끝나지 않아!</a></strong><span class="post-date"> - January 28, 2021</span></li>
-      
-      <li><strong><a class="post-link" href="/problem-solving/2021/01/28/BOJ-17225.html">백준 Silver1 - 세훈이의 선물가게</a></strong><span class="post-date"> - January 28, 2021</span></li>
-      
-      <li><strong><a class="post-link" href="/problem-solving/2021/01/28/BOJ-1158.html">백준 Silver5 - 요세푸스 문제</a></strong><span class="post-date"> - January 28, 2021</span></li>
-      
-      <li><strong><a class="post-link" href="/problem-solving/2021/01/25/Programmers-Lv1-1.html">프로그래머스 Lv1 추천문제 + 풀이 모음</a></strong><span class="post-date"> - January 25, 2021</span></li>
-      
-    </ul>
-  </article>
+
+<section class="tags">
+  <strong>Tags:</strong> <a href="/tag/python">python</a>,&nbsp;<a href="/tag/coding-test">coding-test</a>,&nbsp;<a href="/tag/programmers">programmers</a>,&nbsp;<a href="/tag/boj">boj</a>,&nbsp;<a href="/tag/baekjoon">baekjoon</a>
+</section>
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<section class="share">
+  <span>Share: </span>
+  
+    
+    
+    
+    
+    
+    
+    
+  
+</section>
+
+	<section class="post-navigation">
+		<span class="prev-post">
+			
+				<a href="/data-structure/2021/01/28/Stack,-Queue.html">
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-square fa-stack-2x"></i>
+						<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+					</span>
+					<span class="page-number">스택, 큐 with Python</span>
+				</a>
+			
+		</span>
+		<span class="next-post">
+			
+				<a href="/problem-solving/2021/01/29/BOJ-1065.html">
+					<span class="page-number">백준 Silver4 - 한수</span>
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-square fa-stack-2x"></i>
+						<i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
+					</span>
+				</a>
+			
+		</span>
+	</section>
+
+
+
+
+<section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'subong0508-github-io';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
 
 </div>
 </div>
-<br>
 
     </div>
 
@@ -190,6 +313,16 @@
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
       </ul>
