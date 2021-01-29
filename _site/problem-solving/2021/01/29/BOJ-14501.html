@@ -32,8 +32,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>프로그래머스 Lv2 - 주식가격</title>
-  <meta name="description" content="프로그래머스 42584번">
+  <title>백준 Silver4 - 퇴사</title>
+  <meta name="description" content="백준 14501번">
   
   <meta name="author" content="Jung Jaeeun">
   <meta name="copyright" content="&copy; Jung Jaeeun 2021">
@@ -67,10 +67,10 @@
 
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="프로그래머스 42584번" />
+  <meta property="og:description" content="백준 14501번" />
   <meta property="og:url" content="http://subong0508.github.io" />
   <meta property="og:site_name" content="Data Vision" />
-  <meta property="og:title" content="프로그래머스 Lv2 - 주식가격" />
+  <meta property="og:title" content="백준 Silver4 - 퇴사" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="http://subong0508.github.io/assets/logo.png" />
   <meta property="og:image:type" content="image/png" />
@@ -81,8 +81,8 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="프로그래머스 Lv2 - 주식가격">
-  <meta name="twitter:description" content="프로그래머스 42584번">
+  <meta name="twitter:title" content="백준 Silver4 - 퇴사">
+  <meta name="twitter:description" content="백준 14501번">
   <meta name="twitter:image" content="http://subong0508.github.io/assets/logo.png">
   <meta name="twitter:url" content="http://subong0508.github.io">
   
@@ -91,7 +91,7 @@
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://subong0508.github.io/problem-solving/2021/01/28/PR-42584.html">
+  <link rel="canonical" href="http://subong0508.github.io/problem-solving/2021/01/29/BOJ-14501.html">
   <link rel="alternate" type="application/rss+xml" title="Data Vision" href="http://subong0508.github.io/feed.xml" />
 </head>
 
@@ -131,6 +131,8 @@
         
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -143,7 +145,7 @@
 <div class="post-header-container " >
   <div class="scrim ">
     <header class="post-header">
-      <h1 class="title">프로그래머스 Lv2 - 주식가격</h1>
+      <h1 class="title">백준 Silver4 - 퇴사</h1>
       <p class="info">by <strong>Jung Jaeeun</strong></p>
     </header>
   </div>
@@ -158,7 +160,7 @@
  
 
 <section class="post-meta">
-  <div class="post-date">January 28, 2021</div>
+  <div class="post-date">January 29, 2021</div>
   <div class="post-categories">
   in 
     
@@ -169,93 +171,38 @@
 </section>  
 
 <article class="post-content">
-  <h3 id="httpsprogrammerscokrlearncourses30lessons42584languagepython3"><a href="https://programmers.co.kr/learn/courses/30/lessons/42584?language=python3">프로그래머스 42584번</a></h3>
-
-<p><strong>문제 설명</strong></p>
-
-<p>초 단위로 기록된 주식가격이 담긴 배열 prices가 매개변수로 주어질 때, 가격이 떨어지지 않은 기간은 몇 초인지를 return 하도록 solution 함수를 완성하세요</p>
-
-<p><strong>제한 사항</strong></p>
-<ul>
-  <li>prices의 각 가격은 1 이상 10,000 이하인 자연수입니다.</li>
-  <li>prices의 길이는 2 이상 100,000 이하입니다.</li>
-</ul>
-
-<p><strong>입출력 예</strong></p>
-
-<table>
-  <thead>
-    <tr>
-      <th>prices</th>
-      <th style="text-align: left">return</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>[1, 2, 3, 2, 3]</td>
-      <td style="text-align: left">[4, 3, 1, 1, 0]</td>
-    </tr>
-  </tbody>
-</table>
-
-<p><br /></p>
-
-<p><strong>입출력 예 설명</strong></p>
-
-<ul>
-  <li>1초 시점의 ₩1은 끝까지 가격이 떨어지지 않았습니다.</li>
-  <li>2초 시점의 ₩2은 끝까지 가격이 떨어지지 않았습니다.</li>
-  <li>3초 시점의 ₩3은 1초뒤에 가격이 떨어집니다. 따라서 1초간 가격이 떨어지지 않은 것으로 봅니다.</li>
-  <li>4초 시점의 ₩2은 1초간 가격이 떨어지지 않았습니다.</li>
-  <li>5초 시점의 ₩3은 0초간 가격이 떨어지지 않았습니다.</li>
-</ul>
+  <h3 id="httpswwwacmicpcnetproblem14501"><a href="https://www.acmicpc.net/problem/14501">백준 14501번</a></h3>
 
 <p><strong>풀이</strong></p>
 
-<p>(틀린 풀이)</p>
+<pre><code class="language-python3">n = int(input())
+t = []
+p = []
+for _ in range(n):
+    a, b = map(int, input().split())
+    t.append(a)
+    p.append(b)
+res = 0
 
-<pre><code class="language-python3">from collections import deque
 
-def solution(prices):
-    answer = [0] * len(prices)
-    for i in range(len(prices)-1):
-        prices_ = deque(prices[i:])
-        p = prices[i]
-        cnt = 0
-        while prices_ and prices_[0] &gt;= p:
-            cnt += 1
-            prices_.popleft()
-        # 남아있는 경우
-        if prices_:
-            answer[i] = cnt
-        # 끝까지 안떨어진 경우
-        else:
-            answer[i] = cnt-1
-    return answer
+def get_max(i, cur):
+    global res
+    if i &gt;= n:
+        res = max(res, cur)
+        return
+
+    # i번째 일을 할 수 있는 경우
+    if i+t[i] &lt;= n:
+        get_max(i+t[i], cur+p[i])
+    # 안하고 건너뛰는 경우
+    get_max(i+1, cur)
+
+
+get_max(0, 0)
+print(res)
 </code></pre>
 
-<p>이렇게 풀었더니 시간 복잡도가 $O(n^2)$이 되어서 효율성 테스트에서 틀려버리고 말았다.</p>
-
-<p>그래서 <a href="https://gurumee92.tistory.com/170">링크</a>의 풀이법을 참조했다.</p>
-
-<p>(맞는 풀이)</p>
-
-<pre><code class="language-python3">def solution(prices):
-    answer = [0] * len(prices)
-    stack = []
-    # i: 현재 시간
-    for i in range(len(prices)):
-        while stack and prices[i] &lt; prices[stack[-1]]:
-            top = stack.pop()
-            answer[top] = i-top
-        stack.append(i)
-    while stack:
-        top = stack.pop()
-        answer[top] = len(prices)-1-top
-    return answer
-</code></pre>
-
-<p>이 문제의 핵심은 스택을 사용해서 스택에 주식이 안 떨어진 <strong>시간</strong>을 저장하는 것이다. 주식이 떨어졌을 때는 스택에서 계속 <code class="highlighter-rouge">pop</code> 연산을 수행하면서 마지막 시간을 체크해야한다.</p>
+<p>재귀 함수를 이용한 완전탐색으로 해결할 수 있었다.</p>
 
 </article>
 
@@ -287,19 +234,19 @@ def solution(prices):
 	<section class="post-navigation">
 		<span class="prev-post">
 			
-				<a href="/data-structure/2021/01/28/Stack,-Queue.html">
+				<a href="/problem-solving/2021/01/29/BOJ-1436.html">
 					<span class="fa-stack fa-lg">
 						<i class="fa fa-square fa-stack-2x"></i>
 						<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
 					</span>
-					<span class="page-number">스택, 큐 with Python</span>
+					<span class="page-number">백준 Silver5 - 영화감독 숌</span>
 				</a>
 			
 		</span>
 		<span class="next-post">
 			
-				<a href="/problem-solving/2021/01/28/PR-42586.html">
-					<span class="page-number">프로그래머스 Lv2 - 기능개발</span>
+				<a href="/problem-solving/2021/01/29/BOJ-16508.html">
+					<span class="page-number">백준 Silver3 - 전공책</span>
 					<span class="fa-stack fa-lg">
 						<i class="fa fa-square fa-stack-2x"></i>
 						<i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
@@ -358,6 +305,8 @@ def solution(prices):
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
         
