@@ -6,9 +6,175 @@
 </description>
     <link>http://subong0508.github.io/</link>
     <atom:link href="http://subong0508.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 30 Jan 2021 13:54:48 +0900</pubDate>
-    <lastBuildDate>Sat, 30 Jan 2021 13:54:48 +0900</lastBuildDate>
+    <pubDate>Sat, 30 Jan 2021 18:18:17 +0900</pubDate>
+    <lastBuildDate>Sat, 30 Jan 2021 18:18:17 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>백준 Gold5 - N-Queen</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem9663&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/9663&quot;&gt;백준 9663번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
+cnt = 0
+
+
+def nqueen(arr):
+    global cnt
+    # 새로운 행 번호
+    row = len(arr)
+    if row == n:
+        cnt += 1
+        return
+
+    for i in range(n):
+        # 이미 있는 열
+        if i in arr:
+            continue
+        flag = True
+        # j번째 행, j번째 행에 해당하는 열 번호는 item
+        for j, item in enumerate(arr):
+            # 대각선
+            if abs(i-item) == abs(row-j):
+                flag = False
+                break
+        if flag:
+            arr.append(i)
+            nqueen(arr)
+            arr.pop()
+        
+
+nqueen([])
+
+print(cnt)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Sat, 30 Jan 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/01/30/BOJ-9663.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/01/30/BOJ-9663.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Silver3 - N과 M(1)(2)(3)</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem15649&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/15649&quot;&gt;백준 15649번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n, m = map(int, input().split())
+arr = [i for i in range(1, n+1)]
+answer = []
+
+
+def combinations(arr, s):
+    global answer
+    if len(s) == m:
+        # shallow copy
+        answer.append(s[:])
+        return
+
+    for e in arr:
+        if e not in s:
+            s.append(e)
+            combinations(arr, s)
+            s.pop()
+
+
+combinations(arr, [])
+
+for a in answer:
+    print(*a)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;전형적인 백트랙킹 문제라고 하는데 백트랙킹이 뭔지 몰라서 찾아보니 완전탐색처럼 모든 경우를 탐색하지만 중간 중간에 조건에 맞지 않는 케이스를 가지치기하여 탐색시간을 줄이는 기법이라고 한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;httpswwwacmicpcnetproblem15650&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/15650&quot;&gt;백준 15650번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n, m = map(int, input().split())
+arr = [i for i in range(1, n+1)]
+answer = []
+
+
+def combinations(arr, s):
+    global answer
+    if len(s) == m:
+        # shallow copy
+        answer.append(s[:])
+        return
+
+    for e in arr:
+        if len(s) == 0 or (s and e &amp;gt; s[-1]):
+            s.append(e)
+            combinations(arr, s)
+            s.pop()
+
+
+combinations(arr, [])
+
+for a in answer:
+    print(*a)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;(1)과 거의 유사하지만 &lt;code class=&quot;highlighter-rouge&quot;&gt;len(s) == 0 or (s and e &amp;gt; s[-1])&lt;/code&gt;의 조건을 추가해서 오름차순이라는 조건과 중복이 없다는 조건을 만족할 수 있었다.&lt;/p&gt;
+
+&lt;h3 id=&quot;httpswwwacmicpcnetproblem15651&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/15651&quot;&gt;백준 15651번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n, m = map(int, input().split())
+arr = [i for i in range(1, n+1)]
+answer = []
+
+
+def combinations(arr, s):
+    global answer
+    if len(s) == m:
+        # shallow copy
+        answer.append(s[:])
+        return
+
+    for e in arr:
+        s.append(e)
+        combinations(arr, s)
+        s.pop()
+
+
+combinations(arr, [])
+
+for a in answer:
+    print(*a)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;어떤 조건도 넣어주지 않으면 중복수열을 구할 수 있다.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 30 Jan 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/01/30/BOJ-15649.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/01/30/BOJ-15649.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
     
       <item>
         <title>프로그래머스 Lv2 - 카펫</title>
@@ -589,139 +755,6 @@ print(cnt)
         
         
         <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Silver3 - 토너먼트</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem1057&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1057&quot;&gt;백준 1057번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n, a, b = map(int, input().split())
-arr = [False] * (n+1)
-arr[a] = True
-arr[b] = True
-cnt = 0
-match = False
-
-while not match:
-    n = len(arr)
-    cnt += 1
-    tmp = [False]
-    i = 1
-    while i+1 &amp;lt; n:
-        if arr[i] and arr[i+1]:
-            match = True
-            break
-        elif arr[i] or arr[i+1]:
-            tmp.append(True)
-        else:
-            tmp.append(False)
-        i += 2
-    # 홀수인 경우
-    if i == n-1:
-        tmp.append(arr[n-1])
-    # 더 이상 대진할 수 없음
-    if len(tmp) == 1:
-        break
-    arr = tmp
-
-if match:
-    print(cnt)
-else:
-    print(-1) 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;지민/한수를 각각 &lt;code class=&quot;highlighter-rouge&quot;&gt;True&lt;/code&gt;로 두고 나머지를 &lt;code class=&quot;highlighter-rouge&quot;&gt;False&lt;/code&gt;로 두면 나머지는 문제가 시키는 대로 하면 되는 문제였다.&lt;/p&gt;
-</description>
-        <pubDate>Fri, 29 Jan 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/01/29/BOJ-1057.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/01/29/BOJ-1057.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>스택, 큐 with Python</title>
-        <description>&lt;p&gt;이번 포스팅에서는 스택, 큐에 대한 개념을 알아보고 파이썬으로 간단하게 구현해보겠습니다.&lt;/p&gt;
-
-&lt;h1 id=&quot;section&quot;&gt;스택&lt;/h1&gt;
-
-&lt;p&gt;스택은 &lt;strong&gt;LIFO&lt;/strong&gt;(후입선출)의 특성을 가진 자료구조입니다. 시간복잡도는 다음과 같습니다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;삽입: $O(1)$&lt;/li&gt;
-  &lt;li&gt;삭제: $O(1)$&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;파이썬에서는 다른 라이브러리를 쓸 필요없이 기본 자료형인 &lt;code class=&quot;highlighter-rouge&quot;&gt;list&lt;/code&gt;를 활용하여 삽입 및 삭제 연산을 수행할 수 있습니다.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;arr = [1, 2, 3, 4, 5]
-stack = []
-
-# 삽입
-for a in arr:
-    stack.append(a)
-print(stack)
-
-# 삭제
-while stack:
-    print(stack.pop())
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;section-1&quot;&gt;큐&lt;/h1&gt;
-
-&lt;p&gt;큐는 기본적으로 &lt;strong&gt;FIFO&lt;/strong&gt;(선입선출)의 특성을 띄는 자료구조입니다. 시간복잡도는 앞서 설명한 스택과 동일합니다.&lt;/p&gt;
-
-&lt;p&gt;주의해야할 점은 스택과 다르게 파이썬의 기본 자료구조인 &lt;code class=&quot;highlighter-rouge&quot;&gt;list&lt;/code&gt;를 사용해서 &lt;code class=&quot;highlighter-rouge&quot;&gt;pop(0)&lt;/code&gt;을 통해 삭제연산을 수행하면 시간복잡도가 $O(n)$이 된다는 것입니다.&lt;/p&gt;
-
-&lt;p&gt;따라서 &lt;code class=&quot;highlighter-rouge&quot;&gt;list&lt;/code&gt;를 쓰기보다는 파이썬에서는 내장 모듈인 &lt;code class=&quot;highlighter-rouge&quot;&gt;collections&lt;/code&gt;의 &lt;code class=&quot;highlighter-rouge&quot;&gt;deque&lt;/code&gt;을 쓰면 간단하게 구현할 수 있습니다.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from collections import deque
-
-q = deque()
-
-# 삽입
-arr = [1, 2, 3, 4, 5]
-for a in arr:
-    q.append(a)
-
-# peek
-print(q[0])
-
-# pop
-# popleft 말고 pop을 쓰면 선입선출
-while q:
-    print(q.popleft())
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Thu, 28 Jan 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/data-structure/2021/01/28/Stack,-Queue.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/data-structure/2021/01/28/Stack,-Queue.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Data-Structure</category>
         
       </item>
     

@@ -32,8 +32,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>프로그래머스 Lv2 - 카펫</title>
-  <meta name="description" content="프로그래머스 42842번">
+  <title>백준 Silver3 - N과 M(1)(2)(3)</title>
+  <meta name="description" content="백준 15649번">
   
   <meta name="author" content="Jung Jaeeun">
   <meta name="copyright" content="&copy; Jung Jaeeun 2021">
@@ -67,10 +67,10 @@
 
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="프로그래머스 42842번" />
+  <meta property="og:description" content="백준 15649번" />
   <meta property="og:url" content="http://subong0508.github.io" />
   <meta property="og:site_name" content="Data Vision" />
-  <meta property="og:title" content="프로그래머스 Lv2 - 카펫" />
+  <meta property="og:title" content="백준 Silver3 - N과 M(1)(2)(3)" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="http://subong0508.github.io/assets/logo.png" />
   <meta property="og:image:type" content="image/png" />
@@ -81,8 +81,8 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="프로그래머스 Lv2 - 카펫">
-  <meta name="twitter:description" content="프로그래머스 42842번">
+  <meta name="twitter:title" content="백준 Silver3 - N과 M(1)(2)(3)">
+  <meta name="twitter:description" content="백준 15649번">
   <meta name="twitter:image" content="http://subong0508.github.io/assets/logo.png">
   <meta name="twitter:url" content="http://subong0508.github.io">
   
@@ -91,7 +91,7 @@
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://subong0508.github.io/problem-solving/2021/01/29/PR-42842.html">
+  <link rel="canonical" href="http://subong0508.github.io/problem-solving/2021/01/30/BOJ-15649.html">
   <link rel="alternate" type="application/rss+xml" title="Data Vision" href="http://subong0508.github.io/feed.xml" />
 </head>
 
@@ -147,7 +147,7 @@
 <div class="post-header-container " >
   <div class="scrim ">
     <header class="post-header">
-      <h1 class="title">프로그래머스 Lv2 - 카펫</h1>
+      <h1 class="title">백준 Silver3 - N과 M(1)(2)(3)</h1>
       <p class="info">by <strong>Jung Jaeeun</strong></p>
     </header>
   </div>
@@ -162,7 +162,7 @@
  
 
 <section class="post-meta">
-  <div class="post-date">January 29, 2021</div>
+  <div class="post-date">January 30, 2021</div>
   <div class="post-categories">
   in 
     
@@ -173,34 +173,93 @@
 </section>  
 
 <article class="post-content">
-  <h3 id="httpsprogrammerscokrlearncourses30lessons42842"><a href="https://programmers.co.kr/learn/courses/30/lessons/42842">프로그래머스 42842번</a></h3>
+  <h3 id="httpswwwacmicpcnetproblem15649"><a href="https://www.acmicpc.net/problem/15649">백준 15649번</a></h3>
 
 <p><strong>풀이</strong></p>
 
-<pre><code class="language-python3">def is_right(n, m , brown, yellow):
-    # n: 세로, m: 가로
-    brown_ = 2*m+2*(n-2)
-    yellow_ = n*m-brown_
-    return brown_ == brown and yellow_ == yellow
+<pre><code class="language-python3">n, m = map(int, input().split())
+arr = [i for i in range(1, n+1)]
+answer = []
 
-def solution(brown, yellow):
-    # a: 세로, b: 가로
-    total = brown+yellow
-    arr = []
-    answer = []
-    # arr: total의 약수 페어를 모아놓은 배열
-    for i in range(1, total//2):
-        if total % i == 0:
-            a, b = i, total // i
-            arr.append((min(a, b), max(a, b)))
-    for a, b in arr:
-        if a*b == brown+yellow and is_right(a, b, brown, yellow):
-            answer.extend([b, a])
-            break
-    return answer
+
+def combinations(arr, s):
+    global answer
+    if len(s) == m:
+        # shallow copy
+        answer.append(s[:])
+        return
+
+    for e in arr:
+        if e not in s:
+            s.append(e)
+            combinations(arr, s)
+            s.pop()
+
+
+combinations(arr, [])
+
+for a in answer:
+    print(*a)
 </code></pre>
 
-<p>처음에는 이중 for loop으로 코드를 짰는데 시간복잡도에서 걸리는 것을 보고 시간복잡도를 $O(n)$으로 짰다. 이 문제의 핵심은 <code class="highlighter-rouge">brown+yellow</code>의 약수를 $O(n)$으로 짜는 알고리즘인듯하다.</p>
+<p>전형적인 백트랙킹 문제라고 하는데 백트랙킹이 뭔지 몰라서 찾아보니 완전탐색처럼 모든 경우를 탐색하지만 중간 중간에 조건에 맞지 않는 케이스를 가지치기하여 탐색시간을 줄이는 기법이라고 한다.</p>
+
+<h3 id="httpswwwacmicpcnetproblem15650"><a href="https://www.acmicpc.net/problem/15650">백준 15650번</a></h3>
+
+<pre><code class="language-python3">n, m = map(int, input().split())
+arr = [i for i in range(1, n+1)]
+answer = []
+
+
+def combinations(arr, s):
+    global answer
+    if len(s) == m:
+        # shallow copy
+        answer.append(s[:])
+        return
+
+    for e in arr:
+        if len(s) == 0 or (s and e &gt; s[-1]):
+            s.append(e)
+            combinations(arr, s)
+            s.pop()
+
+
+combinations(arr, [])
+
+for a in answer:
+    print(*a)
+</code></pre>
+
+<p>(1)과 거의 유사하지만 <code class="highlighter-rouge">len(s) == 0 or (s and e &gt; s[-1])</code>의 조건을 추가해서 오름차순이라는 조건과 중복이 없다는 조건을 만족할 수 있었다.</p>
+
+<h3 id="httpswwwacmicpcnetproblem15651"><a href="https://www.acmicpc.net/problem/15651">백준 15651번</a></h3>
+
+<pre><code class="language-python3">n, m = map(int, input().split())
+arr = [i for i in range(1, n+1)]
+answer = []
+
+
+def combinations(arr, s):
+    global answer
+    if len(s) == m:
+        # shallow copy
+        answer.append(s[:])
+        return
+
+    for e in arr:
+        s.append(e)
+        combinations(arr, s)
+        s.pop()
+
+
+combinations(arr, [])
+
+for a in answer:
+    print(*a)
+</code></pre>
+
+<p>어떤 조건도 넣어주지 않으면 중복수열을 구할 수 있다.</p>
 
 </article>
 
@@ -232,19 +291,19 @@ def solution(brown, yellow):
 	<section class="post-navigation">
 		<span class="prev-post">
 			
-				<a href="/problem-solving/2021/01/29/PR-42586.html">
+				<a href="/problem-solving/2021/01/29/PR-42842.html">
 					<span class="fa-stack fa-lg">
 						<i class="fa fa-square fa-stack-2x"></i>
 						<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
 					</span>
-					<span class="page-number">프로그래머스 Lv2 - 기능개발</span>
+					<span class="page-number">프로그래머스 Lv2 - 카펫</span>
 				</a>
 			
 		</span>
 		<span class="next-post">
 			
-				<a href="/problem-solving/2021/01/30/BOJ-15649.html">
-					<span class="page-number">백준 Silver3 - N과 M(1)(2)(3)</span>
+				<a href="/problem-solving/2021/01/30/BOJ-9663.html">
+					<span class="page-number">백준 Gold5 - N-Queen</span>
 					<span class="fa-stack fa-lg">
 						<i class="fa fa-square fa-stack-2x"></i>
 						<i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
