@@ -6,9 +6,46 @@
 </description>
     <link>http://subong0508.github.io/</link>
     <atom:link href="http://subong0508.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 30 Jan 2021 18:18:17 +0900</pubDate>
-    <lastBuildDate>Sat, 30 Jan 2021 18:18:17 +0900</lastBuildDate>
+    <pubDate>Sat, 30 Jan 2021 20:43:29 +0900</pubDate>
+    <lastBuildDate>Sat, 30 Jan 2021 20:43:29 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>Itertools 정리</title>
+        <description>&lt;p&gt;내장 라이브러리인 &lt;code class=&quot;highlighter-rouge&quot;&gt;itertools&lt;/code&gt;를 이용해서 조합, 순열, 중복순열, Cartesian Product 등을 손쉽게 구현할 수 있다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from itertools import combinations, permutations, combinations_with_replacement, product
+
+data = '123'
+l = combinations(data, 2)
+for e in l:
+    print(*e) # 12 13 23
+
+l = permutations(data, 2)
+for e in l:
+    print(*e) # 12 13 21 23 31 32
+
+l = combinations_with_replacement(data, 2)
+for e in l:
+    print(*e) # 11 12 13 22 23 33
+
+l = product(data, repeat=2)
+for e in l:
+    print(*e) # 11 12 13 21 22 23 31 32 33
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Sat, 30 Jan 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/python/2021/01/30/Itertools.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/python/2021/01/30/Itertools.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        
+        <category>Python</category>
+        
+      </item>
     
       <item>
         <title>백준 Gold5 - N-Queen</title>
@@ -160,6 +197,62 @@ for a in answer:
         <pubDate>Sat, 30 Jan 2021 00:00:00 +0900</pubDate>
         <link>http://subong0508.github.io/problem-solving/2021/01/30/BOJ-15649.html</link>
         <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/01/30/BOJ-15649.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Silver3 - 스타트와 링크</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem14889&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/14889&quot;&gt;백준 14889번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from itertools import combinations
+
+n = int(input())
+arr = [[0] * (n+1)]
+for _ in range(n):
+    arr.append([0] + list(map(int, input().split())))
+whole = set(range(1,  n+1))
+comb = list(combinations(whole, n//2))
+# 중복되는 경우 제외
+comb = comb[:len(comb)//2]
+
+res = int(1e9)
+for start_ in comb:
+    start = set(start_)
+    link = whole - start
+    val1 = 0
+    val2 = 0
+    # 스타트 팀원들에 대해서
+    for m in start:
+        # Sii는 항상 0이므로 상관 없음
+        for e in start:
+            val1 += arr[m][e]
+    # 링크 팀원들에 대해서
+    for m in link:
+        for e in link:
+            val2 += arr[m][e]
+    res = min(res, abs(val1-val2))
+
+print(res)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;combinations&lt;/code&gt;를 통해 팀을 두개로 가른 다음 모든 경우에 대해 완전 탐색을 하면 된다.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 30 Jan 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/01/30/BOJ-14889.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/01/30/BOJ-14889.html</guid>
         
         <category>python</category>
         
@@ -618,130 +711,6 @@ print(res)
         <pubDate>Fri, 29 Jan 2021 00:00:00 +0900</pubDate>
         <link>http://subong0508.github.io/problem-solving/2021/01/29/BOJ-14501.html</link>
         <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/01/29/BOJ-14501.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Silver5 - 영화감독 숌</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem1436&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1436&quot;&gt;백준 1436번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;문제&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;666은 종말을 나타내는 숫자라고 한다. 따라서, 많은 블록버스터 영화에서는 666이 들어간 제목을 많이 사용한다. 영화감독 숌은 세상의 종말 이라는 시리즈 영화의 감독이다. 조지 루카스는 스타워즈를 만들 때, 스타워즈 1, 스타워즈 2, 스타워즈 3, 스타워즈 4, 스타워즈 5, 스타워즈 6과 같이 이름을 지었고, 피터 잭슨은 반지의 제왕을 만들 때, 반지의 제왕 1, 반지의 제왕 2, 반지의 제왕 3과 같이 영화 제목을 지었다.&lt;/p&gt;
-
-&lt;p&gt;하지만 숌은 자신이 조지 루카스와 피터 잭슨을 뛰어넘는다는 것을 보여주기 위해서 영화 제목을 좀 다르게 만들기로 했다.&lt;/p&gt;
-
-&lt;p&gt;종말의 숫자란 어떤 수에 6이 적어도 3개이상 연속으로 들어가는 수를 말한다. 제일 작은 종말의 숫자는 666이고, 그 다음으로 큰 수는 1666, 2666, 3666, …. 과 같다.&lt;/p&gt;
-
-&lt;p&gt;따라서, 숌은 첫 번째 영화의 제목은 세상의 종말 666, 두 번째 영화의 제목은 세상의 종말 1666 이렇게 이름을 지을 것이다. 일반화해서 생각하면, N번째 영화의 제목은 세상의 종말 (N번째로 작은 종말의 숫자) 와 같다.&lt;/p&gt;
-
-&lt;p&gt;숌이 만든 N번째 영화의 제목에 들어간 숫자를 출력하는 프로그램을 작성하시오. 숌은 이 시리즈를 항상 차례대로 만들고, 다른 영화는 만들지 않는다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;출력&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;첫째 줄에 N번째 영화의 제목에 들어간 수를 출력한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;예제&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;입력&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;2
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;출력&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1666
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
-
-
-def is_doom(num):
-    num = str(num)
-    for i in range(len(num)-2):
-        if num[i:i+3] == '666':
-            return True
-    return False
-
-cnt = 1
-num = 666
-while cnt &amp;lt; n:
-    num += 1
-    if is_doom(num):
-        cnt += 1
-        
-print(num)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;전형적인 완전 탐색 문제로, 브루트포스 방법을 통해 풀 수 있다.&lt;/p&gt;
-</description>
-        <pubDate>Fri, 29 Jan 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/01/29/BOJ-1436.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/01/29/BOJ-1436.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Silver4 - 한수</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem1065&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1065&quot;&gt;백준 1065번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
-
-
-def is_han(num):
-    string = str(num)
-    if len(string) &amp;lt;= 2:
-        return True
-    x = int(string[1])-int(string[0])
-    for i in range(2, len(string)):
-        tmp = int(string[i])-int(string[i-1])
-        if tmp != x:
-            return False
-    return True
-
-
-cnt = 0
-for i in range(1, n+1):
-    if is_han(i):
-        cnt += 1
-print(cnt)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;1부터 N까지 모든 경우를 체크하면 된다.&lt;/p&gt;
-</description>
-        <pubDate>Fri, 29 Jan 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/01/29/BOJ-1065.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/01/29/BOJ-1065.html</guid>
         
         <category>python</category>
         

@@ -136,6 +136,65 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/backend/2021/01/25/Django-commands.html">Django 기본 명령어 모음</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p># run server
+&gt; python manage.py runserver {port_number}
+
+# app 만들기
+&gt; python manage.py startapp {app_name}
+
+# migration
+&gt; python manage.py makemigrations {app_name}
+&gt; python manage.py migrate {app_name}
+
+# check
+&gt; python manage.py sqlmigrate {app_name} 0001_initial
+&gt; python manage.py dbshell
+&gt; python manage.py showmigrations {app_name}
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">January 25, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Backend">Backend</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/generative-models/2021/01/13/Pix2Pix.html">Pix2Pix, CycleGAN</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>이번 포스팅에서는 image-to-image translation model의 조상님격인 Pix2Pix와 CycleGAN에 대해서 알아보겠습니다. Pix2Pix를 먼저 다루고 그 후에 CycleGAN에 대해 다루려고 합니다. 아래는 Pix2Pix 원논문에 나와있는 image-to-image translation을 잘 보여주는 사진입니다. Pix2Pix vanilla GAN은 random noise vector $z$를 output image $y$로 보내는 mapping function $G: x \rightarrow y$를 학습합니다. 그러나 conditional GAN은 observed...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">January 13, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/generative-models">Generative-models</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/generative-models/2021/01/07/InfoGAN.html">InfoGAN</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -191,50 +250,6 @@
       in 
         
         <a href="/category/generative-models">Generative-models</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/generative-models/2020/12/22/from-Variational-Inference-to-VAE.html">from Variational Inference to VAE</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>이번 포스팅에서는 Bayesian의 중요한 토픽인 Variational Inference부터 그와 연관된 Variational Auto-encoder까지 알아보려고 한다. Bayesian Framework 먼저, 베이지안의 기본적인 사고방식부터 알고 가자. 빈도론자와 베이지안의 가장 큰 차이점은 우리가 추정하고자하는 parameter를 확률변수로 보냐/아니냐이다. 빈도론자는 고정된 상수라고 보고 베이지안은 어떤 확률분포를 따르는 확률변수라고 생각한다. 예를 들어, 우리나라 사람들의 키를 수집한 데이터가 있다고 가정하자....</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">December 22, 2020</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/generative-models">Generative-models</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/review/2020/12/20/Unsupervised-Landmark-Learning.html">Unsupervised Landmark Learning</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>*1. Unsupervised Learning of Object Landmarks through Conditional Image Generation Task: Generate the target image given the source image and the encoded target image. Method Heatmaps bottleneck $\Phi(x)$: learn to extract keypoint-like structures $S_{u}(x;k)$: K heatmaps =&gt; $u_{k}^{*}(x) = \frac{\sum ue^{S_{u}(x;k)}}{\sum e^{S_{u}(x;k)}}$ (spatial softmax) $\Phi_{u}(x;k)$: Gaussian-like function centered at $u_{k}^{*}$...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">December 20, 2020</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/review">Review</a>
         
       
       </div>
