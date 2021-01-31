@@ -6,9 +6,228 @@
 </description>
     <link>http://subong0508.github.io/</link>
     <atom:link href="http://subong0508.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 30 Jan 2021 20:43:29 +0900</pubDate>
-    <lastBuildDate>Sat, 30 Jan 2021 20:43:29 +0900</lastBuildDate>
+    <pubDate>Sun, 31 Jan 2021 23:42:14 +0900</pubDate>
+    <lastBuildDate>Sun, 31 Jan 2021 23:42:14 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>백준 Gold4 - 스도쿠</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem2239&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/2239&quot;&gt;백준 2239번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from copy import deepcopy
+
+board = []
+for _ in range(9):
+    string = input()
+    tmp = [int(x) for x in string]
+    board.append(tmp)
+res = []
+
+
+def is_possible(board, x, y):
+    num = board[x][y]
+    for i in range(9):
+        # 가로로 같은지
+        if i != y and num == board[x][i]:
+            return False
+        # 세로로 같은지
+        if i != x and num == board[i][y]:
+            return False
+    # 3x3 사각형을 본다.
+    x_, y_ = x // 3, y // 3
+    x_, y_ = 3*x_, 3*y_
+    for i in range(3):
+        for j in range(3):
+            if x == x_+i and y == y_+j:
+                continue
+            if num == board[x_+i][y_+j]:
+                return False
+    return True
+
+def sdoku(board, x, y):
+    global res
+    # 항상 사전순이므로 상관 없음
+    if not res:
+        if x == 9:
+            res = deepcopy(board)
+            return
+        if board[x][y] != 0:
+            if y+1 &amp;lt; 9:
+                sdoku(board, x, y+1)
+            else:
+                sdoku(board, x+1, 0)
+        else:
+            for i in range(1, 10):
+                board[x][y] = i
+                if is_possible(board, x, y):
+                    if y+1 &amp;lt; 9:
+                        sdoku(board, x, y+1)
+                    else:
+                        sdoku(board, x+1, 0)
+                board[x][y] = 0
+
+
+sdoku(board, 0, 0)
+for row in res:
+    for col in row:
+        print(col, end='')
+    print()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;처음에느 &lt;code class=&quot;highlighter-rouge&quot;&gt;res&lt;/code&gt;를 리스트 변수로 만들어서 가능한 순서대로 다 넣은 다음 sort를 했더니
+시간초과가 떴다. 그런데 for문 돌아가는 걸 생각해보니 그냥 제일 첫번째 성공케이스가 그 답 자체이기 때문에 위처럼 풀 수 있다.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 31 Jan 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/01/31/BOJ-2239.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/01/31/BOJ-2239.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Silver2 - 계란으로 계란치기</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem16987&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/16987&quot;&gt;백준 16987번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
+eggs = []
+for _ in range(n):
+    s, w = map(int, input().split())
+    eggs.append([s, w])
+cnt = 0
+
+
+def crush(l, cur, eggs):
+    global cnt
+    # 가장 오른쪽 계란
+    if l == n:
+        cnt = max(cnt, cur)
+        return
+    
+    if eggs[l][0] &amp;gt; 0:
+        all_broken = True
+        for r in range(n):
+            # 손에 든 계란이거나 이미 깨진 계란
+            if r == l or eggs[r][0] &amp;lt;= 0:
+                continue
+            all_broken = False
+            eggs[l][0] -= eggs[r][1]
+            eggs[r][0] -= eggs[l][1]
+            cur_ = cur
+            cur_ += 1 if eggs[l][0] &amp;lt;= 0 else 0
+            cur_ += 1 if eggs[r][0] &amp;lt;= 0 else 0
+            crush(l+1, cur_, eggs)
+            eggs[l][0] += eggs[r][1]
+            eggs[r][0] += eggs[l][1]
+        # 다 깨진 계란
+        if all_broken:
+            crush(l+1, cur, eggs)
+    # 손에 든 계란이 깨진 경우
+    else:
+        crush(l+1, cur, eggs)
+
+
+crush(0, 0, eggs)
+print(cnt)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;처음에 알고리즘은 맞게 짰는데 &lt;code class=&quot;highlighter-rouge&quot;&gt;eggs&lt;/code&gt;를 deepcopy해서 처리하는 바람에 시간초과가
+났었다. 코딩 테스트에서 파이썬을 쓸 때는 deepcopy는 피하도록 하자.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 31 Jan 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/01/31/BOJ-16987.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/01/31/BOJ-16987.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Silver1 - 연산자 끼워넣기</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem14888&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/14888&quot;&gt;백준 14888번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
+arr = list(map(int, input().split()))
+ops = list(map(int, input().split()))
+min_val = int(1e9)
+max_val = -int(1e9)
+
+
+def solution(idx, ops, val):
+    global min_val, max_val
+    if idx == n-1:
+        min_val = min(min_val, val)
+        max_val = max(max_val, val)
+        return
+
+    for i in range(4):
+        if ops[i] &amp;lt;= 0:
+            continue
+        ops[i] -= 1
+        if i == 0:
+            solution(idx+1, ops, val+arr[idx+1])
+        elif i == 1:
+            solution(idx+1, ops, val-arr[idx+1])
+        elif i == 2:
+            solution(idx+1, ops, val*arr[idx+1])
+        elif i == 3:
+            if val &amp;lt; 0:
+                solution(idx+1, ops, -(-val // arr[idx+1]))
+            else:
+                solution(idx+1, ops, val // arr[idx+1])
+        ops[i] += 1
+
+
+solution(0, ops, arr[0])
+print(max_val, min_val, sep='\n')
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Sun, 31 Jan 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/01/31/BOJ-14888.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/01/31/BOJ-14888.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
     
       <item>
         <title>Itertools 정리</title>
@@ -270,6 +489,54 @@ print(res)
       </item>
     
       <item>
+        <title>프로그래머스 Lv2 - 소수 찾기</title>
+        <description>&lt;h3 id=&quot;httpsprogrammerscokrlearncourses30lessons42839&quot;&gt;&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/42839&quot;&gt;프로그래머스 42839번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from itertools import permutations
+
+def is_prime(n):
+    if n &amp;lt;= 1:
+        return False
+    i = 2
+    while i*i &amp;lt;= n:
+        if n % i == 0:
+            return False
+        i += 1
+    return True
+
+def solution(numbers):
+    s = set()
+    for i in range(1, len(numbers)+1):
+        comb = permutations(numbers, i)
+        for c in comb:
+            n = int(''.join(list(c)))
+            if is_prime(n):
+                s.add(n)
+    return len(s)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Fri, 29 Jan 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/01/29/PR-42839.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/01/29/PR-42839.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
         <title>프로그래머스 Lv2 - 카펫</title>
         <description>&lt;h3 id=&quot;httpsprogrammerscokrlearncourses30lessons42842&quot;&gt;&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/42842&quot;&gt;프로그래머스 42842번&lt;/a&gt;&lt;/h3&gt;
 
@@ -408,309 +675,6 @@ def solution(progresses, speeds):
         <pubDate>Fri, 29 Jan 2021 00:00:00 +0900</pubDate>
         <link>http://subong0508.github.io/problem-solving/2021/01/29/PR-42586.html</link>
         <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/01/29/PR-42586.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>프로그래머스 Lv2 - 주식가격</title>
-        <description>&lt;h3 id=&quot;httpsprogrammerscokrlearncourses30lessons42584languagepython3&quot;&gt;&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/42584?language=python3&quot;&gt;프로그래머스 42584번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;문제 설명&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;초 단위로 기록된 주식가격이 담긴 배열 prices가 매개변수로 주어질 때, 가격이 떨어지지 않은 기간은 몇 초인지를 return 하도록 solution 함수를 완성하세요&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;제한 사항&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;prices의 각 가격은 1 이상 10,000 이하인 자연수입니다.&lt;/li&gt;
-  &lt;li&gt;prices의 길이는 2 이상 100,000 이하입니다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;입출력 예&lt;/strong&gt;&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;prices&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;return&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;[1, 2, 3, 2, 3]&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;[4, 3, 1, 1, 0]&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;입출력 예 설명&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;1초 시점의 ₩1은 끝까지 가격이 떨어지지 않았습니다.&lt;/li&gt;
-  &lt;li&gt;2초 시점의 ₩2은 끝까지 가격이 떨어지지 않았습니다.&lt;/li&gt;
-  &lt;li&gt;3초 시점의 ₩3은 1초뒤에 가격이 떨어집니다. 따라서 1초간 가격이 떨어지지 않은 것으로 봅니다.&lt;/li&gt;
-  &lt;li&gt;4초 시점의 ₩2은 1초간 가격이 떨어지지 않았습니다.&lt;/li&gt;
-  &lt;li&gt;5초 시점의 ₩3은 0초간 가격이 떨어지지 않았습니다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;(틀린 풀이)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from collections import deque
-
-def solution(prices):
-    answer = [0] * len(prices)
-    for i in range(len(prices)-1):
-        prices_ = deque(prices[i:])
-        p = prices[i]
-        cnt = 0
-        while prices_ and prices_[0] &amp;gt;= p:
-            cnt += 1
-            prices_.popleft()
-        # 남아있는 경우
-        if prices_:
-            answer[i] = cnt
-        # 끝까지 안떨어진 경우
-        else:
-            answer[i] = cnt-1
-    return answer
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;이렇게 풀었더니 시간 복잡도가 $O(n^2)$이 되어서 효율성 테스트에서 틀려버리고 말았다.&lt;/p&gt;
-
-&lt;p&gt;그래서 &lt;a href=&quot;https://gurumee92.tistory.com/170&quot;&gt;링크&lt;/a&gt;의 풀이법을 참조했다.&lt;/p&gt;
-
-&lt;p&gt;(맞는 풀이)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;def solution(prices):
-    answer = [0] * len(prices)
-    stack = []
-    # i: 현재 시간
-    for i in range(len(prices)):
-        while stack and prices[i] &amp;lt; prices[stack[-1]]:
-            top = stack.pop()
-            answer[top] = i-top
-        stack.append(i)
-    while stack:
-        top = stack.pop()
-        answer[top] = len(prices)-1-top
-    return answer
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;이 문제의 핵심은 스택을 사용해서 스택에 주식이 안 떨어진 &lt;strong&gt;시간&lt;/strong&gt;을 저장하는 것이다. 주식이 떨어졌을 때는 스택에서 계속 &lt;code class=&quot;highlighter-rouge&quot;&gt;pop&lt;/code&gt; 연산을 수행하면서 마지막 시간을 체크해야한다.&lt;/p&gt;
-</description>
-        <pubDate>Fri, 29 Jan 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/01/29/PR-42584.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/01/29/PR-42584.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Silver3 - 오목</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem2615&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/2615&quot;&gt;백준 2615번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from collections import deque
-
-board = []
-for _ in range(19):
-    board.append(list(map(int, input().split())))
-
-dxs = [-1, 0, 1, 1]
-dys = [1, 1, 0, 1]
-
-
-def bfs_main(x, y):
-    return bfs(x, y, 0), bfs(x, y, 1), bfs(x, y, 2), bfs(x, y, 3)
-
-
-def bfs(x, y, d):
-    q = deque()
-    q.append((x, y))
-    cnt = 0
-    while q:
-        x_, y_ = q.popleft()
-        cnt += 1
-        nx, ny = x_+dxs[d], y_+dys[d]
-        if 0 &amp;lt;= nx &amp;lt; 19 and 0 &amp;lt;= ny &amp;lt; 19 and board[nx][ny] == board[x][y]:
-            q.append((nx, ny))
-    # 6목을 체크해봐야 한다.
-    if cnt == 5:
-        nx = x-dxs[d]
-        ny = y-dys[d]
-        if 0 &amp;lt;= nx &amp;lt; 19 and 0 &amp;lt;= ny &amp;lt; 19 and board[x][y] == board[nx][ny]:
-            cnt += 1
-    return cnt
-
-
-found = False
-for i in range(19):
-    for j in range(19):
-        if not found:
-            if board[i][j] == 1 and 5 in bfs_main(i, j):
-                found = True
-                print(1)
-                print(i+1, j+1)
-            elif board[i][j] == 2 and 5 in bfs_main(i, j):
-                found = True
-                print(2)
-                print(i+1, j+1)
-if not found:
-    print(0)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;문제 자체는 어렵지 않으나 6목을 체크해야하는 걸 못봐서 많이 헤맸다.. &lt;strong&gt;dfs/bfs&lt;/strong&gt;를 사용해서 풀 수 있는 문제였다.&lt;/p&gt;
-</description>
-        <pubDate>Fri, 29 Jan 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/01/29/BOJ-2615.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/01/29/BOJ-2615.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Silver3 - 전공책</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem16508&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/16508&quot;&gt;백준 16508번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from itertools import combinations
-
-t = input()
-n = int(input())
-books = []
-for _ in range(n):
-    a, b = input().split()
-    books.append((int(a), b))
-
-
-def is_possible(books):
-    # 책들의 문자 카운트를 저장해놓음
-    d = {}
-    for _, b in books:
-        for ch in b:
-            d[ch] = d.get(ch, 0)+1
-
-    cnt = 0
-    for ch in t:
-        if d.get(ch, 0) &amp;gt; 0:
-            cnt += 1
-            d[ch] -= 1
-    return cnt == len(t)
-
-res = 1e9
-for i in range(1, n+1):
-    comb = combinations(books, i)
-    for c in comb:
-        if is_possible(c):
-            tmp = sum([p for p, _ in c])
-            res = min(res, tmp)
-            
-if res == 1e9:
-    print(-1)
-else:
-    print(res)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;가능한 모든 경우의 수를 탐색해야하므로 &lt;code class=&quot;highlighter-rouge&quot;&gt;combinations&lt;/code&gt; 함수를 이용했다.
-이렇게 풀 수 있는 이유는 &lt;code class=&quot;highlighter-rouge&quot;&gt;n&lt;/code&gt;이 16이하이므로 시간초과에 걸리지 않기 때문이다.&lt;/p&gt;
-</description>
-        <pubDate>Fri, 29 Jan 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/01/29/BOJ-16508.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/01/29/BOJ-16508.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Silver4 - 퇴사</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem14501&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/14501&quot;&gt;백준 14501번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
-t = []
-p = []
-for _ in range(n):
-    a, b = map(int, input().split())
-    t.append(a)
-    p.append(b)
-res = 0
-
-
-def get_max(i, cur):
-    global res
-    if i &amp;gt;= n:
-        res = max(res, cur)
-        return
-
-    # i번째 일을 할 수 있는 경우
-    if i+t[i] &amp;lt;= n:
-        get_max(i+t[i], cur+p[i])
-    # 안하고 건너뛰는 경우
-    get_max(i+1, cur)
-
-
-get_max(0, 0)
-print(res)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;재귀 함수를 이용한 완전탐색으로 해결할 수 있었다.&lt;/p&gt;
-</description>
-        <pubDate>Fri, 29 Jan 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/01/29/BOJ-14501.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/01/29/BOJ-14501.html</guid>
         
         <category>python</category>
         
