@@ -4,7 +4,7 @@ title: 스택, 큐 with Python
 date:  2021-1-28
 author: Jung Jaeeun
 categories: Data-Structure
-tags: python coding-test programmers boj baekjoon
+tags: stack queue python data-structure
 use_math: true
 commtents: true
 ---
