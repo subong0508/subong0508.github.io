@@ -3,12 +3,37 @@
 
   <head>
   
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        TeX: {
+          equationNumbers: {
+            autoNumber: "AMS"
+          }
+        },
+        tex2jax: {
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+      }
+    });
+    MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+          alert("Math Processing Error: "+message[1]);
+        });
+    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+          alert("Math Processing Error: "+message[1]);
+        });
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    
+  
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Welcome to Jekyll!</title>
-  <meta name="description" content="You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different wa...">
+  <title>백준 Gold4 - 카드 정렬하기</title>
+  <meta name="description" content="백준 1715번">
   
   <meta name="author" content="Jung Jaeeun">
   <meta name="copyright" content="&copy; Jung Jaeeun 2021">
@@ -42,12 +67,12 @@
 
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different wa..." />
+  <meta property="og:description" content="백준 1715번" />
   <meta property="og:url" content="http://subong0508.github.io" />
   <meta property="og:site_name" content="Data Vision" />
-  <meta property="og:title" content="Welcome to Jekyll!" />
+  <meta property="og:title" content="백준 Gold4 - 카드 정렬하기" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="http://subong0508.github.io/assets/instacode.png" />
+  <meta property="og:image" content="http://subong0508.github.io/assets/logo.png" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="612" />
   <meta property="og:image:height" content="605" />
@@ -56,9 +81,9 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Welcome to Jekyll!">
-  <meta name="twitter:description" content="You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different wa...">
-  <meta name="twitter:image" content="http://subong0508.github.io/assets/instacode.png">
+  <meta name="twitter:title" content="백준 Gold4 - 카드 정렬하기">
+  <meta name="twitter:description" content="백준 1715번">
+  <meta name="twitter:image" content="http://subong0508.github.io/assets/logo.png">
   <meta name="twitter:url" content="http://subong0508.github.io">
   
 
@@ -66,7 +91,7 @@
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://subong0508.github.io/jekyll/2015/04/18/welcome-to-jekyll.html">
+  <link rel="canonical" href="http://subong0508.github.io/problem-solving/2021/02/03/BOJ-1715.html">
   <link rel="alternate" type="application/rss+xml" title="Data Vision" href="http://subong0508.github.io/feed.xml" />
 </head>
 
@@ -123,92 +148,65 @@
     <div class="page-content">
         <div class="post">
 
-<div class="post-header-container has-cover" style="background-image: url(/assets/instacode.png);">
-  <div class="scrim has-cover">
+<div class="post-header-container " >
+  <div class="scrim ">
     <header class="post-header">
-      <h1 class="title">Welcome to Jekyll!</h1>
-      <p class="info">by <strong>Ben Centra</strong></p>
+      <h1 class="title">백준 Gold4 - 카드 정렬하기</h1>
+      <p class="info">by <strong>Jung Jaeeun</strong></p>
     </header>
   </div>
 </div>
 
 <div class="wrapper">
 
-
+ <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
 
 <section class="post-meta">
-  <div class="post-date">April 18, 2015</div>
+  <div class="post-date">February 3, 2021</div>
   <div class="post-categories">
   in 
     
-    <a href="/category/Jekyll">Jekyll</a>
+    <a href="/category/Problem-Solving">Problem-solving</a>
     
   
   </div>
 </section>  
 
 <article class="post-content">
-  <p>You’ll find this post in your <code class="highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+  <h3 id="httpswwwacmicpcnetproblem1715"><a href="https://www.acmicpc.net/problem/1715">백준 1715번</a></h3>
 
-<h2 id="adding-new-posts">Adding New Posts</h2>
+<p><strong>풀이</strong></p>
 
-<p>To add new posts, simply add a file in the <code class="highlighter-rouge">_posts</code> directory that follows the convention <code class="highlighter-rouge">YYYY-MM-DD-name-of-post.ext</code> and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.</p>
+<pre><code class="language-python3">import heapq
 
-<h3 id="tags-and-categories">Tags and Categories</h3>
+n = int(input())
+q = []
+for i in range(n):
+    a = int(input())
+    heapq.heappush(q, a)
 
-<p>If you list one or more categories or tags in the front matter of your post, they will be included with the post on the page as links. Clicking the link will bring you to an auto-generated archive page for the category or tag, created using the <a href="https://github.com/jekyll/jekyll-archives">jekyll-archive</a> gem.</p>
+res = 0
+while len(q) &gt;= 2:
+    a = heapq.heappop(q)
+    b = heapq.heappop(q)
+    res += a+b
+    heapq.heappush(q, a+b)
+    
+print(res)
+</code></pre>
 
-<h3 id="cover-images">Cover Images</h3>
-
-<p>To add a cover image to your post, set the “cover” property in the front matter with the relative URL of the image (i.e. <code>cover: "/assets/cover_image.jpg"</code>).</p>
-
-<h3 id="code-snippets">Code Snippets</h3>
-
-<p>You can use <a href="https://highlightjs.org/">highlight.js</a> to add syntax highlight code snippets:</p>
-
-<p>Use the <a href="https://github.com/Shopify/liquid/wiki/Liquid-for-Designers">Liquid</a> <code class="highlighter-rouge"><span class="p">{</span><span class="err">%</span><span class="w"> </span><span class="err">highlight</span><span class="w"> </span><span class="err">&lt;language&gt;</span><span class="w"> </span><span class="err">%</span><span class="p">}</span></code> tag to add syntax highlighting to code snippets.</p>
-
-<p>For instance, this template…</p>
-
-<figure class="highlight"><pre><code class="language-html" data-lang="html">{% highlight javascript %}    
-function demo(string, times) {    
-  for (var i = 0; i <span class="nt">&lt; times</span><span class="err">;</span> <span class="na">i</span><span class="err">++)</span> <span class="err">{</span>    
-    <span class="na">console</span><span class="err">.</span><span class="na">log</span><span class="err">(</span><span class="na">string</span><span class="err">);</span>    
-  <span class="err">}</span>    
-<span class="err">}</span>    
-<span class="na">demo</span><span class="err">("</span><span class="na">hello</span><span class="err">,</span> <span class="na">world</span><span class="err">!",</span> <span class="na">10</span><span class="err">);</span>
-<span class="err">{%</span> <span class="na">endhighlight</span> <span class="err">%}</span></code></pre></figure>
-
-<p>…will come out looking like this:</p>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">demo</span><span class="p">(</span><span class="nx">string</span><span class="p">,</span> <span class="nx">times</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">times</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">string</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-<span class="nx">demo</span><span class="p">(</span><span class="s2">"hello, world!"</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span></code></pre></figure>
-
-<p>Syntax highlighting is done using <a href="https://highlightjs.org/">highlight.js</a>. You can change the active theme in <a href="https://github.com/bencentra/centrarium/blob/2dcd73d09e104c3798202b0e14c1db9fa6e77bc7/_includes/head.html#L15">head.html</a>.</p>
-
-<h3 id="images">Images</h3>
-
-<p>Lightbox has been enabled for images. To create the link that’ll launch the lightbox, add <code>data-lightbox</code> and <code>data-title</code> attributes to an <code>&lt;a&gt;</code> tag around your <code>&lt;img&gt;</code> tag. The result is:</p>
-
-<p><a href="//bencentra.com/assets/images/falcon9_large.jpg" data-lightbox="falcon9-large" data-title="Check out the Falcon 9 from SpaceX">
-  <img src="//bencentra.com/assets/images/falcon9_small.jpg" title="Check out the Falcon 9 from SpaceX" />
-</a></p>
-
-<p>For more information, check out the <a href="http://lokeshdhakar.com/projects/lightbox2/">Lightbox</a> website.</p>
-
-<p>Check out the <a href="http://jekyllrb.com">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://github.com/jekyll/jekyll-help">Jekyll’s dedicated Help repository</a>.</p>
-
+<p>첨에는 그냥 array로 받고 sort해서  <code class="highlighter-rouge">deque</code>로 풀었는데 새로운 원소가 더해질 때 그렇게 하면 최솟값이 <code class="highlighter-rouge">pop</code>되지 않기 때문에 안된다.</p>
 
 </article>
 
 
 
 <section class="tags">
-  <strong>Tags:</strong> <a href="/tag/jekyll">jekyll</a>,&nbsp;<a href="/tag/welcome">welcome</a>
+  <strong>Tags:</strong> <a href="/tag/python">python</a>,&nbsp;<a href="/tag/coding-test">coding-test</a>,&nbsp;<a href="/tag/programmers">programmers</a>,&nbsp;<a href="/tag/boj">boj</a>,&nbsp;<a href="/tag/baekjoon">baekjoon</a>
 </section>
 
 
@@ -233,11 +231,19 @@ function demo(string, times) {
 	<section class="post-navigation">
 		<span class="prev-post">
 			
+				<a href="/problem-solving/2021/02/03/BOJ-10825.html">
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-square fa-stack-2x"></i>
+						<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+					</span>
+					<span class="page-number">백준 Silver4 - 국영수</span>
+				</a>
+			
 		</span>
 		<span class="next-post">
 			
-				<a href="/generative-models/2020/12/19/GAN.html">
-					<span class="page-number">GAN 리뷰</span>
+				<a href="/problem-solving/2021/02/03/BOJ-18310.html">
+					<span class="page-number">백준 Silver3 - 안테나</span>
 					<span class="fa-stack fa-lg">
 						<i class="fa fa-square fa-stack-2x"></i>
 						<i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>

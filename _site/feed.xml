@@ -6,9 +6,189 @@
 </description>
     <link>http://subong0508.github.io/</link>
     <atom:link href="http://subong0508.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 03 Feb 2021 00:55:06 +0900</pubDate>
-    <lastBuildDate>Wed, 03 Feb 2021 00:55:06 +0900</lastBuildDate>
+    <pubDate>Thu, 04 Feb 2021 00:37:33 +0900</pubDate>
+    <lastBuildDate>Thu, 04 Feb 2021 00:37:33 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>프로그래머스 Lv1 - 실패율</title>
+        <description>&lt;h3 id=&quot;httpsprogrammerscokrlearncourses30lessons42889&quot;&gt;&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/42889&quot;&gt;프로그래머스 42889번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;def solution(N, stages):
+    d = {i: 0 for i in range(1, N+1)}
+    stages.sort()
+    prev = stages[0]
+    total = len(stages)
+    cnt = 1
+    for i in range(1, len(stages)):
+        if prev not in d:
+            break
+        if stages[i] == prev:
+            cnt += 1
+        elif stages[i] != prev:
+            d[prev] = cnt / total
+            total -= cnt
+            cnt = 1
+            prev = stages[i]
+        if i == len(stages)-1 and prev in d:
+            d[prev] = cnt / total            
+    answer = sorted(d.keys(), key=lambda x: -d[x])
+    return answer
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Wed, 03 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/02/03/PR-42889.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/03/PR-42889.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Silver3 - 안테나</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem18310&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/18310&quot;&gt;백준 18310번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
+arr = list(map(int, input().split()))
+arr.sort()
+
+
+def cal_distance(arr, mid):
+    total = 0
+    for a in arr:
+        total += abs(arr[mid]-a)
+    return total
+
+
+if len(arr) % 2 == 1:
+    mid = len(arr) // 2
+else:
+    mid1, mid2 = len(arr)//2-1, len(arr)//2
+    if cal_distance(arr, mid1) &amp;gt; cal_distance(arr, mid2):
+        mid = mid2
+    else:
+        mid = mid1 
+
+print(arr[mid])
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Wed, 03 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/02/03/BOJ-18310.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/03/BOJ-18310.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Gold4 - 카드 정렬하기</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem1715&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1715&quot;&gt;백준 1715번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;import heapq
+
+n = int(input())
+q = []
+for i in range(n):
+    a = int(input())
+    heapq.heappush(q, a)
+
+res = 0
+while len(q) &amp;gt;= 2:
+    a = heapq.heappop(q)
+    b = heapq.heappop(q)
+    res += a+b
+    heapq.heappush(q, a+b)
+    
+print(res)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;첨에는 그냥 array로 받고 sort해서  &lt;code class=&quot;highlighter-rouge&quot;&gt;deque&lt;/code&gt;로 풀었는데 새로운 원소가 더해질 때 그렇게 하면 최솟값이 &lt;code class=&quot;highlighter-rouge&quot;&gt;pop&lt;/code&gt;되지 않기 때문에 안된다.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 03 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/02/03/BOJ-1715.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/03/BOJ-1715.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Silver4 - 국영수</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem10825&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/10825&quot;&gt;백준 10825번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
+arr = [0] * n
+for i in range(n):
+    name, kor, eng, mat = input().split()
+    kor, eng, mat = map(int, [kor, eng, mat])
+    arr[i] = (name, kor, eng, mat)
+
+arr = sorted(arr, key=lambda x: x[0])
+arr = sorted(arr, key=lambda x: -x[3])
+arr = sorted(arr, key=lambda x: x[2])
+arr = sorted(arr, key=lambda x: -x[1])
+
+for a in arr:
+    print(a[0])
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Wed, 03 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/02/03/BOJ-10825.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/03/BOJ-10825.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
     
       <item>
         <title>정렬 with Python</title>
@@ -441,269 +621,6 @@ print(cnt)
         <pubDate>Sat, 30 Jan 2021 00:00:00 +0900</pubDate>
         <link>http://subong0508.github.io/problem-solving/2021/01/30/BOJ-9663.html</link>
         <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/01/30/BOJ-9663.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Silver3 - N과 M(1)(2)(3)</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem15649&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/15649&quot;&gt;백준 15649번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n, m = map(int, input().split())
-arr = [i for i in range(1, n+1)]
-answer = []
-
-
-def combinations(arr, s):
-    global answer
-    if len(s) == m:
-        # shallow copy
-        answer.append(s[:])
-        return
-
-    for e in arr:
-        if e not in s:
-            s.append(e)
-            combinations(arr, s)
-            s.pop()
-
-
-combinations(arr, [])
-
-for a in answer:
-    print(*a)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;전형적인 백트랙킹 문제라고 하는데 백트랙킹이 뭔지 몰라서 찾아보니 완전탐색처럼 모든 경우를 탐색하지만 중간 중간에 조건에 맞지 않는 케이스를 가지치기하여 탐색시간을 줄이는 기법이라고 한다.&lt;/p&gt;
-
-&lt;h3 id=&quot;httpswwwacmicpcnetproblem15650&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/15650&quot;&gt;백준 15650번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n, m = map(int, input().split())
-arr = [i for i in range(1, n+1)]
-answer = []
-
-
-def combinations(arr, s):
-    global answer
-    if len(s) == m:
-        # shallow copy
-        answer.append(s[:])
-        return
-
-    for e in arr:
-        if len(s) == 0 or (s and e &amp;gt; s[-1]):
-            s.append(e)
-            combinations(arr, s)
-            s.pop()
-
-
-combinations(arr, [])
-
-for a in answer:
-    print(*a)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;(1)과 거의 유사하지만 &lt;code class=&quot;highlighter-rouge&quot;&gt;len(s) == 0 or (s and e &amp;gt; s[-1])&lt;/code&gt;의 조건을 추가해서 오름차순이라는 조건과 중복이 없다는 조건을 만족할 수 있었다.&lt;/p&gt;
-
-&lt;h3 id=&quot;httpswwwacmicpcnetproblem15651&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/15651&quot;&gt;백준 15651번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n, m = map(int, input().split())
-arr = [i for i in range(1, n+1)]
-answer = []
-
-
-def combinations(arr, s):
-    global answer
-    if len(s) == m:
-        # shallow copy
-        answer.append(s[:])
-        return
-
-    for e in arr:
-        s.append(e)
-        combinations(arr, s)
-        s.pop()
-
-
-combinations(arr, [])
-
-for a in answer:
-    print(*a)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;어떤 조건도 넣어주지 않으면 중복수열을 구할 수 있다.&lt;/p&gt;
-</description>
-        <pubDate>Sat, 30 Jan 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/01/30/BOJ-15649.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/01/30/BOJ-15649.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Silver3 - 스타트와 링크</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem14889&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/14889&quot;&gt;백준 14889번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from itertools import combinations
-
-n = int(input())
-arr = [[0] * (n+1)]
-for _ in range(n):
-    arr.append([0] + list(map(int, input().split())))
-whole = set(range(1,  n+1))
-comb = list(combinations(whole, n//2))
-# 중복되는 경우 제외
-comb = comb[:len(comb)//2]
-
-res = int(1e9)
-for start_ in comb:
-    start = set(start_)
-    link = whole - start
-    val1 = 0
-    val2 = 0
-    # 스타트 팀원들에 대해서
-    for m in start:
-        # Sii는 항상 0이므로 상관 없음
-        for e in start:
-            val1 += arr[m][e]
-    # 링크 팀원들에 대해서
-    for m in link:
-        for e in link:
-            val2 += arr[m][e]
-    res = min(res, abs(val1-val2))
-
-print(res)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;combinations&lt;/code&gt;를 통해 팀을 두개로 가른 다음 모든 경우에 대해 완전 탐색을 하면 된다.&lt;/p&gt;
-</description>
-        <pubDate>Sat, 30 Jan 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/01/30/BOJ-14889.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/01/30/BOJ-14889.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>프로그래머스 Lv2 - 소수 찾기</title>
-        <description>&lt;h3 id=&quot;httpsprogrammerscokrlearncourses30lessons42839&quot;&gt;&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/42839&quot;&gt;프로그래머스 42839번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from itertools import permutations
-
-def is_prime(n):
-    if n &amp;lt;= 1:
-        return False
-    i = 2
-    while i*i &amp;lt;= n:
-        if n % i == 0:
-            return False
-        i += 1
-    return True
-
-def solution(numbers):
-    s = set()
-    for i in range(1, len(numbers)+1):
-        comb = permutations(numbers, i)
-        for c in comb:
-            n = int(''.join(list(c)))
-            if is_prime(n):
-                s.add(n)
-    return len(s)
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Fri, 29 Jan 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/01/29/PR-42839.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/01/29/PR-42839.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>프로그래머스 Lv2 - 카펫</title>
-        <description>&lt;h3 id=&quot;httpsprogrammerscokrlearncourses30lessons42842&quot;&gt;&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/42842&quot;&gt;프로그래머스 42842번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;def is_right(n, m , brown, yellow):
-    # n: 세로, m: 가로
-    brown_ = 2*m+2*(n-2)
-    yellow_ = n*m-brown_
-    return brown_ == brown and yellow_ == yellow
-
-def solution(brown, yellow):
-    # a: 세로, b: 가로
-    total = brown+yellow
-    arr = []
-    answer = []
-    # arr: total의 약수 페어를 모아놓은 배열
-    for i in range(1, total//2):
-        if total % i == 0:
-            a, b = i, total // i
-            arr.append((min(a, b), max(a, b)))
-    for a, b in arr:
-        if a*b == brown+yellow and is_right(a, b, brown, yellow):
-            answer.extend([b, a])
-            break
-    return answer
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;처음에는 이중 for loop으로 코드를 짰는데 시간복잡도에서 걸리는 것을 보고 시간복잡도를 $O(n)$으로 짰다. 이 문제의 핵심은 &lt;code class=&quot;highlighter-rouge&quot;&gt;brown+yellow&lt;/code&gt;의 약수를 $O(n)$으로 짜는 알고리즘인듯하다.&lt;/p&gt;
-</description>
-        <pubDate>Fri, 29 Jan 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/01/29/PR-42842.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/01/29/PR-42842.html</guid>
         
         <category>python</category>
         
