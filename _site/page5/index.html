@@ -117,6 +117,10 @@
         
           
         
+          
+        
+          
+        
       </ul>
     </nav>
   </div>
@@ -140,10 +144,10 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/01/29/BOJ-1065.html">백준 Silver4 - 한수</a>
+      <a class="post-link" href="/problem-solving/2021/01/29/PR-42842.html">프로그래머스 Lv2 - 카펫</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 1065번 n = int(input()) def is_han(num): string = str(num) if len(string) &lt;= 2: return True x = int(string[1])-int(string[0]) for i in range(2, len(string)): tmp = int(string[i])-int(string[i-1]) if tmp != x: return False return True cnt = 0 for i in range(1, n+1): if is_han(i): cnt += 1 print(cnt) 1부터...</p>
+      <p>프로그래머스 42842번 풀이 def is_right(n, m , brown, yellow): # n: 세로, m: 가로 brown_ = 2*m+2*(n-2) yellow_ = n*m-brown_ return brown_ == brown and yellow_ == yellow def solution(brown, yellow): # a: 세로, b: 가로 total = brown+yellow arr = [] answer = [] # arr: total의 약수 페어를...</p>
     </section>
     <section class="post-meta">
       <div class="post-date">January 29, 2021</div>
@@ -162,10 +166,10 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/01/29/BOJ-1057.html">백준 Silver3 - 토너먼트</a>
+      <a class="post-link" href="/problem-solving/2021/01/29/PR-42586.html">프로그래머스 Lv2 - 기능개발</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 1057번 n, a, b = map(int, input().split()) arr = [False] * (n+1) arr[a] = True arr[b] = True cnt = 0 match = False while not match: n = len(arr) cnt += 1 tmp = [False] i = 1 while i+1 &lt; n: if arr[i] and arr[i+1]: match =...</p>
+      <p>프로그래머스 42586번 문제 설명 프로그래머스 팀에서는 기능 개선 작업을 수행 중입니다. 각 기능은 진도가 100%일 때 서비스에 반영할 수 있습니다. 또, 각 기능의 개발속도는 모두 다르기 때문에 뒤에 있는 기능이 앞에 있는 기능보다 먼저 개발될 수 있고, 이때 뒤에 있는 기능은 앞에 있는 기능이 배포될 때 함께 배포됩니다. 먼저 배포되어야...</p>
     </section>
     <section class="post-meta">
       <div class="post-date">January 29, 2021</div>
@@ -184,35 +188,13 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/data-structure/2021/01/28/Stack,-Queue.html">스택, 큐 with Python</a>
+      <a class="post-link" href="/problem-solving/2021/01/29/PR-42584.html">프로그래머스 Lv2 - 주식가격</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>이번 포스팅에서는 스택, 큐에 대한 개념을 알아보고 파이썬으로 간단하게 구현해보겠습니다. 스택 스택은 LIFO(후입선출)의 특성을 가진 자료구조입니다. 시간복잡도는 다음과 같습니다. 삽입: $O(1)$ 삭제: $O(1)$ 파이썬에서는 다른 라이브러리를 쓸 필요없이 기본 자료형인 list를 활용하여 삽입 및 삭제 연산을 수행할 수 있습니다. arr = [1, 2, 3, 4, 5] stack = [] #...</p>
+      <p>프로그래머스 42584번 문제 설명 초 단위로 기록된 주식가격이 담긴 배열 prices가 매개변수로 주어질 때, 가격이 떨어지지 않은 기간은 몇 초인지를 return 하도록 solution 함수를 완성하세요 제한 사항 prices의 각 가격은 1 이상 10,000 이하인 자연수입니다. prices의 길이는 2 이상 100,000 이하입니다. 입출력 예 prices return [1, 2, 3, 2, 3]...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">January 28, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Data-Structure">Data-structure</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/01/28/BOJ-9012.html">백준 Silver4 - 괄호</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 9012번 문제 괄호 문자열(Parenthesis String, PS)은 두 개의 괄호 기호인 ‘(’ 와 ‘)’ 만으로 구성되어 있는 문자열이다. 그 중에서 괄호의 모양이 바르게 구성된 문자열을 올바른 괄호 문자열(Valid PS, VPS)이라고 부른다. 한 쌍의 괄호 기호로 된 “( )” 문자열은 기본 VPS 이라고 부른다. 만일 x 가 VPS 라면 이것을 하나의...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">January 28, 2021</div>
+      <div class="post-date">January 29, 2021</div>
       <div class="post-categories">
       in 
         
@@ -228,13 +210,35 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/01/28/BOJ-2164.html">백준 Silver4 - 카드2</a>
+      <a class="post-link" href="/problem-solving/2021/01/29/BOJ-2615.html">백준 Silver3 - 오목</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 2164번 문제 N장의 카드가 있다. 각각의 카드는 차례로 1부터 N까지의 번호가 붙어 있으며, 1번 카드가 제일 위에, N번 카드가 제일 아래인 상태로 순서대로 카드가 놓여 있다. 이제 다음과 같은 동작을 카드가 한 장 남을 때까지 반복하게 된다. 우선, 제일 위에 있는 카드를 바닥에 버린다. 그 다음, 제일 위에 있는...</p>
+      <p>백준 2615번 풀이 from collections import deque board = [] for _ in range(19): board.append(list(map(int, input().split()))) dxs = [-1, 0, 1, 1] dys = [1, 1, 0, 1] def bfs_main(x, y): return bfs(x, y, 0), bfs(x, y, 1), bfs(x, y, 2), bfs(x, y, 3) def bfs(x, y, d): q =...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">January 28, 2021</div>
+      <div class="post-date">January 29, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/01/29/BOJ-16508.html">백준 Silver3 - 전공책</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 16508번 from itertools import combinations t = input() n = int(input()) books = [] for _ in range(n): a, b = input().split() books.append((int(a), b)) def is_possible(books): # 책들의 문자 카운트를 저장해놓음 d = {} for _, b in books: for ch in b: d[ch] = d.get(ch, 0)+1 cnt =...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">January 29, 2021</div>
       <div class="post-categories">
       in 
         
@@ -260,7 +264,7 @@
 			</a>
 			
 		
-		<span class="page-number">Page 5 of 8</span>
+		<span class="page-number">Page 5 of 10</span>
 		
 		<a class="newer-posts" href="/page6">
       <span class="fa-stack fa-lg">
@@ -300,6 +304,10 @@
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
+        
+        
         
         
         
