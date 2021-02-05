@@ -32,8 +32,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>프로그래머스 Lv3 - 입국심사</title>
-  <meta name="description" content="프로그래머스 43238번">
+  <title>프로그래머스 Lv3 - 가사 검색</title>
+  <meta name="description" content="프로그래머스 60060번">
   
   <meta name="author" content="Jung Jaeeun">
   <meta name="copyright" content="&copy; Jung Jaeeun 2021">
@@ -67,10 +67,10 @@
 
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="프로그래머스 43238번" />
+  <meta property="og:description" content="프로그래머스 60060번" />
   <meta property="og:url" content="http://subong0508.github.io" />
   <meta property="og:site_name" content="Data Vision" />
-  <meta property="og:title" content="프로그래머스 Lv3 - 입국심사" />
+  <meta property="og:title" content="프로그래머스 Lv3 - 가사 검색" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="http://subong0508.github.io/assets/logo.png" />
   <meta property="og:image:type" content="image/png" />
@@ -81,8 +81,8 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="프로그래머스 Lv3 - 입국심사">
-  <meta name="twitter:description" content="프로그래머스 43238번">
+  <meta name="twitter:title" content="프로그래머스 Lv3 - 가사 검색">
+  <meta name="twitter:description" content="프로그래머스 60060번">
   <meta name="twitter:image" content="http://subong0508.github.io/assets/logo.png">
   <meta name="twitter:url" content="http://subong0508.github.io">
   
@@ -91,7 +91,7 @@
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://subong0508.github.io/problem-solving/2021/02/04/PR-43238.html">
+  <link rel="canonical" href="http://subong0508.github.io/problem-solving/2021/02/04/PR-60060.html">
   <link rel="alternate" type="application/rss+xml" title="Data Vision" href="http://subong0508.github.io/feed.xml" />
 </head>
 
@@ -143,6 +143,8 @@
         
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -155,7 +157,7 @@
 <div class="post-header-container " >
   <div class="scrim ">
     <header class="post-header">
-      <h1 class="title">프로그래머스 Lv3 - 입국심사</h1>
+      <h1 class="title">프로그래머스 Lv3 - 가사 검색</h1>
       <p class="info">by <strong>Jung Jaeeun</strong></p>
     </header>
   </div>
@@ -181,32 +183,39 @@
 </section>  
 
 <article class="post-content">
-  <h3 id="httpsprogrammerscokrlearncourses30lessons43238"><a href="https://programmers.co.kr/learn/courses/30/lessons/43238">프로그래머스 43238번</a></h3>
+  <h3 id="httpsprogrammerscokrlearncourses30lessons60060"><a href="https://programmers.co.kr/learn/courses/30/lessons/60060">프로그래머스 60060번</a></h3>
 
 <p><strong>풀이</strong></p>
 
-<pre><code class="language-python3">def check(target, n, times):
-    cnt = 0
-    for t in times:
-        cnt += target // t
-    return cnt
+<pre><code class="language-python3">from bisect import bisect_left, bisect_right
 
-def solution(n, times):
-    l = 1
-    r = min(times) * n
-    answer = 0
-    while l &lt;= r:
-        mid = (l + r) // 2
-        cnt = check(mid, n, times)
-        if cnt &lt; n:
-            l = mid + 1
+def count(words, q1, q2):
+    return bisect_right(words, q2) - bisect_left(words, q1)
+
+def solution(words, queries):
+    words_arr = [[] for _ in range(100001)]
+    words_arr_rev = [[] for _ in range(100001)]
+    answer = []
+    words.sort()
+    for w in words:
+        words_arr[len(w)].append(w)
+        words_arr_rev[len(w)].append(w[::-1])
+    for arr in words_arr:
+        arr.sort()
+    for arr in words_arr_rev:
+        arr.sort()
+    for q in queries:
+        if q[0] != '?':
+            q1, q2 = q.replace('?', 'a'), q.replace('?', 'z')
+            cnt = count(words_arr[len(q)], q1, q2)
         else:
-            answer = mid
-            r = mid - 1
+            q = q[::-1]
+            q1, q2 = q.replace('?', 'a'), q.replace('?', 'z')
+            cnt = count(words_arr_rev[len(q)], q1, q2)
+        answer.append(cnt)
     return answer
 </code></pre>
 
-<p>우선순위큐로 풀까 했지만 <code class="highlighter-rouge">n</code>이 10억이라 이 방법은 아니겠지 했는데 역시 문제해결의 키는 <code class="highlighter-rouge">times</code>에 있었다.</p>
 
 </article>
 
@@ -309,6 +318,8 @@ def solution(n, times):
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
         

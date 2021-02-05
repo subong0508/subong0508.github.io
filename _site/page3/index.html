@@ -121,6 +121,8 @@
         
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -141,6 +143,28 @@
 
 <div class="wrapper">
 <ul class="post-list">
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/03/BOJ-1920.html">백준 Silver4 - 수 찾기</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 1920번 풀이 n = int(input()) arr = list(map(int, input().split())) m = int(input()) nums = list(map(int, input().split())) arr.sort() def binary_search(num, arr): left = 0 right = len(arr)-1 while left &lt;= right: mid = (left + right) // 2 if arr[mid] == num: return mid elif arr[mid] &gt; num: right =...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 3, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
   
   <li>
     <h2>
@@ -244,28 +268,6 @@ print(*res, sep='\n')
     </section>
   </li>
   
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/03/BOJ-10825.html">백준 Silver4 - 국영수</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 10825번 풀이 n = int(input()) arr = [0] * n for i in range(n): name, kor, eng, mat = input().split() kor, eng, mat = map(int, [kor, eng, mat]) arr[i] = (name, kor, eng, mat) arr = sorted(arr, key=lambda x: x[0]) arr = sorted(arr, key=lambda x: -x[3]) arr = sorted(arr,...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 3, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
   
 </ul>
 
@@ -281,7 +283,7 @@ print(*res, sep='\n')
 			</a>
 			
 		
-		<span class="page-number">Page 3 of 10</span>
+		<span class="page-number">Page 3 of 11</span>
 		
 		<a class="newer-posts" href="/page4">
       <span class="fa-stack fa-lg">
@@ -321,6 +323,8 @@ print(*res, sep='\n')
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
         
