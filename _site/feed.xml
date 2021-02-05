@@ -6,9 +6,230 @@
 </description>
     <link>http://subong0508.github.io/</link>
     <atom:link href="http://subong0508.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 04 Feb 2021 20:25:34 +0900</pubDate>
-    <lastBuildDate>Thu, 04 Feb 2021 20:25:34 +0900</lastBuildDate>
+    <pubDate>Fri, 05 Feb 2021 19:00:42 +0900</pubDate>
+    <lastBuildDate>Fri, 05 Feb 2021 19:00:42 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>백준 Silver1 - 공유기 설치</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem2110&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/2110&quot;&gt;백준 2110번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n, c = map(int, input().split())
+arr = [0] * n
+for i in range(n):
+    arr[i] = int(input())
+arr.sort()
+
+
+def is_possible(minlen):
+    i = 0
+    cnt = 1
+    while i &amp;lt; len(arr):
+        prev = arr[i]
+        j = i+1
+        while j &amp;lt; len(arr) and (arr[j]-prev) &amp;lt; minlen:
+            j += 1
+        if j &amp;lt; len(arr):
+            cnt += 1
+        i = j
+    return cnt &amp;gt;= c
+    
+
+l = 0
+r = arr[-1] - arr[0]
+res = l
+while l &amp;lt;= r:
+    mid = (l + r) // 2
+    if is_possible(mid):
+        res = mid
+        l = mid + 1
+    else:
+        r = mid - 1
+
+print(res)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Fri, 05 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/02/05/BOJ-2110.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/05/BOJ-2110.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Gold3 - 드래곤 앤 던전</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem16434&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/16434&quot;&gt;백준 16434번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n, atk = map(int, input().split())
+rooms = [0] * n
+for i in range(n):
+    t, a, h = map(int, input().split())
+    rooms[i] = [t, a, h]
+
+
+def fight(maxhp):
+    tmp_atk = atk
+    curhp = maxhp
+    for t, a, h in rooms:
+        if t == 1:
+            num_attacks = h // tmp_atk
+            if h % tmp_atk != 0:
+                num_attacks += 1
+            # 용이 먼저 죽기 때문
+            curhp -= a * (num_attacks-1)
+        else:
+            tmp_atk += a
+            curhp += h
+        if curhp &amp;lt;= 0:
+            return False
+        curhp = min(curhp, maxhp)
+    return True
+
+l = 1
+r = 0
+for t, a, h in rooms:
+    if t == 1:
+        r += a * (h // atk + 1)
+
+ans = r
+while l &amp;lt;= r:
+    mid = (l + r) // 2
+    if fight(mid):
+        ans = mid
+        r = mid - 1
+    else:
+        l = mid + 1
+print(ans)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Fri, 05 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/02/05/BOJ-16434.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/05/BOJ-16434.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Gold4 - K번째 수</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem1300&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1300&quot;&gt;백준 1300번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
+k = int(input())
+
+l = 0
+r = n*n
+ans = -1
+while l &amp;lt;= r:
+    mid = (l + r) // 2
+    cnt = 0
+    for i in range(1, n+1):
+        cnt += min(n, mid // i)
+    if cnt &amp;lt; k:
+        l = mid + 1
+    else:
+        ans = mid
+        r = mid - 1
+print(ans)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ㅠ 다시 풀어봐야할듯…&lt;/p&gt;
+</description>
+        <pubDate>Fri, 05 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/02/05/BOJ-1300.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/05/BOJ-1300.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>프로그래머스 Lv3 - 입국심사</title>
+        <description>&lt;h3 id=&quot;httpsprogrammerscokrlearncourses30lessons43238&quot;&gt;&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/43238&quot;&gt;프로그래머스 43238번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;def check(target, n, times):
+    cnt = 0
+    for t in times:
+        cnt += target // t
+    return cnt
+
+def solution(n, times):
+    l = 1
+    r = min(times) * n
+    answer = 0
+    while l &amp;lt;= r:
+        mid = (l + r) // 2
+        cnt = check(mid, n, times)
+        if cnt &amp;lt; n:
+            l = mid + 1
+        else:
+            answer = mid
+            r = mid - 1
+    return answer
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;우선순위큐로 풀까 했지만 &lt;code class=&quot;highlighter-rouge&quot;&gt;n&lt;/code&gt;이 10억이라 이 방법은 아니겠지 했는데 역시 문제해결의 키는 &lt;code class=&quot;highlighter-rouge&quot;&gt;times&lt;/code&gt;에 있었다.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 04 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/02/04/PR-43238.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/04/PR-43238.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
     
       <item>
         <title>프로그래머스 Lv3 - 징검다리 건너기</title>
@@ -326,184 +547,6 @@ for num in nums:
         <pubDate>Wed, 03 Feb 2021 00:00:00 +0900</pubDate>
         <link>http://subong0508.github.io/problem-solving/2021/02/03/BOJ-1920.html</link>
         <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/03/BOJ-1920.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Silver4 - 듣보잡</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem1764&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1764&quot;&gt;백준 1764번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n, m = map(int, input().split())
-no_listen = set()
-for _ in range(n):
-    no_listen.add(input())
-no_see = set()
-for _ in range(m):
-    no_see.add(input())
-
-res = no_listen &amp;amp; no_see
-print(len(res))
-res = sorted(res)
-print(*res, sep='\n')
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;이분탐색을 활용할 수도 있겠지만 파이썬의 내장자료형인 &lt;code class=&quot;highlighter-rouge&quot;&gt;set&lt;/code&gt;을 통해 더 효율적으로 풀 수 있다.&lt;/p&gt;
-</description>
-        <pubDate>Wed, 03 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/02/03/BOJ-1764.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/03/BOJ-1764.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>프로그래머스 Lv1 - 실패율</title>
-        <description>&lt;h3 id=&quot;httpsprogrammerscokrlearncourses30lessons42889&quot;&gt;&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/42889&quot;&gt;프로그래머스 42889번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;def solution(N, stages):
-    d = {i: 0 for i in range(1, N+1)}
-    stages.sort()
-    prev = stages[0]
-    total = len(stages)
-    cnt = 1
-    for i in range(1, len(stages)):
-        if prev not in d:
-            break
-        if stages[i] == prev:
-            cnt += 1
-        elif stages[i] != prev:
-            d[prev] = cnt / total
-            total -= cnt
-            cnt = 1
-            prev = stages[i]
-        if i == len(stages)-1 and prev in d:
-            d[prev] = cnt / total            
-    answer = sorted(d.keys(), key=lambda x: -d[x])
-    return answer
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Wed, 03 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/02/03/PR-42889.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/03/PR-42889.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Silver3 - 안테나</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem18310&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/18310&quot;&gt;백준 18310번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
-arr = list(map(int, input().split()))
-arr.sort()
-
-
-def cal_distance(arr, mid):
-    total = 0
-    for a in arr:
-        total += abs(arr[mid]-a)
-    return total
-
-
-if len(arr) % 2 == 1:
-    mid = len(arr) // 2
-else:
-    mid1, mid2 = len(arr)//2-1, len(arr)//2
-    if cal_distance(arr, mid1) &amp;gt; cal_distance(arr, mid2):
-        mid = mid2
-    else:
-        mid = mid1 
-
-print(arr[mid])
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Wed, 03 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/02/03/BOJ-18310.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/03/BOJ-18310.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Gold4 - 카드 정렬하기</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem1715&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1715&quot;&gt;백준 1715번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;import heapq
-
-n = int(input())
-q = []
-for i in range(n):
-    a = int(input())
-    heapq.heappush(q, a)
-
-res = 0
-while len(q) &amp;gt;= 2:
-    a = heapq.heappop(q)
-    b = heapq.heappop(q)
-    res += a+b
-    heapq.heappush(q, a+b)
-    
-print(res)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;첨에는 그냥 array로 받고 sort해서  &lt;code class=&quot;highlighter-rouge&quot;&gt;deque&lt;/code&gt;로 풀었는데 새로운 원소가 더해질 때 그렇게 하면 최솟값이 &lt;code class=&quot;highlighter-rouge&quot;&gt;pop&lt;/code&gt;되지 않기 때문에 안된다.&lt;/p&gt;
-</description>
-        <pubDate>Wed, 03 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/02/03/BOJ-1715.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/03/BOJ-1715.html</guid>
         
         <category>python</category>
         

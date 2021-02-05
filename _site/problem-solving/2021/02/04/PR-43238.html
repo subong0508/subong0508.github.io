@@ -3,13 +3,37 @@
 
   <head>
   
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        TeX: {
+          equationNumbers: {
+            autoNumber: "AMS"
+          }
+        },
+        tex2jax: {
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+      }
+    });
+    MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+          alert("Math Processing Error: "+message[1]);
+        });
+    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+          alert("Math Processing Error: "+message[1]);
+        });
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    
+  
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Data Vision</title>
-  <meta name="description" content="My personal blog for studying; mainly related to data
-">
+  <title>프로그래머스 Lv3 - 입국심사</title>
+  <meta name="description" content="프로그래머스 43238번">
   
   <meta name="author" content="Jung Jaeeun">
   <meta name="copyright" content="&copy; Jung Jaeeun 2021">
@@ -43,11 +67,10 @@
 
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="My personal blog for studying; mainly related to data
-" />
+  <meta property="og:description" content="프로그래머스 43238번" />
   <meta property="og:url" content="http://subong0508.github.io" />
   <meta property="og:site_name" content="Data Vision" />
-  <meta property="og:title" content="Data Vision" />
+  <meta property="og:title" content="프로그래머스 Lv3 - 입국심사" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="http://subong0508.github.io/assets/logo.png" />
   <meta property="og:image:type" content="image/png" />
@@ -58,9 +81,8 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Data Vision">
-  <meta name="twitter:description" content="My personal blog for studying; mainly related to data
-">
+  <meta name="twitter:title" content="프로그래머스 Lv3 - 입국심사">
+  <meta name="twitter:description" content="프로그래머스 43238번">
   <meta name="twitter:image" content="http://subong0508.github.io/assets/logo.png">
   <meta name="twitter:url" content="http://subong0508.github.io">
   
@@ -69,7 +91,7 @@
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://subong0508.github.io/page3/">
+  <link rel="canonical" href="http://subong0508.github.io/problem-solving/2021/02/04/PR-43238.html">
   <link rel="alternate" type="application/rss+xml" title="Data Vision" href="http://subong0508.github.io/feed.xml" />
 </head>
 
@@ -128,170 +150,136 @@
 
 
     <div class="page-content">
-        <div class="home">
+        <div class="post">
 
-<div class="site-header-container has-cover" style="background-image: url(/assets/starry-night.jpg);">
-  <div class="scrim has-cover">
-    <header class="site-header">
-      <h1 class="title">Data Vision</h1>
-      <p class="subtitle">My personal blog for studying</p>
+<div class="post-header-container " >
+  <div class="scrim ">
+    <header class="post-header">
+      <h1 class="title">프로그래머스 Lv3 - 입국심사</h1>
+      <p class="info">by <strong>Jung Jaeeun</strong></p>
     </header>
   </div>
 </div>
 
 <div class="wrapper">
-<ul class="post-list">
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/03/BOJ-1764.html">백준 Silver4 - 듣보잡</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 1764번
 
-n, m = map(int, input().split())
-no_listen = set()
-for _ in range(n):
-    no_listen.add(input())
-no_see = set()
-for _ in range(m):
-    no_see.add(input())
+ <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
 
-res = no_listen &amp; no_see
-print(len(res))
-res = sorted(res)
-print(*res, sep='\n')
-
-
-이분탐색을 활용할 수도 있겠지만 파이썬의 내장자료형인 set을 통해 더 효율적으로 풀 수 있다.
-</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 3, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/03/PR-42889.html">프로그래머스 Lv1 - 실패율</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>프로그래머스 42889번 def solution(N, stages): d = {i: 0 for i in range(1, N+1)} stages.sort() prev = stages[0] total = len(stages) cnt = 1 for i in range(1, len(stages)): if prev not in d: break if stages[i] == prev: cnt += 1 elif stages[i] != prev: d[prev] = cnt /...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 3, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/03/BOJ-18310.html">백준 Silver3 - 안테나</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 18310번 풀이 n = int(input()) arr = list(map(int, input().split())) arr.sort() def cal_distance(arr, mid): total = 0 for a in arr: total += abs(arr[mid]-a) return total if len(arr) % 2 == 1: mid = len(arr) // 2 else: mid1, mid2 = len(arr)//2-1, len(arr)//2 if cal_distance(arr, mid1) &gt; cal_distance(arr, mid2): mid...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 3, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/03/BOJ-1715.html">백준 Gold4 - 카드 정렬하기</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 1715번 풀이 import heapq n = int(input()) q = [] for i in range(n): a = int(input()) heapq.heappush(q, a) res = 0 while len(q) &gt;= 2: a = heapq.heappop(q) b = heapq.heappop(q) res += a+b heapq.heappush(q, a+b) print(res) 첨에는 그냥 array로 받고 sort해서 deque로 풀었는데 새로운 원소가 더해질 때...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 3, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/03/BOJ-10825.html">백준 Silver4 - 국영수</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 10825번 풀이 n = int(input()) arr = [0] * n for i in range(n): name, kor, eng, mat = input().split() kor, eng, mat = map(int, [kor, eng, mat]) arr[i] = (name, kor, eng, mat) arr = sorted(arr, key=lambda x: x[0]) arr = sorted(arr, key=lambda x: -x[3]) arr = sorted(arr,...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 3, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  
-</ul>
-
-<nav class="pagination" role="navigation">
-	<p>
+<section class="post-meta">
+  <div class="post-date">February 4, 2021</div>
+  <div class="post-categories">
+  in 
     
+    <a href="/category/Problem-Solving">Problem-solving</a>
+    
+  
+  </div>
+</section>  
+
+<article class="post-content">
+  <h3 id="httpsprogrammerscokrlearncourses30lessons43238"><a href="https://programmers.co.kr/learn/courses/30/lessons/43238">프로그래머스 43238번</a></h3>
+
+<p><strong>풀이</strong></p>
+
+<pre><code class="language-python3">def check(target, n, times):
+    cnt = 0
+    for t in times:
+        cnt += target // t
+    return cnt
+
+def solution(n, times):
+    l = 1
+    r = min(times) * n
+    answer = 0
+    while l &lt;= r:
+        mid = (l + r) // 2
+        cnt = check(mid, n, times)
+        if cnt &lt; n:
+            l = mid + 1
+        else:
+            answer = mid
+            r = mid - 1
+    return answer
+</code></pre>
+
+<p>우선순위큐로 풀까 했지만 <code class="highlighter-rouge">n</code>이 10억이라 이 방법은 아니겠지 했는데 역시 문제해결의 키는 <code class="highlighter-rouge">times</code>에 있었다.</p>
+
+</article>
+
+
+
+<section class="tags">
+  <strong>Tags:</strong> <a href="/tag/python">python</a>,&nbsp;<a href="/tag/coding-test">coding-test</a>,&nbsp;<a href="/tag/programmers">programmers</a>,&nbsp;<a href="/tag/boj">boj</a>,&nbsp;<a href="/tag/baekjoon">baekjoon</a>
+</section>
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<section class="share">
+  <span>Share: </span>
+  
+    
+    
+    
+    
+    
+    
+    
+  
+</section>
+
+	<section class="post-navigation">
+		<span class="prev-post">
 			
-			<a class="newer-posts" href="/page2">
-				<span class="fa-stack fa-lg">
-					<i class="fa fa-square fa-stack-2x"></i>
-					<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
-				</span>
-			</a>
+				<a href="/problem-solving/2021/02/04/PR-64062.html">
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-square fa-stack-2x"></i>
+						<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+					</span>
+					<span class="page-number">프로그래머스 Lv3 - 징검다리 건너기</span>
+				</a>
 			
-		
-		<span class="page-number">Page 3 of 10</span>
-		
-		<a class="newer-posts" href="/page4">
-      <span class="fa-stack fa-lg">
-        <i class="fa fa-square fa-stack-2x"></i>
-        <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
-      </span>
-    </a>
-		
-	</p>
-</nav>
+		</span>
+		<span class="next-post">
+			
+				<a href="/problem-solving/2021/02/05/BOJ-1300.html">
+					<span class="page-number">백준 Gold4 - K번째 수</span>
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-square fa-stack-2x"></i>
+						<i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
+					</span>
+				</a>
+			
+		</span>
+	</section>
+
+
+
+
+<section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'subong0508-github-io';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
 
 </div>
 </div>
