@@ -32,8 +32,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>프로그래머스 Lv3 - 가사 검색</title>
-  <meta name="description" content="프로그래머스 60060번">
+  <title>백준 Gold4 - N번째 큰 수</title>
+  <meta name="description" content="백준 2075번">
   
   <meta name="author" content="Jung Jaeeun">
   <meta name="copyright" content="&copy; Jung Jaeeun 2021">
@@ -67,10 +67,10 @@
 
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="프로그래머스 60060번" />
+  <meta property="og:description" content="백준 2075번" />
   <meta property="og:url" content="http://subong0508.github.io" />
   <meta property="og:site_name" content="Data Vision" />
-  <meta property="og:title" content="프로그래머스 Lv3 - 가사 검색" />
+  <meta property="og:title" content="백준 Gold4 - N번째 큰 수" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="http://subong0508.github.io/assets/logo.png" />
   <meta property="og:image:type" content="image/png" />
@@ -81,8 +81,8 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="프로그래머스 Lv3 - 가사 검색">
-  <meta name="twitter:description" content="프로그래머스 60060번">
+  <meta name="twitter:title" content="백준 Gold4 - N번째 큰 수">
+  <meta name="twitter:description" content="백준 2075번">
   <meta name="twitter:image" content="http://subong0508.github.io/assets/logo.png">
   <meta name="twitter:url" content="http://subong0508.github.io">
   
@@ -91,7 +91,7 @@
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://subong0508.github.io/problem-solving/2021/02/04/PR-60060.html">
+  <link rel="canonical" href="http://subong0508.github.io/problem-solving/2021/02/06/BOJ-2075.html">
   <link rel="alternate" type="application/rss+xml" title="Data Vision" href="http://subong0508.github.io/feed.xml" />
 </head>
 
@@ -145,6 +145,8 @@
         
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -157,7 +159,7 @@
 <div class="post-header-container " >
   <div class="scrim ">
     <header class="post-header">
-      <h1 class="title">프로그래머스 Lv3 - 가사 검색</h1>
+      <h1 class="title">백준 Gold4 - N번째 큰 수</h1>
       <p class="info">by <strong>Jung Jaeeun</strong></p>
     </header>
   </div>
@@ -172,7 +174,7 @@
  
 
 <section class="post-meta">
-  <div class="post-date">February 4, 2021</div>
+  <div class="post-date">February 6, 2021</div>
   <div class="post-categories">
   in 
     
@@ -183,39 +185,34 @@
 </section>  
 
 <article class="post-content">
-  <h3 id="httpsprogrammerscokrlearncourses30lessons60060"><a href="https://programmers.co.kr/learn/courses/30/lessons/60060">프로그래머스 60060번</a></h3>
+  <h3 id="httpswwwacmicpcnetproblem2075"><a href="https://www.acmicpc.net/problem/2075">백준 2075번</a></h3>
 
 <p><strong>풀이</strong></p>
 
-<pre><code class="language-python3">from bisect import bisect_left, bisect_right
+<pre><code class="language-python3">import heapq
 
-def count(words, q1, q2):
-    return bisect_right(words, q2) - bisect_left(words, q1)
+n = int(input())
+arr = []
+for _ in range(n):
+    a = list(map(int, input().split()))
+    arr.append(a)
 
-def solution(words, queries):
-    words_arr = [[] for _ in range(100001)]
-    words_arr_rev = [[] for _ in range(100001)]
-    answer = []
-    words.sort()
-    for w in words:
-        words_arr[len(w)].append(w)
-        words_arr_rev[len(w)].append(w[::-1])
-    for arr in words_arr:
-        arr.sort()
-    for arr in words_arr_rev:
-        arr.sort()
-    for q in queries:
-        if q[0] != '?':
-            q1, q2 = q.replace('?', 'a'), q.replace('?', 'z')
-            cnt = count(words_arr[len(q)], q1, q2)
-        else:
-            q = q[::-1]
-            q1, q2 = q.replace('?', 'a'), q.replace('?', 'z')
-            cnt = count(words_arr_rev[len(q)], q1, q2)
-        answer.append(cnt)
-    return answer
+q = []
+for i in range(n):
+    for j in range(n):
+        a = arr[i][j]
+        if len(q) &lt; n:
+            heapq.heappush(q, a)
+        # 지금 넣으려는 원소가 힙의 최솟값보다 클 때만 삽입 =&gt; 공간 복잡도 O(N)
+        elif a &gt; q[0]:
+            heapq.heappop(q)
+            heapq.heappush(q, a)
+
+while len(q) &gt; n:
+    heapq.heappop(q)
+
+print(q[0])
 </code></pre>
-
 
 </article>
 
@@ -247,19 +244,19 @@ def solution(words, queries):
 	<section class="post-navigation">
 		<span class="prev-post">
 			
-				<a href="/problem-solving/2021/02/04/PR-64062.html">
+				<a href="/problem-solving/2021/02/06/BOJ-1927.html">
 					<span class="fa-stack fa-lg">
 						<i class="fa fa-square fa-stack-2x"></i>
 						<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
 					</span>
-					<span class="page-number">프로그래머스 Lv3 - 징검다리 건너기</span>
+					<span class="page-number">백준 Silver1 - 최소 힙</span>
 				</a>
 			
 		</span>
 		<span class="next-post">
 			
-				<a href="/problem-solving/2021/02/05/BOJ-1300.html">
-					<span class="page-number">백준 Gold4 - K번째 수</span>
+				<a href="/problem-solving/2021/02/06/BOJ-2696.html">
+					<span class="page-number">백준 Gold3 - 중앙값 구하기</span>
 					<span class="fa-stack fa-lg">
 						<i class="fa fa-square fa-stack-2x"></i>
 						<i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
@@ -318,6 +315,8 @@ def solution(words, queries):
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
         

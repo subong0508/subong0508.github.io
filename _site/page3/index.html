@@ -123,6 +123,8 @@
         
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -146,13 +148,13 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/02/03/BOJ-1920.html">백준 Silver4 - 수 찾기</a>
+      <a class="post-link" href="/problem-solving/2021/02/05/BOJ-2110.html">백준 Silver1 - 공유기 설치</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 1920번 풀이 n = int(input()) arr = list(map(int, input().split())) m = int(input()) nums = list(map(int, input().split())) arr.sort() def binary_search(num, arr): left = 0 right = len(arr)-1 while left &lt;= right: mid = (left + right) // 2 if arr[mid] == num: return mid elif arr[mid] &gt; num: right =...</p>
+      <p>백준 2110번 풀이 n, c = map(int, input().split()) arr = [0] * n for i in range(n): arr[i] = int(input()) arr.sort() def is_possible(minlen): i = 0 cnt = 1 while i &lt; len(arr): prev = arr[i] j = i+1 while j &lt; len(arr) and (arr[j]-prev) &lt; minlen: j += 1...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">February 3, 2021</div>
+      <div class="post-date">February 5, 2021</div>
       <div class="post-categories">
       in 
         
@@ -168,30 +170,13 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/02/03/BOJ-1764.html">백준 Silver4 - 듣보잡</a>
+      <a class="post-link" href="/problem-solving/2021/02/05/BOJ-16434.html">백준 Gold3 - 드래곤 앤 던전</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 1764번
-
-n, m = map(int, input().split())
-no_listen = set()
-for _ in range(n):
-    no_listen.add(input())
-no_see = set()
-for _ in range(m):
-    no_see.add(input())
-
-res = no_listen &amp; no_see
-print(len(res))
-res = sorted(res)
-print(*res, sep='\n')
-
-
-이분탐색을 활용할 수도 있겠지만 파이썬의 내장자료형인 set을 통해 더 효율적으로 풀 수 있다.
-</p>
+      <p>백준 16434번 풀이 n, atk = map(int, input().split()) rooms = [0] * n for i in range(n): t, a, h = map(int, input().split()) rooms[i] = [t, a, h] def fight(maxhp): tmp_atk = atk curhp = maxhp for t, a, h in rooms: if t == 1: num_attacks = h //...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">February 3, 2021</div>
+      <div class="post-date">February 5, 2021</div>
       <div class="post-categories">
       in 
         
@@ -207,13 +192,13 @@ print(*res, sep='\n')
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/02/03/PR-42889.html">프로그래머스 Lv1 - 실패율</a>
+      <a class="post-link" href="/problem-solving/2021/02/05/BOJ-1300.html">백준 Gold4 - K번째 수</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>프로그래머스 42889번 def solution(N, stages): d = {i: 0 for i in range(1, N+1)} stages.sort() prev = stages[0] total = len(stages) cnt = 1 for i in range(1, len(stages)): if prev not in d: break if stages[i] == prev: cnt += 1 elif stages[i] != prev: d[prev] = cnt /...</p>
+      <p>백준 1300번 풀이 n = int(input()) k = int(input()) l = 0 r = n*n ans = -1 while l &lt;= r: mid = (l + r) // 2 cnt = 0 for i in range(1, n+1): cnt += min(n, mid // i) if cnt &lt; k: l = mid...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">February 3, 2021</div>
+      <div class="post-date">February 5, 2021</div>
       <div class="post-categories">
       in 
         
@@ -229,13 +214,13 @@ print(*res, sep='\n')
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/02/03/BOJ-18310.html">백준 Silver3 - 안테나</a>
+      <a class="post-link" href="/problem-solving/2021/02/04/PR-64062.html">프로그래머스 Lv3 - 징검다리 건너기</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 18310번 풀이 n = int(input()) arr = list(map(int, input().split())) arr.sort() def cal_distance(arr, mid): total = 0 for a in arr: total += abs(arr[mid]-a) return total if len(arr) % 2 == 1: mid = len(arr) // 2 else: mid1, mid2 = len(arr)//2-1, len(arr)//2 if cal_distance(arr, mid1) &gt; cal_distance(arr, mid2): mid...</p>
+      <p>프로그래머스 64062번 풀이 def run_possible(stones, n, k): stones = stones.copy() # (n-1)명이 징검다리를 건넌 후 결과 stones = [max(0, x-n+1) for x in stones] i = 0 while i &lt; len(stones): if stones[i] &gt; 0: i += 1 else: j = i+1 # 0의 연속된 갯수 while j &lt; len(stones)...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">February 3, 2021</div>
+      <div class="post-date">February 4, 2021</div>
       <div class="post-categories">
       in 
         
@@ -251,13 +236,13 @@ print(*res, sep='\n')
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/02/03/BOJ-1715.html">백준 Gold4 - 카드 정렬하기</a>
+      <a class="post-link" href="/problem-solving/2021/02/04/BOJ-7453.html">백준 Gold2 - 합이 0인 네 정수</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 1715번 풀이 import heapq n = int(input()) q = [] for i in range(n): a = int(input()) heapq.heappush(q, a) res = 0 while len(q) &gt;= 2: a = heapq.heappop(q) b = heapq.heappop(q) res += a+b heapq.heappush(q, a+b) print(res) 첨에는 그냥 array로 받고 sort해서 deque로 풀었는데 새로운 원소가 더해질 때...</p>
+      <p>백준 7453번 풀이 n = int(input()) A = [0] * n B = [0] * n C = [0] * n D = [0] * n for i in range(n): a, b, c, d = map(int, input().split()) A[i] = a B[i] = b C[i] = c D[i] = d left...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">February 3, 2021</div>
+      <div class="post-date">February 4, 2021</div>
       <div class="post-categories">
       in 
         
@@ -283,7 +268,7 @@ print(*res, sep='\n')
 			</a>
 			
 		
-		<span class="page-number">Page 3 of 11</span>
+		<span class="page-number">Page 3 of 12</span>
 		
 		<a class="newer-posts" href="/page4">
       <span class="fa-stack fa-lg">
@@ -323,6 +308,8 @@ print(*res, sep='\n')
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
         

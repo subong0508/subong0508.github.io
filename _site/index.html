@@ -123,6 +123,8 @@
         
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -146,13 +148,13 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/02/05/PR-43238.html">프로그래머스 Lv3 - 입국심사</a>
+      <a class="post-link" href="/problem-solving/2021/02/06/PR-42888.html">프로그래머스 Lv2 - 오픈채팅방</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>프로그래머스 43238번 풀이 def check(target, n, times): cnt = 0 for t in times: cnt += target // t return cnt def solution(n, times): l = 1 r = min(times) * n answer = 0 while l &lt;= r: mid = (l + r) // 2 cnt = check(mid, n,...</p>
+      <p>프로그래머스 42888번 풀이 def solution(record): msgs = [] user_d = {} for r in record: lst = r.split() if len(lst) == 2: continue action, uid, name = lst user_d[uid] = name for r in record: lst = r.split() if len(lst) == 2: _, uid = lst msg = user_d[uid] +...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">February 5, 2021</div>
+      <div class="post-date">February 6, 2021</div>
       <div class="post-categories">
       in 
         
@@ -168,13 +170,35 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/02/05/BOJ-2110.html">백준 Silver1 - 공유기 설치</a>
+      <a class="post-link" href="/data-structure/2021/02/06/Heap.html">Heap with Python</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 2110번 풀이 n, c = map(int, input().split()) arr = [0] * n for i in range(n): arr[i] = int(input()) arr.sort() def is_possible(minlen): i = 0 cnt = 1 while i &lt; len(arr): prev = arr[i] j = i+1 while j &lt; len(arr) and (arr[j]-prev) &lt; minlen: j += 1...</p>
+      <p>힙이란 우선순위큐(Priority Queue)를 이진 트리로 구현한 자료구조 입니다. 힙의 삽입, 삭제 연산은 $O(\log n)$의 시간복잡도를 가집니다. 힙은 파이썬 내장모듈인 heapq를 이용해서 손쉽게 구현할 수 있습니다. import heapq arr = [4, 5, 6, 7, 9, 8, 3, 1, 2] heapq.heapify(arr) print(heapq.nsmallest(3, arr)) # 1 2 3 print(heapq.nlargest(3, arr)) # 7 8...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">February 5, 2021</div>
+      <div class="post-date">February 6, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Data-Structure">Data-structure</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/06/BOJ-4358.html">백준 Gold4 - 생태학</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 4358번 풀이 import sys input = sys.stdin.readline d = {} cnt = 0 while True: line = input().rstrip() if not line: break cnt += 1 d[line] = d.get(line, 0) + 1 d = sorted(d.items()) for k, v in d: print("%s %.4f" % (k, 100*v/cnt)) 인풋을 이런식으로 받는 건 못봐서...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 6, 2021</div>
       <div class="post-categories">
       in 
         
@@ -190,13 +214,13 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/02/05/BOJ-16434.html">백준 Gold3 - 드래곤 앤 던전</a>
+      <a class="post-link" href="/problem-solving/2021/02/06/BOJ-2696.html">백준 Gold3 - 중앙값 구하기</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 16434번 풀이 n, atk = map(int, input().split()) rooms = [0] * n for i in range(n): t, a, h = map(int, input().split()) rooms[i] = [t, a, h] def fight(maxhp): tmp_atk = atk curhp = maxhp for t, a, h in rooms: if t == 1: num_attacks = h //...</p>
+      <p>백준 2696번 풀이 import heapq t = int(input()) def get_median(n, arr): # median보다 작은 값들을 저장하는 최대 힙 max_heap = [] median = None # median보다 큰 값들을 저장하는 최소 힙 min_heap = [] res = [] for i in range(1, n+1): if median is None: median = arr[i] res.append(median)...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">February 5, 2021</div>
+      <div class="post-date">February 6, 2021</div>
       <div class="post-categories">
       in 
         
@@ -212,35 +236,13 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/02/05/BOJ-1300.html">백준 Gold4 - K번째 수</a>
+      <a class="post-link" href="/problem-solving/2021/02/06/BOJ-2075.html">백준 Gold4 - N번째 큰 수</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 1300번 풀이 n = int(input()) k = int(input()) l = 0 r = n*n ans = -1 while l &lt;= r: mid = (l + r) // 2 cnt = 0 for i in range(1, n+1): cnt += min(n, mid // i) if cnt &lt; k: l = mid...</p>
+      <p>백준 2075번 풀이 import heapq n = int(input()) arr = [] for _ in range(n): a = list(map(int, input().split())) arr.append(a) q = [] for i in range(n): for j in range(n): a = arr[i][j] if len(q) &lt; n: heapq.heappush(q, a) # 지금 넣으려는 원소가 힙의 최솟값보다 클 때만 삽입 =&gt;...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">February 5, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/04/PR-60060.html">프로그래머스 Lv3 - 가사 검색</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>프로그래머스 60060번 풀이 from bisect import bisect_left, bisect_right def count(words, q1, q2): return bisect_right(words, q2) - bisect_left(words, q1) def solution(words, queries): words_arr = [[] for _ in range(100001)] words_arr_rev = [[] for _ in range(100001)] answer = [] words.sort() for w in words: words_arr[len(w)].append(w) words_arr_rev[len(w)].append(w[::-1]) for arr in words_arr: arr.sort()...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 4, 2021</div>
+      <div class="post-date">February 6, 2021</div>
       <div class="post-categories">
       in 
         
@@ -262,7 +264,7 @@
       <i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
     </span>
 		
-		<span class="page-number">Page 1 of 11</span>
+		<span class="page-number">Page 1 of 12</span>
 		
 		<a class="newer-posts" href="/page2">
       <span class="fa-stack fa-lg">
@@ -302,6 +304,8 @@
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
         
