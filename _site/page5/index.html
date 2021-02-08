@@ -125,6 +125,8 @@
         
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -145,6 +147,67 @@
 
 <div class="wrapper">
 <ul class="post-list">
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/03/BOJ-1920.html">백준 Silver4 - 수 찾기</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 1920번 풀이 n = int(input()) arr = list(map(int, input().split())) m = int(input()) nums = list(map(int, input().split())) arr.sort() def binary_search(num, arr): left = 0 right = len(arr)-1 while left &lt;= right: mid = (left + right) // 2 if arr[mid] == num: return mid elif arr[mid] &gt; num: right =...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 3, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/03/BOJ-1764.html">백준 Silver4 - 듣보잡</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 1764번
+
+n, m = map(int, input().split())
+no_listen = set()
+for _ in range(n):
+    no_listen.add(input())
+no_see = set()
+for _ in range(m):
+    no_see.add(input())
+
+res = no_listen &amp; no_see
+print(len(res))
+res = sorted(res)
+print(*res, sep='\n')
+
+
+이분탐색을 활용할 수도 있겠지만 파이썬의 내장자료형인 set을 통해 더 효율적으로 풀 수 있다.
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 3, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
   
   <li>
     <h2>
@@ -209,50 +272,6 @@
     </section>
   </li>
   
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/03/BOJ-10825.html">백준 Silver4 - 국영수</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 10825번 풀이 n = int(input()) arr = [0] * n for i in range(n): name, kor, eng, mat = input().split() kor, eng, mat = map(int, [kor, eng, mat]) arr[i] = (name, kor, eng, mat) arr = sorted(arr, key=lambda x: x[0]) arr = sorted(arr, key=lambda x: -x[3]) arr = sorted(arr,...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 3, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/data-structure/2021/02/02/Sorting.html">정렬 with Python</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>이번 포스팅에서는 여러 정렬 기법에 대해 알아보고 파이썬으로 간단하게 구현해보겠습니다. 선택 정렬(Selection Sort) 선택 정렬은 한마디로 Priority Queue with Unsorted Array라고 할 수 있습니다. 우선순위 큐가 하나 있다고 가정해봅시다. 데이터를 삽입할 때는 항상 끝에 삽입하고, pop 연산을 오름차순/내림차순으로 수행합니다. 또한 시간복잡도는 $O(n^2)$ 입니다. array = [7, 5, 9, 0, 3,...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 2, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Data-Structure">Data-structure</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
   
 </ul>
 
@@ -268,7 +287,7 @@
 			</a>
 			
 		
-		<span class="page-number">Page 5 of 12</span>
+		<span class="page-number">Page 5 of 13</span>
 		
 		<a class="newer-posts" href="/page6">
       <span class="fa-stack fa-lg">
@@ -308,6 +327,8 @@
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
         
