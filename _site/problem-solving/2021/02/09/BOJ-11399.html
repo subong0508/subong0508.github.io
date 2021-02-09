@@ -3,13 +3,37 @@
 
   <head>
   
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        TeX: {
+          equationNumbers: {
+            autoNumber: "AMS"
+          }
+        },
+        tex2jax: {
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+      }
+    });
+    MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+          alert("Math Processing Error: "+message[1]);
+        });
+    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+          alert("Math Processing Error: "+message[1]);
+        });
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    
+  
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Data Vision</title>
-  <meta name="description" content="My personal blog for studying; mainly related to data
-">
+  <title>백준 Silver3 - ATM</title>
+  <meta name="description" content="백준 11399번">
   
   <meta name="author" content="Jung Jaeeun">
   <meta name="copyright" content="&copy; Jung Jaeeun 2021">
@@ -43,11 +67,10 @@
 
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="My personal blog for studying; mainly related to data
-" />
+  <meta property="og:description" content="백준 11399번" />
   <meta property="og:url" content="http://subong0508.github.io" />
   <meta property="og:site_name" content="Data Vision" />
-  <meta property="og:title" content="Data Vision" />
+  <meta property="og:title" content="백준 Silver3 - ATM" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="http://subong0508.github.io/assets/logo.png" />
   <meta property="og:image:type" content="image/png" />
@@ -58,9 +81,8 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Data Vision">
-  <meta name="twitter:description" content="My personal blog for studying; mainly related to data
-">
+  <meta name="twitter:title" content="백준 Silver3 - ATM">
+  <meta name="twitter:description" content="백준 11399번">
   <meta name="twitter:image" content="http://subong0508.github.io/assets/logo.png">
   <meta name="twitter:url" content="http://subong0508.github.io">
   
@@ -69,7 +91,7 @@
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://subong0508.github.io/page2/">
+  <link rel="canonical" href="http://subong0508.github.io/problem-solving/2021/02/09/BOJ-11399.html">
   <link rel="alternate" type="application/rss+xml" title="Data Vision" href="http://subong0508.github.io/feed.xml" />
 </head>
 
@@ -134,168 +156,125 @@
 
 
     <div class="page-content">
-        <div class="home">
+        <div class="post">
 
-<div class="site-header-container has-cover" style="background-image: url(/assets/starry-night.jpg);">
-  <div class="scrim has-cover">
-    <header class="site-header">
-      <h1 class="title">Data Vision</h1>
-      <p class="subtitle">My personal blog for studying</p>
+<div class="post-header-container " >
+  <div class="scrim ">
+    <header class="post-header">
+      <h1 class="title">백준 Silver3 - ATM</h1>
+      <p class="info">by <strong>Jung Jaeeun</strong></p>
     </header>
   </div>
 </div>
 
 <div class="wrapper">
-<ul class="post-list">
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/08/PR-42578.html">프로그래머스 Lv2 - 위장</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>프로그래머스 42578번
 
-풀이
+ <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
 
-def solution(clothes):
-    answer = 1
-    d = {}
-    for _, y in clothes:
-        # 아무것도 안입는 수 포함
-        d[y] = d.get(y, 1) + 1
-    for k in d:
-        answer *= d[k]
-    answer -= 1
-    return answer
-
-</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 8, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/06/PR-42888.html">프로그래머스 Lv2 - 오픈채팅방</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>프로그래머스 42888번 풀이 def solution(record): msgs = [] user_d = {} for r in record: lst = r.split() if len(lst) == 2: continue action, uid, name = lst user_d[uid] = name for r in record: lst = r.split() if len(lst) == 2: _, uid = lst msg = user_d[uid] +...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 6, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/data-structure/2021/02/06/Heap.html">Heap with Python</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>힙이란 우선순위큐(Priority Queue)를 이진 트리로 구현한 자료구조 입니다. 힙의 삽입, 삭제 연산은 $O(\log n)$의 시간복잡도를 가집니다. 힙은 파이썬 내장모듈인 heapq를 이용해서 손쉽게 구현할 수 있습니다. import heapq arr = [4, 5, 6, 7, 9, 8, 3, 1, 2] heapq.heapify(arr) print(heapq.nsmallest(3, arr)) # 1 2 3 print(heapq.nlargest(3, arr)) # 7 8...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 6, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Data-Structure">Data-structure</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/06/BOJ-4358.html">백준 Gold4 - 생태학</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 4358번 풀이 import sys input = sys.stdin.readline d = {} cnt = 0 while True: line = input().rstrip() if not line: break cnt += 1 d[line] = d.get(line, 0) + 1 d = sorted(d.items()) for k, v in d: print("%s %.4f" % (k, 100*v/cnt)) 인풋을 이런식으로 받는 건 못봐서...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 6, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/06/BOJ-2696.html">백준 Gold3 - 중앙값 구하기</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 2696번 풀이 import heapq t = int(input()) def get_median(n, arr): # median보다 작은 값들을 저장하는 최대 힙 max_heap = [] median = None # median보다 큰 값들을 저장하는 최소 힙 min_heap = [] res = [] for i in range(1, n+1): if median is None: median = arr[i] res.append(median)...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 6, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  
-</ul>
-
-<nav class="pagination" role="navigation">
-	<p>
+<section class="post-meta">
+  <div class="post-date">February 9, 2021</div>
+  <div class="post-categories">
+  in 
     
+    <a href="/category/Problem-Solving">Problem-solving</a>
+    
+  
+  </div>
+</section>  
+
+<article class="post-content">
+  <h3 id="httpswwwacmicpcnetproblem11399"><a href="https://www.acmicpc.net/problem/11399">백준 11399번</a></h3>
+
+<p><strong>풀이</strong></p>
+
+<pre><code class="language-python3">n = int(input())
+atm = list(map(int, input().split()))
+atm.sort()
+
+for i in range(1, n):
+    atm[i] += atm[i-1]
+    
+print(sum(atm))
+</code></pre>
+
+<p>그냥 정렬해서 풀면 되는 문제.</p>
+
+</article>
+
+
+
+<section class="tags">
+  <strong>Tags:</strong> <a href="/tag/python">python</a>,&nbsp;<a href="/tag/coding-test">coding-test</a>,&nbsp;<a href="/tag/programmers">programmers</a>,&nbsp;<a href="/tag/boj">boj</a>,&nbsp;<a href="/tag/baekjoon">baekjoon</a>
+</section>
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<section class="share">
+  <span>Share: </span>
+  
+    
+    
+    
+    
+    
+    
+    
+  
+</section>
+
+	<section class="post-navigation">
+		<span class="prev-post">
 			
-			<a class="newer-posts" href="/">
-        <span class="fa-stack fa-lg">
-          <i class="fa fa-square fa-stack-2x"></i>
-          <i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
-        </span>
-      </a>
+				<a href="/problem-solving/2021/02/09/BOJ-11047.html">
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-square fa-stack-2x"></i>
+						<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+					</span>
+					<span class="page-number">백준 Silver1 - 동전 0, 동전 2</span>
+				</a>
 			
-		
-		<span class="page-number">Page 2 of 13</span>
-		
-		<a class="newer-posts" href="/page3">
-      <span class="fa-stack fa-lg">
-        <i class="fa fa-square fa-stack-2x"></i>
-        <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
-      </span>
-    </a>
-		
-	</p>
-</nav>
+		</span>
+		<span class="next-post">
+			
+				<a href="/problem-solving/2021/02/09/BOJ-1339.html">
+					<span class="page-number">백준 Gold4 - 단어 수학</span>
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-square fa-stack-2x"></i>
+						<i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
+					</span>
+				</a>
+			
+		</span>
+	</section>
+
+
+
+
+<section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'subong0508-github-io';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
 
 </div>
 </div>

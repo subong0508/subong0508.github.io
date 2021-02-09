@@ -6,9 +6,204 @@
 </description>
     <link>http://subong0508.github.io/</link>
     <atom:link href="http://subong0508.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 08 Feb 2021 21:05:55 +0900</pubDate>
-    <lastBuildDate>Mon, 08 Feb 2021 21:05:55 +0900</lastBuildDate>
+    <pubDate>Wed, 10 Feb 2021 02:57:42 +0900</pubDate>
+    <lastBuildDate>Wed, 10 Feb 2021 02:57:42 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>백준 Silver3 - 수리공 항승</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem1449&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1449&quot;&gt;백준 1449번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n, l = map(int, input().split())
+arr = list(map(int, input().split()))
+arr.sort()
+
+cnt = 1
+start = arr[0]-0.5
+for i in range(1, n):
+    end = arr[i]+0.5
+    # 돌려막기 가능
+    if end &amp;lt;= start+l:
+        continue
+    else: # 새로 테이프를 붙여야 한다.
+        cnt += 1
+        start = arr[i]-0.5
+
+print(cnt)
+&lt;/code&gt;&lt;/pre&gt;
+
+</description>
+        <pubDate>Tue, 09 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/02/09/BOJ-1449.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/09/BOJ-1449.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Gold4 - 단어 수학</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem1339&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1339&quot;&gt;백준 1339번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
+d = {}
+for _ in range(n):
+    word = input()
+    for i in range(len(word)-1, -1, -1):
+        d[word[i]] = d.get(word[i], 0) + 10 ** (len(word)-i-1)
+
+d = sorted(d.items(), key=lambda x: -x[1])
+total = 0
+num = 9
+for ch, cnt in d:
+    total += num * cnt
+    num -= 1
+
+print(total)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;십진법의 특성을 생각해서 풀면된다. 예를 들어 &lt;code class=&quot;highlighter-rouge&quot;&gt;GCF+ACDEB&lt;/code&gt;는 &lt;code class=&quot;highlighter-rouge&quot;&gt;100*G+10*C+1*F+10000*A+1000*C+100*D+10*E+1*B&lt;/code&gt;로 풀어서 쓸 수 있으니 곱해지는 계수가 큰 것부터 단어에 계수를 매겨주면 그게 바로 최적해에 해당한다.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 09 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/02/09/BOJ-1339.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/09/BOJ-1339.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Silver3 - ATM</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem11399&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/11399&quot;&gt;백준 11399번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
+atm = list(map(int, input().split()))
+atm.sort()
+
+for i in range(1, n):
+    atm[i] += atm[i-1]
+    
+print(sum(atm))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;그냥 정렬해서 풀면 되는 문제.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 09 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/02/09/BOJ-11399.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/09/BOJ-11399.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Silver1 - 동전 0, 동전 2</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem11047&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/11047&quot;&gt;백준 11047번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n, k = map(int, input().split())
+coins = [0] * n
+for i in range(n):
+    coins[i] = int(input())
+
+cnt = 0
+for i in range(n-1, -1, -1):
+    tmp = k // coins[i]
+    cnt += tmp
+    k -= coins[i] * tmp
+
+print(cnt)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;가장 큰 동전부터 고르면 되는 문제였다.&lt;/p&gt;
+
+&lt;h3 id=&quot;httpswwwacmicpcnetproblem2294&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/2294&quot;&gt;백준 2294번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n, k = map(int, input().split())
+INF = int(1e9)
+coins = [INF] * (1+k)
+for _ in range(n):
+    c = int(input())
+    start = c 
+    cnt = 0
+    while start &amp;lt;= k:
+        cnt += 1
+        coins[start] = min(coins[start], cnt)
+        start += c
+
+for i in range(1, k+1):
+    for j in range(i):
+        coins[i] = min(coins[i], coins[j]+coins[i-j])
+
+res = coins[k]
+if res == INF:
+    print(-1)
+else:
+    print(res)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;coins[i] = min(coins[i], coins[j]+coins[i-j])&lt;/code&gt; 이 부분이 가장 핵심적인 부분이었다.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 09 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/02/09/BOJ-11047.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/09/BOJ-11047.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
     
       <item>
         <title>프로그래머스 Lv3 - N으로 표현</title>
@@ -311,180 +506,6 @@ for num, lst in answer:
         <pubDate>Sat, 06 Feb 2021 00:00:00 +0900</pubDate>
         <link>http://subong0508.github.io/problem-solving/2021/02/06/BOJ-2696.html</link>
         <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/06/BOJ-2696.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Gold4 - N번째 큰 수</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem2075&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/2075&quot;&gt;백준 2075번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;import heapq
-
-n = int(input())
-arr = []
-for _ in range(n):
-    a = list(map(int, input().split()))
-    arr.append(a)
-
-q = []
-for i in range(n):
-    for j in range(n):
-        a = arr[i][j]
-        if len(q) &amp;lt; n:
-            heapq.heappush(q, a)
-        # 지금 넣으려는 원소가 힙의 최솟값보다 클 때만 삽입 =&amp;gt; 공간 복잡도 O(N)
-        elif a &amp;gt; q[0]:
-            heapq.heappop(q)
-            heapq.heappush(q, a)
-
-while len(q) &amp;gt; n:
-    heapq.heappop(q)
-
-print(q[0])
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Sat, 06 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/02/06/BOJ-2075.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/06/BOJ-2075.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Silver1 - 최소 힙</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem1927&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1927&quot;&gt;백준 1927번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;import heapq
-
-n = int(input())
-h = []
-res = []
-for _ in range(n):
-    x = int(input())
-    if x != 0:
-        heapq.heappush(h, x)
-    elif h:
-        res.append(heapq.heappop(h))
-    else:
-        res.append(0)
-print(*res, sep='\n')
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Sat, 06 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/02/06/BOJ-1927.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/06/BOJ-1927.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Silver4 - 나는야 포켓몬 마스터 이다솜</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem1620&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1620&quot;&gt;백준 1620번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n, m = map(int, input().split())
-pocket_num = {}
-num_pocket = {}
-
-for i in range(1, n+1):
-    p = input()
-    pocket_num[p] = i
-    num_pocket[i] = p
-
-res = []
-for _ in range(m):
-    x = input()
-    if x.isnumeric():
-        res.append(num_pocket[int(x)])
-    else:
-        res.append(pocket_num[x])
-print(*res, sep='\n')
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Sat, 06 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/02/06/BOJ-1620.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/06/BOJ-1620.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Silver3 - 문자열 집합</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem14425&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/14425&quot;&gt;백준 14425번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n, m = map(int, input().split())
-s = set()
-for _ in range(n):
-    string = input()
-    s.add(string)
-
-cnt = 0
-for _ in range(m):
-    string = input()
-    if string in s:
-        cnt += 1
-print(cnt)
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Sat, 06 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/02/06/BOJ-14425.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/06/BOJ-14425.html</guid>
         
         <category>python</category>
         
