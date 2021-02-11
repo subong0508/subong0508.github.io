@@ -3,37 +3,13 @@
 
   <head>
   
-    <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        TeX: {
-          equationNumbers: {
-            autoNumber: "AMS"
-          }
-        },
-        tex2jax: {
-        inlineMath: [ ['$', '$'] ],
-        displayMath: [ ['$$', '$$'] ],
-        processEscapes: true,
-      }
-    });
-    MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
-          alert("Math Processing Error: "+message[1]);
-        });
-    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
-          alert("Math Processing Error: "+message[1]);
-        });
-    </script>
-    <script type="text/javascript" async
-      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-    </script>
-    
-  
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>백준 Silver4 - 괄호</title>
-  <meta name="description" content="백준 9012번">
+  <title>Data Vision</title>
+  <meta name="description" content="My personal blog for studying; mainly related to data
+">
   
   <meta name="author" content="Jung Jaeeun">
   <meta name="copyright" content="&copy; Jung Jaeeun 2021">
@@ -67,10 +43,11 @@
 
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="백준 9012번" />
+  <meta property="og:description" content="My personal blog for studying; mainly related to data
+" />
   <meta property="og:url" content="http://subong0508.github.io" />
   <meta property="og:site_name" content="Data Vision" />
-  <meta property="og:title" content="백준 Silver4 - 괄호" />
+  <meta property="og:title" content="Data Vision" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="http://subong0508.github.io/assets/logo.png" />
   <meta property="og:image:type" content="image/png" />
@@ -81,8 +58,9 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="백준 Silver4 - 괄호">
-  <meta name="twitter:description" content="백준 9012번">
+  <meta name="twitter:title" content="Data Vision">
+  <meta name="twitter:description" content="My personal blog for studying; mainly related to data
+">
   <meta name="twitter:image" content="http://subong0508.github.io/assets/logo.png">
   <meta name="twitter:url" content="http://subong0508.github.io">
   
@@ -91,7 +69,7 @@
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://subong0508.github.io/problem-solving/2021/01/28/BOJ-9012.html">
+  <link rel="canonical" href="http://subong0508.github.io/page14/">
   <link rel="alternate" type="application/rss+xml" title="Data Vision" href="http://subong0508.github.io/feed.xml" />
 </head>
 
@@ -158,176 +136,129 @@
 
 
     <div class="page-content">
-        <div class="post">
+        <div class="home">
 
-<div class="post-header-container " >
-  <div class="scrim ">
-    <header class="post-header">
-      <h1 class="title">백준 Silver4 - 괄호</h1>
-      <p class="info">by <strong>Jung Jaeeun</strong></p>
+<div class="site-header-container has-cover" style="background-image: url(/assets/starry-night.jpg);">
+  <div class="scrim has-cover">
+    <header class="site-header">
+      <h1 class="title">Data Vision</h1>
+      <p class="subtitle">My personal blog for studying</p>
     </header>
   </div>
 </div>
 
 <div class="wrapper">
-
- <span class="page-divider">
-  <span class="one"></span>
-  <span class="two"></span>
-</span>
- 
-
-<section class="post-meta">
-  <div class="post-date">January 28, 2021</div>
-  <div class="post-categories">
-  in 
-    
-    <a href="/category/Problem-Solving">Problem-solving</a>
-    
+<ul class="post-list">
   
-  </div>
-</section>  
-
-<article class="post-content">
-  <h3 id="httpswwwacmicpcnetproblem9012"><a href="https://www.acmicpc.net/problem/9012">백준 9012번</a></h3>
-
-<p><strong>문제</strong></p>
-
-<p>괄호 문자열(Parenthesis String, PS)은 두 개의 괄호 기호인 ‘(’ 와 ‘)’ 만으로 구성되어 있는 문자열이다. 그 중에서 괄호의 모양이 바르게 구성된 문자열을 올바른 괄호 문자열(Valid PS, VPS)이라고 부른다. 한 쌍의 괄호 기호로 된 “( )” 문자열은 기본 VPS 이라고 부른다. 만일 x 가 VPS 라면 이것을 하나의 괄호에 넣은 새로운 문자열 “(x)”도 VPS 가 된다. 그리고 두 VPS x 와 y를 접합(concatenation)시킨 새로운 문자열 xy도 VPS 가 된다. 예를 들어 “(())()”와 “((()))” 는 VPS 이지만 “(()(”, “(())()))” , 그리고 “(()” 는 모두 VPS 가 아닌 문자열이다.</p>
-
-<p>여러분은 입력으로 주어진 괄호 문자열이 VPS 인지 아닌지를 판단해서 그 결과를 YES 와 NO 로 나타내어야 한다.</p>
-
-<p><strong>입력</strong></p>
-
-<p>입력 데이터는 표준 입력을 사용한다. 입력은 T개의 테스트 데이터로 주어진다. 입력의 첫 번째 줄에는 입력 데이터의 수를 나타내는 정수 T가 주어진다. 각 테스트 데이터의 첫째 줄에는 괄호 문자열이 한 줄에 주어진다. 하나의 괄호 문자열의 길이는 2 이상 50 이하이다.</p>
-
-<p><strong>출력</strong></p>
-
-<p>출력은 표준 출력을 사용한다. 만일 입력 괄호 문자열이 올바른 괄호 문자열(VPS)이면 “YES”, 아니면 “NO”를 한 줄에 하나씩 차례대로 출력해야 한다.</p>
-
-<p><strong>예제</strong></p>
-
-<p>입력</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>6
-(())())
-(((()())()
-(()())((()))
-((()()(()))(((())))()
-()()()()(()()())()
-(()((())()(
-</code></pre>
-</div>
-
-<p>출력</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>NO
-NO
-YES
-NO
-YES
-NO
-</code></pre>
-</div>
-
-<p><strong>풀이</strong></p>
-
-<pre><code class="language-python3">t = int(input())
-res = []
-
-def is_vps(string):
-    stack = []
-    for ch in string:
-        if ch == '(':
-            stack.append(ch)
-        else:
-            if not stack or stack.pop() != '(':
-                return False
-    return len(stack) == 0
-
-
-for _ in range(t):
-    string = input()
-    if is_vps(string):
-        res.append("YES")
-    else:
-        res.append("NO")
-
-print(*res, sep='\n')
-</code></pre>
-
-</article>
-
-
-
-<section class="tags">
-  <strong>Tags:</strong> <a href="/tag/python">python</a>,&nbsp;<a href="/tag/coding-test">coding-test</a>,&nbsp;<a href="/tag/programmers">programmers</a>,&nbsp;<a href="/tag/boj">boj</a>,&nbsp;<a href="/tag/baekjoon">baekjoon</a>
-</section>
-
-
-
-<section class="rss">
-  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
-</section>
-
-<section class="share">
-  <span>Share: </span>
+  <li>
+    <h2>
+      <a class="post-link" href="/review/2020/12/20/Unsupervised-Landmark-Learning.html">Unsupervised Landmark Learning</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>*1. Unsupervised Learning of Object Landmarks through Conditional Image Generation Task: Generate the target image given the source image and the encoded target image. Method Heatmaps bottleneck $\Phi(x)$: learn to extract keypoint-like structures $S_{u}(x;k)$: K heatmaps =&gt; $u_{k}^{*}(x) = \frac{\sum ue^{S_{u}(x;k)}}{\sum e^{S_{u}(x;k)}}$ (spatial softmax) $\Phi_{u}(x;k)$: Gaussian-like function centered at $u_{k}^{*}$...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">December 20, 2020</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/review">Review</a>
+        
+      
+      </div>
+    </section>
+  </li>
   
-    
-    
-    
-    
-    
-    
-    
+  <hr>
   
-</section>
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/generative-models/2020/12/20/DCGAN.html">DCGAN 리뷰</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>이 포스팅에서 리뷰할 DCGAN은 사실 GAN을 더욱 더 유명하게 만들어준 논문으로, 이 논문이 publish된 이후로 대부분의 GAN 아키텍쳐는 DCGAN의 아키텍쳐를 따른다. 기존 CNN을 이용한 DNN에 architectural contraints를 더해줌으로써 hierarchical representation을 학습할 수 있는 것이 이 논문의 주요 내용이다. 먼저, unsupervised learning의 의의를 설명해보자면 labeled dataset은 구하기 어려운 것에 비해 unlabeled...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">December 20, 2020</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/generative-models">Generative-models</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/generative-models/2020/12/19/GAN.html">GAN 리뷰</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>오늘 리뷰할 논문은 GAN으로 더 잘 알려진, 적대적 인공신경망을 처음으로 제안한 논문이다. 뭐 이미 말할 필요도 없이 유명하기도 하고, 수많은 variation이 나오기도 했다. 논문의 제 1저자인 이안 굿펠로우는 GAN의 generator를 지폐위조범으로, discriminator를 경찰로 묘사했다. 지폐위조범은 위조 지폐를 더욱 더 진짜 같이 위조하고, 경찰은 그걸 구분하려고 경쟁하는 과정에서 상호발전이 일어난다는 것이다....</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">December 19, 2020</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/generative-models">Generative-models</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/jekyll/2015/04/18/welcome-to-jekyll.html">Welcome to Jekyll!</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">April 18, 2015</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Jekyll">Jekyll</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  
+</ul>
 
-	<section class="post-navigation">
-		<span class="prev-post">
+<nav class="pagination" role="navigation">
+	<p>
+    
 			
-				<a href="/problem-solving/2021/01/28/BOJ-2164.html">
-					<span class="fa-stack fa-lg">
-						<i class="fa fa-square fa-stack-2x"></i>
-						<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
-					</span>
-					<span class="page-number">백준 Silver4 - 카드2</span>
-				</a>
+			<a class="newer-posts" href="/page13">
+				<span class="fa-stack fa-lg">
+					<i class="fa fa-square fa-stack-2x"></i>
+					<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+				</span>
+			</a>
 			
-		</span>
-		<span class="next-post">
-			
-				<a href="/data-structure/2021/01/28/Stack,-Queue.html">
-					<span class="page-number">스택, 큐 with Python</span>
-					<span class="fa-stack fa-lg">
-						<i class="fa fa-square fa-stack-2x"></i>
-						<i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
-					</span>
-				</a>
-			
-		</span>
-	</section>
-
-
-
-
-<section class="disqus">
-  <div id="disqus_thread"></div>
-  <script type="text/javascript">
-    var disqus_shortname = 'subong0508-github-io';
-
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</section>
-
-
+		
+		<span class="page-number">Page 14 of 14</span>
+		
+		<span class="fa-stack fa-lg">
+      <i class="fa fa-square fa-stack-2x"></i>
+      <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
+    </span>
+		
+	</p>
+</nav>
 
 </div>
 </div>

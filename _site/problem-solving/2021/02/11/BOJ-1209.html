@@ -32,8 +32,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>백준 Silver4 - 괄호</title>
-  <meta name="description" content="백준 9012번">
+  <title>백준 Gold4 - 순회강연</title>
+  <meta name="description" content="백준 2109번">
   
   <meta name="author" content="Jung Jaeeun">
   <meta name="copyright" content="&copy; Jung Jaeeun 2021">
@@ -67,10 +67,10 @@
 
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="백준 9012번" />
+  <meta property="og:description" content="백준 2109번" />
   <meta property="og:url" content="http://subong0508.github.io" />
   <meta property="og:site_name" content="Data Vision" />
-  <meta property="og:title" content="백준 Silver4 - 괄호" />
+  <meta property="og:title" content="백준 Gold4 - 순회강연" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="http://subong0508.github.io/assets/logo.png" />
   <meta property="og:image:type" content="image/png" />
@@ -81,8 +81,8 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="백준 Silver4 - 괄호">
-  <meta name="twitter:description" content="백준 9012번">
+  <meta name="twitter:title" content="백준 Gold4 - 순회강연">
+  <meta name="twitter:description" content="백준 2109번">
   <meta name="twitter:image" content="http://subong0508.github.io/assets/logo.png">
   <meta name="twitter:url" content="http://subong0508.github.io">
   
@@ -91,7 +91,7 @@
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://subong0508.github.io/problem-solving/2021/01/28/BOJ-9012.html">
+  <link rel="canonical" href="http://subong0508.github.io/problem-solving/2021/02/11/BOJ-1209.html">
   <link rel="alternate" type="application/rss+xml" title="Data Vision" href="http://subong0508.github.io/feed.xml" />
 </head>
 
@@ -163,7 +163,7 @@
 <div class="post-header-container " >
   <div class="scrim ">
     <header class="post-header">
-      <h1 class="title">백준 Silver4 - 괄호</h1>
+      <h1 class="title">백준 Gold4 - 순회강연</h1>
       <p class="info">by <strong>Jung Jaeeun</strong></p>
     </header>
   </div>
@@ -178,7 +178,7 @@
  
 
 <section class="post-meta">
-  <div class="post-date">January 28, 2021</div>
+  <div class="post-date">February 11, 2021</div>
   <div class="post-categories">
   in 
     
@@ -189,71 +189,31 @@
 </section>  
 
 <article class="post-content">
-  <h3 id="httpswwwacmicpcnetproblem9012"><a href="https://www.acmicpc.net/problem/9012">백준 9012번</a></h3>
-
-<p><strong>문제</strong></p>
-
-<p>괄호 문자열(Parenthesis String, PS)은 두 개의 괄호 기호인 ‘(’ 와 ‘)’ 만으로 구성되어 있는 문자열이다. 그 중에서 괄호의 모양이 바르게 구성된 문자열을 올바른 괄호 문자열(Valid PS, VPS)이라고 부른다. 한 쌍의 괄호 기호로 된 “( )” 문자열은 기본 VPS 이라고 부른다. 만일 x 가 VPS 라면 이것을 하나의 괄호에 넣은 새로운 문자열 “(x)”도 VPS 가 된다. 그리고 두 VPS x 와 y를 접합(concatenation)시킨 새로운 문자열 xy도 VPS 가 된다. 예를 들어 “(())()”와 “((()))” 는 VPS 이지만 “(()(”, “(())()))” , 그리고 “(()” 는 모두 VPS 가 아닌 문자열이다.</p>
-
-<p>여러분은 입력으로 주어진 괄호 문자열이 VPS 인지 아닌지를 판단해서 그 결과를 YES 와 NO 로 나타내어야 한다.</p>
-
-<p><strong>입력</strong></p>
-
-<p>입력 데이터는 표준 입력을 사용한다. 입력은 T개의 테스트 데이터로 주어진다. 입력의 첫 번째 줄에는 입력 데이터의 수를 나타내는 정수 T가 주어진다. 각 테스트 데이터의 첫째 줄에는 괄호 문자열이 한 줄에 주어진다. 하나의 괄호 문자열의 길이는 2 이상 50 이하이다.</p>
-
-<p><strong>출력</strong></p>
-
-<p>출력은 표준 출력을 사용한다. 만일 입력 괄호 문자열이 올바른 괄호 문자열(VPS)이면 “YES”, 아니면 “NO”를 한 줄에 하나씩 차례대로 출력해야 한다.</p>
-
-<p><strong>예제</strong></p>
-
-<p>입력</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>6
-(())())
-(((()())()
-(()())((()))
-((()()(()))(((())))()
-()()()()(()()())()
-(()((())()(
-</code></pre>
-</div>
-
-<p>출력</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>NO
-NO
-YES
-NO
-YES
-NO
-</code></pre>
-</div>
+  <h3 id="httpswwwacmicpcnetproblem2109"><a href="https://www.acmicpc.net/problem/2109">백준 2109번</a></h3>
 
 <p><strong>풀이</strong></p>
 
-<pre><code class="language-python3">t = int(input())
-res = []
+<pre><code class="language-python3">n = int(input())
+arr = [-1] * n
+for i in range(n):
+    p, d = map(int, input().split())
+    arr[i] = (p, d)
+# 강연비순으로 정렬
+arr.sort(key=lambda x: x[0])
+filled = [False] * 10001
 
-def is_vps(string):
-    stack = []
-    for ch in string:
-        if ch == '(':
-            stack.append(ch)
-        else:
-            if not stack or stack.pop() != '(':
-                return False
-    return len(stack) == 0
+res = 0
+while arr:
+    p, d = arr.pop()
+    # 빈 날 있는지 찾아보기
+    while d &gt;= 1 and filled[d]:
+        d -= 1
+    # 순회강연을 할 수 있는 경우
+    if d &gt;= 1:
+        filled[d] = True
+        res += p
 
-
-for _ in range(t):
-    string = input()
-    if is_vps(string):
-        res.append("YES")
-    else:
-        res.append("NO")
-
-print(*res, sep='\n')
+print(res)
 </code></pre>
 
 </article>
@@ -286,19 +246,19 @@ print(*res, sep='\n')
 	<section class="post-navigation">
 		<span class="prev-post">
 			
-				<a href="/problem-solving/2021/01/28/BOJ-2164.html">
+				<a href="/problem-solving/2021/02/11/BOJ-11497.html">
 					<span class="fa-stack fa-lg">
 						<i class="fa fa-square fa-stack-2x"></i>
 						<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
 					</span>
-					<span class="page-number">백준 Silver4 - 카드2</span>
+					<span class="page-number">백준 Silver1 - 통나무 건너뛰기</span>
 				</a>
 			
 		</span>
 		<span class="next-post">
 			
-				<a href="/data-structure/2021/01/28/Stack,-Queue.html">
-					<span class="page-number">스택, 큐 with Python</span>
+				<a href="/problem-solving/2021/02/11/PR-42884.html">
+					<span class="page-number">프로그래머스 Lv3 - 단속카메라</span>
 					<span class="fa-stack fa-lg">
 						<i class="fa fa-square fa-stack-2x"></i>
 						<i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
