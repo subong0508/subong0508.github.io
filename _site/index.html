@@ -129,6 +129,8 @@
         
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -152,6 +154,94 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/02/13/PR-42891.html">프로그래머스 Lv4 - 무지의 먹방 라이브</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>프로그래머스 42891번 풀이 def solution(food_times, k): ft = [(i+1, t) for i, t in zip(range(len(food_times)), food_times)] # 음식 먹는 시간이 작은 순대로 뒤에 오게 정렬 ft = sorted(ft, key=lambda x: -x[1]) prev = 0 time = 0 answer = -1 while ft: idx, now = ft.pop() # pop 연산을 했으므로...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 13, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/data-structure/2021/02/13/DFS,-BFS.html">DFS, BFS with Python</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>DFS(깊이 우선 탐색) Depth-First Search의 약자로, 그래프에서 깊은 부분을 우선적으로 탐색하는 알고리즘이다. 그래프는 노드(Node)/정점(Vertex)과 간선(Edge)로 구성되는데 그래프를 표현하는 방법으로는 인접 행렬, 인접 리스트가 있다. 인접 행렬은 NxN 행렬을 만들어서 i번째 노드에서 j번째 노드로 갈 수 있다면 1을 표시, 갈 수 없다면 0을 표시하는 것이 일반적이다. 인접 리스트의 i번째 원소는 i번째...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 13, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Data-Structure">Data-structure</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/13/BOJ-1439.html">백준 Silver5 - 문자열 뒤집기</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 1439번 풀이 s = input() n = len(s) d = {'0': 0, '1': 0} i = 0 while i &lt; n: j = i + 1 while j &lt; n and s[j] == s[i]: j += 1 d[s[i]] += 1 i = j print(min(d['0'], d['1'])) 연속된 0이 몇 번...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 13, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/13/BOJ-1260.html">백준 Silver2 - DFS와 BFS</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 1260번 풀이 from collections import deque n, m, v = map(int, input().split()) graph = [[0] * (n+1) for _ in range(n+1)] for _ in range(m): i, j = map(int, input().split()) graph[i][j] = 1 graph[j][i] = 1 visited1 = [False] * (n+1) visited2 = [False] * (n+1) stack1 = []...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 13, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/02/11/PR-42884.html">프로그래머스 Lv3 - 단속카메라</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -159,116 +249,6 @@
     </section>
     <section class="post-meta">
       <div class="post-date">February 11, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/11/BOJ-1209.html">백준 Gold4 - 순회강연</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 2109번 풀이 n = int(input()) arr = [-1] * n for i in range(n): p, d = map(int, input().split()) arr[i] = (p, d) # 강연비순으로 정렬 arr.sort(key=lambda x: x[0]) filled = [False] * 10001 res = 0 while arr: p, d = arr.pop() # 빈 날 있는지 찾아보기 while...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 11, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/11/BOJ-11497.html">백준 Silver1 - 통나무 건너뛰기</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 11497번 풀이 t = int(input()) def solution(n, arr): ans = [-1] * n arr.sort(reverse=True) l, r = 0, n-1 i = 0 while arr: x = arr.pop() if i % 2 == 0: ans[l] = x l += 1 else: ans[r] = x r -= 1 i += 1...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 11, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/11/BOJ-11000.html">백준 Gold5 - 강의실 배정</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 11000번 풀이 import heapq n = int(input()) arr = [-1] * n for i in range(n): s, t = map(int, input().split()) arr[i] = (s, t) heapq.heapify(arr) # 강의가 끝나는 시간만 저장하는 heap h = [heapq.heappop(arr)[1]] while arr: s, t = heapq.heappop(arr) # 강의실을 이어서 쓸 수 있다면 pop 후...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 11, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/09/BOJ-1449.html">백준 Silver3 - 수리공 항승</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 1449번
-
-풀이
-
-n, l = map(int, input().split())
-arr = list(map(int, input().split()))
-arr.sort()
-
-cnt = 1
-start = arr[0]-0.5
-for i in range(1, n):
-    end = arr[i]+0.5
-    # 돌려막기 가능
-    if end &lt;= start+l:
-        continue
-    else: # 새로 테이프를 붙여야 한다.
-        cnt += 1
-        start = arr[i]-0.5
-
-print(cnt)
-
-
-</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 9, 2021</div>
       <div class="post-categories">
       in 
         
@@ -290,7 +270,7 @@ print(cnt)
       <i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
     </span>
 		
-		<span class="page-number">Page 1 of 14</span>
+		<span class="page-number">Page 1 of 15</span>
 		
 		<a class="newer-posts" href="/page2">
       <span class="fa-stack fa-lg">
@@ -330,6 +310,8 @@ print(cnt)
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
         

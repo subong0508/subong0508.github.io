@@ -6,9 +6,259 @@
 </description>
     <link>http://subong0508.github.io/</link>
     <atom:link href="http://subong0508.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 12 Feb 2021 02:04:02 +0900</pubDate>
-    <lastBuildDate>Fri, 12 Feb 2021 02:04:02 +0900</lastBuildDate>
+    <pubDate>Sat, 13 Feb 2021 23:40:30 +0900</pubDate>
+    <lastBuildDate>Sat, 13 Feb 2021 23:40:30 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>프로그래머스 Lv4 - 무지의 먹방 라이브</title>
+        <description>&lt;h3 id=&quot;httpsprogrammerscokrlearncourses30lessons42891&quot;&gt;&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/42891&quot;&gt;프로그래머스 42891번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;def solution(food_times, k):
+    ft = [(i+1, t) for i, t in zip(range(len(food_times)), food_times)]
+    # 음식 먹는 시간이 작은 순대로 뒤에 오게 정렬
+    ft = sorted(ft, key=lambda x: -x[1])
+    prev = 0
+    time = 0
+    answer = -1
+    while ft:
+        idx, now = ft.pop()
+        # pop 연산을 했으므로 +1
+        time += (now-prev) * (len(ft) + 1)
+        # k분보다 시간이 더 지났다면 무효화
+        if time &amp;gt; k:
+            time -= (now-prev) * (len(ft) + 1)
+            ft.append((idx, now))
+            break
+        prev = now
+    if ft:
+        ft = sorted(ft, key=lambda x: x[0])
+        idx = 0
+        answer = ft[(k-time) % len(ft)][0]
+    return answer
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;이 문제는 큐를 사용해서 풀었다간 효율성 테스트에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;k&lt;/code&gt;가 2 x 10 ^ 13이므로 틀린다. 따라서 힙을 사용하거나 정렬을 사용해야한다.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 13 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/02/13/PR-42891.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/13/PR-42891.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>DFS, BFS with Python</title>
+        <description>&lt;h1 id=&quot;dfs--&quot;&gt;DFS(깊이 우선 탐색)&lt;/h1&gt;
+
+&lt;p&gt;&lt;strong&gt;Depth-First Search&lt;/strong&gt;의 약자로, 그래프에서 깊은 부분을 우선적으로 탐색하는 알고리즘이다.&lt;/p&gt;
+
+&lt;p&gt;그래프는 노드(Node)/정점(Vertex)과 간선(Edge)로 구성되는데 그래프를 표현하는 방법으로는 &lt;strong&gt;인접 행렬, 인접 리스트&lt;/strong&gt;가 있다.
+인접 행렬은 NxN 행렬을 만들어서 i번째 노드에서 j번째 노드로 갈 수 있다면 1을 표시, 갈 수 없다면 0을 표시하는 것이 일반적이다.
+인접 리스트의 i번째 원소는 i번째 노드에서 갈 수 있는 노드들을 담고 있다.&lt;/p&gt;
+
+&lt;p&gt;DFS를 파이썬으로 나타낸 코드는 다음과 같다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;# 인접 리스트
+graph = [
+    [1, 2],
+    [0, 3],
+    [0],
+    [3]
+]
+# 방문 여부
+visited = [False] * len(graph)
+stack = []
+
+
+def dfs(i, visited, stack):
+    stack.append(i)
+    visited[i] = True
+    for j in graph[i]:
+        if not visited[j]:
+            dfs(j, visited, stack)
+
+
+dfs(0, visited, stack)
+print(*stack) # 0 1 3 2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&quot;bfs--&quot;&gt;BFS(너비 우선 탐색)&lt;/h1&gt;
+
+&lt;p&gt;BFS를 수행할 때는 선입선출의 특성을 띠는 큐 자료구조를 사용한다. BFS의 중요한 특징은 한 노드에서 다른 노드로 가는 최단거리를 항상 구한다는 것이다.&lt;/p&gt;
+
+&lt;p&gt;BFS를 파이썬으로 나타낸 코드는 다음과 같다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from collections import deque
+
+
+# 인접 리스트
+graph = [
+    [1, 2],
+    [0, 3],
+    [0],
+    [3]
+]
+# 방문 여부
+visited = [False] * len(graph)
+stack = []
+
+
+def bfs(start, visited, stack):
+    q = deque([start])
+    while q:
+        now = q.popleft()
+        visited[now] = True
+        stack.append(now)
+        for j in graph[now]:
+            if not visited[j]:
+                q.append(j)
+    
+
+bfs(0, visited, stack)
+print(*stack) # 0 1 2 3
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Sat, 13 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/data-structure/2021/02/13/DFS,-BFS.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/data-structure/2021/02/13/DFS,-BFS.html</guid>
+        
+        <category>graph</category>
+        
+        <category>dfs</category>
+        
+        <category>bfs</category>
+        
+        <category>python</category>
+        
+        <category>data-structure</category>
+        
+        
+        <category>Data-Structure</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Silver5 - 문자열 뒤집기</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem1439&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1439&quot;&gt;백준 1439번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;s = input()
+n = len(s)
+d = {'0': 0, '1': 0}
+
+i = 0
+while i &amp;lt; n:
+    j = i + 1
+    while j &amp;lt; n and s[j] == s[i]:
+        j += 1
+    d[s[i]] += 1
+    i = j
+
+print(min(d['0'], d['1']))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;연속된 0이 몇 번 나오는지/연속된 1이 몇 번 나오는지 구한 다음에 더 작은 수에 대해서 뒤집으면 된다.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 13 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/02/13/BOJ-1439.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/13/BOJ-1439.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Silver2 - DFS와 BFS</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem1260&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1260&quot;&gt;백준 1260번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from collections import deque
+
+n, m, v = map(int, input().split())
+graph = [[0] * (n+1) for _ in range(n+1)]
+for _ in range(m):
+    i, j = map(int, input().split())
+    graph[i][j] = 1
+    graph[j][i] = 1
+visited1 = [False] * (n+1)
+visited2 = [False] * (n+1)
+stack1 = []
+stack2 = []
+
+def dfs(i, visited, stack):
+    stack.append(i)
+    visited[i] = True
+    for j in range(1, n+1):
+        if graph[i][j] == 1 and not visited[j]:
+            dfs(j, visited, stack)
+
+def bfs(start, visited, stack):
+    q = deque([start])
+    visited[start] = True
+    while q:
+        i = q.popleft()
+        stack.append(i)
+        for j in range(1, n+1):
+            if graph[i][j] == 1 and not visited[j]:
+                visited[j] = True
+                q.append(j)
+
+
+dfs(v, visited1, stack1)
+bfs(v, visited2, stack2)
+
+print(*stack1)
+print(*stack2)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;DFS, BFS의 간단한 구현 문제. &lt;em&gt;단, 방문할 수 있는 정점이 여러 개인 경우에는 정점 번호가 작은 것을 먼저 방문하고&lt;/em&gt;라는 조건 때문에 인접 행렬로 풀었다.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 13 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/02/13/BOJ-1260.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/13/BOJ-1260.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
     
       <item>
         <title>프로그래머스 Lv3 - 단속카메라</title>
@@ -281,201 +531,6 @@ print(total)
         <pubDate>Tue, 09 Feb 2021 00:00:00 +0900</pubDate>
         <link>http://subong0508.github.io/problem-solving/2021/02/09/BOJ-1339.html</link>
         <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/09/BOJ-1339.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Silver3 - ATM</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem11399&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/11399&quot;&gt;백준 11399번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
-atm = list(map(int, input().split()))
-atm.sort()
-
-for i in range(1, n):
-    atm[i] += atm[i-1]
-    
-print(sum(atm))
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;그냥 정렬해서 풀면 되는 문제.&lt;/p&gt;
-</description>
-        <pubDate>Tue, 09 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/02/09/BOJ-11399.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/09/BOJ-11399.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Silver1 - 동전 0, 동전 2</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem11047&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/11047&quot;&gt;백준 11047번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n, k = map(int, input().split())
-coins = [0] * n
-for i in range(n):
-    coins[i] = int(input())
-
-cnt = 0
-for i in range(n-1, -1, -1):
-    tmp = k // coins[i]
-    cnt += tmp
-    k -= coins[i] * tmp
-
-print(cnt)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;가장 큰 동전부터 고르면 되는 문제였다.&lt;/p&gt;
-
-&lt;h3 id=&quot;httpswwwacmicpcnetproblem2294&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/2294&quot;&gt;백준 2294번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n, k = map(int, input().split())
-INF = int(1e9)
-coins = [INF] * (1+k)
-for _ in range(n):
-    c = int(input())
-    start = c 
-    cnt = 0
-    while start &amp;lt;= k:
-        cnt += 1
-        coins[start] = min(coins[start], cnt)
-        start += c
-
-for i in range(1, k+1):
-    for j in range(i):
-        coins[i] = min(coins[i], coins[j]+coins[i-j])
-
-res = coins[k]
-if res == INF:
-    print(-1)
-else:
-    print(res)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;coins[i] = min(coins[i], coins[j]+coins[i-j])&lt;/code&gt; 이 부분이 가장 핵심적인 부분이었다.&lt;/p&gt;
-</description>
-        <pubDate>Tue, 09 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/02/09/BOJ-11047.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/09/BOJ-11047.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>프로그래머스 Lv3 - N으로 표현</title>
-        <description>&lt;h3 id=&quot;httpsprogrammerscokrlearncourses30lessons42895&quot;&gt;&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/42895&quot;&gt;프로그래머스 42895번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;def dfs(N, cur, number, cnt):
-    global answer
-    if cnt &amp;gt; 8:
-        return
-    if cur == number:
-        answer = min(answer, cnt)
-        return
-    
-    for i in range(1, 9):
-        tmp = int(str(N) * i)
-        dfs(N, cur + tmp, number, cnt+i)
-        dfs(N, cur - tmp, number, cnt+i)
-        dfs(N, cur * tmp, number, cnt+i)
-        dfs(N, cur // tmp, number, cnt+i)
-
-def solution(N, number):
-    global answer
-    answer = int(1e9)
-    dfs(N, 0, number, 0)
-    if answer == int(1e9):
-        answer = -1
-    return answer
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;원래는 DP 문제지만 DFS로 풀었다. &lt;code class=&quot;highlighter-rouge&quot;&gt;tmp = int(str(N) * i)&lt;/code&gt; 이 부분을 못 찾아서 많이 헤맸던 문제.&lt;/p&gt;
-</description>
-        <pubDate>Mon, 08 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/02/08/PR-42895.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/08/PR-42895.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>프로그래머스 Lv2 - 위장</title>
-        <description>&lt;h3 id=&quot;httpsprogrammerscokrlearncourses30lessons42578&quot;&gt;&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/42578&quot;&gt;프로그래머스 42578번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;def solution(clothes):
-    answer = 1
-    d = {}
-    for _, y in clothes:
-        # 아무것도 안입는 수 포함
-        d[y] = d.get(y, 1) + 1
-    for k in d:
-        answer *= d[k]
-    answer -= 1
-    return answer
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Mon, 08 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/02/08/PR-42578.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/08/PR-42578.html</guid>
         
         <category>python</category>
         

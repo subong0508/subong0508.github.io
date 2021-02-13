@@ -129,6 +129,8 @@
         
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -152,6 +154,94 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/01/29/BOJ-2615.html">백준 Silver3 - 오목</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 2615번 풀이 from collections import deque board = [] for _ in range(19): board.append(list(map(int, input().split()))) dxs = [-1, 0, 1, 1] dys = [1, 1, 0, 1] def bfs_main(x, y): return bfs(x, y, 0), bfs(x, y, 1), bfs(x, y, 2), bfs(x, y, 3) def bfs(x, y, d): q =...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">January 29, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/01/29/BOJ-16508.html">백준 Silver3 - 전공책</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 16508번 from itertools import combinations t = input() n = int(input()) books = [] for _ in range(n): a, b = input().split() books.append((int(a), b)) def is_possible(books): # 책들의 문자 카운트를 저장해놓음 d = {} for _, b in books: for ch in b: d[ch] = d.get(ch, 0)+1 cnt =...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">January 29, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/01/29/BOJ-14501.html">백준 Silver4 - 퇴사</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 14501번 풀이 n = int(input()) t = [] p = [] for _ in range(n): a, b = map(int, input().split()) t.append(a) p.append(b) res = 0 def get_max(i, cur): global res if i &gt;= n: res = max(res, cur) return # i번째 일을 할 수 있는 경우 if i+t[i] &lt;=...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">January 29, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/01/29/BOJ-1436.html">백준 Silver5 - 영화감독 숌</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 1436번 문제 666은 종말을 나타내는 숫자라고 한다. 따라서, 많은 블록버스터 영화에서는 666이 들어간 제목을 많이 사용한다. 영화감독 숌은 세상의 종말 이라는 시리즈 영화의 감독이다. 조지 루카스는 스타워즈를 만들 때, 스타워즈 1, 스타워즈 2, 스타워즈 3, 스타워즈 4, 스타워즈 5, 스타워즈 6과 같이 이름을 지었고, 피터 잭슨은 반지의 제왕을 만들...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">January 29, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/01/29/BOJ-1065.html">백준 Silver4 - 한수</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -159,94 +249,6 @@
     </section>
     <section class="post-meta">
       <div class="post-date">January 29, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/01/29/BOJ-1057.html">백준 Silver3 - 토너먼트</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 1057번 n, a, b = map(int, input().split()) arr = [False] * (n+1) arr[a] = True arr[b] = True cnt = 0 match = False while not match: n = len(arr) cnt += 1 tmp = [False] i = 1 while i+1 &lt; n: if arr[i] and arr[i+1]: match =...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">January 29, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/data-structure/2021/01/28/Stack,-Queue.html">스택, 큐 with Python</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>이번 포스팅에서는 스택, 큐에 대한 개념을 알아보고 파이썬으로 간단하게 구현해보겠습니다. 스택 스택은 LIFO(후입선출)의 특성을 가진 자료구조입니다. 시간복잡도는 다음과 같습니다. 삽입: $O(1)$ 삭제: $O(1)$ 파이썬에서는 다른 라이브러리를 쓸 필요없이 기본 자료형인 list를 활용하여 삽입 및 삭제 연산을 수행할 수 있습니다. arr = [1, 2, 3, 4, 5] stack = [] #...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">January 28, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Data-Structure">Data-structure</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/01/28/BOJ-9012.html">백준 Silver4 - 괄호</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 9012번 문제 괄호 문자열(Parenthesis String, PS)은 두 개의 괄호 기호인 ‘(’ 와 ‘)’ 만으로 구성되어 있는 문자열이다. 그 중에서 괄호의 모양이 바르게 구성된 문자열을 올바른 괄호 문자열(Valid PS, VPS)이라고 부른다. 한 쌍의 괄호 기호로 된 “( )” 문자열은 기본 VPS 이라고 부른다. 만일 x 가 VPS 라면 이것을 하나의...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">January 28, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/01/28/BOJ-2164.html">백준 Silver4 - 카드2</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 2164번 문제 N장의 카드가 있다. 각각의 카드는 차례로 1부터 N까지의 번호가 붙어 있으며, 1번 카드가 제일 위에, N번 카드가 제일 아래인 상태로 순서대로 카드가 놓여 있다. 이제 다음과 같은 동작을 카드가 한 장 남을 때까지 반복하게 된다. 우선, 제일 위에 있는 카드를 바닥에 버린다. 그 다음, 제일 위에 있는...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">January 28, 2021</div>
       <div class="post-categories">
       in 
         
@@ -272,7 +274,7 @@
 			</a>
 			
 		
-		<span class="page-number">Page 11 of 14</span>
+		<span class="page-number">Page 11 of 15</span>
 		
 		<a class="newer-posts" href="/page12">
       <span class="fa-stack fa-lg">
@@ -312,6 +314,8 @@
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
         

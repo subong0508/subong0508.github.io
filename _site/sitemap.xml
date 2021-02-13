@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://subong0508.github.io/problem-solving/2021/02/13/PR-42891.html</loc>
+<lastmod>2021-02-13T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>http://subong0508.github.io/data-structure/2021/02/13/DFS,-BFS.html</loc>
+<lastmod>2021-02-13T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>http://subong0508.github.io/problem-solving/2021/02/13/BOJ-1439.html</loc>
+<lastmod>2021-02-13T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>http://subong0508.github.io/problem-solving/2021/02/13/BOJ-1260.html</loc>
+<lastmod>2021-02-13T00:00:00+09:00</lastmod>
+</url>
+<url>
 <loc>http://subong0508.github.io/problem-solving/2021/02/11/PR-42884.html</loc>
 <lastmod>2021-02-11T00:00:00+09:00</lastmod>
 </url>
@@ -288,9 +304,5 @@
 <url>
 <loc>http://subong0508.github.io/google78875dadc55ef104.html</loc>
 <lastmod>2021-02-08T00:32:38+09:00</lastmod>
-</url>
-<url>
-<loc>http://subong0508.github.io/paper/pix2pix.pdf</loc>
-<lastmod>2021-01-12T23:19:24+09:00</lastmod>
 </url>
 </urlset>
