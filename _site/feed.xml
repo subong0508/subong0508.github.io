@@ -6,9 +6,311 @@
 </description>
     <link>http://subong0508.github.io/</link>
     <atom:link href="http://subong0508.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 14 Feb 2021 19:51:48 +0900</pubDate>
-    <lastBuildDate>Sun, 14 Feb 2021 19:51:48 +0900</lastBuildDate>
+    <pubDate>Tue, 16 Feb 2021 23:23:09 +0900</pubDate>
+    <lastBuildDate>Tue, 16 Feb 2021 23:23:09 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>프로그래머스 Lv3 - 단어 변환</title>
+        <description>&lt;h3 id=&quot;httpsprogrammerscokrlearncourses30lessons43163&quot;&gt;&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/43163&quot;&gt;프로그래머스 43163번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from collections import deque
+
+def diff(word1, word2):
+    cnt = 0
+    for i in range(len(word1)):
+        if word1[i] != word2[i]:
+            cnt += 1
+    return cnt
+
+def solution(begin, target, words):
+    answer = 0
+    q = deque([(begin, answer)])
+    visited = set()
+    visited.add(begin)
+    while q:
+        now, ans = q.popleft()
+        if now == target:
+            return ans
+        neighbors = [word for word in words if diff(now, word) == 1]
+        for n in neighbors:
+            if n not in visited:
+                visited.add(n)
+                q.append((n, ans+1))
+    return answer
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;그래프인걸 알고 풀어서 쉬웠지만 몰랐다면 그래프/BFS를 생각해내기 쉽지 않았을 것 같은 문제.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 16 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/02/16/PR-43163.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/16/PR-43163.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Silver2 - 나이트의 이동</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem7562&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/7562&quot;&gt;백준 7562번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from collections import deque
+
+t = int(input())
+res = []
+
+dx = [-2, -2, -1, -1, 1, 1, 2, 2]
+dy = [-1, 1, -2, 2, -2, 2, -1, 1]
+
+
+def solve(n, src, dest):
+    cnt = 0
+    q = deque([(src[0], src[1], cnt)])
+    visited = set()
+    visited.add(src)
+    while q:
+        x, y, cnt = q.popleft()
+        if (x, y) == dest:
+            return cnt
+        for i in range(8):
+            nx, ny = x+dx[i], y+dy[i]
+            if 0 &amp;lt;= nx &amp;lt; n and 0 &amp;lt;= ny &amp;lt; n and (nx, ny) not in visited:
+                visited.add((nx, ny))
+                q.append((nx, ny, cnt+1))
+    return -1
+
+
+for _ in range(t):
+    n = int(input())
+    src = tuple(map(int, input().split()))
+    dest = tuple(map(int, input().split()))
+    cnt = solve(n, src, dest)
+    res.append(cnt)
+
+print(*res, sep='\n')
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;전형적인 BFS 문제였다.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 16 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/02/16/BOJ-7562.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/16/BOJ-7562.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Gold4 - 빙산</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem2573&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/2573&quot;&gt;백준 2573번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from collections import deque
+
+n, m = map(int, input().split())
+graph = []
+for _ in range(n):
+    tmp = map(int, input().split())
+    graph.append(list(tmp))
+
+ices = set()
+for i in range(n):
+    for j in range(m):
+        if graph[i][j] &amp;gt; 0:
+            ices.add((i, j))
+
+dx = [-1, 1, 0, 0]
+dy = [0, 0, -1, 1]
+
+
+def melt(ices):
+    new_ices = set()
+    dels = set()
+    for x, y in ices:
+        cnt = 0
+        for i in range(4):
+            nx, ny = x+dx[i], y+dy[i]
+            if 0 &amp;lt;= nx &amp;lt; n and 0 &amp;lt;= ny &amp;lt; m and graph[nx][ny] == 0:
+                cnt += 1
+        new_ices.add((x, y, graph[x][y]-cnt))
+    # 빙산 녹이기
+    for x, y, val in new_ices:
+        graph[x][y] = max(0, val)
+        if graph[x][y] == 0:
+            dels.add((x, y))
+    # 녹은 빙산은 제외
+    ices = ices - dels
+    return ices
+
+def bfs(x, y):
+    q = deque([(x, y)])
+    visited = {(x, y)}
+    while q:
+        x, y = q.popleft()
+        for i in range(4):
+            nx, ny = x+dx[i], y+dy[i]
+            if 0 &amp;lt;= nx &amp;lt; n and 0 &amp;lt;= ny &amp;lt; m and graph[nx][ny] &amp;gt; 0 and (nx, ny) not in visited:
+                visited.add((nx, ny))
+                q.append((nx, ny))
+    return len(visited)
+
+
+res = 0
+while True:
+    res += 1
+    ices = melt(ices)
+    # 빙산이 다 녹아버린 상태
+    if not ices:
+        print(0)
+        break
+    # 임의의 점에서 BFS 수행
+    for x, y in ices:
+        cnt = bfs(x, y)
+        break
+    # 빙산이 두 덩어리 이상으로 나눠짐
+    if cnt &amp;lt; len(ices):
+        print(res)
+        break
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;그래프 문제로 알고 풀었는데 사실은 구현에 더 초점이 맞춰진 문제였다. 그냥 문제에서 제시한 대로 빙산이 녹는 걸 구현한 후, BFS를 이용해서 연결된 빙산의 수를 구해 전체 빙산의 수보다 적다면 빙산이 나눠진 것이므로 위와 같은 방식으로 풀 수 있었다.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 16 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/02/16/BOJ-2573.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/16/BOJ-2573.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Gold5 - DFS 스페셜 저지</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem16964&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/16964&quot;&gt;백준 16964번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;틀린 풀이(시간초과)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
+graph = [set() for _ in range(n+1)]
+for _ in range(n-1):
+    i, j = map(int, input().split())
+    graph[i].add(j)
+    graph[j].add(i)
+stack = list(map(int, input().split()))
+my_stack = []
+visited = [False] * len(graph)
+
+
+def dfs(i, visited):
+    global my_stack
+    visited[i] = True
+    my_stack.append(i)
+    for j in range(len(stack)):
+        if not visited[stack[j]] and stack[j] in graph[i]:
+            dfs(stack[j], visited)
+
+
+dfs(stack[0], visited)
+if my_stack == stack:
+    print(1)
+else:
+    print(0)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;for j in range(len(stack))&lt;/code&gt; 이 부분이 $O(N)$이기 때문에 전체 시간복잡도가 $O(N^{2})$가 되서 시간초과로 틀렸다. 그래서 어떻게 해야할까 고민하다가 인접 리스트를 탐색의 순서대로 정렬해도 같은 결과가 아닌가??라는 생각이 들었다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;올바른 풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
+graph = [[] for _ in range(n+1)]
+for _ in range(n-1):
+    i, j = map(int, input().split())
+    graph[i].append(j)
+    graph[j].append(i)
+stack = list(map(int, input().split()))
+d = {}
+for i in range(len(stack)):
+    d[stack[i]] = i
+# 탐색해야 하는 순서대로 정렬
+for g in graph:
+    g.sort(key=lambda x: d[x])
+my_stack = []
+visited = [False] * len(graph)
+
+
+def dfs(i, visited):
+    global my_stack
+    visited[i] = True
+    my_stack.append(i)
+    for j in graph[i]:
+        if not visited[j]:
+            dfs(j, visited)
+
+
+dfs(1, visited)
+if my_stack == stack:
+    print(1)
+else:
+    print(0)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;사실 이 문제에 좀 오류가 있는 것 같은게 &lt;code class=&quot;highlighter-rouge&quot;&gt;dfs(stack[0], visited)&lt;/code&gt;로 하면 100% 까지 맞다가 틀린다. 항상 1번부터 탐색을 하기 때문에 2번부터 탐색을 하면 올바른 DFS라도 틀려야한다는데 좀 억지스러웠다. 여튼 &lt;code class=&quot;highlighter-rouge&quot;&gt;dfs(1, visited)&lt;/code&gt;로 해야한다.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 16 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/02/16/BOJ-16964.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/16/BOJ-16964.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
     
       <item>
         <title>백준 Silver1 - 토마토(7576번, 7569번)</title>
@@ -545,272 +847,6 @@ print(bfs(n, k))
         <pubDate>Sun, 14 Feb 2021 00:00:00 +0900</pubDate>
         <link>http://subong0508.github.io/problem-solving/2021/02/14/BOJ-1697.html</link>
         <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/14/BOJ-1697.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Gold5 - 연구소</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem14502&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/14502&quot;&gt;백준 14502번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from itertools import combinations
-from collections import deque
-
-n, m = map(int, input().split())
-graph = []
-for _ in range(n):
-    tmp = list(map(int, input().split()))
-    graph.append(tmp)
-
-candidates = []
-walls = []
-virus = deque()
-for i in range(n):
-    for j in range(m):
-        if graph[i][j] == 0:
-            candidates.append((i, j))
-        elif graph[i][j] == 1:
-            walls.append((i, j))
-        else:
-            virus.append((i, j))
-combs = list(combinations(candidates, 3))
-
-dx = [-1, 1, 0, 0]
-dy = [0, 0, -1, 1]
-
-    
-def propagate(q, graph):
-    q = q.copy()
-    visited = [[False for _ in range(m)] for _ in range(n)]
-    for x, y in q:
-        visited[x][y] = True
-    cnt = len(q)
-    while q:
-        x, y = q.popleft()
-        for i in range(4):
-            nx, ny = x+dx[i], y+dy[i]
-            if 0 &amp;lt;= nx &amp;lt; n and 0 &amp;lt;= ny &amp;lt; m and not visited[nx][ny] and graph[nx][ny] == 0:
-                visited[nx][ny] = True
-                cnt += 1
-                q.append((nx, ny))
-    return cnt
-
-
-safety = 0
-for c in combs:
-    for x, y in c:
-        graph[x][y] = 1
-    cnt = propagate(virus, graph)
-    safety = max(safety, n*m-(cnt+len(walls)+3))
-    for x, y in c:
-        graph[x][y] = 0
-
-print(safety)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;N, M의 범위가 8 이하이므로 완전탐색을 통해 풀 수 있었다.&lt;/p&gt;
-</description>
-        <pubDate>Sun, 14 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/02/14/BOJ-14502.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/14/BOJ-14502.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>프로그래머스 Lv4 - 무지의 먹방 라이브</title>
-        <description>&lt;h3 id=&quot;httpsprogrammerscokrlearncourses30lessons42891&quot;&gt;&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/42891&quot;&gt;프로그래머스 42891번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;def solution(food_times, k):
-    ft = [(i+1, t) for i, t in zip(range(len(food_times)), food_times)]
-    # 음식 먹는 시간이 작은 순대로 뒤에 오게 정렬
-    ft = sorted(ft, key=lambda x: -x[1])
-    prev = 0
-    time = 0
-    answer = -1
-    while ft:
-        idx, now = ft.pop()
-        # pop 연산을 했으므로 +1
-        time += (now-prev) * (len(ft) + 1)
-        # k분보다 시간이 더 지났다면 무효화
-        if time &amp;gt; k:
-            time -= (now-prev) * (len(ft) + 1)
-            ft.append((idx, now))
-            break
-        prev = now
-    if ft:
-        ft = sorted(ft, key=lambda x: x[0])
-        idx = 0
-        answer = ft[(k-time) % len(ft)][0]
-    return answer
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;이 문제는 큐를 사용해서 풀었다간 효율성 테스트에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;k&lt;/code&gt;가 2 x 10 ^ 13이므로 틀린다. 따라서 힙을 사용하거나 정렬을 사용해야한다.&lt;/p&gt;
-</description>
-        <pubDate>Sat, 13 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/02/13/PR-42891.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/13/PR-42891.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>DFS, BFS with Python</title>
-        <description>&lt;h1 id=&quot;dfs--&quot;&gt;DFS(깊이 우선 탐색)&lt;/h1&gt;
-
-&lt;p&gt;&lt;strong&gt;Depth-First Search&lt;/strong&gt;의 약자로, 그래프에서 깊은 부분을 우선적으로 탐색하는 알고리즘이다.&lt;/p&gt;
-
-&lt;p&gt;그래프는 노드(Node)/정점(Vertex)과 간선(Edge)로 구성되는데 그래프를 표현하는 방법으로는 &lt;strong&gt;인접 행렬, 인접 리스트&lt;/strong&gt;가 있다.
-인접 행렬은 NxN 행렬을 만들어서 i번째 노드에서 j번째 노드로 갈 수 있다면 1을 표시, 갈 수 없다면 0을 표시하는 것이 일반적이다.
-인접 리스트의 i번째 원소는 i번째 노드에서 갈 수 있는 노드들을 담고 있다.&lt;/p&gt;
-
-&lt;p&gt;DFS를 파이썬으로 나타낸 코드는 다음과 같다.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;# 인접 리스트
-graph = [
-    [1, 2],
-    [0, 3],
-    [0],
-    [3]
-]
-# 방문 여부
-visited = [False] * len(graph)
-stack = []
-
-
-def dfs(i, visited, stack):
-    stack.append(i)
-    visited[i] = True
-    for j in graph[i]:
-        if not visited[j]:
-            dfs(j, visited, stack)
-
-
-dfs(0, visited, stack)
-print(*stack) # 0 1 3 2
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;bfs--&quot;&gt;BFS(너비 우선 탐색)&lt;/h1&gt;
-
-&lt;p&gt;BFS를 수행할 때는 선입선출의 특성을 띠는 큐 자료구조를 사용한다. BFS의 중요한 특징은 한 노드에서 다른 노드로 가는 최단거리를 항상 구한다는 것이다.&lt;/p&gt;
-
-&lt;p&gt;BFS를 파이썬으로 나타낸 코드는 다음과 같다.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from collections import deque
-
-
-# 인접 리스트
-graph = [
-    [1, 2],
-    [0, 3],
-    [0],
-    [3]
-]
-# 방문 여부
-visited = [False] * len(graph)
-stack = []
-
-
-def bfs(start, visited, stack):
-    q = deque([start])
-    while q:
-        now = q.popleft()
-        visited[now] = True
-        stack.append(now)
-        for j in graph[now]:
-            if not visited[j]:
-                q.append(j)
-    
-
-bfs(0, visited, stack)
-print(*stack) # 0 1 2 3
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Sat, 13 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/data-structure/2021/02/13/DFS,-BFS.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/data-structure/2021/02/13/DFS,-BFS.html</guid>
-        
-        <category>graph</category>
-        
-        <category>dfs</category>
-        
-        <category>bfs</category>
-        
-        <category>python</category>
-        
-        <category>data-structure</category>
-        
-        
-        <category>Data-Structure</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Silver5 - 문자열 뒤집기</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem1439&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1439&quot;&gt;백준 1439번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;s = input()
-n = len(s)
-d = {'0': 0, '1': 0}
-
-i = 0
-while i &amp;lt; n:
-    j = i + 1
-    while j &amp;lt; n and s[j] == s[i]:
-        j += 1
-    d[s[i]] += 1
-    i = j
-
-print(min(d['0'], d['1']))
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;연속된 0이 몇 번 나오는지/연속된 1이 몇 번 나오는지 구한 다음에 더 작은 수에 대해서 뒤집으면 된다.&lt;/p&gt;
-</description>
-        <pubDate>Sat, 13 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/02/13/BOJ-1439.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/13/BOJ-1439.html</guid>
         
         <category>python</category>
         
