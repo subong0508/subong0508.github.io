@@ -6,9 +6,427 @@
 </description>
     <link>http://subong0508.github.io/</link>
     <atom:link href="http://subong0508.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 16 Feb 2021 23:23:09 +0900</pubDate>
-    <lastBuildDate>Tue, 16 Feb 2021 23:23:09 +0900</lastBuildDate>
+    <pubDate>Thu, 18 Feb 2021 20:54:35 +0900</pubDate>
+    <lastBuildDate>Thu, 18 Feb 2021 20:54:35 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>백준 Silver1 - 감시 피하기</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem18428&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/18428&quot;&gt;백준 18428번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from itertools import combinations
+
+n = int(input())
+graph = []
+for _ in range(n):
+    graph.append(input().split())
+# teachers
+ts = set()
+candidates = []
+for i in range(n):
+    for j in range(n):
+        if graph[i][j] == 'T':
+            ts.add((i, j))
+        elif graph[i][j] == 'X':
+            candidates.append((i, j))
+
+dx = [-1, 1, 0, 0]
+dy = [0, 0, -1, 1]
+        
+combs = combinations(candidates, 3)
+
+
+def cctv(x, y, i, visited):
+    global s
+    visited.add((x, y))
+    if graph[x][y] == 'S':
+        s.add((x, y))
+    nx, ny = x+dx[i], y+dy[i]
+    if 0 &amp;lt;= nx &amp;lt; n and 0 &amp;lt;= ny &amp;lt; n and (nx, ny) not in visited and graph[nx][ny] != 'O':
+        cctv(nx, ny, i, visited)
+
+
+cnt = 36
+for comb in combs:
+    s = set()
+    for i, j in comb:
+        graph[i][j] = 'O'
+    for t in ts:
+        visited = set()
+        for i in range(4):
+            cctv(t[0], t[1], i, visited)
+    for i, j in comb:
+        graph[i][j] = 'X'
+    cnt = min(cnt, len(s))
+
+if not cnt:
+    print(&quot;YES&quot;)
+else:
+    print(&quot;NO&quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;일반적인 DFS가 아니라 방향이 있는 DFS로 풀면 된다. 사실은 재귀가 아닌 단순 반복문으로도 풀 수 있는 문제다.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 18 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/02/18/BOJ-18428.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/18/BOJ-18428.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Silver1 - 경쟁적 전염</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem18405&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/18405&quot;&gt;백준 18405번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from collections import deque
+
+
+n, k = map(int, input().split())
+graph = []
+for _ in range(n):
+    graph.append(list(map(int, input().split())))
+s, x, y = map(int, input().split())
+
+dx = [-1, 1, 0, 0]
+dy = [0, 0, -1, 1]
+
+
+def bfs(graph):
+    cnt = 1
+    q = []
+    visited = [[False] * (1+n) for _ in range(1+n)]
+    for i in range(n):
+        for j in range(n):
+            if graph[i][j] != 0:
+                q.append((i, j, cnt))
+                visited[i][j] = True
+    # 1번 바이러스부터 순서대로 탐색
+    q.sort(key=lambda x: graph[x[0]][x[1]])
+    q = deque(q)
+    while q:
+        x, y, cnt = q.popleft()
+        # s초가 지나면 종료
+        if cnt &amp;gt; s:
+            return
+        for i in range(4):
+            nx, ny = x+dx[i], y+dy[i]
+            if 0 &amp;lt;= nx &amp;lt; n and 0 &amp;lt;= ny &amp;lt; n and not visited[nx][ny] and graph[nx][ny] == 0:
+                visited[nx][ny] = True
+                graph[nx][ny] = graph[x][y]
+                q.append((nx, ny, cnt+1))
+
+
+bfs(graph)
+print(graph[x-1][y-1])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;1번부터 순서대로 탐색하도록 BFS를 구현하는게 조금 까다로운 문제였다.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 18 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/02/18/BOJ-18405.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/18/BOJ-18405.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Silver2 - 특정 거리의 도시 찾기</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem18352&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/18352&quot;&gt;백준 18352번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from collections import deque
+
+n, m, k, x = map(int, input().split())
+graph = [[] for _ in range(n+1)]
+for _ in range(m):
+    i, j = map(int, input().split())
+    graph[i].append(j)
+res = []
+
+
+def bfs(start):
+    global res
+    cnt = 0
+    q = deque([(start, cnt)])
+    visited = [False] * (1+n)
+    visited[start] = True
+    while q:
+        now, cnt = q.popleft()
+        if cnt == k:
+            res.append(now)
+        for v in graph[now]:
+            if not visited[v]:
+                visited[v] = True
+                q.append((v, cnt+1))
+    
+
+bfs(x)
+
+if not res:
+    print(-1)
+else:
+    res.sort()
+    print(*res, sep='\n')
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Thu, 18 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/02/18/BOJ-18352.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/18/BOJ-18352.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Gold5 - 인구 이동</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem16234&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/16234&quot;&gt;백준 16234번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from collections import deque
+
+n, l, r = map(int, input().split())
+graph = []
+for _ in range(n):
+    graph.append(list(map(int, input().split())))
+
+dx = [-1, 1, 0, 0]
+dy = [0, 0, -1, 1]
+
+
+def bfs(x, y, visited):
+    if visited[x][y]:
+        return 0
+    q = deque([(x, y)])
+    visited[x][y] = True
+    neighbors = [(x, y)]
+    cnt = 0
+    while q:
+        x, y = q.popleft()
+        cnt += 1
+        for i in range(4):
+            nx, ny = x+dx[i], y+dy[i]
+            if 0 &amp;lt;= nx &amp;lt; n and 0 &amp;lt;= ny &amp;lt; n and not visited[nx][ny]:
+                diff = abs(graph[x][y]-graph[nx][ny])
+                if l &amp;lt;= diff &amp;lt;= r:
+                    visited[nx][ny] = True
+                    q.append((nx, ny))
+                    neighbors.append((nx, ny))
+    # 연합을 맺지 못함
+    if cnt == 1:
+        return 0
+    total = 0
+    for x, y in neighbors:
+        total += graph[x][y]
+    for x, y in neighbors:
+        graph[x][y] = total // len(neighbors)
+    return cnt
+
+
+res = 0
+while True:
+    cnt = 0
+    visited = [[False] * n for _ in range(n)]
+    for i in range(n):
+        for j in range(n):
+            cnt += bfs(i, j, visited)
+    if cnt == 0:
+        print(res)
+        break
+    res += 1
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Thu, 18 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/02/18/BOJ-16234.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/18/BOJ-16234.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Silver1 - 연산자 끼워넣기</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem14888&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/14888&quot;&gt;백준 14888번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
+arr = list(map(int, input().split()))
+ops = list(map(int, input().split()))
+min_val = int(1e9)
+max_val = -int(1e9)
+
+
+def solution(idx, ops, val):
+    global min_val, max_val
+    if idx == n-1:
+        min_val = min(min_val, val)
+        max_val = max(max_val, val)
+        return
+
+    for i in range(4):
+        if ops[i] &amp;lt;= 0:
+            continue
+        ops[i] -= 1
+        if i == 0:
+            solution(idx+1, ops, val+arr[idx+1])
+        elif i == 1:
+            solution(idx+1, ops, val-arr[idx+1])
+        elif i == 2:
+            solution(idx+1, ops, val*arr[idx+1])
+        elif i == 3:
+            if val &amp;lt; 0:
+                solution(idx+1, ops, -(-val // arr[idx+1]))
+            else:
+                solution(idx+1, ops, val // arr[idx+1])
+        ops[i] += 1
+
+
+solution(0, ops, arr[0])
+
+print(max_val)
+print(min_val)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;완전 탐색/DFS를 통해 풀 수 있었다.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 18 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/02/18/BOJ-14888.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/18/BOJ-14888.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>프로그래머스 Lv2 - 괄호 변환</title>
+        <description>&lt;h3 id=&quot;httpsprogrammerscokrlearncourses30lessons60058&quot;&gt;&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/60058&quot;&gt;프로그래머스 60058번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;def is_right(p):
+    stack = []
+    for ch in p:
+        if ch == '(':
+            stack.append(ch)
+        else:
+            if len(stack) == 0 or stack.pop() != '(':
+                return False
+    return len(stack) == 0
+
+def is_balanced(p):
+    return p.count('(') == p.count(')')
+
+def parse(p):
+    u, v = p, ''
+    for i in range(1, len(p)):
+        u_, v_ = p[:i], p[i:]
+        if is_balanced(u_) and is_balanced(v_):
+            u, v = u_, v_
+            break
+    return u, v
+
+def solution(p):
+    answer = ''
+    if is_right(p):
+        return p
+    u, v = parse(p)
+    if is_right(u):
+        answer = u + solution(v)
+    else:
+        answer += '('
+        answer += solution(v)
+        answer += ')'
+        for ch in u[1:-1]:
+            if ch == '(':
+                answer += ')'
+            else:
+                answer += '('
+    return answer
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;문제 자체가 헷갈리게 서술되어 있어서 많이 헤맸다..&lt;/p&gt;
+</description>
+        <pubDate>Tue, 16 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/02/16/PR-60058.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/16/PR-60058.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
     
       <item>
         <title>프로그래머스 Lv3 - 단어 변환</title>
@@ -291,562 +709,11 @@ else:
     print(0)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;사실 이 문제에 좀 오류가 있는 것 같은게 &lt;code class=&quot;highlighter-rouge&quot;&gt;dfs(stack[0], visited)&lt;/code&gt;로 하면 100% 까지 맞다가 틀린다. 항상 1번부터 탐색을 하기 때문에 2번부터 탐색을 하면 올바른 DFS라도 틀려야한다는데 좀 억지스러웠다. 여튼 &lt;code class=&quot;highlighter-rouge&quot;&gt;dfs(1, visited)&lt;/code&gt;로 해야한다.&lt;/p&gt;
+&lt;p&gt;사실 이 문제에 좀 오류가 있는 것 같은게 &lt;code class=&quot;highlighter-rouge&quot;&gt;dfs(stack[0], visited)&lt;/code&gt;로 하면 100% 까지 맞다가 틀린다. 항상 1번부터 탐색을 하기 때문에 2번부터 탐색을 하면 올바른 DFS라도 틀려야한다는데 좀 억지스러웠다. 여튼 &lt;code class=&quot;highlighter-rouge&quot;&gt;dfs(1, visited)&lt;/code&gt;로 해야 맞는다.&lt;/p&gt;
 </description>
         <pubDate>Tue, 16 Feb 2021 00:00:00 +0900</pubDate>
         <link>http://subong0508.github.io/problem-solving/2021/02/16/BOJ-16964.html</link>
         <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/16/BOJ-16964.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Silver1 - 토마토(7576번, 7569번)</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem7576&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/7576&quot;&gt;백준 7576번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;틀린 풀이(시간초과)&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from collections import deque
-
-m, n = map(int, input().split())
-graph = []
-for _ in range(n):
-    tmp = list(map(int, input().split()))
-    graph.append(tmp)
-
-dx = [-1, 1, 0, 0]
-dy = [0, 0, -1, 1]
-
-
-def bfs(x, y):
-    if graph[x][y] != 1:
-        return
-    q = deque([(x, y)])
-    visited = set()
-    visited.add((x, y))
-    while q:
-        x, y = q.popleft()
-        for i in range(4):
-            nx, ny = x+dx[i], y+dy[i]
-            if 0 &amp;lt;= nx &amp;lt; n and 0 &amp;lt;= ny &amp;lt; m and (nx, ny) not in visited:
-                if graph[nx][ny] == -1:
-                    continue
-                visited.add((nx, ny))
-                if graph[nx][ny] == 0:
-                    graph[nx][ny] = graph[x][y]+1
-                else:
-                    graph[nx][ny] = min(graph[nx][ny], graph[x][y]+1)
-                q.append((nx, ny))
-
-for i in range(n):
-    for j in range(m):
-        bfs(i, j)
-
-impossible = False
-max_num = 1
-for i in range(n):
-    if not impossible:
-        for j in range(m):
-            if graph[i][j] == -1:
-                continue
-            if graph[i][j] == 0:
-                impossible = True
-                break
-            max_num = max(max_num, graph[i][j])
-
-if impossible:
-    print(-1)
-elif max_num == 1:
-    print(0)
-else:
-    print(max_num-1)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;이렇게 모든 &lt;code class=&quot;highlighter-rouge&quot;&gt;i, j&lt;/code&gt;에서 BFS를 수행하니 시간 초과로 계속해서 실패했다. 
-이 문제의 관건은 익은 사과(즉, &lt;code class=&quot;highlighter-rouge&quot;&gt;graph[i][j] == 1&lt;/code&gt;)들을 큐에 넣어주고 BFS를 수행해야 하는 것이었다. 생각해보면 익은 사과들의 레벨은 모두 0이므로 다같이 큐에 넣어줘야 최적해를 구해줄 수 있었다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;올바른 풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from collections import deque
-
-m, n = map(int, input().split())
-graph = []
-for _ in range(n):
-    tmp = list(map(int, input().split()))
-    graph.append(tmp)
-
-dx = [-1, 1, 0, 0]
-dy = [0, 0, -1, 1]
-
-
-def bfs(q):
-    visited = set()
-    for x, y in q:
-        visited.add((x, y))
-    while q:
-        x, y = q.popleft()
-        for i in range(4):
-            nx, ny = x+dx[i], y+dy[i]
-            if 0 &amp;lt;= nx &amp;lt; n and 0 &amp;lt;= ny &amp;lt; m and (nx, ny) not in visited:
-                if graph[nx][ny] == -1:
-                    continue
-                visited.add((nx, ny))
-                graph[nx][ny] = graph[x][y]+1
-                q.append((nx, ny))
-
-
-q = deque()
-for i in range(n):
-    for j in range(m):
-        if graph[i][j] == 1:
-            q.append((i, j))
-
-bfs(q)
-
-impossible = False
-max_num = 1
-for i in range(n):
-    if not impossible:
-        for j in range(m):
-            if graph[i][j] == -1:
-                continue
-            if graph[i][j] == 0:
-                impossible = True
-                break
-            max_num = max(max_num, graph[i][j])
-
-if impossible:
-    print(-1)
-elif max_num == 1:
-    print(0)
-else:
-    print(max_num-1)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;httpswwwacmicpcnetproblem7569&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/7569&quot;&gt;백준 7569번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from collections import deque
-
-m, n, h = map(int, input().split())
-graph = [[] for _ in range(h)]
-for i in range(h):
-    for j in range(n):
-        tmp = list(map(int, input().split()))
-        graph[i].append(tmp)
-
-dx = [-1, 1, 0, 0, 0, 0]
-dy = [0, 0, -1, 1, 0, 0]
-dz = [0, 0, 0, 0, -1, 1]
-
-
-def bfs(q):
-    visited = set()
-    for z, x, y in q:
-        visited.add((z, x, y))
-    visited.add((z, x, y))
-    while q:
-        z, x, y = q.popleft()
-        for i in range(6):
-            nz, nx, ny = z+dz[i], x+dx[i], y+dy[i]
-            if 0 &amp;lt;= nz &amp;lt; h and 0 &amp;lt;= nx &amp;lt; n and 0 &amp;lt;= ny &amp;lt; m:
-                if graph[nz][nx][ny] != -1 and (nz, nx, ny) not in visited:
-                    visited.add((nz, nx, ny))
-                    graph[nz][nx][ny] = graph[z][x][y]+1
-                    q.append((nz, nx, ny))
-    
-
-q = deque()
-for i in range(h):
-    for j in range(n):
-        for k in range(m):
-            if graph[i][j][k] == 1:
-                q.append((i, j, k))
-
-bfs(q)
-
-max_num = 1
-impossible = False
-for i in range(h):
-    for j in range(n):
-        for k in range(m):
-            if graph[i][j][k] == -1:
-                continue
-            if graph[i][j][k] == 0:
-                impossible = True
-            else:
-                max_num = max(max_num, graph[i][j][k])
-
-if impossible:
-    print(-1)
-elif max_num == 1:
-    print(0)
-else:
-    print(max_num - 1)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;위에 문제와 거의 비슷하지만, z축까지 생각해줘야하는 문제였다.&lt;/p&gt;
-</description>
-        <pubDate>Sun, 14 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/02/14/BOJ-7576.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/14/BOJ-7576.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Silver1 - 단지번호붙이기</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem2667&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/2667&quot;&gt;백준 2667번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from collections import deque
-
-n = int(input())
-graph = []
-for _ in range(n):
-    tmp = [int(x) for x in input()]
-    graph.append(tmp)
-total_cnt = 0
-res = []
-
-dx = [-1, 1, 0, 0]
-dy = [0, 0, -1, 1]
-
-
-def bfs(x, y, graph):
-    global total_cnt, res
-    if graph[x][y] == 0:
-        return
-    total_cnt += 1
-    cnt = 0
-    q = deque([(x, y)])
-    graph[x][y] = 0
-    while q:
-        x, y = q.popleft()
-        cnt += 1
-        for i in range(4):
-            nx, ny = x+dx[i], y+dy[i]
-            if 0 &amp;lt;= nx &amp;lt; n and 0 &amp;lt;= ny &amp;lt; n and graph[nx][ny] == 1:
-                graph[nx][ny] = 0
-                q.append((nx, ny))
-    res.append(cnt)
-
-
-for i in range(n):
-    for j in range(n):
-        bfs(i, j, graph)
-res.sort()
-
-print(total_cnt)
-print(*res, sep='\n')
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Sun, 14 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/02/14/BOJ-2667.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/14/BOJ-2667.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Silver3 - 바이러스</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem2606&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/2606&quot;&gt;백준 2606번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
-m = int(input())
-graph = [[] for _ in range(n+1)]
-for _ in range(m):
-    i, j = map(int, input().split())
-    graph[i].append(j)
-    graph[j].append(i)
-visited = [False] * (n+1)
-cnt = 0
-
-
-def dfs(i, visited):
-    global cnt
-    visited[i] = True
-    cnt += 1
-    for j in graph[i]:
-        if not visited[j]:
-            dfs(j, visited)
-
-
-dfs(1, visited)
-print(cnt-1)
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Sun, 14 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/02/14/BOJ-2606.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/14/BOJ-2606.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Gold5 - 보물섬</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem2589&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/2589&quot;&gt;백준 2589번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from collections import deque
-
-n, m = map(int, input().split())
-graph = []
-for _ in range(n):
-    tmp = [1 if x == 'L' else 0 for x in input()]
-    graph.append(tmp)
-
-starts = []
-for i in range(n):
-    for j in range(m):
-        # 출발가능한 곳들
-        if graph[i][j] == 1:
-            starts.append((i, j))
-
-dx = [-1, 1, 0, 0]
-dy = [0, 0, -1, 1]
-
-
-# bfs를 수행하면서 start에서 최단거리가 가장 먼 곳까지의 거리 탐색
-def bfs(start):
-    x, y = start
-    res = cnt = 0
-    q = deque([(x, y, cnt)])
-    visited = set()
-    visited.add((x, y))
-    while q:
-        x, y, cnt = q.popleft()
-        res = max(res, cnt)
-        for i in range(4):
-            nx, ny = x+dx[i], y+dy[i]
-            if 0 &amp;lt;= nx &amp;lt; n and 0 &amp;lt;= ny &amp;lt; m and graph[nx][ny] == 1 and (nx, ny) not in visited:
-                visited.add((nx, ny))
-                q.append((nx, ny, cnt+1))
-    return res
-
-
-res = 0
-for start in starts:
-    res = max(res, bfs(start))
-print(res)
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Sun, 14 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/02/14/BOJ-2589.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/14/BOJ-2589.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Gold4 - 벽 부수고 이동하기</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem2206&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/2206&quot;&gt;백준 2206번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from collections import deque
-
-n, m = map(int, input().split())
-graph = []
-for _ in range(n):
-    tmp = [int(x) for x in input()]
-    graph.append(tmp)
-
-dx = [-1, 1, 0, 0]
-dy = [0, 0, -1, 1]
-
-
-def bfs(x, y):
-    crush = False
-    cnt = 1
-    q = deque([(x, y, crush, cnt)])
-    # 벽을 부수지 않고 온 경우
-    visit1 = [[False for _ in range(m)] for _ in range(n)]
-    # 벽을 부수고 온 경우
-    visit2 = [[False for _ in range(m)] for _ in range(n)]
-    while q:
-        x, y, crush, cnt = q.popleft()
-        if x == n-1 and y  == m-1:
-            return cnt
-        for i in range(4):
-            nx, ny = x+dx[i], y+dy[i]
-            if 0 &amp;lt;= nx &amp;lt; n and 0 &amp;lt;= ny &amp;lt; m:
-                # 벽을 부수지 않고 왔다
-                if not crush:
-                    # 안 부시고 새로 감
-                    if graph[nx][ny] == 0 and visit1[nx][ny] == 0:
-                        visit1[nx][ny] = True
-                        q.append((nx, ny, crush, cnt+1))
-                    # 새로 부신다
-                    elif graph[nx][ny] == 1:
-                        visit2[nx][ny] = True
-                        q.append((nx, ny, True, cnt+1))
-                # 벽을 부수고 왔다
-                else:
-                    if graph[nx][ny] == 0 and visit2[nx][ny] == 0:
-                        visit2[nx][ny] = True
-                        q.append((nx, ny, crush, cnt+1))
-    return -1
-
-
-print(bfs(0, 0))
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;벽을 부수고 왔을 때랑 아닐 때랑 방문 여부 행렬을 다르게 놓고 풀어야 하는 문제였다.&lt;/p&gt;
-</description>
-        <pubDate>Sun, 14 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/02/14/BOJ-2206.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/14/BOJ-2206.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Silver1 - 숨바꼭질, Gold5 - 숨바꼭질 3</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem1697&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1697&quot;&gt;백준 1697번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from collections import deque
-
-n, k = map(int, input().split())
-
-def bfs(n, k):
-    cnt = 0
-    q = deque([(n, cnt)])
-    visited = set()
-    while q:
-        now, cnt = q.popleft()
-        if now == k:
-            return cnt
-        if 0 &amp;lt;= now-1 and (now-1) not in visited:
-            visited.add(now-1)
-            q.append((now-1, cnt+1))
-        if now+1 &amp;lt;= int(1e5) and now+1 not in visited:
-            visited.add(now+1)
-            q.append((now+1, cnt+1))
-        if 2*now &amp;lt;= int(1e5) and 2*now not in visited:
-            visited.add(2*now)
-            q.append((2*now, cnt+1))
-    return -1
-
-
-print(bfs(n, k))
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;httpswwwacmicpcnetproblem13549&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/13549&quot;&gt;백준 13549번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from collections import deque
-
-n, k = map(int, input().split())
-
-
-def bfs(n, k):
-    cnt = 0
-    q = deque([(n, cnt)])
-    visited = set()
-    while q:
-        now, cnt = q.popleft()
-        if now == k:
-            return cnt
-        # 순간이동 하는 것을 먼저 둔다.
-        if 2*now &amp;lt;= int(1e5) and 2*now not in visited:
-            visited.add(2*now)
-            q.append((2*now, cnt))
-        if 0 &amp;lt;= now-1 and (now-1) not in visited:
-            visited.add(now-1)
-            q.append((now-1, cnt+1))
-        if now+1 &amp;lt;= int(1e5) and now+1 not in visited:
-            visited.add(now+1)
-            q.append((now+1, cnt+1))
-    return -1
-
-
-print(bfs(n, k))
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Sun, 14 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/02/14/BOJ-1697.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/14/BOJ-1697.html</guid>
         
         <category>python</category>
         
