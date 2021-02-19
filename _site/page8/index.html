@@ -137,6 +137,8 @@
         
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -160,6 +162,94 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/02/06/PR-42888.html">프로그래머스 Lv2 - 오픈채팅방</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>프로그래머스 42888번 풀이 def solution(record): msgs = [] user_d = {} for r in record: lst = r.split() if len(lst) == 2: continue action, uid, name = lst user_d[uid] = name for r in record: lst = r.split() if len(lst) == 2: _, uid = lst msg = user_d[uid] +...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 6, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/data-structure/2021/02/06/Heap.html">Heap with Python</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>힙이란 우선순위큐(Priority Queue)를 이진 트리로 구현한 자료구조 입니다. 힙의 삽입, 삭제 연산은 $O(\log n)$의 시간복잡도를 가집니다. 힙은 파이썬 내장모듈인 heapq를 이용해서 손쉽게 구현할 수 있습니다. import heapq arr = [4, 5, 6, 7, 9, 8, 3, 1, 2] heapq.heapify(arr) print(heapq.nsmallest(3, arr)) # 1 2 3 print(heapq.nlargest(3, arr)) # 7 8...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 6, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Data-Structure">Data-structure</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/06/BOJ-4358.html">백준 Gold4 - 생태학</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 4358번 풀이 import sys input = sys.stdin.readline d = {} cnt = 0 while True: line = input().rstrip() if not line: break cnt += 1 d[line] = d.get(line, 0) + 1 d = sorted(d.items()) for k, v in d: print("%s %.4f" % (k, 100*v/cnt)) 인풋을 이런식으로 받는 건 못봐서...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 6, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/06/BOJ-2696.html">백준 Gold3 - 중앙값 구하기</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 2696번 풀이 import heapq t = int(input()) def get_median(n, arr): # median보다 작은 값들을 저장하는 최대 힙 max_heap = [] median = None # median보다 큰 값들을 저장하는 최소 힙 min_heap = [] res = [] for i in range(1, n+1): if median is None: median = arr[i] res.append(median)...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 6, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/02/06/BOJ-2075.html">백준 Gold4 - N번째 큰 수</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -167,152 +257,6 @@
     </section>
     <section class="post-meta">
       <div class="post-date">February 6, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/06/BOJ-1927.html">백준 Silver1 - 최소 힙</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 1927번
-
-풀이
-
-import heapq
-
-n = int(input())
-h = []
-res = []
-for _ in range(n):
-    x = int(input())
-    if x != 0:
-        heapq.heappush(h, x)
-    elif h:
-        res.append(heapq.heappop(h))
-    else:
-        res.append(0)
-print(*res, sep='\n')
-
-</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 6, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/06/BOJ-1620.html">백준 Silver4 - 나는야 포켓몬 마스터 이다솜</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 1620번
-
-풀이
-
-n, m = map(int, input().split())
-pocket_num = {}
-num_pocket = {}
-
-for i in range(1, n+1):
-    p = input()
-    pocket_num[p] = i
-    num_pocket[i] = p
-
-res = []
-for _ in range(m):
-    x = input()
-    if x.isnumeric():
-        res.append(num_pocket[int(x)])
-    else:
-        res.append(pocket_num[x])
-print(*res, sep='\n')
-
-</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 6, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/06/BOJ-14425.html">백준 Silver3 - 문자열 집합</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 14425번
-
-풀이
-
-n, m = map(int, input().split())
-s = set()
-for _ in range(n):
-    string = input()
-    s.add(string)
-
-cnt = 0
-for _ in range(m):
-    string = input()
-    if string in s:
-        cnt += 1
-print(cnt)
-
-</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 6, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/05/PR-60060.html">프로그래머스 Lv3 - 가사 검색</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>프로그래머스 60060번 풀이 from bisect import bisect_left, bisect_right def count(words, q1, q2): return bisect_right(words, q2) - bisect_left(words, q1) def solution(words, queries): words_arr = [[] for _ in range(100001)] words_arr_rev = [[] for _ in range(100001)] answer = [] words.sort() for w in words: words_arr[len(w)].append(w) words_arr_rev[len(w)].append(w[::-1]) for arr in words_arr: arr.sort()...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 5, 2021</div>
       <div class="post-categories">
       in 
         
@@ -338,7 +282,7 @@ print(cnt)
 			</a>
 			
 		
-		<span class="page-number">Page 8 of 18</span>
+		<span class="page-number">Page 8 of 19</span>
 		
 		<a class="newer-posts" href="/page9">
       <span class="fa-stack fa-lg">
@@ -378,6 +322,8 @@ print(cnt)
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
         
