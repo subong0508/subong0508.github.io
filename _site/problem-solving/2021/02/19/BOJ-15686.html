@@ -224,10 +224,8 @@ def cal_min_dist(h: tuple, cs: list):
 res = int(1e9)
 combs = combinations(chickens, m)
 for comb in combs:
-    cs = []
     tmp = 0
-    for c in comb:
-        cs.append(c)
+    cs = list(comb)
     for h in houses:
         tmp += cal_min_dist(h, cs)
     res = min(res, tmp)

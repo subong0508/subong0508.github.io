@@ -237,6 +237,7 @@ def dust():
         graph[x][y] -= deleted[(x, y)]
 
 def clean(xc, up):
+    # 공기청정기 위/아래
     if up:
         ds = [(0, 1), (-1, 0), (0, -1), (1, 0)]
     else:

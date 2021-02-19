@@ -6,8 +6,8 @@
 </description>
     <link>http://subong0508.github.io/</link>
     <atom:link href="http://subong0508.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 20 Feb 2021 01:06:30 +0900</pubDate>
-    <lastBuildDate>Sat, 20 Feb 2021 01:06:30 +0900</lastBuildDate>
+    <pubDate>Sat, 20 Feb 2021 01:13:43 +0900</pubDate>
+    <lastBuildDate>Sat, 20 Feb 2021 01:13:43 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -20,6 +20,7 @@
     s = set()
     for i in range(m-1):
         for j in range(n-1):
+            # 이미 빈 상태
             if board[i][j] == 0:
                 continue
             if board[i][j] == board[i+1][j] == board[i][j+1] == board[i+1][j+1]:
@@ -44,6 +45,7 @@ def solution(m, n, board):
     answer = 0
     while True:
         tmp = erase(m, n, board)
+        # 새로 지울게 없다면
         if tmp == 0:
             break
         answer += tmp
@@ -105,6 +107,7 @@ def hit(x, y, d):
     for i in range(1, k):
         nx, ny = x+i*dx, y+i*dy
         hit(nx, ny, d)
+    # 도미노 쓰러뜨리기
     if domino[x][y] != 0:
         cnt += 1
         domino[x][y] = 0
@@ -186,6 +189,7 @@ def dust():
         graph[x][y] -= deleted[(x, y)]
 
 def clean(xc, up):
+    # 공기청정기 위/아래
     if up:
         ds = [(0, 1), (-1, 0), (0, -1), (1, 0)]
     else:
@@ -269,10 +273,8 @@ def cal_min_dist(h: tuple, cs: list):
 res = int(1e9)
 combs = combinations(chickens, m)
 for comb in combs:
-    cs = []
     tmp = 0
-    for c in comb:
-        cs.append(c)
+    cs = list(comb)
     for h in houses:
         tmp += cal_min_dist(h, cs)
     res = min(res, tmp)

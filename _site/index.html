@@ -165,7 +165,7 @@
       <a class="post-link" href="/problem-solving/2021/02/19/PR-17679.html">프로그래머스 Lv2 - 프렌즈4블록</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>프로그래머스 17679번 풀이 def erase(m, n, board): s = set() for i in range(m-1): for j in range(n-1): if board[i][j] == 0: continue if board[i][j] == board[i+1][j] == board[i][j+1] == board[i+1][j+1]: s |= {(i, j), (i+1, j), (i, j+1), (i+1, j+1)} for i, j in s: board[i][j] = 0 return...</p>
+      <p>프로그래머스 17679번 풀이 def erase(m, n, board): s = set() for i in range(m-1): for j in range(n-1): # 이미 빈 상태 if board[i][j] == 0: continue if board[i][j] == board[i+1][j] == board[i][j+1] == board[i+1][j+1]: s |= {(i, j), (i+1, j), (i, j+1), (i+1, j+1)} for i, j in s:...</p>
     </section>
     <section class="post-meta">
       <div class="post-date">February 19, 2021</div>

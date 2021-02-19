@@ -207,6 +207,7 @@
     s = set()
     for i in range(m-1):
         for j in range(n-1):
+            # 이미 빈 상태
             if board[i][j] == 0:
                 continue
             if board[i][j] == board[i+1][j] == board[i][j+1] == board[i+1][j+1]:
@@ -231,6 +232,7 @@ def solution(m, n, board):
     answer = 0
     while True:
         tmp = erase(m, n, board)
+        # 새로 지울게 없다면
         if tmp == 0:
             break
         answer += tmp
