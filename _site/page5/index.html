@@ -139,6 +139,8 @@
         
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -159,6 +161,50 @@
 
 <div class="wrapper">
 <ul class="post-list">
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/14/BOJ-2206.html">백준 Gold4 - 벽 부수고 이동하기</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 2206번 풀이 from collections import deque n, m = map(int, input().split()) graph = [] for _ in range(n): tmp = [int(x) for x in input()] graph.append(tmp) dx = [-1, 1, 0, 0] dy = [0, 0, -1, 1] def bfs(x, y): crush = False cnt = 1 q =...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 14, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/14/BOJ-1697.html">백준 Silver1 - 숨바꼭질, Gold5 - 숨바꼭질 3</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 1697번 풀이 from collections import deque n, k = map(int, input().split()) def bfs(n, k): cnt = 0 q = deque([(n, cnt)]) visited = set() while q: now, cnt = q.popleft() if now == k: return cnt if 0 &lt;= now-1 and (now-1) not in visited: visited.add(now-1) q.append((now-1, cnt+1)) if...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 14, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
   
   <li>
     <h2>
@@ -223,50 +269,6 @@
     </section>
   </li>
   
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/13/BOJ-1439.html">백준 Silver5 - 문자열 뒤집기</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 1439번 풀이 s = input() n = len(s) d = {'0': 0, '1': 0} i = 0 while i &lt; n: j = i + 1 while j &lt; n and s[j] == s[i]: j += 1 d[s[i]] += 1 i = j print(min(d['0'], d['1'])) 연속된 0이 몇 번...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 13, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/13/BOJ-1260.html">백준 Silver2 - DFS와 BFS</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 1260번 풀이 from collections import deque n, m, v = map(int, input().split()) graph = [[0] * (n+1) for _ in range(n+1)] for _ in range(m): i, j = map(int, input().split()) graph[i][j] = 1 graph[j][i] = 1 visited1 = [False] * (n+1) visited2 = [False] * (n+1) stack1 = []...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 13, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
   
 </ul>
 
@@ -282,7 +284,7 @@
 			</a>
 			
 		
-		<span class="page-number">Page 5 of 19</span>
+		<span class="page-number">Page 5 of 20</span>
 		
 		<a class="newer-posts" href="/page6">
       <span class="fa-stack fa-lg">
@@ -322,6 +324,8 @@
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
         

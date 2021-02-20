@@ -6,9 +6,211 @@
 </description>
     <link>http://subong0508.github.io/</link>
     <atom:link href="http://subong0508.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 20 Feb 2021 01:13:43 +0900</pubDate>
-    <lastBuildDate>Sat, 20 Feb 2021 01:13:43 +0900</lastBuildDate>
+    <pubDate>Sat, 20 Feb 2021 17:08:31 +0900</pubDate>
+    <lastBuildDate>Sat, 20 Feb 2021 17:08:31 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>백준 Gold3 - 독특한 계산기</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem19591&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/19591&quot;&gt;백준 19591번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from collections import deque
+
+x = input()
+n = len(x)
+pr = {'+': 0, '-': 0, '*': 1, '/': 1}
+nums = []
+ops = []
+
+i = 0
+while i &amp;lt; n:
+    j = i
+    while j &amp;lt; n and (j == 0 or x[j] not in pr.keys()):
+        j += 1
+    nums.append(int(x[i:j]))
+    if j &amp;lt; n:
+        ops.append(x[j])
+    i = j + 1
+
+nums = deque(nums)
+ops = deque(ops)
+
+def calc(op, n1, n2):
+    if op == '+':
+        res = n1 + n2
+    elif op == '-':
+        res = n1 - n2
+    elif op == '*':
+        res = n1 * n2
+    else:
+        res = int(n1 / n2)
+    return res
+
+while ops:
+    if len(ops) == 1:
+        op = ops.popleft()
+        n1, n2 = nums.popleft(), nums.popleft()
+        nums.appendleft(calc(op, n1, n2))
+    else:
+        op1 = ops.popleft()
+        op2 = ops.pop()
+        if pr[op1] &amp;gt; pr[op2] or (pr[op1] == pr[op2] and calc(op1, nums[0], nums[1]) &amp;gt;= calc(op2, nums[-2], nums[-1])):
+            n1, n2 = nums.popleft(), nums.popleft()
+            nums.appendleft(calc(op1, n1, n2))
+            ops.append(op2)
+        else:
+            n2, n1 = nums.pop(), nums.pop()
+            nums.append(calc(op2, n1, n2))
+            ops.appendleft(op1)
+
+print(nums[0])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;별로 어려운 문제는 아니었는데 문제를 잘못이해해서 $\log (N)$으로 풀어야 하는 줄 알고 헤맸다.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/02/20/BOJ-19591.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/20/BOJ-19591.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Gold4 - ⚾</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem17281&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/17281&quot;&gt;백준 17281번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이(시간초과)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from itertools import permutations
+
+n = int(input())
+players = list(range(1, 10))
+order = permutations(players, len(players))
+order = [o for o in order if o[3] == 1]
+results = []
+for _ in range(n):
+    results.append([-1] + list(map(int, input().split())))
+
+def baseball(c, results):
+    score = 0
+    idx = 0
+    inning = 0
+    while inning &amp;lt; n:
+        # 홈, 1루, 2루, 3루
+        cur = [0, 0, 0, 0]
+        num_out = 0
+        while num_out &amp;lt; 3:
+            # 현재 점수
+            now = results[inning][c[idx]]
+            if now == 0:
+                num_out += 1
+            else:
+                cur[0] += 1
+                # 선수들의 이동을 저장하는 배열
+                add = [0, 0, 0, 0]
+                for i in range(4):
+                    if i + now &amp;gt;= 4:
+                        score += cur[i]
+                    else:
+                        add[i + now] += cur[i]
+                    add[i] -= cur[i]
+                for i in range(4):
+                    cur[i] += add[i]
+            idx = (idx + 1) % 9
+        inning += 1
+    return score
+
+score = 0
+for o in order:
+    score = max(score, baseball(o, results))
+
+print(score)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;분명히 맞는 알고리즘인데 왜 시간초과가 나지 하고 살펴보니 파이썬으로 풀면 시간초과가 날 수 밖에 없는 문제였다. 배열을 쓰지말고 &lt;code class=&quot;highlighter-rouge&quot;&gt;int&lt;/code&gt;를 사용해야 시간초과에 안걸린다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from itertools import permutations
+
+n = int(input())
+players = list(range(1, 10))
+order = permutations(players, len(players))
+order = [o for o in order if o[3] == 1]
+results = []
+for _ in range(n):
+    results.append([-1] + list(map(int, input().split())))
+
+def baseball(c, results):
+    score = 0
+    idx = 0
+    inning = 0
+    while inning &amp;lt; n:
+        # 홈, 1루, 2루, 3루
+        b0, b1, b2, b3 = 0, 0, 0, 0
+        num_out = 0
+        while num_out &amp;lt; 3:
+            # 현재 점수
+            now = results[inning][c[idx]]
+            if now == 0:
+                num_out += 1
+            else:
+                b0 += 1
+                if now == 1:
+                    score += b3
+                    b0, b1, b2, b3 = 0, b0, b1, b2
+                elif now == 2:
+                    score += (b2 + b3)
+                    b0, b1, b2, b3 = 0, 0, b0, b1
+                elif now == 3:
+                    score += (b1 + b2 + b3)
+                    b0, b1, b2, b3 = 0, 0, 0, b0
+                elif now == 4:
+                    score += (b0 + b1 + b2 + b3)
+                    b0 = b1 = b2 = b3 = 0
+            idx = (idx + 1) % 9
+        inning += 1
+    return score
+
+score = 0
+for o in order:
+    score = max(score, baseball(o, results))
+
+print(score)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/02/20/BOJ-17281.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/20/BOJ-17281.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
     
       <item>
         <title>프로그래머스 Lv2 - 프렌즈4블록</title>
@@ -570,139 +772,6 @@ while True:
         <pubDate>Thu, 18 Feb 2021 00:00:00 +0900</pubDate>
         <link>http://subong0508.github.io/problem-solving/2021/02/18/BOJ-16234.html</link>
         <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/18/BOJ-16234.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Silver1 - 연산자 끼워넣기</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem14888&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/14888&quot;&gt;백준 14888번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
-arr = list(map(int, input().split()))
-ops = list(map(int, input().split()))
-min_val = int(1e9)
-max_val = -int(1e9)
-
-
-def solution(idx, ops, val):
-    global min_val, max_val
-    if idx == n-1:
-        min_val = min(min_val, val)
-        max_val = max(max_val, val)
-        return
-
-    for i in range(4):
-        if ops[i] &amp;lt;= 0:
-            continue
-        ops[i] -= 1
-        if i == 0:
-            solution(idx+1, ops, val+arr[idx+1])
-        elif i == 1:
-            solution(idx+1, ops, val-arr[idx+1])
-        elif i == 2:
-            solution(idx+1, ops, val*arr[idx+1])
-        elif i == 3:
-            if val &amp;lt; 0:
-                solution(idx+1, ops, -(-val // arr[idx+1]))
-            else:
-                solution(idx+1, ops, val // arr[idx+1])
-        ops[i] += 1
-
-
-solution(0, ops, arr[0])
-
-print(max_val)
-print(min_val)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;완전 탐색/DFS를 통해 풀 수 있었다.&lt;/p&gt;
-</description>
-        <pubDate>Thu, 18 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/02/18/BOJ-14888.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/18/BOJ-14888.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>프로그래머스 Lv2 - 괄호 변환</title>
-        <description>&lt;h3 id=&quot;httpsprogrammerscokrlearncourses30lessons60058&quot;&gt;&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/60058&quot;&gt;프로그래머스 60058번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;def is_right(p):
-    stack = []
-    for ch in p:
-        if ch == '(':
-            stack.append(ch)
-        else:
-            if len(stack) == 0 or stack.pop() != '(':
-                return False
-    return len(stack) == 0
-
-def is_balanced(p):
-    return p.count('(') == p.count(')')
-
-def parse(p):
-    u, v = p, ''
-    for i in range(1, len(p)):
-        u_, v_ = p[:i], p[i:]
-        if is_balanced(u_) and is_balanced(v_):
-            u, v = u_, v_
-            break
-    return u, v
-
-def solution(p):
-    answer = ''
-    if is_right(p):
-        return p
-    u, v = parse(p)
-    if is_right(u):
-        answer = u + solution(v)
-    else:
-        answer += '('
-        answer += solution(v)
-        answer += ')'
-        for ch in u[1:-1]:
-            if ch == '(':
-                answer += ')'
-            else:
-                answer += '('
-    return answer
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;문제 자체가 헷갈리게 서술되어 있어서 많이 헤맸다..&lt;/p&gt;
-</description>
-        <pubDate>Tue, 16 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/02/16/PR-60058.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/16/PR-60058.html</guid>
         
         <category>python</category>
         

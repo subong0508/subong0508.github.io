@@ -32,8 +32,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>백준 Silver3 - 오목</title>
-  <meta name="description" content="백준 2615번">
+  <title>백준 Gold3 - 독특한 계산기</title>
+  <meta name="description" content="백준 19591번">
   
   <meta name="author" content="Jung Jaeeun">
   <meta name="copyright" content="&copy; Jung Jaeeun 2021">
@@ -67,10 +67,10 @@
 
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="백준 2615번" />
+  <meta property="og:description" content="백준 19591번" />
   <meta property="og:url" content="http://subong0508.github.io" />
   <meta property="og:site_name" content="Data Vision" />
-  <meta property="og:title" content="백준 Silver3 - 오목" />
+  <meta property="og:title" content="백준 Gold3 - 독특한 계산기" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="http://subong0508.github.io/assets/logo.png" />
   <meta property="og:image:type" content="image/png" />
@@ -81,8 +81,8 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="백준 Silver3 - 오목">
-  <meta name="twitter:description" content="백준 2615번">
+  <meta name="twitter:title" content="백준 Gold3 - 독특한 계산기">
+  <meta name="twitter:description" content="백준 19591번">
   <meta name="twitter:image" content="http://subong0508.github.io/assets/logo.png">
   <meta name="twitter:url" content="http://subong0508.github.io">
   
@@ -91,7 +91,7 @@
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://subong0508.github.io/problem-solving/2021/01/29/BOJ-2615.html">
+  <link rel="canonical" href="http://subong0508.github.io/problem-solving/2021/02/20/BOJ-19591.html">
   <link rel="alternate" type="application/rss+xml" title="Data Vision" href="http://subong0508.github.io/feed.xml" />
 </head>
 
@@ -175,7 +175,7 @@
 <div class="post-header-container " >
   <div class="scrim ">
     <header class="post-header">
-      <h1 class="title">백준 Silver3 - 오목</h1>
+      <h1 class="title">백준 Gold3 - 독특한 계산기</h1>
       <p class="info">by <strong>Jung Jaeeun</strong></p>
     </header>
   </div>
@@ -190,7 +190,7 @@
  
 
 <section class="post-meta">
-  <div class="post-date">January 29, 2021</div>
+  <div class="post-date">February 20, 2021</div>
   <div class="post-categories">
   in 
     
@@ -201,60 +201,63 @@
 </section>  
 
 <article class="post-content">
-  <h3 id="httpswwwacmicpcnetproblem2615"><a href="https://www.acmicpc.net/problem/2615">백준 2615번</a></h3>
+  <h3 id="httpswwwacmicpcnetproblem19591"><a href="https://www.acmicpc.net/problem/19591">백준 19591번</a></h3>
 
 <p><strong>풀이</strong></p>
 
 <pre><code class="language-python3">from collections import deque
 
-board = []
-for _ in range(19):
-    board.append(list(map(int, input().split())))
+x = input()
+n = len(x)
+pr = {'+': 0, '-': 0, '*': 1, '/': 1}
+nums = []
+ops = []
 
-dxs = [-1, 0, 1, 1]
-dys = [1, 1, 0, 1]
+i = 0
+while i &lt; n:
+    j = i
+    while j &lt; n and (j == 0 or x[j] not in pr.keys()):
+        j += 1
+    nums.append(int(x[i:j]))
+    if j &lt; n:
+        ops.append(x[j])
+    i = j + 1
 
+nums = deque(nums)
+ops = deque(ops)
 
-def bfs_main(x, y):
-    return bfs(x, y, 0), bfs(x, y, 1), bfs(x, y, 2), bfs(x, y, 3)
+def calc(op, n1, n2):
+    if op == '+':
+        res = n1 + n2
+    elif op == '-':
+        res = n1 - n2
+    elif op == '*':
+        res = n1 * n2
+    else:
+        res = int(n1 / n2)
+    return res
 
+while ops:
+    if len(ops) == 1:
+        op = ops.popleft()
+        n1, n2 = nums.popleft(), nums.popleft()
+        nums.appendleft(calc(op, n1, n2))
+    else:
+        op1 = ops.popleft()
+        op2 = ops.pop()
+        if pr[op1] &gt; pr[op2] or (pr[op1] == pr[op2] and calc(op1, nums[0], nums[1]) &gt;= calc(op2, nums[-2], nums[-1])):
+            n1, n2 = nums.popleft(), nums.popleft()
+            nums.appendleft(calc(op1, n1, n2))
+            ops.append(op2)
+        else:
+            n2, n1 = nums.pop(), nums.pop()
+            nums.append(calc(op2, n1, n2))
+            ops.appendleft(op1)
 
-def bfs(x, y, d):
-    q = deque()
-    q.append((x, y))
-    cnt = 0
-    while q:
-        x_, y_ = q.popleft()
-        cnt += 1
-        nx, ny = x_+dxs[d], y_+dys[d]
-        if 0 &lt;= nx &lt; 19 and 0 &lt;= ny &lt; 19 and board[nx][ny] == board[x][y]:
-            q.append((nx, ny))
-    # 6목을 체크해봐야 한다.
-    if cnt == 5:
-        nx = x-dxs[d]
-        ny = y-dys[d]
-        if 0 &lt;= nx &lt; 19 and 0 &lt;= ny &lt; 19 and board[x][y] == board[nx][ny]:
-            cnt += 1
-    return cnt
-
-
-found = False
-for i in range(19):
-    for j in range(19):
-        if not found:
-            if board[i][j] == 1 and 5 in bfs_main(i, j):
-                found = True
-                print(1)
-                print(i+1, j+1)
-            elif board[i][j] == 2 and 5 in bfs_main(i, j):
-                found = True
-                print(2)
-                print(i+1, j+1)
-if not found:
-    print(0)
+print(nums[0])
 </code></pre>
 
-<p>문제 자체는 어렵지 않으나 6목을 체크해야하는 걸 못봐서 많이 헤맸다.. <strong>dfs/bfs</strong>를 사용해서 풀 수 있는 문제였다.</p>
+<p>별로 어려운 문제는 아니었는데 문제를 잘못이해해서 $\log (N)$으로 풀어야 하는 줄 알고 헤맸다.</p>
 
 </article>
 
@@ -286,24 +289,16 @@ if not found:
 	<section class="post-navigation">
 		<span class="prev-post">
 			
-				<a href="/problem-solving/2021/01/29/BOJ-16508.html">
+				<a href="/problem-solving/2021/02/20/BOJ-17281.html">
 					<span class="fa-stack fa-lg">
 						<i class="fa fa-square fa-stack-2x"></i>
 						<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
 					</span>
-					<span class="page-number">백준 Silver3 - 전공책</span>
+					<span class="page-number">백준 Gold4 - ⚾</span>
 				</a>
 			
 		</span>
 		<span class="next-post">
-			
-				<a href="/problem-solving/2021/01/29/PR-42584.html">
-					<span class="page-number">프로그래머스 Lv2 - 주식가격</span>
-					<span class="fa-stack fa-lg">
-						<i class="fa fa-square fa-stack-2x"></i>
-						<i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
-					</span>
-				</a>
 			
 		</span>
 	</section>

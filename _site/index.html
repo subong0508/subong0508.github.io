@@ -139,6 +139,8 @@
         
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -159,6 +161,50 @@
 
 <div class="wrapper">
 <ul class="post-list">
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/20/BOJ-19591.html">백준 Gold3 - 독특한 계산기</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 19591번 풀이 from collections import deque x = input() n = len(x) pr = {'+': 0, '-': 0, '*': 1, '/': 1} nums = [] ops = [] i = 0 while i &lt; n: j = i while j &lt; n and (j == 0 or x[j] not...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 20, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/20/BOJ-17281.html">백준 Gold4 - ⚾</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 17281번 풀이(시간초과) from itertools import permutations n = int(input()) players = list(range(1, 10)) order = permutations(players, len(players)) order = [o for o in order if o[3] == 1] results = [] for _ in range(n): results.append([-1] + list(map(int, input().split()))) def baseball(c, results): score = 0 idx = 0 inning...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 20, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
   
   <li>
     <h2>
@@ -223,50 +269,6 @@
     </section>
   </li>
   
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/19/BOJ-15686.html">백준 Gold5 - 치킨 배달</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 15686번 풀이 from itertools import combinations n, m = map(int, input().split()) graph = [] for _ in range(n): graph.append(list(map(int, input().split()))) chickens = [(i, j) for j in range(n) for i in range(n) if graph[i][j] == 2] houses = [(i, j) for j in range(n) for i in range(n) if...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 19, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/18/BOJ-18428.html">백준 Silver1 - 감시 피하기</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 18428번 풀이 from itertools import combinations n = int(input()) graph = [] for _ in range(n): graph.append(input().split()) # teachers ts = set() candidates = [] for i in range(n): for j in range(n): if graph[i][j] == 'T': ts.add((i, j)) elif graph[i][j] == 'X': candidates.append((i, j)) dx = [-1, 1,...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 18, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
   
 </ul>
 
@@ -278,7 +280,7 @@
       <i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
     </span>
 		
-		<span class="page-number">Page 1 of 19</span>
+		<span class="page-number">Page 1 of 20</span>
 		
 		<a class="newer-posts" href="/page2">
       <span class="fa-stack fa-lg">
@@ -318,6 +320,8 @@
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
         
