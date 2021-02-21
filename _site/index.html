@@ -189,7 +189,7 @@
       <a class="post-link" href="/problem-solving/2021/02/21/BOJ-12100.html">백준 Gold2 - 2048(Easy)</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 12100번 풀이 from copy import deepcopy from collections import deque n = int(input()) board = [] for _ in range(n): board.append(list(map(int, input().split()))) def go_up(board): for j in range(n): col = [board[i][j] for i in range(n) if board[i][j] &gt; 0] col = col + [0] * (n-len(col)) i = 0...</p>
+      <p>백준 12100번 풀이 from copy import deepcopy from collections import deque n = int(input()) board = [] for _ in range(n): board.append(list(map(int, input().split()))) def go_up(board): for j in range(n): col = [board[i][j] for i in range(n) if board[i][j] &gt; 0] i = 0 new_col = deque() while i &lt; len(col)-1:...</p>
     </section>
     <section class="post-meta">
       <div class="post-date">February 21, 2021</div>

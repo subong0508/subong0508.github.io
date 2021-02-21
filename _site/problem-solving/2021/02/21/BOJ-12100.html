@@ -217,17 +217,16 @@ for _ in range(n):
 def go_up(board):
     for j in range(n):
         col = [board[i][j] for i in range(n) if board[i][j] &gt; 0]
-        col = col + [0] * (n-len(col))
         i = 0
         new_col = deque()
-        while i &lt; n-1:
+        while i &lt; len(col)-1:
             if col[i] == col[i+1]:
                 new_col.append(col[i]+col[i+1])
                 i += 2
             else:
                 new_col.append(col[i])
                 i += 1
-        if i == n-1:
+        if i == len(col)-1:
             new_col.append(col[i])
         new_col = list(new_col) + [0] * (n-len(new_col))
         for i in range(n):
@@ -237,20 +236,16 @@ def go_up(board):
 def go_down(board):
     for j in range(n):
         col = [board[i][j] for i in range(n) if board[i][j] &gt; 0]
-        col = [0] * (n-len(col)) + col
-        i = n-1
+        i = len(col)-1
         new_col = deque()
         while i &gt; 0:
-            if col[i] &gt; 0:
-                if col[i] == col[i-1]:
+            if col[i] == col[i-1]:
                     new_col.appendleft(col[i]+col[i-1])
                     i -= 2
-                else:
-                    new_col.appendleft(col[i])
-                    i -= 1
             else:
+                new_col.appendleft(col[i])
                 i -= 1
-        if i == 0 and col[i] &gt; 0:
+        if i == 0:
             new_col.appendleft(col[i])
         new_col = [0] * (n-len(new_col)) + list(new_col)
         for i in range(n):
@@ -260,20 +255,16 @@ def go_down(board):
 def go_right(board):
     for i in range(n):
         row = [x for x in board[i] if x &gt; 0]
-        row = [0] * (n-len(row)) + row
-        j = n-1
+        j = len(row)-1
         new_row = deque()
         while j &gt; 0:
-            if row[j] &gt; 0:
-                if row[j] == row[j-1]:
-                    new_row.appendleft(row[j]+row[j-1])
-                    j -= 2
-                else:
-                    new_row.appendleft(row[j])
-                    j -= 1
+            if row[j] == row[j-1]:
+                new_row.appendleft(row[j]+row[j-1])
+                j -= 2
             else:
+                new_row.appendleft(row[j])
                 j -= 1
-        if j == 0 and row[j] &gt; 0:
+        if j == 0:
             new_row.appendleft(row[j])
         new_row = [0] * (n-len(new_row)) + list(new_row)
         for j in range(n):
@@ -283,20 +274,16 @@ def go_right(board):
 def go_left(board):
     for i in range(n):
         row = [x for x in board[i] if x &gt; 0]
-        row = row + [0] * (n-len(row))
         j = 0
         new_row = deque()
-        while j &lt; n-1:
-            if row[j] &gt; 0:
-                if row[j] == row[j+1]:
-                    new_row.append(row[j]+row[j+1])
-                    j += 2
-                else:
-                    new_row.append(row[j])
-                    j += 1
+        while j &lt; len(row)-1:
+            if row[j] == row[j+1]:
+                new_row.append(row[j]+row[j+1])
+                j += 2
             else:
+                new_row.append(row[j])
                 j += 1
-        if j == n-1 and row[j] &gt; 0:
+        if j == len(row)-1:
             new_row.append(row[j])
         new_row = list(new_row) + [0] * (n-len(new_row))
         for j in range(n):
