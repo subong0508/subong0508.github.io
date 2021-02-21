@@ -164,6 +164,50 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/data-structure/2021/02/06/Heap.html">Heap with Python</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>힙이란 우선순위큐(Priority Queue)를 이진 트리로 구현한 자료구조 입니다. 힙의 삽입, 삭제 연산은 $O(\log n)$의 시간복잡도를 가집니다. 힙은 파이썬 내장모듈인 heapq를 이용해서 손쉽게 구현할 수 있습니다. import heapq arr = [4, 5, 6, 7, 9, 8, 3, 1, 2] heapq.heapify(arr) print(heapq.nsmallest(3, arr)) # 1 2 3 print(heapq.nlargest(3, arr)) # 7 8...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 6, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Data-Structure">Data-structure</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/06/BOJ-4358.html">백준 Gold4 - 생태학</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 4358번 풀이 import sys input = sys.stdin.readline d = {} cnt = 0 while True: line = input().rstrip() if not line: break cnt += 1 d[line] = d.get(line, 0) + 1 d = sorted(d.items()) for k, v in d: print("%s %.4f" % (k, 100*v/cnt)) 인풋을 이런식으로 받는 건 못봐서...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 6, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/02/06/BOJ-2696.html">백준 Gold3 - 중앙값 구하기</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -229,89 +273,6 @@ for _ in range(n):
     else:
         res.append(0)
 print(*res, sep='\n')
-
-</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 6, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/06/BOJ-1620.html">백준 Silver4 - 나는야 포켓몬 마스터 이다솜</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 1620번
-
-풀이
-
-n, m = map(int, input().split())
-pocket_num = {}
-num_pocket = {}
-
-for i in range(1, n+1):
-    p = input()
-    pocket_num[p] = i
-    num_pocket[i] = p
-
-res = []
-for _ in range(m):
-    x = input()
-    if x.isnumeric():
-        res.append(num_pocket[int(x)])
-    else:
-        res.append(pocket_num[x])
-print(*res, sep='\n')
-
-</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 6, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/06/BOJ-14425.html">백준 Silver3 - 문자열 집합</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 14425번
-
-풀이
-
-n, m = map(int, input().split())
-s = set()
-for _ in range(n):
-    string = input()
-    s.add(string)
-
-cnt = 0
-for _ in range(m):
-    string = input()
-    if string in s:
-        cnt += 1
-print(cnt)
 
 </p>
     </section>

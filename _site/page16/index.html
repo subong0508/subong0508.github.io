@@ -164,6 +164,50 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/01/29/BOJ-2615.html">백준 Silver3 - 오목</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 2615번 풀이 from collections import deque board = [] for _ in range(19): board.append(list(map(int, input().split()))) dxs = [-1, 0, 1, 1] dys = [1, 1, 0, 1] def bfs_main(x, y): return bfs(x, y, 0), bfs(x, y, 1), bfs(x, y, 2), bfs(x, y, 3) def bfs(x, y, d): q =...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">January 29, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/01/29/BOJ-16508.html">백준 Silver3 - 전공책</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 16508번 from itertools import combinations t = input() n = int(input()) books = [] for _ in range(n): a, b = input().split() books.append((int(a), b)) def is_possible(books): # 책들의 문자 카운트를 저장해놓음 d = {} for _, b in books: for ch in b: d[ch] = d.get(ch, 0)+1 cnt =...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">January 29, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/01/29/BOJ-14501.html">백준 Silver4 - 퇴사</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -219,50 +263,6 @@
       in 
         
         <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/01/29/BOJ-1057.html">백준 Silver3 - 토너먼트</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 1057번 n, a, b = map(int, input().split()) arr = [False] * (n+1) arr[a] = True arr[b] = True cnt = 0 match = False while not match: n = len(arr) cnt += 1 tmp = [False] i = 1 while i+1 &lt; n: if arr[i] and arr[i+1]: match =...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">January 29, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/data-structure/2021/01/28/Stack,-Queue.html">스택, 큐 with Python</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>이번 포스팅에서는 스택, 큐에 대한 개념을 알아보고 파이썬으로 간단하게 구현해보겠습니다. 스택 스택은 LIFO(후입선출)의 특성을 가진 자료구조입니다. 시간복잡도는 다음과 같습니다. 삽입: $O(1)$ 삭제: $O(1)$ 파이썬에서는 다른 라이브러리를 쓸 필요없이 기본 자료형인 list를 활용하여 삽입 및 삭제 연산을 수행할 수 있습니다. arr = [1, 2, 3, 4, 5] stack = [] #...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">January 28, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Data-Structure">Data-structure</a>
         
       
       </div>
