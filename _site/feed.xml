@@ -6,9 +6,199 @@
 </description>
     <link>http://subong0508.github.io/</link>
     <atom:link href="http://subong0508.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 22 Feb 2021 01:39:03 +0900</pubDate>
-    <lastBuildDate>Mon, 22 Feb 2021 01:39:03 +0900</lastBuildDate>
+    <pubDate>Wed, 24 Feb 2021 01:29:17 +0900</pubDate>
+    <lastBuildDate>Wed, 24 Feb 2021 01:29:17 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>프로그래머스 Lv3 - 자물쇠와 열쇠</title>
+        <description>&lt;h3 id=&quot;httpsprogrammerscokrlearncourses30lessons60059&quot;&gt;&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/60059&quot;&gt;프로그래머스 60059번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;import numpy as np
+
+def rotate(m, key):
+    key_ = [[0] * m for _ in range(m)]
+    for i in range(m):
+        for j in range(m):
+            key_[j][m-i-1] = key[i][j]
+    return key_
+
+def solution(key, lock):
+    answer = False
+    n = len(lock)
+    m = len(key)
+    keys = []
+    for i in range(4):
+        keys.append(key)
+        key = rotate(m, key)
+        
+    xs = []
+    ys = []
+    for i in range(n):
+        for j in range(n):
+            if lock[i][j] == 0:
+                xs.append(i)
+                ys.append(j)
+    if not xs:
+        return True
+    
+    x1, x2 = min(xs), max(xs)
+    y1, y2 = min(ys), max(ys)
+
+    lock = np.array(lock)[x1:x2+1, y1:y2+1]
+    l1, l2 = lock.shape[0], lock.shape[1]
+    
+    keys_ = []
+    for key in keys:
+        key_arr = np.array(key)
+        for i in range(key_arr.shape[0]-l1+1):
+            for j in range(key_arr.shape[1]-l2+1):
+                keys_.append(key_arr[i:i+l1, j:j+l2])
+    
+    for k in keys_:
+        if k.shape != lock.shape:
+            continue
+        if (k == 1-lock).all():
+            return True
+    return answer
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;행렬 연산을 쉽게 하려고 &lt;code class=&quot;highlighter-rouge&quot;&gt;numpy&lt;/code&gt; 라이브러리를 사용했다.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 24 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/02/24/PR-60059.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/24/PR-60059.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Gold2 - 구슬탈출 2</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem13460&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/13460&quot;&gt;백준 13460번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n, m = map(int, input().split())
+board = []
+for _ in range(n):
+    board.append([ch for ch in input()])
+# 공들의 위치
+balls = [-1] * 2
+for i in range(n):
+    for j in range(m):
+        if board[i][j] == 'R':
+            balls[0] = [i, j]
+        elif board[i][j] == 'B':
+            balls[1] = [i, j]
+
+dx = [-1, 1, 0, 0]
+dy = [0, 0, -1, 1]
+
+
+def move(x, y, d, board):
+    while True:
+        nx, ny = x+dx[d], y+dy[d]
+        if board[nx][ny] != '.':
+            break
+        x, y = nx, ny
+    if board[nx][ny] == 'O':
+        x, y = nx, ny
+    return x, y
+
+
+def move_balls(balls, board, d):
+    # 위로 이동, y좌표가 같다면 x좌표가 작은 것부터 이동
+    flag1 = d == 0 and balls[0][1] == balls[1][1] and balls[0][0] &amp;gt; balls[1][0]
+    # 아래로 이동, y좌표가 같다면 x좌표가 큰 것부터 이동
+    flag2 = d == 1 and balls[0][1] == balls[1][1] and balls[0][0] &amp;lt; balls[1][0]
+    # 왼쪽으로 이동, x좌표가 같다면 y좌표가 작은 것부터 이동
+    flag3 = d == 2 and balls[0][0] == balls[1][0] and balls[0][1] &amp;gt; balls[1][1]
+    # 오른쪽으로 이동, x좌표가 같다면 y좌표가 큰 것부터 이동
+    flag4 = d == 3 and balls[0][0] == balls[1][0] and balls[0][1] &amp;lt; balls[1][1]
+    if flag1 or flag2 or flag3 or flag4:
+        bx, by = move(*balls[1], d, board)
+        board[balls[1][0]][balls[1][1]] = '.' # 빈칸이 되고
+        board[bx][by] = 'B' if board[bx][by] != 'O' else 'O'
+        rx, ry  = move(*balls[0], d, board)
+        board[balls[0][0]][balls[0][1]] = '.' # 빈칸이 되고
+        board[rx][ry] = 'R' if board[rx][ry] != 'O' else 'O'
+    else:
+        rx, ry = move(*balls[0], d, board)
+        board[balls[0][0]][balls[0][1]] = '.' # 빈칸이 되고
+        board[rx][ry] = 'R' if board[rx][ry] != 'O' else 'O'
+        bx, by = move(*balls[1], d, board)
+        board[balls[1][0]][balls[1][1]] = '.' # 빈칸이 되고
+        board[bx][by] = 'B' if board[bx][by] != 'O' else 'O'
+    balls_ = [[rx, ry], [bx, by]]
+    return balls_
+
+
+cnt = 11
+
+
+def solution(now, balls, board):
+    global cnt
+    if now &amp;gt;= cnt:
+        return
+    rx, ry = balls[0]
+    bx, by = balls[1]
+    if board[rx][ry] == 'O': # 성공
+        cnt = min(cnt, now)
+    elif board[bx][by] != 'O': # 파란 구슬이 안 빠졌을 때
+        for i in range(4):
+            balls_ = move_balls(balls, board, i)
+            # 빨간 구슬, 파란 구슬이 다를 때만
+            if balls_[0] != balls_[1]:
+                solution(now+1, balls_, board)
+            # 다시 돌려놓기
+            x, y = balls_[0]
+            board[x][y] = '.' if board[x][y] != 'O' else 'O'
+            x, y = balls_[1]
+            board[x][y] = '.' if board[x][y] != 'O' else 'O'
+            board[rx][ry] = 'R'
+            board[bx][by] = 'B'
+
+
+solution(0, balls, board)
+
+if cnt == 11:
+    print(-1)
+else:
+    print(cnt)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Tue, 23 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/02/23/BOJ-13460.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/23/BOJ-13460.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
     
       <item>
         <title>백준 Gold3 - 청소년 상어</title>
@@ -728,153 +918,6 @@ print(res)
         <pubDate>Fri, 19 Feb 2021 00:00:00 +0900</pubDate>
         <link>http://subong0508.github.io/problem-solving/2021/02/19/BOJ-15686.html</link>
         <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/19/BOJ-15686.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Silver1 - 감시 피하기</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem18428&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/18428&quot;&gt;백준 18428번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from itertools import combinations
-
-n = int(input())
-graph = []
-for _ in range(n):
-    graph.append(input().split())
-# teachers
-ts = set()
-candidates = []
-for i in range(n):
-    for j in range(n):
-        if graph[i][j] == 'T':
-            ts.add((i, j))
-        elif graph[i][j] == 'X':
-            candidates.append((i, j))
-
-dx = [-1, 1, 0, 0]
-dy = [0, 0, -1, 1]
-        
-combs = combinations(candidates, 3)
-
-
-def cctv(x, y, i, visited):
-    global s
-    visited.add((x, y))
-    if graph[x][y] == 'S':
-        s.add((x, y))
-    nx, ny = x+dx[i], y+dy[i]
-    if 0 &amp;lt;= nx &amp;lt; n and 0 &amp;lt;= ny &amp;lt; n and (nx, ny) not in visited and graph[nx][ny] != 'O':
-        cctv(nx, ny, i, visited)
-
-
-cnt = 36
-for comb in combs:
-    s = set()
-    for i, j in comb:
-        graph[i][j] = 'O'
-    for t in ts:
-        visited = set()
-        for i in range(4):
-            cctv(t[0], t[1], i, visited)
-    for i, j in comb:
-        graph[i][j] = 'X'
-    cnt = min(cnt, len(s))
-
-if not cnt:
-    print(&quot;YES&quot;)
-else:
-    print(&quot;NO&quot;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;일반적인 DFS가 아니라 방향이 있는 DFS로 풀면 된다. 사실은 재귀가 아닌 단순 반복문으로도 풀 수 있는 문제다.&lt;/p&gt;
-</description>
-        <pubDate>Thu, 18 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/02/18/BOJ-18428.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/18/BOJ-18428.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Silver1 - 경쟁적 전염</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem18405&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/18405&quot;&gt;백준 18405번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from collections import deque
-
-
-n, k = map(int, input().split())
-graph = []
-for _ in range(n):
-    graph.append(list(map(int, input().split())))
-s, x, y = map(int, input().split())
-
-dx = [-1, 1, 0, 0]
-dy = [0, 0, -1, 1]
-
-
-def bfs(graph):
-    cnt = 1
-    q = []
-    visited = [[False] * (1+n) for _ in range(1+n)]
-    for i in range(n):
-        for j in range(n):
-            if graph[i][j] != 0:
-                q.append((i, j, cnt))
-                visited[i][j] = True
-    # 1번 바이러스부터 순서대로 탐색
-    q.sort(key=lambda x: graph[x[0]][x[1]])
-    q = deque(q)
-    while q:
-        x, y, cnt = q.popleft()
-        # s초가 지나면 종료
-        if cnt &amp;gt; s:
-            return
-        for i in range(4):
-            nx, ny = x+dx[i], y+dy[i]
-            if 0 &amp;lt;= nx &amp;lt; n and 0 &amp;lt;= ny &amp;lt; n and not visited[nx][ny] and graph[nx][ny] == 0:
-                visited[nx][ny] = True
-                graph[nx][ny] = graph[x][y]
-                q.append((nx, ny, cnt+1))
-
-
-bfs(graph)
-print(graph[x-1][y-1])
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;1번부터 순서대로 탐색하도록 BFS를 구현하는게 조금 까다로운 문제였다.&lt;/p&gt;
-</description>
-        <pubDate>Thu, 18 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/02/18/BOJ-18405.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/18/BOJ-18405.html</guid>
         
         <category>python</category>
         
