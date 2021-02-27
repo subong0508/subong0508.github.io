@@ -130,8 +130,7 @@ continuous latent variable을 학습하는 것은 dimension reduction(차원축�
 1. Generation을 제대로 할 것 => $logP(X)$를 maximize하는 목표
 2. Latent variable Z의 분포를 제대로 학습할 것 => $q(Z \vert X) \approx p(Z \vert X)$
 
-먼저, 첫 번째 목표를 이루기 위해 $logP(X)$를 풀어쓰면 다음과 같다. ([이미지 출처](http://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture13.pdf
-))
+먼저, 첫 번째 목표를 이루기 위해 $logP(X)$를 풀어쓰면 다음과 같다. ([이미지 출처](http://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture13.pdf))
 
 
 ![logP(X)](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbo6sRJ%2FbtqM4yIGX6T%2FjfBk3Mab5Dx4KFsi8QHeZk%2Fimg.png)
@@ -161,8 +160,6 @@ decoder probability에 해당하는 뒷부분을 보면 $q(z \vert x)$에 기반
 마지막으로 VAE의 단점인 blurry generation을 짚고 넘어가려고한다. approximate posterior가 regularizer 역할을 하고, reconstruction loss가 실제 cost에 해당한다고 볼 수 있기 때문에 $logp(x \vert z)$를 높이는 방향으로 학습이 된다. 이는 일종의 Linear Regression(MLE)으로 볼 수 있고, 결국 $x$의 평균과 가까워지게 된다. 따라서 VAE로 생성된 이미지는 보다 흐리다.
 
 VAE로 학습된 Z를 통해 이미지를 생성한 결과는 다음과 같다. ([이미지 출처](https://arxiv.org/pdf/1312.6114.pdf))
-
-![vae](../../../../img/vae/vae.png)
 
 D=2인 Z축에서 매우 smooth하게 변하고 있음을 볼 수 있다.
 

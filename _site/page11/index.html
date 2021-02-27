@@ -141,6 +141,10 @@
         
           
         
+          
+        
+          
+        
       </ul>
     </nav>
   </div>
@@ -164,13 +168,13 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/02/05/PR-43238.html">프로그래머스 Lv3 - 입국심사</a>
+      <a class="post-link" href="/problem-solving/2021/02/06/BOJ-2696.html">백준 Gold3 - 중앙값 구하기</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>프로그래머스 43238번 풀이 def check(target, n, times): cnt = 0 for t in times: cnt += target // t return cnt def solution(n, times): l = 1 r = min(times) * n answer = 0 while l &lt;= r: mid = (l + r) // 2 cnt = check(mid, n,...</p>
+      <p>백준 2696번 풀이 import heapq t = int(input()) def get_median(n, arr): # median보다 작은 값들을 저장하는 최대 힙 max_heap = [] median = None # median보다 큰 값들을 저장하는 최소 힙 min_heap = [] res = [] for i in range(1, n+1): if median is None: median = arr[i] res.append(median)...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">February 5, 2021</div>
+      <div class="post-date">February 6, 2021</div>
       <div class="post-categories">
       in 
         
@@ -186,13 +190,13 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/02/05/BOJ-2110.html">백준 Silver1 - 공유기 설치</a>
+      <a class="post-link" href="/problem-solving/2021/02/06/BOJ-2075.html">백준 Gold4 - N번째 큰 수</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 2110번 풀이 n, c = map(int, input().split()) arr = [0] * n for i in range(n): arr[i] = int(input()) arr.sort() def is_possible(minlen): i = 0 cnt = 1 while i &lt; len(arr): prev = arr[i] j = i+1 while j &lt; len(arr) and (arr[j]-prev) &lt; minlen: j += 1...</p>
+      <p>백준 2075번 풀이 import heapq n = int(input()) arr = [] for _ in range(n): a = list(map(int, input().split())) arr.append(a) q = [] for i in range(n): for j in range(n): a = arr[i][j] if len(q) &lt; n: heapq.heappush(q, a) # 지금 넣으려는 원소가 힙의 최솟값보다 클 때만 삽입 =&gt;...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">February 5, 2021</div>
+      <div class="post-date">February 6, 2021</div>
       <div class="post-categories">
       in 
         
@@ -208,13 +212,32 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/02/05/BOJ-16434.html">백준 Gold3 - 드래곤 앤 던전</a>
+      <a class="post-link" href="/problem-solving/2021/02/06/BOJ-1927.html">백준 Silver1 - 최소 힙</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 16434번 풀이 n, atk = map(int, input().split()) rooms = [0] * n for i in range(n): t, a, h = map(int, input().split()) rooms[i] = [t, a, h] def fight(maxhp): tmp_atk = atk curhp = maxhp for t, a, h in rooms: if t == 1: num_attacks = h //...</p>
+      <p>백준 1927번
+
+풀이
+
+import heapq
+
+n = int(input())
+h = []
+res = []
+for _ in range(n):
+    x = int(input())
+    if x != 0:
+        heapq.heappush(h, x)
+    elif h:
+        res.append(heapq.heappop(h))
+    else:
+        res.append(0)
+print(*res, sep='\n')
+
+</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">February 5, 2021</div>
+      <div class="post-date">February 6, 2021</div>
       <div class="post-categories">
       in 
         
@@ -230,13 +253,35 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/02/05/BOJ-1300.html">백준 Gold4 - K번째 수</a>
+      <a class="post-link" href="/problem-solving/2021/02/06/BOJ-1620.html">백준 Silver4 - 나는야 포켓몬 마스터 이다솜</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 1300번 풀이 n = int(input()) k = int(input()) l = 0 r = n*n ans = -1 while l &lt;= r: mid = (l + r) // 2 cnt = 0 for i in range(1, n+1): cnt += min(n, mid // i) if cnt &lt; k: l = mid...</p>
+      <p>백준 1620번
+
+풀이
+
+n, m = map(int, input().split())
+pocket_num = {}
+num_pocket = {}
+
+for i in range(1, n+1):
+    p = input()
+    pocket_num[p] = i
+    num_pocket[i] = p
+
+res = []
+for _ in range(m):
+    x = input()
+    if x.isnumeric():
+        res.append(num_pocket[int(x)])
+    else:
+        res.append(pocket_num[x])
+print(*res, sep='\n')
+
+</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">February 5, 2021</div>
+      <div class="post-date">February 6, 2021</div>
       <div class="post-categories">
       in 
         
@@ -252,13 +297,30 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/02/04/PR-64062.html">프로그래머스 Lv3 - 징검다리 건너기</a>
+      <a class="post-link" href="/problem-solving/2021/02/06/BOJ-14425.html">백준 Silver3 - 문자열 집합</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>프로그래머스 64062번 풀이 def run_possible(stones, n, k): stones = stones.copy() # (n-1)명이 징검다리를 건넌 후 결과 stones = [max(0, x-n+1) for x in stones] i = 0 while i &lt; len(stones): if stones[i] &gt; 0: i += 1 else: j = i+1 # 0의 연속된 갯수 while j &lt; len(stones)...</p>
+      <p>백준 14425번
+
+풀이
+
+n, m = map(int, input().split())
+s = set()
+for _ in range(n):
+    string = input()
+    s.add(string)
+
+cnt = 0
+for _ in range(m):
+    string = input()
+    if string in s:
+        cnt += 1
+print(cnt)
+
+</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">February 4, 2021</div>
+      <div class="post-date">February 6, 2021</div>
       <div class="post-categories">
       in 
         
@@ -284,7 +346,7 @@
 			</a>
 			
 		
-		<span class="page-number">Page 11 of 20</span>
+		<span class="page-number">Page 11 of 22</span>
 		
 		<a class="newer-posts" href="/page12">
       <span class="fa-stack fa-lg">
@@ -324,6 +386,10 @@
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
+        
+        
         
         
         

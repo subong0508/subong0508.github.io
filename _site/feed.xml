@@ -6,9 +6,417 @@
 </description>
     <link>http://subong0508.github.io/</link>
     <atom:link href="http://subong0508.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 24 Feb 2021 01:29:17 +0900</pubDate>
-    <lastBuildDate>Wed, 24 Feb 2021 01:29:17 +0900</lastBuildDate>
+    <pubDate>Sun, 28 Feb 2021 00:02:02 +0900</pubDate>
+    <lastBuildDate>Sun, 28 Feb 2021 00:02:02 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>Shortest Path with Python</title>
+        <description>&lt;p&gt;오늘은 파이썬을 이용해 weighted graph(가중치가 있는 그래프)에서 최단 경로를 찾는 방법을 알아보겠습니다.&lt;/p&gt;
+
+&lt;p&gt;가중치가 없는 그래프라면 &lt;strong&gt;BFS&lt;/strong&gt;를 통해 최단 경로를 손쉽게 구할 수 있습니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;section&quot;&gt;다익스트라 알고리즘&lt;/h1&gt;
+
+&lt;p&gt;다익스트라 알고리즘은 한 노드에서 다른 노드로 가는 각각의 최단 경로를 구해주는 알고리즘입니다.
+다익스트라는 기본적으로 그리디 알고리즘의 한 종류로, 방문하지 않은 노드 중 가장 가까운 노드를 통해 갈 수 있는 경로를 개선합니다.&lt;/p&gt;
+
+&lt;p&gt;다익스트라 알고리즘을 사용할 때는 시간복잡도를 개선하기 위해 힙 자료구조를 사용하고, 시간 복잡도는 $O(E \log {V})$가 됩니다.&lt;/p&gt;
+
+&lt;p&gt;파이썬으로 간단하게 구현하면 다음과 같습니다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;import heapq
+
+
+# weighted graph
+graph = [
+    [0, 10, 20],
+    [2, 0, 3],
+    [10, 4, 0]
+]
+INF = int(1e9)
+
+
+def dijkstra(start, graph):
+    distance = [INF for _ in range(len(graph))]
+    distance[start] = 0
+    q = []
+    heapq.heappush(q, (0, start)) # 거리, 노드
+    while q:
+        dist, now = heapq.heappop(q)
+        # 이미 처리된 노드
+        if distance[now] &amp;lt; dist:
+            continue
+        for i in range(len(graph)):
+            if dist+graph[now][i] &amp;lt; distance[i]:
+                distance[i] = dist+graph[now][i]
+                heapq.heappush(q, (distance[i], i))
+    return distance
+
+
+print(dijkstra(0, graph)) # 0 10 13
+print(dijkstra(1, graph)) # 2 0 3
+print(dijkstra(2, graph)) # 6 4 0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&quot;section-1&quot;&gt;플로이드 워셜 알고리즘&lt;/h1&gt;
+
+&lt;p&gt;다음은 모든 지점에서 다른 모든 지점으로 가는 최단 경로를 구해주는 플로이드 워셜 알고리즘에 대해서 알아보겠습니다.&lt;/p&gt;
+
+&lt;p&gt;플로이드 워셜 알고리즘의 시간복잡도는 $O(V^{3})$이라, 일반적인 코딩 테스트 환경에서는 정점의 수가 1000개 이하인 경우만 가능합니다.&lt;/p&gt;
+
+&lt;p&gt;파이썬으로 구현한 코드는 다음과 같습니다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;# weighted graph
+INF = int(1e9)
+graph = [
+    [0, 4, INF, 6],
+    [3, 0, 7, INF],
+    [5, INF, 0, 4],
+    [INF, INF, 2, 0]
+]
+n = len(graph)
+
+for k in range(n):
+    for i in range(n):
+        for j in range(n):
+            graph[i][j] = min(graph[i][j], graph[i][k]+graph[k][j])
+
+print(*graph, sep='\n')
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Sat, 27 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/data-structure/2021/02/27/ShortestPath.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/data-structure/2021/02/27/ShortestPath.html</guid>
+        
+        <category>python</category>
+        
+        <category>data-structure</category>
+        
+        <category>graph</category>
+        
+        <category>shortest-path</category>
+        
+        
+        <category>Data-Structure</category>
+        
+      </item>
+    
+      <item>
+        <title>프로그래머스 Lv2 - 문자열 압축</title>
+        <description>&lt;h3 id=&quot;httpsprogrammerscokrlearncourses30lessons60057&quot;&gt;&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/60057&quot;&gt;프로그래머스 60057번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;def compress(s, n):
+    i = 0
+    lst = []
+    while i &amp;lt; len(s):
+        lst.append(s[i:i+n])
+        i += n
+    string = ''
+    prev = lst[0]
+    cnt = 1
+    for i in range(1, len(lst)):
+        if lst[i] != prev:
+            string += prev if cnt == 1 else (str(cnt)+prev)
+            prev = lst[i]
+            cnt = 1
+        else:
+            cnt += 1
+        # 맨마지막인 경우에
+        if i == len(lst)-1:
+            string += prev if cnt == 1 else (str(cnt)+prev)
+    return len(string)
+
+def solution(s):
+    answer = len(s)
+    for i in range(1, len(s)):
+        tmp = compress(s, i)
+        if tmp &amp;lt; answer:
+            answer = tmp
+    return answer
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Sat, 27 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/02/27/PR-60057.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/27/PR-60057.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Gold5 - 뱀</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem3190&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/3190&quot;&gt;백준 3190번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
+k = int(input())
+apples = set()
+for _ in range(k):
+    x, y = map(int, input().split())
+    apples.add((x, y))
+m = int(input())
+times = []
+for _ in range(m):
+    t, lr = input().split()
+    times.append((int(t), lr))
+
+
+def rotate(d, lr):
+    # 왼쪽으로 90도 회전
+    if lr == 'L':
+        return (d - 1) % 4
+    # 오른쪽으로 90도 회전
+    else:
+        return (d + 1) % 4
+
+
+# 동/서/남/북: [dx, dy]
+direcs = {0: [0, 1], 1: [1, 0], 2: [0, -1], 3: [-1, 0]}
+
+res = 0
+x = y = 1 # 현재 위치
+d = 0 # 현재는 동쪽을 보고 있다
+tail = (1, 1)
+body = [tail]
+
+while True:
+    res += 1
+    dx, dy = direcs[d] 
+    nx, ny = x+dx, y+dy
+    # 벽에 부딪힘
+    if nx &amp;lt; 1 or nx &amp;gt; n or ny &amp;lt; 1 or ny &amp;gt; n:
+        break
+    # 자기 몸에 부딪힘
+    if (nx, ny) in body:
+        break
+    if (nx, ny) in apples:
+        body.append((nx, ny))
+        apples.remove((nx, ny))
+    else:
+        body.append((nx, ny))
+        body = body[1:] # 꼬리제거
+    x, y = nx, ny
+    if times and times[0][0] == res:
+        d = rotate(d, times[0][1])
+        times = times[1:]
+
+print(res)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Sat, 27 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/02/27/BOJ-3190.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/27/BOJ-3190.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Gold5 - 최단경로</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem1753&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1753&quot;&gt;백준 1753번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;import heapq
+
+v, e = map(int, input().split())
+k = int(input())
+INF = int(1e9)
+edges = {}
+for _ in range(e):
+    u, v_, w = map(int, input().split())
+    edges[(u, v_)] = min(edges.get((u, v_), INF), w)
+
+graph = [[] for _ in range(v+1)]
+for u, v_ in edges:
+    w = edges[(u, v_)]
+    graph[u].append((v_, w))
+
+
+def dijkstra(start):
+    q = []
+    distance = [INF for _ in range(v+1)]
+    heapq.heappush(q, (0, start))
+    distance[start] = 0
+    while q:
+        dist, now = heapq.heappop(q)
+        if distance[now] &amp;lt; dist:
+            continue
+        for i, c in graph[now]:
+            cost = dist + c
+            if cost &amp;lt; distance[i]:
+                distance[i] = cost
+                heapq.heappush(q, (cost, i))
+    return distance
+
+
+res = dijkstra(k)
+for i in range(1, v+1):
+    if res[i] == INF:
+        print(&quot;INF&quot;)
+    else:
+        print(res[i])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;adjacency matrix로 풀면 메모리 초과가 나고, adjacency list로 풀어야 한다.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 27 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/02/27/BOJ-1753.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/27/BOJ-1753.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Gold4 - 특정한 최단경로</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem1504&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1504&quot;&gt;백준 1504번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;import heapq
+
+n, e = map(int, input().split())
+INF = int(1e9)
+graph = [[] for _ in range(n+1)]
+for _ in range(e):
+    a, b, c = map(int, input().split())
+    graph[a].append((b, c))
+    graph[b].append((a, c))
+v1, v2 = map(int, input().split())
+
+def dijkstra(start, graph):
+    distance = [INF for _ in range(n+1)]
+    q = []
+    heapq.heappush(q, (0, start))
+    distance[start] = 0
+    while q:
+        dist, now = heapq.heappop(q)
+        if distance[now] &amp;lt; dist:
+            continue
+        for v, c in graph[now]:
+            cost = dist + c
+            if cost &amp;lt; distance[v]:
+                distance[v] = cost
+                heapq.heappush(q, (cost, v))
+    return distance
+
+# 1 -&amp;gt; v1 -&amp;gt; v2 -&amp;gt; n
+res1 = dijkstra(1, graph)[v1]+dijkstra(v1, graph)[v2]+dijkstra(v2, graph)[n]
+# 1 -&amp;gt; v2 -&amp;gt; v1 -&amp;gt; n
+res2 = dijkstra(1, graph)[v2]+dijkstra(v2, graph)[v1]+dijkstra(v1, graph)[n]
+res = min(res1, res2)
+if res &amp;gt;= INF:
+    print(-1)
+else:
+    print(res)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Sat, 27 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/02/27/BOJ-1504.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/27/BOJ-1504.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Gold4 - 플로이드</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem11404&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/11404&quot;&gt;백준 11404번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
+m = int(input())
+INF = 1e9
+graph = [[INF] * (n+1) for i in range(n+1)]
+for i in range(1, n+1):
+    graph[i][i] = 0
+
+for _ in range(m):
+    start, end, cost = map(int, input().split())
+    graph[start][end] = min(graph[start][end], cost)
+
+for k in range(1, n+1):
+    for i in range(1, n+1):
+        for j in range(1, n+1):
+            graph[i][j] = min(graph[i][j], graph[i][k]+graph[k][j])
+
+for i in range(1, n+1):
+    for j in range(1, n+1):
+        if graph[i][j] != INF:
+            print(graph[i][j], end=' ')
+        else:
+            print(0, end=' ')
+    print()
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Sat, 27 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/02/27/BOJ-11404.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/27/BOJ-11404.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
     
       <item>
         <title>프로그래머스 Lv3 - 자물쇠와 열쇠</title>
@@ -425,499 +833,6 @@ print(res)
         <pubDate>Sun, 21 Feb 2021 00:00:00 +0900</pubDate>
         <link>http://subong0508.github.io/problem-solving/2021/02/21/BOJ-12100.html</link>
         <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/21/BOJ-12100.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Gold3 - 독특한 계산기</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem19591&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/19591&quot;&gt;백준 19591번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from collections import deque
-
-x = input()
-n = len(x)
-pr = {'+': 0, '-': 0, '*': 1, '/': 1}
-nums = []
-ops = []
-
-i = 0
-while i &amp;lt; n:
-    j = i
-    while j &amp;lt; n and (j == 0 or x[j] not in pr.keys()):
-        j += 1
-    nums.append(int(x[i:j]))
-    if j &amp;lt; n:
-        ops.append(x[j])
-    i = j + 1
-
-nums = deque(nums)
-ops = deque(ops)
-
-def calc(op, n1, n2):
-    if op == '+':
-        res = n1 + n2
-    elif op == '-':
-        res = n1 - n2
-    elif op == '*':
-        res = n1 * n2
-    else:
-        res = int(n1 / n2)
-    return res
-
-while ops:
-    if len(ops) == 1:
-        op = ops.popleft()
-        n1, n2 = nums.popleft(), nums.popleft()
-        nums.appendleft(calc(op, n1, n2))
-    else:
-        op1 = ops.popleft()
-        op2 = ops.pop()
-        if pr[op1] &amp;gt; pr[op2] or (pr[op1] == pr[op2] and calc(op1, nums[0], nums[1]) &amp;gt;= calc(op2, nums[-2], nums[-1])):
-            n1, n2 = nums.popleft(), nums.popleft()
-            nums.appendleft(calc(op1, n1, n2))
-            ops.append(op2)
-        else:
-            n2, n1 = nums.pop(), nums.pop()
-            nums.append(calc(op2, n1, n2))
-            ops.appendleft(op1)
-
-print(nums[0])
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;별로 어려운 문제는 아니었는데 문제를 잘못이해해서 $\log (N)$으로 풀어야 하는 줄 알고 헤맸다.&lt;/p&gt;
-</description>
-        <pubDate>Sat, 20 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/02/20/BOJ-19591.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/20/BOJ-19591.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Gold4 - ⚾</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem17281&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/17281&quot;&gt;백준 17281번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이(시간초과)&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from itertools import permutations
-
-n = int(input())
-players = list(range(1, 10))
-order = permutations(players, len(players))
-order = [o for o in order if o[3] == 1]
-results = []
-for _ in range(n):
-    results.append([-1] + list(map(int, input().split())))
-
-def baseball(c, results):
-    score = 0
-    idx = 0
-    inning = 0
-    while inning &amp;lt; n:
-        # 홈, 1루, 2루, 3루
-        cur = [0, 0, 0, 0]
-        num_out = 0
-        while num_out &amp;lt; 3:
-            # 현재 점수
-            now = results[inning][c[idx]]
-            if now == 0:
-                num_out += 1
-            else:
-                cur[0] += 1
-                # 선수들의 이동을 저장하는 배열
-                add = [0, 0, 0, 0]
-                for i in range(4):
-                    if i + now &amp;gt;= 4:
-                        score += cur[i]
-                    else:
-                        add[i + now] += cur[i]
-                    add[i] -= cur[i]
-                for i in range(4):
-                    cur[i] += add[i]
-            idx = (idx + 1) % 9
-        inning += 1
-    return score
-
-score = 0
-for o in order:
-    score = max(score, baseball(o, results))
-
-print(score)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;분명히 맞는 알고리즘인데 왜 시간초과가 나지 하고 살펴보니 파이썬으로 풀면 시간초과가 날 수 밖에 없는 문제였다. 배열을 쓰지말고 &lt;code class=&quot;highlighter-rouge&quot;&gt;int&lt;/code&gt;를 사용해야 시간초과에 안걸린다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from itertools import permutations
-
-n = int(input())
-players = list(range(1, 10))
-order = permutations(players, len(players))
-order = [o for o in order if o[3] == 1]
-results = []
-for _ in range(n):
-    results.append([-1] + list(map(int, input().split())))
-
-def baseball(c, results):
-    score = 0
-    idx = 0
-    inning = 0
-    while inning &amp;lt; n:
-        # 홈, 1루, 2루, 3루
-        b0, b1, b2, b3 = 0, 0, 0, 0
-        num_out = 0
-        while num_out &amp;lt; 3:
-            # 현재 점수
-            now = results[inning][c[idx]]
-            if now == 0:
-                num_out += 1
-            else:
-                b0 += 1
-                if now == 1:
-                    score += b3
-                    b0, b1, b2, b3 = 0, b0, b1, b2
-                elif now == 2:
-                    score += (b2 + b3)
-                    b0, b1, b2, b3 = 0, 0, b0, b1
-                elif now == 3:
-                    score += (b1 + b2 + b3)
-                    b0, b1, b2, b3 = 0, 0, 0, b0
-                elif now == 4:
-                    score += (b0 + b1 + b2 + b3)
-                    b0 = b1 = b2 = b3 = 0
-            idx = (idx + 1) % 9
-        inning += 1
-    return score
-
-score = 0
-for o in order:
-    score = max(score, baseball(o, results))
-
-print(score)
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Sat, 20 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/02/20/BOJ-17281.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/20/BOJ-17281.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>프로그래머스 Lv2 - 프렌즈4블록</title>
-        <description>&lt;h3 id=&quot;httpsprogrammerscokrlearncourses30lessons17679&quot;&gt;&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/17679&quot;&gt;프로그래머스 17679번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;def erase(m, n, board):
-    s = set()
-    for i in range(m-1):
-        for j in range(n-1):
-            # 이미 빈 상태
-            if board[i][j] == 0:
-                continue
-            if board[i][j] == board[i+1][j] == board[i][j+1] == board[i+1][j+1]:
-                s |= {(i, j), (i+1, j), (i, j+1), (i+1, j+1)}
-    for i, j in s:
-        board[i][j] = 0
-    return len(s)
-
-def go_down(m, n, board):
-    for j in range(n):
-        for i in range(m-1, -1, -1):
-            if board[i][j] != 0:
-                continue
-            k = i
-            while k &amp;gt;= 0 and board[k][j] == 0:
-                k -= 1
-            if k &amp;gt;= 0:
-                board[i][j], board[k][j] = board[k][j], board[i][j]
-
-def solution(m, n, board):
-    board = [list(b) for b in board]
-    answer = 0
-    while True:
-        tmp = erase(m, n, board)
-        # 새로 지울게 없다면
-        if tmp == 0:
-            break
-        answer += tmp
-        go_down(m, n, board)
-    return answer
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;애니팡..&lt;/p&gt;
-</description>
-        <pubDate>Fri, 19 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/02/19/PR-17679.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/19/PR-17679.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Gold5 - 인내의 도미노 장인 호석</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem20165&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/20165&quot;&gt;백준 20165번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n, m, r = map(int, input().split())
-domino = [list(map(int, input().split())) for _ in range(n)]
-domino_origin = [[-1] * m for _ in range(n)]
-for i in range(n):
-    for j in range(m):
-        domino_origin[i][j] = domino[i][j]
-attack = []
-defence = []
-for i in range(2*r):
-    if i % 2 == 0:
-        x, y, d = input().split()
-        attack.append((int(x)-1, int(y)-1, d))
-    else:
-        x, y = map(int, input().split())
-        defence.append((x-1, y-1))
-        
-direcs = {&quot;E&quot;: [0, 1], &quot;W&quot;: [0, -1], &quot;S&quot;: [1, 0], &quot;N&quot;: [-1, 0]}
-
-def hit(x, y, d):
-    global cnt
-    if x &amp;lt; 0 or x &amp;gt;= n or y &amp;lt; 0 or y &amp;gt;= m:
-        return
-    k = domino[x][y]
-    dx, dy = direcs[d]
-    for i in range(1, k):
-        nx, ny = x+i*dx, y+i*dy
-        hit(nx, ny, d)
-    # 도미노 쓰러뜨리기
-    if domino[x][y] != 0:
-        cnt += 1
-        domino[x][y] = 0
-
-def up(x, y):
-    if x &amp;lt; 0 or x &amp;gt;= n or y &amp;lt; 0 or y &amp;gt;= m:
-        return
-    domino[x][y] = domino_origin[x][y]
-
-cnt = 0
-for i in range(r):
-    hit(*attack[i])
-    up(*defence[i])
-
-for i in range(n):
-    domino[i] = ['S' if e != 0 else 'F' for e in domino[i]]
-
-print(cnt)
-for i in range(n):
-    print(*domino[i])
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Fri, 19 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/02/19/BOJ-20165.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/19/BOJ-20165.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Gold5 - 미세먼지 안녕!</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem17144&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/17144&quot;&gt;백준 17144번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;r, c, t = map(int, input().split())
-graph = [list(map(int, input().split())) for _ in range(r)]
-c1 = -1
-for i in range(r):
-    if graph[i][0] == -1:
-        c1 = i
-        break
-c2 = c1+1
-
-dx = [-1, 1, 0, 0]
-dy = [0, 0, -1, 1]
-
-def dust():
-    q = []
-    for i in range(r):
-        for j in range(c):
-            if graph[i][j] &amp;gt; 0:
-                q.append((i, j))
-    infected = dict()
-    deleted = dict()
-    for x, y in q:
-        cnt = 0
-        for i in range(4):
-            nx, ny = x+dx[i], y+dy[i]
-            if 0 &amp;lt;= nx &amp;lt; r and 0 &amp;lt;= ny &amp;lt; c and graph[nx][ny] != -1:
-                cnt += 1
-                infected[(nx, ny)] = infected.get((nx, ny), 0) + graph[x][y] // 5
-        deleted[(x, y)] = cnt * (graph[x][y] // 5)
-    for x, y in infected:
-        graph[x][y] += infected[(x, y)]
-    for x, y in deleted:
-        graph[x][y] -= deleted[(x, y)]
-
-def clean(xc, up):
-    # 공기청정기 위/아래
-    if up:
-        ds = [(0, 1), (-1, 0), (0, -1), (1, 0)]
-    else:
-        ds = [(0, 1), (1, 0), (0, -1), (-1, 0)]
-    x, y = xc, 1
-    i = 0
-    s = set()
-    while True:
-        nx, ny = x+ds[i][0], y+ds[i][1]
-        if nx == xc and y == 0:
-            break
-        # 가장자리라면
-        if nx &amp;lt; 0 or nx &amp;gt;= r or ny &amp;lt; 0 or ny &amp;gt;= c:
-            i += 1
-        else:
-            s.add((nx, ny, graph[x][y]))
-            x, y = nx, ny
-    graph[xc][1] = 0
-    for x, y, val in s:
-        graph[x][y] = val
-
-for _ in range(t):
-    dust()
-    clean(c1, True)
-    clean(c2, False)
-
-res = 0
-for i in range(r):
-    for j in range(c):
-        if graph[i][j] &amp;gt; 0:
-            res += graph[i][j]
-
-print(res)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;쉬울 것 같았는데 생각보다 구현이 빡셌다.&lt;/p&gt;
-</description>
-        <pubDate>Fri, 19 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/02/19/BOJ-17144.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/19/BOJ-17144.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Gold5 - 치킨 배달</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem15686&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/15686&quot;&gt;백준 15686번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from itertools import combinations
-
-n, m = map(int, input().split())
-graph = []
-for _ in range(n):
-    graph.append(list(map(int, input().split())))
-chickens = [(i, j) for j in range(n) for i in range(n) if graph[i][j] == 2]
-houses = [(i, j) for j in range(n) for i in range(n) if graph[i][j] == 1]
-
-def cal_dist(h: tuple, c: tuple):
-    return abs(h[0]-c[0])+abs(h[1]-c[1])
-
-def cal_min_dist(h: tuple, cs: list):
-    min_dist = int(1e9)
-    for c in cs:
-        min_dist = min(min_dist, cal_dist(h, c))
-    return min_dist
-
-res = int(1e9)
-combs = combinations(chickens, m)
-for comb in combs:
-    tmp = 0
-    cs = list(comb)
-    for h in houses:
-        tmp += cal_min_dist(h, cs)
-    res = min(res, tmp)
-
-print(res)
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Fri, 19 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/02/19/BOJ-15686.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/19/BOJ-15686.html</guid>
         
         <category>python</category>
         

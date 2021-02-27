@@ -141,6 +141,10 @@
         
           
         
+          
+        
+          
+        
       </ul>
     </nav>
   </div>
@@ -164,13 +168,13 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/02/14/BOJ-7576.html">백준 Silver1 - 토마토(7576번, 7569번)</a>
+      <a class="post-link" href="/problem-solving/2021/02/18/BOJ-14888.html">백준 Silver1 - 연산자 끼워넣기</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 7576번 틀린 풀이(시간초과) from collections import deque m, n = map(int, input().split()) graph = [] for _ in range(n): tmp = list(map(int, input().split())) graph.append(tmp) dx = [-1, 1, 0, 0] dy = [0, 0, -1, 1] def bfs(x, y): if graph[x][y] != 1: return q = deque([(x, y)]) visited...</p>
+      <p>백준 14888번 풀이 n = int(input()) arr = list(map(int, input().split())) ops = list(map(int, input().split())) min_val = int(1e9) max_val = -int(1e9) def solution(idx, ops, val): global min_val, max_val if idx == n-1: min_val = min(min_val, val) max_val = max(max_val, val) return for i in range(4): if ops[i] &lt;= 0: continue ops[i]...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">February 14, 2021</div>
+      <div class="post-date">February 18, 2021</div>
       <div class="post-categories">
       in 
         
@@ -186,13 +190,13 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/02/14/BOJ-2667.html">백준 Silver1 - 단지번호붙이기</a>
+      <a class="post-link" href="/problem-solving/2021/02/16/PR-60058.html">프로그래머스 Lv2 - 괄호 변환</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 2667번 풀이 from collections import deque n = int(input()) graph = [] for _ in range(n): tmp = [int(x) for x in input()] graph.append(tmp) total_cnt = 0 res = [] dx = [-1, 1, 0, 0] dy = [0, 0, -1, 1] def bfs(x, y, graph): global total_cnt, res...</p>
+      <p>프로그래머스 60058번 풀이 def is_right(p): stack = [] for ch in p: if ch == '(': stack.append(ch) else: if len(stack) == 0 or stack.pop() != '(': return False return len(stack) == 0 def is_balanced(p): return p.count('(') == p.count(')') def parse(p): u, v = p, '' for i in range(1, len(p)):...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">February 14, 2021</div>
+      <div class="post-date">February 16, 2021</div>
       <div class="post-categories">
       in 
         
@@ -208,13 +212,13 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/02/14/BOJ-2606.html">백준 Silver3 - 바이러스</a>
+      <a class="post-link" href="/problem-solving/2021/02/16/PR-43163.html">프로그래머스 Lv3 - 단어 변환</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 2606번 풀이 n = int(input()) m = int(input()) graph = [[] for _ in range(n+1)] for _ in range(m): i, j = map(int, input().split()) graph[i].append(j) graph[j].append(i) visited = [False] * (n+1) cnt = 0 def dfs(i, visited): global cnt visited[i] = True cnt += 1 for j in graph[i]:...</p>
+      <p>프로그래머스 43163번 풀이 from collections import deque def diff(word1, word2): cnt = 0 for i in range(len(word1)): if word1[i] != word2[i]: cnt += 1 return cnt def solution(begin, target, words): answer = 0 q = deque([(begin, answer)]) visited = set() visited.add(begin) while q: now, ans = q.popleft() if now ==...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">February 14, 2021</div>
+      <div class="post-date">February 16, 2021</div>
       <div class="post-categories">
       in 
         
@@ -230,13 +234,13 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/02/14/BOJ-2589.html">백준 Gold5 - 보물섬</a>
+      <a class="post-link" href="/problem-solving/2021/02/16/BOJ-7562.html">백준 Silver2 - 나이트의 이동</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 2589번 풀이 from collections import deque n, m = map(int, input().split()) graph = [] for _ in range(n): tmp = [1 if x == 'L' else 0 for x in input()] graph.append(tmp) starts = [] for i in range(n): for j in range(m): # 출발가능한 곳들 if graph[i][j] ==...</p>
+      <p>백준 7562번 풀이 from collections import deque t = int(input()) res = [] dx = [-2, -2, -1, -1, 1, 1, 2, 2] dy = [-1, 1, -2, 2, -2, 2, -1, 1] def solve(n, src, dest): cnt = 0 q = deque([(src[0], src[1], cnt)]) visited = set() visited.add(src) while...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">February 14, 2021</div>
+      <div class="post-date">February 16, 2021</div>
       <div class="post-categories">
       in 
         
@@ -252,13 +256,13 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/02/14/BOJ-2206.html">백준 Gold4 - 벽 부수고 이동하기</a>
+      <a class="post-link" href="/problem-solving/2021/02/16/BOJ-2573.html">백준 Gold4 - 빙산</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 2206번 풀이 from collections import deque n, m = map(int, input().split()) graph = [] for _ in range(n): tmp = [int(x) for x in input()] graph.append(tmp) dx = [-1, 1, 0, 0] dy = [0, 0, -1, 1] def bfs(x, y): crush = False cnt = 1 q =...</p>
+      <p>백준 2573번 풀이 from collections import deque n, m = map(int, input().split()) graph = [] for _ in range(n): tmp = map(int, input().split()) graph.append(list(tmp)) ices = set() for i in range(n): for j in range(m): if graph[i][j] &gt; 0: ices.add((i, j)) dx = [-1, 1, 0, 0] dy = [0,...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">February 14, 2021</div>
+      <div class="post-date">February 16, 2021</div>
       <div class="post-categories">
       in 
         
@@ -284,7 +288,7 @@
 			</a>
 			
 		
-		<span class="page-number">Page 5 of 20</span>
+		<span class="page-number">Page 5 of 22</span>
 		
 		<a class="newer-posts" href="/page6">
       <span class="fa-stack fa-lg">
@@ -324,6 +328,10 @@
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
+        
+        
         
         
         

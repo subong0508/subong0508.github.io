@@ -141,6 +141,10 @@
         
           
         
+          
+        
+          
+        
       </ul>
     </nav>
   </div>
@@ -164,35 +168,13 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/02/09/BOJ-1449.html">백준 Silver3 - 수리공 항승</a>
+      <a class="post-link" href="/problem-solving/2021/02/13/BOJ-1439.html">백준 Silver5 - 문자열 뒤집기</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 1449번
-
-풀이
-
-n, l = map(int, input().split())
-arr = list(map(int, input().split()))
-arr.sort()
-
-cnt = 1
-start = arr[0]-0.5
-for i in range(1, n):
-    end = arr[i]+0.5
-    # 돌려막기 가능
-    if end &lt;= start+l:
-        continue
-    else: # 새로 테이프를 붙여야 한다.
-        cnt += 1
-        start = arr[i]-0.5
-
-print(cnt)
-
-
-</p>
+      <p>백준 1439번 풀이 s = input() n = len(s) d = {'0': 0, '1': 0} i = 0 while i &lt; n: j = i + 1 while j &lt; n and s[j] == s[i]: j += 1 d[s[i]] += 1 i = j print(min(d['0'], d['1'])) 연속된 0이 몇 번...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">February 9, 2021</div>
+      <div class="post-date">February 13, 2021</div>
       <div class="post-categories">
       in 
         
@@ -208,13 +190,13 @@ print(cnt)
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/02/09/BOJ-1339.html">백준 Gold4 - 단어 수학</a>
+      <a class="post-link" href="/problem-solving/2021/02/13/BOJ-1260.html">백준 Silver2 - DFS와 BFS</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 1339번 풀이 n = int(input()) d = {} for _ in range(n): word = input() for i in range(len(word)-1, -1, -1): d[word[i]] = d.get(word[i], 0) + 10 ** (len(word)-i-1) d = sorted(d.items(), key=lambda x: -x[1]) total = 0 num = 9 for ch, cnt in d: total += num...</p>
+      <p>백준 1260번 풀이 from collections import deque n, m, v = map(int, input().split()) graph = [[0] * (n+1) for _ in range(n+1)] for _ in range(m): i, j = map(int, input().split()) graph[i][j] = 1 graph[j][i] = 1 visited1 = [False] * (n+1) visited2 = [False] * (n+1) stack1 = []...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">February 9, 2021</div>
+      <div class="post-date">February 13, 2021</div>
       <div class="post-categories">
       in 
         
@@ -230,28 +212,13 @@ print(cnt)
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/02/09/BOJ-11399.html">백준 Silver3 - ATM</a>
+      <a class="post-link" href="/problem-solving/2021/02/11/PR-42884.html">프로그래머스 Lv3 - 단속카메라</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 11399번
-
-풀이
-
-n = int(input())
-atm = list(map(int, input().split()))
-atm.sort()
-
-for i in range(1, n):
-    atm[i] += atm[i-1]
-    
-print(sum(atm))
-
-
-그냥 정렬해서 풀면 되는 문제.
-</p>
+      <p>프로그래머스 42884번 풀이 def solution(routes): answer = 0 routes.sort(key=lambda x: x[0]) routes.sort(key=lambda x: x[1]) cameras = [] for r in routes: s, e = r done = False # 거꾸로 보는 것이 더 빠름 for c in cameras[::-1]: if s &lt;= c &lt;= e: done = True break if not...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">February 9, 2021</div>
+      <div class="post-date">February 11, 2021</div>
       <div class="post-categories">
       in 
         
@@ -267,13 +234,13 @@ print(sum(atm))
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/02/09/BOJ-11047.html">백준 Silver1 - 동전 0, 동전 2</a>
+      <a class="post-link" href="/problem-solving/2021/02/11/BOJ-1209.html">백준 Gold4 - 순회강연</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 11047번 풀이 n, k = map(int, input().split()) coins = [0] * n for i in range(n): coins[i] = int(input()) cnt = 0 for i in range(n-1, -1, -1): tmp = k // coins[i] cnt += tmp k -= coins[i] * tmp print(cnt) 가장 큰 동전부터 고르면 되는 문제였다. 백준...</p>
+      <p>백준 2109번 풀이 n = int(input()) arr = [-1] * n for i in range(n): p, d = map(int, input().split()) arr[i] = (p, d) # 강연비순으로 정렬 arr.sort(key=lambda x: x[0]) filled = [False] * 10001 res = 0 while arr: p, d = arr.pop() # 빈 날 있는지 찾아보기 while...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">February 9, 2021</div>
+      <div class="post-date">February 11, 2021</div>
       <div class="post-categories">
       in 
         
@@ -289,13 +256,13 @@ print(sum(atm))
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/02/08/PR-42895.html">프로그래머스 Lv3 - N으로 표현</a>
+      <a class="post-link" href="/problem-solving/2021/02/11/BOJ-11497.html">백준 Silver1 - 통나무 건너뛰기</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>프로그래머스 42895번 풀이 def dfs(N, cur, number, cnt): global answer if cnt &gt; 8: return if cur == number: answer = min(answer, cnt) return for i in range(1, 9): tmp = int(str(N) * i) dfs(N, cur + tmp, number, cnt+i) dfs(N, cur - tmp, number, cnt+i) dfs(N, cur * tmp,...</p>
+      <p>백준 11497번 풀이 t = int(input()) def solution(n, arr): ans = [-1] * n arr.sort(reverse=True) l, r = 0, n-1 i = 0 while arr: x = arr.pop() if i % 2 == 0: ans[l] = x l += 1 else: ans[r] = x r -= 1 i += 1...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">February 8, 2021</div>
+      <div class="post-date">February 11, 2021</div>
       <div class="post-categories">
       in 
         
@@ -321,7 +288,7 @@ print(sum(atm))
 			</a>
 			
 		
-		<span class="page-number">Page 8 of 20</span>
+		<span class="page-number">Page 8 of 22</span>
 		
 		<a class="newer-posts" href="/page9">
       <span class="fa-stack fa-lg">
@@ -361,6 +328,10 @@ print(sum(atm))
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
+        
+        
         
         
         
