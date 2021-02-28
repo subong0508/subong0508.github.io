@@ -145,6 +145,8 @@
         
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -168,13 +170,13 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/02/06/BOJ-2696.html">백준 Gold3 - 중앙값 구하기</a>
+      <a class="post-link" href="/problem-solving/2021/02/08/PR-42895.html">프로그래머스 Lv3 - N으로 표현</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 2696번 풀이 import heapq t = int(input()) def get_median(n, arr): # median보다 작은 값들을 저장하는 최대 힙 max_heap = [] median = None # median보다 큰 값들을 저장하는 최소 힙 min_heap = [] res = [] for i in range(1, n+1): if median is None: median = arr[i] res.append(median)...</p>
+      <p>프로그래머스 42895번 풀이 def dfs(N, cur, number, cnt): global answer if cnt &gt; 8: return if cur == number: answer = min(answer, cnt) return for i in range(1, 9): tmp = int(str(N) * i) dfs(N, cur + tmp, number, cnt+i) dfs(N, cur - tmp, number, cnt+i) dfs(N, cur * tmp,...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">February 6, 2021</div>
+      <div class="post-date">February 8, 2021</div>
       <div class="post-categories">
       in 
         
@@ -190,54 +192,28 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/02/06/BOJ-2075.html">백준 Gold4 - N번째 큰 수</a>
+      <a class="post-link" href="/problem-solving/2021/02/08/PR-42578.html">프로그래머스 Lv2 - 위장</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 2075번 풀이 import heapq n = int(input()) arr = [] for _ in range(n): a = list(map(int, input().split())) arr.append(a) q = [] for i in range(n): for j in range(n): a = arr[i][j] if len(q) &lt; n: heapq.heappush(q, a) # 지금 넣으려는 원소가 힙의 최솟값보다 클 때만 삽입 =&gt;...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 6, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/06/BOJ-1927.html">백준 Silver1 - 최소 힙</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 1927번
+      <p>프로그래머스 42578번
 
 풀이
 
-import heapq
-
-n = int(input())
-h = []
-res = []
-for _ in range(n):
-    x = int(input())
-    if x != 0:
-        heapq.heappush(h, x)
-    elif h:
-        res.append(heapq.heappop(h))
-    else:
-        res.append(0)
-print(*res, sep='\n')
+def solution(clothes):
+    answer = 1
+    d = {}
+    for _, y in clothes:
+        # 아무것도 안입는 수 포함
+        d[y] = d.get(y, 1) + 1
+    for k in d:
+        answer *= d[k]
+    answer -= 1
+    return answer
 
 </p>
     </section>
     <section class="post-meta">
-      <div class="post-date">February 6, 2021</div>
+      <div class="post-date">February 8, 2021</div>
       <div class="post-categories">
       in 
         
@@ -253,32 +229,10 @@ print(*res, sep='\n')
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/02/06/BOJ-1620.html">백준 Silver4 - 나는야 포켓몬 마스터 이다솜</a>
+      <a class="post-link" href="/problem-solving/2021/02/06/PR-42888.html">프로그래머스 Lv2 - 오픈채팅방</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 1620번
-
-풀이
-
-n, m = map(int, input().split())
-pocket_num = {}
-num_pocket = {}
-
-for i in range(1, n+1):
-    p = input()
-    pocket_num[p] = i
-    num_pocket[i] = p
-
-res = []
-for _ in range(m):
-    x = input()
-    if x.isnumeric():
-        res.append(num_pocket[int(x)])
-    else:
-        res.append(pocket_num[x])
-print(*res, sep='\n')
-
-</p>
+      <p>프로그래머스 42888번 풀이 def solution(record): msgs = [] user_d = {} for r in record: lst = r.split() if len(lst) == 2: continue action, uid, name = lst user_d[uid] = name for r in record: lst = r.split() if len(lst) == 2: _, uid = lst msg = user_d[uid] +...</p>
     </section>
     <section class="post-meta">
       <div class="post-date">February 6, 2021</div>
@@ -297,27 +251,32 @@ print(*res, sep='\n')
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/02/06/BOJ-14425.html">백준 Silver3 - 문자열 집합</a>
+      <a class="post-link" href="/data-structure/2021/02/06/Heap.html">Heap with Python</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 14425번
-
-풀이
-
-n, m = map(int, input().split())
-s = set()
-for _ in range(n):
-    string = input()
-    s.add(string)
-
-cnt = 0
-for _ in range(m):
-    string = input()
-    if string in s:
-        cnt += 1
-print(cnt)
-
-</p>
+      <p>힙이란 우선순위큐(Priority Queue)를 이진 트리로 구현한 자료구조 입니다. 힙의 삽입, 삭제 연산은 $O(\log n)$의 시간복잡도를 가집니다. 힙은 파이썬 내장모듈인 heapq를 이용해서 손쉽게 구현할 수 있습니다. import heapq arr = [4, 5, 6, 7, 9, 8, 3, 1, 2] heapq.heapify(arr) print(heapq.nsmallest(3, arr)) # 1 2 3 print(heapq.nlargest(3, arr)) # 7 8...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 6, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Data-Structure">Data-structure</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/06/BOJ-4358.html">백준 Gold4 - 생태학</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 4358번 풀이 import sys input = sys.stdin.readline d = {} cnt = 0 while True: line = input().rstrip() if not line: break cnt += 1 d[line] = d.get(line, 0) + 1 d = sorted(d.items()) for k, v in d: print("%s %.4f" % (k, 100*v/cnt)) 인풋을 이런식으로 받는 건 못봐서...</p>
     </section>
     <section class="post-meta">
       <div class="post-date">February 6, 2021</div>
@@ -346,7 +305,7 @@ print(cnt)
 			</a>
 			
 		
-		<span class="page-number">Page 11 of 22</span>
+		<span class="page-number">Page 11 of 23</span>
 		
 		<a class="newer-posts" href="/page12">
       <span class="fa-stack fa-lg">
@@ -386,6 +345,8 @@ print(cnt)
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
         

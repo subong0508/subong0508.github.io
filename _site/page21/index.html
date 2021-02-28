@@ -145,6 +145,8 @@
         
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -168,13 +170,72 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/generative-models/2020/12/27/Improved-Techniques-for-Training-GANs.html">Improved Techniques for Training GANs</a>
+      <a class="post-link" href="/problem-solving/2021/01/25/Programmers-Lv1-1.html">프로그래머스 Lv1 추천문제 + 풀이 모음</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>오늘 리뷰할 논문은 Improved Techniques for Training GANs로, 이 논문은 아래와 같이 크게 세 가지 내용으로 이루어져 있다. GAN의 convergence를 위한 휴리스틱한 방법론들 사람이 측정한 것과 비슷하게 이미지 퀄리티를 측정하는 방법 Semi-supervised learning에 GAN을 이용하는 법과 그 중요성 편의상 generator를 G, discriminator를 D라고 칭하겠다. Toward Convergent GAN Training Feature Matching...</p>
+      <p>추천문제 사실 코딩 수업을 들은 적이 있거나 독학한 적이 있으면 프로그래머스 Lv1은 손쉽게 풀 수 있다. 그리고 그 와중에서도 난이도 차이가 꽤나 많이 나서 추천문제만 모아보았다. 추천 문제들은 주로 구현 문제 또는 엣지 케이스에 잘 걸린다거나 효율성 테스트(시간복잡도 측정)에 걸리는 문제들이다. 그냥 내기준 다른 문제들보다 까다로운 문제들로 골라봤다. 크레인 인형뽑기...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">December 27, 2020</div>
+      <div class="post-date">January 25, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/backend/2021/01/25/Django-commands.html">Django 기본 명령어 모음</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p># run server
+&gt; python manage.py runserver {port_number}
+
+# app 만들기
+&gt; python manage.py startapp {app_name}
+
+# migration
+&gt; python manage.py makemigrations {app_name}
+&gt; python manage.py migrate {app_name}
+
+# check
+&gt; python manage.py sqlmigrate {app_name} 0001_initial
+&gt; python manage.py dbshell
+&gt; python manage.py showmigrations {app_name}
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">January 25, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Backend">Backend</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/generative-models/2021/01/13/Pix2Pix.html">Pix2Pix, CycleGAN</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>이번 포스팅에서는 image-to-image translation model의 조상님격인 Pix2Pix와 CycleGAN에 대해서 알아보겠습니다. Pix2Pix를 먼저 다루고 그 후에 CycleGAN에 대해 다루려고 합니다. 아래는 Pix2Pix 원논문에 나와있는 image-to-image translation을 잘 보여주는 사진입니다. Pix2Pix vanilla GAN은 random noise vector $z$를 output image $y$로 보내는 mapping function $G: x \rightarrow y$를 학습합니다. 그러나 conditional GAN은 observed...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">January 13, 2021</div>
       <div class="post-categories">
       in 
         
@@ -190,13 +251,13 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/generative-models/2020/12/22/from-Variational-Inference-to-VAE.html">from Variational Inference to VAE</a>
+      <a class="post-link" href="/generative-models/2021/01/07/InfoGAN.html">InfoGAN</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>이번 포스팅에서는 Bayesian의 중요한 토픽인 Variational Inference부터 그와 연관된 Variational Auto-encoder까지 알아보려고 한다. Bayesian Framework 먼저, 베이지안의 기본적인 사고방식부터 알고 가자. 빈도론자와 베이지안의 가장 큰 차이점은 우리가 추정하고자하는 parameter를 확률변수로 보냐/아니냐이다. 빈도론자는 고정된 상수라고 보고 베이지안은 어떤 확률분포를 따르는 확률변수라고 생각한다. 예를 들어, 우리나라 사람들의 키를 수집한 데이터가 있다고 가정하자....</p>
+      <p>이번 포스팅에서는 InfoGAN에 대해서 알아보겠습니다. GAN에 대한 설명은 생략하겠습니다. 먼저, InfoGAN의 motivation 부터 알아보려고 합니다. GAN을 통해 우리는 latent variable $z$에서 실제 데이터 $x$로 가는 mapping을 학습합니다. 그래서 $z$를 latent representation이라고 합니다. 그러나 아쉽게도 GAN은 entangled representation을 학습합니다. 아래는 disentagled/entagled의 차이점을 시각화한 그림입니다. (이미지 출처) D보다는 B에서 manifold가 깔끔하게 학습되었고,...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">December 22, 2020</div>
+      <div class="post-date">January 7, 2021</div>
       <div class="post-categories">
       in 
         
@@ -212,57 +273,13 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/review/2020/12/20/Unsupervised-Landmark-Learning.html">Unsupervised Landmark Learning</a>
+      <a class="post-link" href="/generative-models/2020/12/29/Wasserstein-GAN.html">Wasserstein GAN</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>*1. Unsupervised Learning of Object Landmarks through Conditional Image Generation Task: Generate the target image given the source image and the encoded target image. Method Heatmaps bottleneck $\Phi(x)$: learn to extract keypoint-like structures $S_{u}(x;k)$: K heatmaps =&gt; $u_{k}^{*}(x) = \frac{\sum ue^{S_{u}(x;k)}}{\sum e^{S_{u}(x;k)}}$ (spatial softmax) $\Phi_{u}(x;k)$: Gaussian-like function centered at $u_{k}^{*}$...</p>
+      <p>오늘 포스팅은 Wasserstein GAN에 대해 알아보겠습니다. 모두 아시다시피, GAN은 data의 distribution을 배우는 generative model에 해당합니다. 그렇다면 probability distribution, 즉 확률분포를 학습한다는 것은 정확히 무슨 뜻일까요? WGAN에 대해 알아보기 전에 보다 일반적인 얘기를 먼저 하고 넘어가려고 합니다. parametric한 approach에서는 우리 데이터의 분포가 $P_{\theta} \text{ where }\theta \in \mathbb{R^{d}}$에 속한다고 가정하고 data의...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">December 20, 2020</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/review">Review</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/generative-models/2020/12/20/DCGAN.html">DCGAN 리뷰</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>이 포스팅에서 리뷰할 DCGAN은 사실 GAN을 더욱 더 유명하게 만들어준 논문으로, 이 논문이 publish된 이후로 대부분의 GAN 아키텍쳐는 DCGAN의 아키텍쳐를 따른다. 기존 CNN을 이용한 DNN에 architectural contraints를 더해줌으로써 hierarchical representation을 학습할 수 있는 것이 이 논문의 주요 내용이다. 먼저, unsupervised learning의 의의를 설명해보자면 labeled dataset은 구하기 어려운 것에 비해 unlabeled...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">December 20, 2020</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/generative-models">Generative-models</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/generative-models/2020/12/19/GAN.html">GAN 리뷰</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>오늘 리뷰할 논문은 GAN으로 더 잘 알려진, 적대적 인공신경망을 처음으로 제안한 논문이다. 뭐 이미 말할 필요도 없이 유명하기도 하고, 수많은 variation이 나오기도 했다. 논문의 제 1저자인 이안 굿펠로우는 GAN의 generator를 지폐위조범으로, discriminator를 경찰로 묘사했다. 지폐위조범은 위조 지폐를 더욱 더 진짜 같이 위조하고, 경찰은 그걸 구분하려고 경쟁하는 과정에서 상호발전이 일어난다는 것이다....</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">December 19, 2020</div>
+      <div class="post-date">December 29, 2020</div>
       <div class="post-categories">
       in 
         
@@ -288,7 +305,7 @@
 			</a>
 			
 		
-		<span class="page-number">Page 21 of 22</span>
+		<span class="page-number">Page 21 of 23</span>
 		
 		<a class="newer-posts" href="/page22">
       <span class="fa-stack fa-lg">
@@ -328,6 +345,8 @@
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
         

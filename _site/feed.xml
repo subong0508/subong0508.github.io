@@ -6,9 +6,338 @@
 </description>
     <link>http://subong0508.github.io/</link>
     <atom:link href="http://subong0508.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 28 Feb 2021 00:02:02 +0900</pubDate>
-    <lastBuildDate>Sun, 28 Feb 2021 00:02:02 +0900</lastBuildDate>
+    <pubDate>Mon, 01 Mar 2021 01:28:26 +0900</pubDate>
+    <lastBuildDate>Mon, 01 Mar 2021 01:28:26 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>Graph Theory with Python</title>
+        <description>&lt;h1 id=&quot;section&quot;&gt;서로소 집합&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;# 원소가 속한 집합 찾기
+def find_parent(parent, x):
+    if parent[x] != x:
+        parent[x] = find_parent(parent, parent[x])
+    return parent[x]
+
+# 두 원소가 속한 집합 merge
+def union(parent, a, b):
+    a = find_parent(parent, a)
+    b = find_parent(parent, b)
+    if a &amp;lt; b:
+        parent[b] = a
+    else:
+        parent[a] = b
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;사이클 판별&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;for i in range(num_edges):
+    a, b = map(int, input().split())
+    if find_parent(parent, a) == find_parent(parent, b):
+        cycle = True
+        print(&quot;Cycle&quot;)
+    else:
+        union(parent, a, b)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&quot;minimum-spanning-tree&quot;&gt;크루스칼 알고리즘: Minimum Spanning Tree&lt;/h1&gt;
+
+&lt;p&gt;&lt;strong&gt;시간 복잡도: $O(E \log {E})$&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;res = 0
+edges.sort()
+for e in edges:
+    cost, a, b = e
+    # not cycle
+    if find_parent(parent, a) != find_parent(parent, b):
+        union(parent, a, b)
+        res += cost
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&quot;section-1&quot;&gt;위상 정렬&lt;/h1&gt;
+
+&lt;p&gt;&lt;strong&gt;시간 복잡도: $O(V + E)$&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;def topological_sort():
+    result = []
+    q = deque()
+
+    # 진입차수가 0인 노드들 큐에 삽입
+    for i in range(1, v+1):
+        if indegree[i] == 0:
+            q.append(i)
+
+    while q:
+        now = q.popleft()
+        result.append(now)
+        for i in graph[now]:
+            indegree[i] -= 1
+            # 진입차수가 0이 된다면
+            if indegree[i] == 0:
+                q.append(i)
+    
+    return result
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Sun, 28 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/data-structure/2021/02/28/GraphTheory.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/data-structure/2021/02/28/GraphTheory.html</guid>
+        
+        <category>python</category>
+        
+        <category>data-structure</category>
+        
+        <category>graph</category>
+        
+        <category>shortest-path</category>
+        
+        
+        <category>Data-Structure</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Gold4 - 사이클 게임</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem20040&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/20040&quot;&gt;백준 20040번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n, m = map(int, input().split())
+parent = [i for i in range(n)]
+
+
+def find_parent(x):
+    if parent[x] != x:
+        parent[x] = find_parent(parent[x])
+    return parent[x]
+
+def union(a, b):
+    a = find_parent(a)
+    b = find_parent(b)
+    if a &amp;lt; b:
+        parent[b] = a 
+    else:
+        parent[a] = b
+
+
+res = 0
+for i in range(1, m+1):
+    a, b = map(int, input().split())
+    if find_parent(a) == find_parent(b):
+        if res == 0:
+            res = i
+    else:
+        union(a, b)
+
+print(res)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Sun, 28 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/02/28/BOJ-20040.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/28/BOJ-20040.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Gold4 - 우주신과의 교감</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem1774&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1774&quot;&gt;백준 1774번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;import math
+
+n, m = map(int, input().split())
+parent = [i for i in range(n+1)]
+vertex = [(-1, -1)]
+for i in range(1, n+1):
+    x, y = map(int, input().split())
+    vertex.append((x, y))
+
+edges = set()
+for _ in range(m):
+    x, y = map(int, input().split())
+    x, y = min(x, y), max(x, y)
+    edges.add((x, y, 0))
+    
+for i in range(1, n+1):
+    for j in range(i+1, n+1):
+        if (i, j, 0) in edges:
+            continue
+        x1, y1 = vertex[i]
+        x2, y2 = vertex[j]
+        d = math.sqrt((x1-x2) ** 2 + (y1-y2) ** 2)
+        edges.add((i, j, d))
+
+
+def find_parent(x):
+    if parent[x] != x:
+        parent[x] = find_parent(parent[x])
+    return parent[x]
+
+def union(a, b):
+    a = find_parent(a)
+    b = find_parent(b)
+    parent[a] = b
+
+
+edges = sorted(edges, key=lambda x: x[2])
+res = 0
+for i, j, c in edges:
+    if find_parent(i) != find_parent(j):
+        union(i, j)
+        res += c
+
+print(&quot;%.2f&quot; % res)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Sun, 28 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/02/28/BOJ-1774.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/28/BOJ-1774.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Gold4 - 집합의 표현</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem1717&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1717&quot;&gt;백준 1717번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n, m = map(int, input().split())
+parent = [i for i in range(n+1)]
+
+
+def find_parent(x):
+    if parent[x] != x:
+        parent[x] = find_parent(parent[x])
+    return parent[x]
+
+def union(a, b):
+    a = find_parent(a)
+    b = find_parent(b)
+    if a &amp;lt; b:
+        parent[b] = a
+    else:
+        parent[a] = b
+
+if __name__=='__main__':
+    import sys
+
+    # 이렇게 설정해줘야 RecursionError가 나지 않는다.
+    sys.setrecursionlimit(100000)
+
+    res = []
+    for _ in range(m):
+        t, a, b = map(int, input().split())
+        if t == 0:
+            union(a, b)
+        else:
+            if find_parent(a) == find_parent(b):
+                res.append(&quot;YES&quot;)
+            else:
+                res.append(&quot;NO&quot;)
+
+    print(*res, sep='\n')
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Sun, 28 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/02/28/BOJ-1717.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/28/BOJ-1717.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Gold4 - 최소 스패닝 트리</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem1197&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1197&quot;&gt;백준 1197번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;v, e = map(int, input().split())
+parent = [i for i in range(v+1)]
+edges = []
+for _ in range(e):
+    a, b, c = map(int, input().split())
+    edges.append((a, b, c))
+edges.sort(key=lambda x: x[2])
+
+
+def find_parent(x):
+    if parent[x] != x:
+        parent[x] = find_parent(parent[x])
+    return parent[x]
+
+def union(a, b):
+    a = find_parent(a)
+    b = find_parent(b)
+    parent[b] = a
+
+
+res = 0
+for a, b, c in edges:
+    if find_parent(a) != find_parent(b):
+        union(a, b)
+        res += c
+
+print(res)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Sun, 28 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/02/28/BOJ-1197.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/28/BOJ-1197.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
     
       <item>
         <title>Shortest Path with Python</title>
@@ -352,487 +681,6 @@ else:
         <pubDate>Sat, 27 Feb 2021 00:00:00 +0900</pubDate>
         <link>http://subong0508.github.io/problem-solving/2021/02/27/BOJ-1504.html</link>
         <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/27/BOJ-1504.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Gold4 - 플로이드</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem11404&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/11404&quot;&gt;백준 11404번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
-m = int(input())
-INF = 1e9
-graph = [[INF] * (n+1) for i in range(n+1)]
-for i in range(1, n+1):
-    graph[i][i] = 0
-
-for _ in range(m):
-    start, end, cost = map(int, input().split())
-    graph[start][end] = min(graph[start][end], cost)
-
-for k in range(1, n+1):
-    for i in range(1, n+1):
-        for j in range(1, n+1):
-            graph[i][j] = min(graph[i][j], graph[i][k]+graph[k][j])
-
-for i in range(1, n+1):
-    for j in range(1, n+1):
-        if graph[i][j] != INF:
-            print(graph[i][j], end=' ')
-        else:
-            print(0, end=' ')
-    print()
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Sat, 27 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/02/27/BOJ-11404.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/27/BOJ-11404.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>프로그래머스 Lv3 - 자물쇠와 열쇠</title>
-        <description>&lt;h3 id=&quot;httpsprogrammerscokrlearncourses30lessons60059&quot;&gt;&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/60059&quot;&gt;프로그래머스 60059번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;import numpy as np
-
-def rotate(m, key):
-    key_ = [[0] * m for _ in range(m)]
-    for i in range(m):
-        for j in range(m):
-            key_[j][m-i-1] = key[i][j]
-    return key_
-
-def solution(key, lock):
-    answer = False
-    n = len(lock)
-    m = len(key)
-    keys = []
-    for i in range(4):
-        keys.append(key)
-        key = rotate(m, key)
-        
-    xs = []
-    ys = []
-    for i in range(n):
-        for j in range(n):
-            if lock[i][j] == 0:
-                xs.append(i)
-                ys.append(j)
-    if not xs:
-        return True
-    
-    x1, x2 = min(xs), max(xs)
-    y1, y2 = min(ys), max(ys)
-
-    lock = np.array(lock)[x1:x2+1, y1:y2+1]
-    l1, l2 = lock.shape[0], lock.shape[1]
-    
-    keys_ = []
-    for key in keys:
-        key_arr = np.array(key)
-        for i in range(key_arr.shape[0]-l1+1):
-            for j in range(key_arr.shape[1]-l2+1):
-                keys_.append(key_arr[i:i+l1, j:j+l2])
-    
-    for k in keys_:
-        if k.shape != lock.shape:
-            continue
-        if (k == 1-lock).all():
-            return True
-    return answer
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;행렬 연산을 쉽게 하려고 &lt;code class=&quot;highlighter-rouge&quot;&gt;numpy&lt;/code&gt; 라이브러리를 사용했다.&lt;/p&gt;
-</description>
-        <pubDate>Wed, 24 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/02/24/PR-60059.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/24/PR-60059.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Gold2 - 구슬탈출 2</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem13460&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/13460&quot;&gt;백준 13460번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n, m = map(int, input().split())
-board = []
-for _ in range(n):
-    board.append([ch for ch in input()])
-# 공들의 위치
-balls = [-1] * 2
-for i in range(n):
-    for j in range(m):
-        if board[i][j] == 'R':
-            balls[0] = [i, j]
-        elif board[i][j] == 'B':
-            balls[1] = [i, j]
-
-dx = [-1, 1, 0, 0]
-dy = [0, 0, -1, 1]
-
-
-def move(x, y, d, board):
-    while True:
-        nx, ny = x+dx[d], y+dy[d]
-        if board[nx][ny] != '.':
-            break
-        x, y = nx, ny
-    if board[nx][ny] == 'O':
-        x, y = nx, ny
-    return x, y
-
-
-def move_balls(balls, board, d):
-    # 위로 이동, y좌표가 같다면 x좌표가 작은 것부터 이동
-    flag1 = d == 0 and balls[0][1] == balls[1][1] and balls[0][0] &amp;gt; balls[1][0]
-    # 아래로 이동, y좌표가 같다면 x좌표가 큰 것부터 이동
-    flag2 = d == 1 and balls[0][1] == balls[1][1] and balls[0][0] &amp;lt; balls[1][0]
-    # 왼쪽으로 이동, x좌표가 같다면 y좌표가 작은 것부터 이동
-    flag3 = d == 2 and balls[0][0] == balls[1][0] and balls[0][1] &amp;gt; balls[1][1]
-    # 오른쪽으로 이동, x좌표가 같다면 y좌표가 큰 것부터 이동
-    flag4 = d == 3 and balls[0][0] == balls[1][0] and balls[0][1] &amp;lt; balls[1][1]
-    if flag1 or flag2 or flag3 or flag4:
-        bx, by = move(*balls[1], d, board)
-        board[balls[1][0]][balls[1][1]] = '.' # 빈칸이 되고
-        board[bx][by] = 'B' if board[bx][by] != 'O' else 'O'
-        rx, ry  = move(*balls[0], d, board)
-        board[balls[0][0]][balls[0][1]] = '.' # 빈칸이 되고
-        board[rx][ry] = 'R' if board[rx][ry] != 'O' else 'O'
-    else:
-        rx, ry = move(*balls[0], d, board)
-        board[balls[0][0]][balls[0][1]] = '.' # 빈칸이 되고
-        board[rx][ry] = 'R' if board[rx][ry] != 'O' else 'O'
-        bx, by = move(*balls[1], d, board)
-        board[balls[1][0]][balls[1][1]] = '.' # 빈칸이 되고
-        board[bx][by] = 'B' if board[bx][by] != 'O' else 'O'
-    balls_ = [[rx, ry], [bx, by]]
-    return balls_
-
-
-cnt = 11
-
-
-def solution(now, balls, board):
-    global cnt
-    if now &amp;gt;= cnt:
-        return
-    rx, ry = balls[0]
-    bx, by = balls[1]
-    if board[rx][ry] == 'O': # 성공
-        cnt = min(cnt, now)
-    elif board[bx][by] != 'O': # 파란 구슬이 안 빠졌을 때
-        for i in range(4):
-            balls_ = move_balls(balls, board, i)
-            # 빨간 구슬, 파란 구슬이 다를 때만
-            if balls_[0] != balls_[1]:
-                solution(now+1, balls_, board)
-            # 다시 돌려놓기
-            x, y = balls_[0]
-            board[x][y] = '.' if board[x][y] != 'O' else 'O'
-            x, y = balls_[1]
-            board[x][y] = '.' if board[x][y] != 'O' else 'O'
-            board[rx][ry] = 'R'
-            board[bx][by] = 'B'
-
-
-solution(0, balls, board)
-
-if cnt == 11:
-    print(-1)
-else:
-    print(cnt)
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Tue, 23 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/02/23/BOJ-13460.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/23/BOJ-13460.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Gold3 - 청소년 상어</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem19236&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/19236&quot;&gt;백준 19236번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from copy import deepcopy
-
-graph = [[-1] * 4 for _ in range(4)]
-for i in range(4):
-    tmp = list(map(int, input().split()))
-    for j in range(0, 8, 2):
-        graph[i][j // 2] = [tmp[j], tmp[j+1]]
-
-moves = {1: [-1, 0], 2: [-1, -1], 3: [0, -1], 4: [1, -1],
-         5: [1, 0], 6: [1, 1], 7: [0, 1], 8: [-1, 1]}
-shark = [0, 0]
-res = 0
-
-def check_fish(x, y, d, shark):
-    nx, ny = x+moves[d][0], y+moves[d][1]
-    if nx &amp;lt; 0 or nx &amp;gt;= 4 or ny &amp;lt; 0 or ny &amp;gt;= 4 or [nx, ny] == shark:
-        return [-1, -1]
-    else:
-        return [nx, ny]
-
-def move_fish(graph, shark):
-    order = {}
-    for i in range(4):
-        for j in range(4):
-            if [i, j] != shark and graph[i][j][0] != 0:
-                # 번호: 좌표
-                order[graph[i][j][0]] = (i, j)
-    order = sorted(order.items(), key=lambda x: x[0])
-    order = dict(order)
-    for o in order.keys():
-        x, y = order[o]
-        while True:
-            nx, ny = check_fish(x, y, graph[x][y][1], shark)
-            if nx != -1 and ny != -1:
-                break
-            # rotate
-            graph[x][y][1] += 1
-            if graph[x][y][1] &amp;gt; 8:
-                graph[x][y][1] -= 8
-        # 다른 물고기가 있는 칸이라면
-        if graph[nx][ny][0] != 0:
-            # swap
-            order[graph[x][y][0]], order[graph[nx][ny][0]] = (nx, ny), (x, y)
-            graph[x][y], graph[nx][ny] = graph[nx][ny], graph[x][y]
-        else: # 비어있는 칸이라면
-            order[graph[x][y][0]] = (nx, ny)
-            graph[nx][ny] = graph[x][y]
-            graph[x][y] = [0, 0]
-
-def move_shark(now, graph, shark): # 지금까지 먹은 물고기수, 그래프, 상어 좌표
-    global res
-    move_fish(graph, shark)
-    x, y = shark
-    # 물고기 개수, 방향
-    num, d = graph[x][y]
-    dx, dy = moves[d]
-    # 잡아 먹힘
-    graph[x][y] = [0, 0]
-    results = []
-    for i in range(1, 4):
-        nx, ny = x+dx*i, y+dy*i
-        if 0 &amp;lt;= nx &amp;lt; 4 and 0 &amp;lt;= ny &amp;lt; 4 and graph[nx][ny][0] != 0:
-            results.append((nx, ny))
-    if results:
-        for nx, ny in results:
-            move_shark(now+num, deepcopy(graph), [nx, ny])
-    else: # 더 이상 갈 곳이 없으므로 종료
-        res = max(res, now+num)
-
-move_shark(0, graph, shark)
-
-print(res)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;구현이 굉장히 빡센 문제.. 연습이 많이 필요할 것 같다.&lt;/p&gt;
-</description>
-        <pubDate>Sun, 21 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/02/21/BOJ-19236.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/21/BOJ-19236.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Gold2 - 2048(Easy)</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem12100&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/12100&quot;&gt;백준 12100번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from copy import deepcopy
-from collections import deque
-
-n = int(input())
-board = []
-for _ in range(n):
-    board.append(list(map(int, input().split())))
-
-
-def go_up(board):
-    for j in range(n):
-        col = [board[i][j] for i in range(n) if board[i][j] &amp;gt; 0]
-        i = 0
-        new_col = deque()
-        while i &amp;lt; len(col)-1:
-            if col[i] == col[i+1]:
-                new_col.append(col[i]+col[i+1])
-                i += 2
-            else:
-                new_col.append(col[i])
-                i += 1
-        if i == len(col)-1:
-            new_col.append(col[i])
-        new_col = list(new_col) + [0] * (n-len(new_col))
-        for i in range(n):
-            board[i][j] = new_col[i]
-        
-
-def go_down(board):
-    for j in range(n):
-        col = [board[i][j] for i in range(n) if board[i][j] &amp;gt; 0]
-        i = len(col)-1
-        new_col = deque()
-        while i &amp;gt; 0:
-            if col[i] == col[i-1]:
-                    new_col.appendleft(col[i]+col[i-1])
-                    i -= 2
-            else:
-                new_col.appendleft(col[i])
-                i -= 1
-        if i == 0:
-            new_col.appendleft(col[i])
-        new_col = [0] * (n-len(new_col)) + list(new_col)
-        for i in range(n):
-            board[i][j] = new_col[i]
-
-
-def go_right(board):
-    for i in range(n):
-        row = [x for x in board[i] if x &amp;gt; 0]
-        j = len(row)-1
-        new_row = deque()
-        while j &amp;gt; 0:
-            if row[j] == row[j-1]:
-                new_row.appendleft(row[j]+row[j-1])
-                j -= 2
-            else:
-                new_row.appendleft(row[j])
-                j -= 1
-        if j == 0:
-            new_row.appendleft(row[j])
-        new_row = [0] * (n-len(new_row)) + list(new_row)
-        for j in range(n):
-            board[i][j] = new_row[j]
-
-
-def go_left(board):
-    for i in range(n):
-        row = [x for x in board[i] if x &amp;gt; 0]
-        j = 0
-        new_row = deque()
-        while j &amp;lt; len(row)-1:
-            if row[j] == row[j+1]:
-                new_row.append(row[j]+row[j+1])
-                j += 2
-            else:
-                new_row.append(row[j])
-                j += 1
-        if j == len(row)-1:
-            new_row.append(row[j])
-        new_row = list(new_row) + [0] * (n-len(new_row))
-        for j in range(n):
-            board[i][j] = new_row[j]
-
-res = 0
-
-def go(cnt, board):
-    global res
-    if cnt == 5:
-        for i in range(n):
-            for j in range(n):
-                res = max(res, board[i][j])
-        return
-    for i in range(4):
-        board_ = deepcopy(board)
-        if i == 0:
-            go_up(board_)
-            go(cnt+1, board_)
-        elif i == 1:
-            go_down(board_)
-            go(cnt+1, board_)
-        elif i == 2:
-            go_right(board_)
-            go(cnt+1, board_)
-        elif i == 3:
-            go_left(board_)
-            go(cnt+1, board_)
-
-go(0, board)
-
-print(res)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;0인 것들은 제외하고 새로운 행/열을 만든 다음에 합쳐주는게 관건이었다. 그 와중에 &lt;code class=&quot;highlighter-rouge&quot;&gt;deque&lt;/code&gt;를 적절히 사용해야 순서가 안바뀌고 제대로 된다. 구현은 언제 풀어도 어렵다ㅠ&lt;/p&gt;
-</description>
-        <pubDate>Sun, 21 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/02/21/BOJ-12100.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/21/BOJ-12100.html</guid>
         
         <category>python</category>
         
