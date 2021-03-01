@@ -147,6 +147,8 @@
         
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -170,13 +172,13 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/01/25/Programmers-Lv1-1.html">프로그래머스 Lv1 추천문제 + 풀이 모음</a>
+      <a class="post-link" href="/problem-solving/2021/01/29/BOJ-1065.html">백준 Silver4 - 한수</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>추천문제 사실 코딩 수업을 들은 적이 있거나 독학한 적이 있으면 프로그래머스 Lv1은 손쉽게 풀 수 있다. 그리고 그 와중에서도 난이도 차이가 꽤나 많이 나서 추천문제만 모아보았다. 추천 문제들은 주로 구현 문제 또는 엣지 케이스에 잘 걸린다거나 효율성 테스트(시간복잡도 측정)에 걸리는 문제들이다. 그냥 내기준 다른 문제들보다 까다로운 문제들로 골라봤다. 크레인 인형뽑기...</p>
+      <p>백준 1065번 n = int(input()) def is_han(num): string = str(num) if len(string) &lt;= 2: return True x = int(string[1])-int(string[0]) for i in range(2, len(string)): tmp = int(string[i])-int(string[i-1]) if tmp != x: return False return True cnt = 0 for i in range(1, n+1): if is_han(i): cnt += 1 print(cnt) 1부터...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">January 25, 2021</div>
+      <div class="post-date">January 29, 2021</div>
       <div class="post-categories">
       in 
         
@@ -192,32 +194,17 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/backend/2021/01/25/Django-commands.html">Django 기본 명령어 모음</a>
+      <a class="post-link" href="/problem-solving/2021/01/29/BOJ-1057.html">백준 Silver3 - 토너먼트</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p># run server
-&gt; python manage.py runserver {port_number}
-
-# app 만들기
-&gt; python manage.py startapp {app_name}
-
-# migration
-&gt; python manage.py makemigrations {app_name}
-&gt; python manage.py migrate {app_name}
-
-# check
-&gt; python manage.py sqlmigrate {app_name} 0001_initial
-&gt; python manage.py dbshell
-&gt; python manage.py showmigrations {app_name}
-
-</p>
+      <p>백준 1057번 n, a, b = map(int, input().split()) arr = [False] * (n+1) arr[a] = True arr[b] = True cnt = 0 match = False while not match: n = len(arr) cnt += 1 tmp = [False] i = 1 while i+1 &lt; n: if arr[i] and arr[i+1]: match =...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">January 25, 2021</div>
+      <div class="post-date">January 29, 2021</div>
       <div class="post-categories">
       in 
         
-        <a href="/category/Backend">Backend</a>
+        <a href="/category/Problem-Solving">Problem-solving</a>
         
       
       </div>
@@ -229,17 +216,17 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/generative-models/2021/01/13/Pix2Pix.html">Pix2Pix, CycleGAN</a>
+      <a class="post-link" href="/data-structure/2021/01/28/Stack,-Queue.html">스택, 큐 with Python</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>이번 포스팅에서는 image-to-image translation model의 조상님격인 Pix2Pix와 CycleGAN에 대해서 알아보겠습니다. Pix2Pix를 먼저 다루고 그 후에 CycleGAN에 대해 다루려고 합니다. 아래는 Pix2Pix 원논문에 나와있는 image-to-image translation을 잘 보여주는 사진입니다. Pix2Pix vanilla GAN은 random noise vector $z$를 output image $y$로 보내는 mapping function $G: x \rightarrow y$를 학습합니다. 그러나 conditional GAN은 observed...</p>
+      <p>이번 포스팅에서는 스택, 큐에 대한 개념을 알아보고 파이썬으로 간단하게 구현해보겠습니다. 스택 스택은 LIFO(후입선출)의 특성을 가진 자료구조입니다. 시간복잡도는 다음과 같습니다. 삽입: $O(1)$ 삭제: $O(1)$ 파이썬에서는 다른 라이브러리를 쓸 필요없이 기본 자료형인 list를 활용하여 삽입 및 삭제 연산을 수행할 수 있습니다. arr = [1, 2, 3, 4, 5] stack = [] #...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">January 13, 2021</div>
+      <div class="post-date">January 28, 2021</div>
       <div class="post-categories">
       in 
         
-        <a href="/category/generative-models">Generative-models</a>
+        <a href="/category/Data-Structure">Data-structure</a>
         
       
       </div>
@@ -251,17 +238,17 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/generative-models/2021/01/07/InfoGAN.html">InfoGAN</a>
+      <a class="post-link" href="/problem-solving/2021/01/28/BOJ-9012.html">백준 Silver4 - 괄호</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>이번 포스팅에서는 InfoGAN에 대해서 알아보겠습니다. GAN에 대한 설명은 생략하겠습니다. 먼저, InfoGAN의 motivation 부터 알아보려고 합니다. GAN을 통해 우리는 latent variable $z$에서 실제 데이터 $x$로 가는 mapping을 학습합니다. 그래서 $z$를 latent representation이라고 합니다. 그러나 아쉽게도 GAN은 entangled representation을 학습합니다. 아래는 disentagled/entagled의 차이점을 시각화한 그림입니다. (이미지 출처) D보다는 B에서 manifold가 깔끔하게 학습되었고,...</p>
+      <p>백준 9012번 문제 괄호 문자열(Parenthesis String, PS)은 두 개의 괄호 기호인 ‘(’ 와 ‘)’ 만으로 구성되어 있는 문자열이다. 그 중에서 괄호의 모양이 바르게 구성된 문자열을 올바른 괄호 문자열(Valid PS, VPS)이라고 부른다. 한 쌍의 괄호 기호로 된 “( )” 문자열은 기본 VPS 이라고 부른다. 만일 x 가 VPS 라면 이것을 하나의...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">January 7, 2021</div>
+      <div class="post-date">January 28, 2021</div>
       <div class="post-categories">
       in 
         
-        <a href="/category/generative-models">Generative-models</a>
+        <a href="/category/Problem-Solving">Problem-solving</a>
         
       
       </div>
@@ -273,17 +260,17 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/generative-models/2020/12/29/Wasserstein-GAN.html">Wasserstein GAN</a>
+      <a class="post-link" href="/problem-solving/2021/01/28/BOJ-2164.html">백준 Silver4 - 카드2</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>오늘 포스팅은 Wasserstein GAN에 대해 알아보겠습니다. 모두 아시다시피, GAN은 data의 distribution을 배우는 generative model에 해당합니다. 그렇다면 probability distribution, 즉 확률분포를 학습한다는 것은 정확히 무슨 뜻일까요? WGAN에 대해 알아보기 전에 보다 일반적인 얘기를 먼저 하고 넘어가려고 합니다. parametric한 approach에서는 우리 데이터의 분포가 $P_{\theta} \text{ where }\theta \in \mathbb{R^{d}}$에 속한다고 가정하고 data의...</p>
+      <p>백준 2164번 문제 N장의 카드가 있다. 각각의 카드는 차례로 1부터 N까지의 번호가 붙어 있으며, 1번 카드가 제일 위에, N번 카드가 제일 아래인 상태로 순서대로 카드가 놓여 있다. 이제 다음과 같은 동작을 카드가 한 장 남을 때까지 반복하게 된다. 우선, 제일 위에 있는 카드를 바닥에 버린다. 그 다음, 제일 위에 있는...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">December 29, 2020</div>
+      <div class="post-date">January 28, 2021</div>
       <div class="post-categories">
       in 
         
-        <a href="/category/generative-models">Generative-models</a>
+        <a href="/category/Problem-Solving">Problem-solving</a>
         
       
       </div>
@@ -305,7 +292,7 @@
 			</a>
 			
 		
-		<span class="page-number">Page 21 of 23</span>
+		<span class="page-number">Page 21 of 24</span>
 		
 		<a class="newer-posts" href="/page22">
       <span class="fa-stack fa-lg">
@@ -345,6 +332,8 @@
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
         

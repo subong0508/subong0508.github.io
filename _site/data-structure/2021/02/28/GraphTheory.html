@@ -169,6 +169,8 @@
         
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -209,6 +211,8 @@
 <article class="post-content">
   <h1 id="section">서로소 집합</h1>
 
+<p><strong>시간복잡도: $O(V + M \log_{2}{V})$</strong></p>
+
 <pre><code class="language-python3"># 원소가 속한 집합 찾기
 def find_parent(parent, x):
     if parent[x] != x:
@@ -238,7 +242,7 @@ def union(parent, a, b):
 
 <h1 id="minimum-spanning-tree">크루스칼 알고리즘: Minimum Spanning Tree</h1>
 
-<p><strong>시간 복잡도: $O(E \log {E})$</strong></p>
+<p><strong>시간복잡도: $O(E \log {E})$</strong></p>
 
 <pre><code class="language-python3">res = 0
 edges.sort()
@@ -252,7 +256,7 @@ for e in edges:
 
 <h1 id="section-1">위상 정렬</h1>
 
-<p><strong>시간 복잡도: $O(V + E)$</strong></p>
+<p><strong>시간복잡도: $O(V + E)$</strong></p>
 
 <pre><code class="language-python3">def topological_sort():
     result = []
@@ -316,6 +320,14 @@ for e in edges:
 		</span>
 		<span class="next-post">
 			
+				<a href="/problem-solving/2021/03/01/BOJ-10775.html">
+					<span class="page-number">백준 Gold1 - 공항</span>
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-square fa-stack-2x"></i>
+						<i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
+					</span>
+				</a>
+			
 		</span>
 	</section>
 
@@ -368,6 +380,8 @@ for e in edges:
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
         

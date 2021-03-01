@@ -147,6 +147,8 @@
         
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -170,35 +172,13 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/python/2021/01/30/Itertools.html">Itertools 정리</a>
+      <a class="post-link" href="/problem-solving/2021/02/03/PR-42889.html">프로그래머스 Lv1 - 실패율</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>내장 라이브러리인 itertools를 이용해서 조합, 순열, 중복순열, Cartesian Product 등을 손쉽게 구현할 수 있다. from itertools import combinations, permutations, combinations_with_replacement, product data = '123' l = combinations(data, 2) for e in l: print(*e) # 12 13 23 l = permutations(data, 2) for e in l: print(*e) # 12 13 21...</p>
+      <p>프로그래머스 42889번 def solution(N, stages): d = {i: 0 for i in range(1, N+1)} stages.sort() prev = stages[0] total = len(stages) cnt = 1 for i in range(1, len(stages)): if prev not in d: break if stages[i] == prev: cnt += 1 elif stages[i] != prev: d[prev] = cnt /...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">January 30, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Python">Python</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/01/30/BOJ-9663.html">백준 Gold5 - N-Queen</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 9663번 n = int(input()) cnt = 0 def nqueen(arr): global cnt # 새로운 행 번호 row = len(arr) if row == n: cnt += 1 return for i in range(n): # 이미 있는 열 if i in arr: continue flag = True # j번째 행, j번째 행에 해당하는 열...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">January 30, 2021</div>
+      <div class="post-date">February 3, 2021</div>
       <div class="post-categories">
       in 
         
@@ -214,13 +194,13 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/01/30/BOJ-15649.html">백준 Silver3 - N과 M(1)(2)(3)</a>
+      <a class="post-link" href="/problem-solving/2021/02/03/BOJ-18310.html">백준 Silver3 - 안테나</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 15649번 풀이 n, m = map(int, input().split()) arr = [i for i in range(1, n+1)] answer = [] def combinations(arr, s): global answer if len(s) == m: # shallow copy answer.append(s[:]) return for e in arr: if e not in s: s.append(e) combinations(arr, s) s.pop() combinations(arr, []) for a...</p>
+      <p>백준 18310번 풀이 n = int(input()) arr = list(map(int, input().split())) arr.sort() def cal_distance(arr, mid): total = 0 for a in arr: total += abs(arr[mid]-a) return total if len(arr) % 2 == 1: mid = len(arr) // 2 else: mid1, mid2 = len(arr)//2-1, len(arr)//2 if cal_distance(arr, mid1) &gt; cal_distance(arr, mid2): mid...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">January 30, 2021</div>
+      <div class="post-date">February 3, 2021</div>
       <div class="post-categories">
       in 
         
@@ -236,13 +216,13 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/01/30/BOJ-14889.html">백준 Silver3 - 스타트와 링크</a>
+      <a class="post-link" href="/problem-solving/2021/02/03/BOJ-1715.html">백준 Gold4 - 카드 정렬하기</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 14889번 from itertools import combinations n = int(input()) arr = [[0] * (n+1)] for _ in range(n): arr.append([0] + list(map(int, input().split()))) whole = set(range(1, n+1)) comb = list(combinations(whole, n//2)) # 중복되는 경우 제외 comb = comb[:len(comb)//2] res = int(1e9) for start_ in comb: start = set(start_) link = whole...</p>
+      <p>백준 1715번 풀이 import heapq n = int(input()) q = [] for i in range(n): a = int(input()) heapq.heappush(q, a) res = 0 while len(q) &gt;= 2: a = heapq.heappop(q) b = heapq.heappop(q) res += a+b heapq.heappush(q, a+b) print(res) 첨에는 그냥 array로 받고 sort해서 deque로 풀었는데 새로운 원소가 더해질 때...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">January 30, 2021</div>
+      <div class="post-date">February 3, 2021</div>
       <div class="post-categories">
       in 
         
@@ -258,17 +238,39 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/01/29/PR-42839.html">프로그래머스 Lv2 - 소수 찾기</a>
+      <a class="post-link" href="/problem-solving/2021/02/03/BOJ-10825.html">백준 Silver4 - 국영수</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>프로그래머스 42839번 풀이 from itertools import permutations def is_prime(n): if n &lt;= 1: return False i = 2 while i*i &lt;= n: if n % i == 0: return False i += 1 return True def solution(numbers): s = set() for i in range(1, len(numbers)+1): comb = permutations(numbers, i) for...</p>
+      <p>백준 10825번 풀이 n = int(input()) arr = [0] * n for i in range(n): name, kor, eng, mat = input().split() kor, eng, mat = map(int, [kor, eng, mat]) arr[i] = (name, kor, eng, mat) arr = sorted(arr, key=lambda x: x[0]) arr = sorted(arr, key=lambda x: -x[3]) arr = sorted(arr,...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">January 29, 2021</div>
+      <div class="post-date">February 3, 2021</div>
       <div class="post-categories">
       in 
         
         <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/data-structure/2021/02/02/Sorting.html">정렬 with Python</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>이번 포스팅에서는 여러 정렬 기법에 대해 알아보고 파이썬으로 간단하게 구현해보겠습니다. 선택 정렬(Selection Sort) 선택 정렬은 한마디로 Priority Queue with Unsorted Array라고 할 수 있습니다. 우선순위 큐가 하나 있다고 가정해봅시다. 데이터를 삽입할 때는 항상 끝에 삽입하고, pop 연산을 오름차순/내림차순으로 수행합니다. 또한 시간복잡도는 $O(n^2)$ 입니다. array = [7, 5, 9, 0, 3,...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 2, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Data-Structure">Data-structure</a>
         
       
       </div>
@@ -290,7 +292,7 @@
 			</a>
 			
 		
-		<span class="page-number">Page 17 of 23</span>
+		<span class="page-number">Page 17 of 24</span>
 		
 		<a class="newer-posts" href="/page18">
       <span class="fa-stack fa-lg">
@@ -330,6 +332,8 @@
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
         

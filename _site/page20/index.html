@@ -147,6 +147,8 @@
         
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -170,13 +172,13 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/01/28/BOJ-9012.html">백준 Silver4 - 괄호</a>
+      <a class="post-link" href="/problem-solving/2021/01/29/PR-42584.html">프로그래머스 Lv2 - 주식가격</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 9012번 문제 괄호 문자열(Parenthesis String, PS)은 두 개의 괄호 기호인 ‘(’ 와 ‘)’ 만으로 구성되어 있는 문자열이다. 그 중에서 괄호의 모양이 바르게 구성된 문자열을 올바른 괄호 문자열(Valid PS, VPS)이라고 부른다. 한 쌍의 괄호 기호로 된 “( )” 문자열은 기본 VPS 이라고 부른다. 만일 x 가 VPS 라면 이것을 하나의...</p>
+      <p>프로그래머스 42584번 문제 설명 초 단위로 기록된 주식가격이 담긴 배열 prices가 매개변수로 주어질 때, 가격이 떨어지지 않은 기간은 몇 초인지를 return 하도록 solution 함수를 완성하세요 제한 사항 prices의 각 가격은 1 이상 10,000 이하인 자연수입니다. prices의 길이는 2 이상 100,000 이하입니다. 입출력 예 prices return [1, 2, 3, 2, 3]...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">January 28, 2021</div>
+      <div class="post-date">January 29, 2021</div>
       <div class="post-categories">
       in 
         
@@ -192,13 +194,13 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/01/28/BOJ-2164.html">백준 Silver4 - 카드2</a>
+      <a class="post-link" href="/problem-solving/2021/01/29/BOJ-2615.html">백준 Silver3 - 오목</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 2164번 문제 N장의 카드가 있다. 각각의 카드는 차례로 1부터 N까지의 번호가 붙어 있으며, 1번 카드가 제일 위에, N번 카드가 제일 아래인 상태로 순서대로 카드가 놓여 있다. 이제 다음과 같은 동작을 카드가 한 장 남을 때까지 반복하게 된다. 우선, 제일 위에 있는 카드를 바닥에 버린다. 그 다음, 제일 위에 있는...</p>
+      <p>백준 2615번 풀이 from collections import deque board = [] for _ in range(19): board.append(list(map(int, input().split()))) dxs = [-1, 0, 1, 1] dys = [1, 1, 0, 1] def bfs_main(x, y): return bfs(x, y, 0), bfs(x, y, 1), bfs(x, y, 2), bfs(x, y, 3) def bfs(x, y, d): q =...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">January 28, 2021</div>
+      <div class="post-date">January 29, 2021</div>
       <div class="post-categories">
       in 
         
@@ -214,13 +216,13 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/01/28/BOJ-17952.html">백준 Silver3 - 과제는 끝나지 않아!</a>
+      <a class="post-link" href="/problem-solving/2021/01/29/BOJ-16508.html">백준 Silver3 - 전공책</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 17952번 문제 성애는 이번 학기에 전공을 정말 많이 듣는다. 이로 인해 거의 매일을 과제를 하면서 보내고 있다. 그런데도 과제가 줄어들 기미가 보이지 않는데, 바로 분단위로 과제가 추가되고 있기 때문이다. 다행히 과제 제출 기한은 학기가 끝날 때까지이다. 너무나도 많은 과제를 하다가 미쳐버린 성애는 아래와 같은 규칙으로 과제를 해 나가고 있다....</p>
+      <p>백준 16508번 from itertools import combinations t = input() n = int(input()) books = [] for _ in range(n): a, b = input().split() books.append((int(a), b)) def is_possible(books): # 책들의 문자 카운트를 저장해놓음 d = {} for _, b in books: for ch in b: d[ch] = d.get(ch, 0)+1 cnt =...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">January 28, 2021</div>
+      <div class="post-date">January 29, 2021</div>
       <div class="post-categories">
       in 
         
@@ -236,13 +238,13 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/01/28/BOJ-17225.html">백준 Silver1 - 세훈이의 선물가게</a>
+      <a class="post-link" href="/problem-solving/2021/01/29/BOJ-14501.html">백준 Silver4 - 퇴사</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 17225번 문제 세훈이는 선물가게를 운영한다. 세훈이의 선물가게는 특이하게도 손님이 어떤 선물을 구매할지 선택할 수가 없다. 대신 세훈이의 취향으로 랜덤하게 준비된 선물 중 몇 개를 구매할 것인지, 파란색과 빨간색 중 어떤 색으로 포장 받을 것인지만 결정해 주문할 수 있다. 상민이와 지수는 세훈이의 가게에서 선물 포장을 맡은 아르바이트생이다. 손님들은 파란색 포장지를...</p>
+      <p>백준 14501번 풀이 n = int(input()) t = [] p = [] for _ in range(n): a, b = map(int, input().split()) t.append(a) p.append(b) res = 0 def get_max(i, cur): global res if i &gt;= n: res = max(res, cur) return # i번째 일을 할 수 있는 경우 if i+t[i] &lt;=...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">January 28, 2021</div>
+      <div class="post-date">January 29, 2021</div>
       <div class="post-categories">
       in 
         
@@ -258,13 +260,13 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/01/28/BOJ-1158.html">백준 Silver5 - 요세푸스 문제</a>
+      <a class="post-link" href="/problem-solving/2021/01/29/BOJ-1436.html">백준 Silver5 - 영화감독 숌</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 1158번 문제 요세푸스 문제는 다음과 같다. 1번부터 N번까지 N명의 사람이 원을 이루면서 앉아있고, 양의 정수 K(≤ N)가 주어진다. 이제 순서대로 K번째 사람을 제거한다. 한 사람이 제거되면 남은 사람들로 이루어진 원을 따라 이 과정을 계속해 나간다. 이 과정은 N명의 사람이 모두 제거될 때까지 계속된다. 원에서 사람들이 제거되는 순서를 (N, K)-요세푸스...</p>
+      <p>백준 1436번 문제 666은 종말을 나타내는 숫자라고 한다. 따라서, 많은 블록버스터 영화에서는 666이 들어간 제목을 많이 사용한다. 영화감독 숌은 세상의 종말 이라는 시리즈 영화의 감독이다. 조지 루카스는 스타워즈를 만들 때, 스타워즈 1, 스타워즈 2, 스타워즈 3, 스타워즈 4, 스타워즈 5, 스타워즈 6과 같이 이름을 지었고, 피터 잭슨은 반지의 제왕을 만들...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">January 28, 2021</div>
+      <div class="post-date">January 29, 2021</div>
       <div class="post-categories">
       in 
         
@@ -290,7 +292,7 @@
 			</a>
 			
 		
-		<span class="page-number">Page 20 of 23</span>
+		<span class="page-number">Page 20 of 24</span>
 		
 		<a class="newer-posts" href="/page21">
       <span class="fa-stack fa-lg">
@@ -330,6 +332,8 @@
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
         

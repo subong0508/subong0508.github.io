@@ -147,6 +147,8 @@
         
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -170,17 +172,83 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/02/27/BOJ-11404.html">백준 Gold4 - 플로이드</a>
+      <a class="post-link" href="/problem-solving/2021/02/28/BOJ-1774.html">백준 Gold4 - 우주신과의 교감</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 11404번 풀이 n = int(input()) m = int(input()) INF = 1e9 graph = [[INF] * (n+1) for i in range(n+1)] for i in range(1, n+1): graph[i][i] = 0 for _ in range(m): start, end, cost = map(int, input().split()) graph[start][end] = min(graph[start][end], cost) for k in range(1, n+1): for i...</p>
+      <p>백준 1774번 풀이 import math n, m = map(int, input().split()) parent = [i for i in range(n+1)] vertex = [(-1, -1)] for i in range(1, n+1): x, y = map(int, input().split()) vertex.append((x, y)) edges = set() for _ in range(m): x, y = map(int, input().split()) x, y = min(x, y),...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 28, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/28/BOJ-1717.html">백준 Gold4 - 집합의 표현</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 1717번 풀이 n, m = map(int, input().split()) parent = [i for i in range(n+1)] def find_parent(x): if parent[x] != x: parent[x] = find_parent(parent[x]) return parent[x] def union(a, b): a = find_parent(a) b = find_parent(b) if a &lt; b: parent[b] = a else: parent[a] = b if __name__=='__main__': import sys...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 28, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/28/BOJ-1197.html">백준 Gold4 - 최소 스패닝 트리</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 1197번 풀이 v, e = map(int, input().split()) parent = [i for i in range(v+1)] edges = [] for _ in range(e): a, b, c = map(int, input().split()) edges.append((a, b, c)) edges.sort(key=lambda x: x[2]) def find_parent(x): if parent[x] != x: parent[x] = find_parent(parent[x]) return parent[x] def union(a, b): a =...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 28, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/data-structure/2021/02/27/ShortestPath.html">Shortest Path with Python</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>오늘은 파이썬을 이용해 weighted graph(가중치가 있는 그래프)에서 최단 경로를 찾는 방법을 알아보겠습니다. 가중치가 없는 그래프라면 BFS를 통해 최단 경로를 손쉽게 구할 수 있습니다. 다익스트라 알고리즘 다익스트라 알고리즘은 한 노드에서 다른 노드로 가는 각각의 최단 경로를 구해주는 알고리즘입니다. 다익스트라는 기본적으로 그리디 알고리즘의 한 종류로, 방문하지 않은 노드 중 가장 가까운 노드를...</p>
     </section>
     <section class="post-meta">
       <div class="post-date">February 27, 2021</div>
       <div class="post-categories">
       in 
         
-        <a href="/category/Problem-Solving">Problem-solving</a>
+        <a href="/category/Data-Structure">Data-structure</a>
         
       
       </div>
@@ -192,79 +260,13 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/02/24/PR-60059.html">프로그래머스 Lv3 - 자물쇠와 열쇠</a>
+      <a class="post-link" href="/problem-solving/2021/02/27/PR-60057.html">프로그래머스 Lv2 - 문자열 압축</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>프로그래머스 60059번 풀이 import numpy as np def rotate(m, key): key_ = [[0] * m for _ in range(m)] for i in range(m): for j in range(m): key_[j][m-i-1] = key[i][j] return key_ def solution(key, lock): answer = False n = len(lock) m = len(key) keys = [] for i in...</p>
+      <p>프로그래머스 60057번 풀이 def compress(s, n): i = 0 lst = [] while i &lt; len(s): lst.append(s[i:i+n]) i += n string = '' prev = lst[0] cnt = 1 for i in range(1, len(lst)): if lst[i] != prev: string += prev if cnt == 1 else (str(cnt)+prev) prev = lst[i]...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">February 24, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/23/BOJ-13460.html">백준 Gold2 - 구슬탈출 2</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 13460번 풀이 n, m = map(int, input().split()) board = [] for _ in range(n): board.append([ch for ch in input()]) # 공들의 위치 balls = [-1] * 2 for i in range(n): for j in range(m): if board[i][j] == 'R': balls[0] = [i, j] elif board[i][j] == 'B': balls[1] =...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 23, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/21/BOJ-19236.html">백준 Gold3 - 청소년 상어</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 19236번 풀이 from copy import deepcopy graph = [[-1] * 4 for _ in range(4)] for i in range(4): tmp = list(map(int, input().split())) for j in range(0, 8, 2): graph[i][j // 2] = [tmp[j], tmp[j+1]] moves = {1: [-1, 0], 2: [-1, -1], 3: [0, -1], 4: [1, -1],...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 21, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/21/BOJ-12100.html">백준 Gold2 - 2048(Easy)</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 12100번 풀이 from copy import deepcopy from collections import deque n = int(input()) board = [] for _ in range(n): board.append(list(map(int, input().split()))) def go_up(board): for j in range(n): col = [board[i][j] for i in range(n) if board[i][j] &gt; 0] i = 0 new_col = deque() while i &lt; len(col)-1:...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 21, 2021</div>
+      <div class="post-date">February 27, 2021</div>
       <div class="post-categories">
       in 
         
@@ -290,7 +292,7 @@
 			</a>
 			
 		
-		<span class="page-number">Page 3 of 23</span>
+		<span class="page-number">Page 3 of 24</span>
 		
 		<a class="newer-posts" href="/page4">
       <span class="fa-stack fa-lg">
@@ -330,6 +332,8 @@
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
         

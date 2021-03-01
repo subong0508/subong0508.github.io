@@ -11,6 +11,8 @@ commtents: true
 
 # 서로소 집합
 
+**시간복잡도: $O(V + M \log_{2}{V})$**
+
 ```python3
 # 원소가 속한 집합 찾기
 def find_parent(parent, x):
@@ -42,7 +44,7 @@ for i in range(num_edges):
 
 # 크루스칼 알고리즘: Minimum Spanning Tree
 
-**시간 복잡도: $O(E \log {E})$**
+**시간복잡도: $O(E \log {E})$**
 
 ```python3
 res = 0
@@ -57,7 +59,7 @@ for e in edges:
 
 # 위상 정렬
 
-**시간 복잡도: $O(V + E)$**
+**시간복잡도: $O(V + E)$**
 
 ```python3
 def topological_sort():

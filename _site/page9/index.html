@@ -147,6 +147,8 @@
         
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -170,13 +172,13 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/02/13/BOJ-1439.html">백준 Silver5 - 문자열 뒤집기</a>
+      <a class="post-link" href="/problem-solving/2021/02/14/BOJ-2667.html">백준 Silver1 - 단지번호붙이기</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 1439번 풀이 s = input() n = len(s) d = {'0': 0, '1': 0} i = 0 while i &lt; n: j = i + 1 while j &lt; n and s[j] == s[i]: j += 1 d[s[i]] += 1 i = j print(min(d['0'], d['1'])) 연속된 0이 몇 번...</p>
+      <p>백준 2667번 풀이 from collections import deque n = int(input()) graph = [] for _ in range(n): tmp = [int(x) for x in input()] graph.append(tmp) total_cnt = 0 res = [] dx = [-1, 1, 0, 0] dy = [0, 0, -1, 1] def bfs(x, y, graph): global total_cnt, res...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">February 13, 2021</div>
+      <div class="post-date">February 14, 2021</div>
       <div class="post-categories">
       in 
         
@@ -192,13 +194,13 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/02/13/BOJ-1260.html">백준 Silver2 - DFS와 BFS</a>
+      <a class="post-link" href="/problem-solving/2021/02/14/BOJ-2606.html">백준 Silver3 - 바이러스</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 1260번 풀이 from collections import deque n, m, v = map(int, input().split()) graph = [[0] * (n+1) for _ in range(n+1)] for _ in range(m): i, j = map(int, input().split()) graph[i][j] = 1 graph[j][i] = 1 visited1 = [False] * (n+1) visited2 = [False] * (n+1) stack1 = []...</p>
+      <p>백준 2606번 풀이 n = int(input()) m = int(input()) graph = [[] for _ in range(n+1)] for _ in range(m): i, j = map(int, input().split()) graph[i].append(j) graph[j].append(i) visited = [False] * (n+1) cnt = 0 def dfs(i, visited): global cnt visited[i] = True cnt += 1 for j in graph[i]:...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">February 13, 2021</div>
+      <div class="post-date">February 14, 2021</div>
       <div class="post-categories">
       in 
         
@@ -214,13 +216,13 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/02/11/PR-42884.html">프로그래머스 Lv3 - 단속카메라</a>
+      <a class="post-link" href="/problem-solving/2021/02/14/BOJ-2589.html">백준 Gold5 - 보물섬</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>프로그래머스 42884번 풀이 def solution(routes): answer = 0 routes.sort(key=lambda x: x[0]) routes.sort(key=lambda x: x[1]) cameras = [] for r in routes: s, e = r done = False # 거꾸로 보는 것이 더 빠름 for c in cameras[::-1]: if s &lt;= c &lt;= e: done = True break if not...</p>
+      <p>백준 2589번 풀이 from collections import deque n, m = map(int, input().split()) graph = [] for _ in range(n): tmp = [1 if x == 'L' else 0 for x in input()] graph.append(tmp) starts = [] for i in range(n): for j in range(m): # 출발가능한 곳들 if graph[i][j] ==...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">February 11, 2021</div>
+      <div class="post-date">February 14, 2021</div>
       <div class="post-categories">
       in 
         
@@ -236,13 +238,13 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/02/11/BOJ-1209.html">백준 Gold4 - 순회강연</a>
+      <a class="post-link" href="/problem-solving/2021/02/14/BOJ-2206.html">백준 Gold4 - 벽 부수고 이동하기</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 2109번 풀이 n = int(input()) arr = [-1] * n for i in range(n): p, d = map(int, input().split()) arr[i] = (p, d) # 강연비순으로 정렬 arr.sort(key=lambda x: x[0]) filled = [False] * 10001 res = 0 while arr: p, d = arr.pop() # 빈 날 있는지 찾아보기 while...</p>
+      <p>백준 2206번 풀이 from collections import deque n, m = map(int, input().split()) graph = [] for _ in range(n): tmp = [int(x) for x in input()] graph.append(tmp) dx = [-1, 1, 0, 0] dy = [0, 0, -1, 1] def bfs(x, y): crush = False cnt = 1 q =...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">February 11, 2021</div>
+      <div class="post-date">February 14, 2021</div>
       <div class="post-categories">
       in 
         
@@ -258,13 +260,13 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/02/11/BOJ-11497.html">백준 Silver1 - 통나무 건너뛰기</a>
+      <a class="post-link" href="/problem-solving/2021/02/14/BOJ-1697.html">백준 Silver1 - 숨바꼭질, Gold5 - 숨바꼭질 3</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 11497번 풀이 t = int(input()) def solution(n, arr): ans = [-1] * n arr.sort(reverse=True) l, r = 0, n-1 i = 0 while arr: x = arr.pop() if i % 2 == 0: ans[l] = x l += 1 else: ans[r] = x r -= 1 i += 1...</p>
+      <p>백준 1697번 풀이 from collections import deque n, k = map(int, input().split()) def bfs(n, k): cnt = 0 q = deque([(n, cnt)]) visited = set() while q: now, cnt = q.popleft() if now == k: return cnt if 0 &lt;= now-1 and (now-1) not in visited: visited.add(now-1) q.append((now-1, cnt+1)) if...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">February 11, 2021</div>
+      <div class="post-date">February 14, 2021</div>
       <div class="post-categories">
       in 
         
@@ -290,7 +292,7 @@
 			</a>
 			
 		
-		<span class="page-number">Page 9 of 23</span>
+		<span class="page-number">Page 9 of 24</span>
 		
 		<a class="newer-posts" href="/page10">
       <span class="fa-stack fa-lg">
@@ -330,6 +332,8 @@
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
         

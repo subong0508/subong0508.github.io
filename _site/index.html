@@ -147,6 +147,8 @@
         
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -170,35 +172,13 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/data-structure/2021/02/28/GraphTheory.html">Graph Theory with Python</a>
+      <a class="post-link" href="/problem-solving/2021/03/01/PR-42861.html">프로그래머스 Lv3 - 섬 연결하기</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>서로소 집합 # 원소가 속한 집합 찾기 def find_parent(parent, x): if parent[x] != x: parent[x] = find_parent(parent, parent[x]) return parent[x] # 두 원소가 속한 집합 merge def union(parent, a, b): a = find_parent(parent, a) b = find_parent(parent, b) if a &lt; b: parent[b] = a else: parent[a] = b 사이클...</p>
+      <p>프로그래머스 42861번 풀이 def find_parent(parent, x): if parent[x] != x: parent[x] = find_parent(parent, parent[x]) return parent[x] def union(parent, a, b): a = find_parent(parent, a) b = find_parent(parent, b) parent[a] = b def solution(n, costs): answer = 0 parent = [i for i in range(n)] costs.sort(key=lambda x: x[2]) for a, b,...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">February 28, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Data-Structure">Data-structure</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/28/BOJ-20040.html">백준 Gold4 - 사이클 게임</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 20040번 풀이 n, m = map(int, input().split()) parent = [i for i in range(n)] def find_parent(x): if parent[x] != x: parent[x] = find_parent(parent[x]) return parent[x] def union(a, b): a = find_parent(a) b = find_parent(b) if a &lt; b: parent[b] = a else: parent[a] = b res = 0 for...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 28, 2021</div>
+      <div class="post-date">March 1, 2021</div>
       <div class="post-categories">
       in 
         
@@ -214,13 +194,13 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/02/28/BOJ-1774.html">백준 Gold4 - 우주신과의 교감</a>
+      <a class="post-link" href="/problem-solving/2021/03/01/BOJ-4195.html">백준 Gold2 - 친구 네트워크</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 1774번 풀이 import math n, m = map(int, input().split()) parent = [i for i in range(n+1)] vertex = [(-1, -1)] for i in range(1, n+1): x, y = map(int, input().split()) vertex.append((x, y)) edges = set() for _ in range(m): x, y = map(int, input().split()) x, y = min(x, y),...</p>
+      <p>백준 4195번 풀이 t = int(input()) def solution(f): # 이름: 그룹 network = {} # 그룹: 인원수 network_inv = {} res = [] for i in range(f): f1, f2 = input().split() if f1 not in network and f2 not in network: # 새로운 그룹을 만든다 network[f1] = network[f2] = i...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">February 28, 2021</div>
+      <div class="post-date">March 1, 2021</div>
       <div class="post-categories">
       in 
         
@@ -236,13 +216,13 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/02/28/BOJ-1717.html">백준 Gold4 - 집합의 표현</a>
+      <a class="post-link" href="/problem-solving/2021/03/01/BOJ-3665.html">백준 Gold1 - 최종 순위</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 1717번 풀이 n, m = map(int, input().split()) parent = [i for i in range(n+1)] def find_parent(x): if parent[x] != x: parent[x] = find_parent(parent[x]) return parent[x] def union(a, b): a = find_parent(a) b = find_parent(b) if a &lt; b: parent[b] = a else: parent[a] = b if __name__=='__main__': import sys...</p>
+      <p>백준 3665번 풀이 from collections import deque t = int(input()) def solution(n, m, ranks, changes): graph = [[0] * (n+1) for _ in range(n+1)] indegrees = [0] * (n+1) for i in range(n): win = ranks[i] for j in range(i+1, n): fail = ranks[j] graph[win][fail] = 1 indegrees[fail] += 1...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">February 28, 2021</div>
+      <div class="post-date">March 1, 2021</div>
       <div class="post-categories">
       in 
         
@@ -258,13 +238,35 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/02/28/BOJ-1197.html">백준 Gold4 - 최소 스패닝 트리</a>
+      <a class="post-link" href="/problem-solving/2021/03/01/BOJ-2887.html">백준 Gold2 - 행성 터널</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 1197번 풀이 v, e = map(int, input().split()) parent = [i for i in range(v+1)] edges = [] for _ in range(e): a, b, c = map(int, input().split()) edges.append((a, b, c)) edges.sort(key=lambda x: x[2]) def find_parent(x): if parent[x] != x: parent[x] = find_parent(parent[x]) return parent[x] def union(a, b): a =...</p>
+      <p>백준 2887번 풀이 n = int(input()) coords = [] parent = [i for i in range(n)] for i in range(n): x, y, z = map(int, input().split()) coords.append((i, x, y, z)) INF = int(1e9) edges = {} # 가까운 좌표끼리 거리를 계산한다. for k in range(1, 4): coords_ = sorted(coords, key=lambda...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">February 28, 2021</div>
+      <div class="post-date">March 1, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/03/01/BOJ-2146.html">백준 Gold3 - 다리 만들기</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 2146번 풀이 from collections import deque n = int(input()) graph = [] for _ in range(n): tmp = map(int, input().split()) graph.append(list(tmp)) dx = [-1, 1, 0, 0] dy = [0, 0, -1, 1] def bfs(x, y, val): graph[x][y] = val q = deque() q.appendleft((x, y)) res = [(x, y)]...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 1, 2021</div>
       <div class="post-categories">
       in 
         
@@ -286,7 +288,7 @@
       <i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
     </span>
 		
-		<span class="page-number">Page 1 of 23</span>
+		<span class="page-number">Page 1 of 24</span>
 		
 		<a class="newer-posts" href="/page2">
       <span class="fa-stack fa-lg">
@@ -326,6 +328,8 @@
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
         
