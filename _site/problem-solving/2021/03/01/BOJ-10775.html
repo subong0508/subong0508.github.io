@@ -171,6 +171,8 @@
         
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -213,12 +215,15 @@
 
 <p><strong>풀이</strong></p>
 
-<pre><code class="language-python3">G = int(input())
+<pre><code class="language-python3">import sys
+
+sys.setrecursionlimit(100000)
+
+G = int(input())
 P = int(input())
 
 
 def dock(g, d):
-    # 더 이상 도킹할 수 없는 경우
     if g &lt;= 0:
         return -1
     elif g not in d:
@@ -350,6 +355,8 @@ print(cnt)
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
         

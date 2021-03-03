@@ -6,9 +6,148 @@
 </description>
     <link>http://subong0508.github.io/</link>
     <atom:link href="http://subong0508.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 02 Mar 2021 00:04:26 +0900</pubDate>
-    <lastBuildDate>Tue, 02 Mar 2021 00:04:26 +0900</lastBuildDate>
+    <pubDate>Wed, 03 Mar 2021 12:24:00 +0900</pubDate>
+    <lastBuildDate>Wed, 03 Mar 2021 12:24:00 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>백준 Gold5 - 두 용액</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem3270&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/3270&quot;&gt;백준 3270번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
+arr = list(map(int, input().split()))
+arr.sort()
+
+i, j = 0, n-1
+min_diff = int(1e10)
+res = [arr[i], arr[j]]
+while i &amp;lt; j:
+    if abs(arr[i]+arr[j]) &amp;lt; min_diff:
+        min_diff = abs(arr[i]+arr[j])
+        res = [arr[i], arr[j]]
+    if arr[i]+arr[j] &amp;gt; 0:
+        j -= 1
+    else:
+        i += 1
+
+print(*res)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Tue, 02 Mar 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/03/02/BOJ-3270.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/02/BOJ-3270.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Gold5 - 수 고르기</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem2230&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/2230&quot;&gt;백준 2230번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n, m = map(int, input().split())
+arr = []
+for _ in range(n):
+    arr.append(int(input()))
+arr.sort()
+
+i = j = 0
+INF = int(1e10)
+res = INF
+
+while i &amp;lt; n:
+    while j &amp;lt; n and arr[j]-arr[i] &amp;lt; m:
+        j += 1
+    if j &amp;gt;= n:
+        break
+    res = min(res, arr[j]-arr[i])
+    i += 1
+
+print(res)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Tue, 02 Mar 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/03/02/BOJ-2230.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/02/BOJ-2230.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Silver3 - 구간 합 구하기 4</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem11659&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/11659&quot;&gt;백준 11659번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n, m = map(int, input().split())
+arr = [0] + list(map(int, input().split()))
+
+total = 0
+arr_sum = [0] * (n+1)
+for i in range(1, n+1):
+    total += arr[i]
+    arr_sum[i] = total
+
+ops = []
+for _ in range(m):
+    i, j = map(int, input().split())
+    ops.append((i, j))
+
+res = []
+for idx in range(m):
+    i, j = ops[idx]
+    res.append(arr_sum[j]-arr_sum[i-1])
+
+print(*res, sep='\n')
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;1번째 부터 i번째 원소까지의 합을 저장하는 수열을 미리 만들어놓고 문제를 풀면 된다.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 02 Mar 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/03/02/BOJ-11659.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/02/BOJ-11659.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
     
       <item>
         <title>프로그래머스 Lv3 - 섬 연결하기</title>
@@ -478,211 +617,6 @@ print(sum(res)-max(res))
         <pubDate>Mon, 01 Mar 2021 00:00:00 +0900</pubDate>
         <link>http://subong0508.github.io/problem-solving/2021/03/01/BOJ-1647.html</link>
         <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/01/BOJ-1647.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Gold1 - 공항</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem10775&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/10775&quot;&gt;백준 10775번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;G = int(input())
-P = int(input())
-
-
-def dock(g, d):
-    # 더 이상 도킹할 수 없는 경우
-    if g &amp;lt;= 0:
-        return -1
-    elif g not in d:
-        d[g] = g-1
-        return g
-    else:
-        res = dock(d[g], d)
-        if res != -1:
-            d[g] = res-1
-        return res
-
-
-cnt = 0
-d = {}
-arr = []
-for _ in range(P):
-    g = int(input())
-    arr.append(g)
-
-for g in arr:
-    if dock(g, d) != -1:
-        cnt += 1
-    else:
-        break
-
-print(cnt)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;union-find&lt;/strong&gt; 유형의 응용문제, recursion limit을 늘려줘야 &lt;code class=&quot;highlighter-rouge&quot;&gt;RecursionError&lt;/code&gt;가 나지 않는다.&lt;/p&gt;
-</description>
-        <pubDate>Mon, 01 Mar 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/03/01/BOJ-10775.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/01/BOJ-10775.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>Graph Theory with Python</title>
-        <description>&lt;h1 id=&quot;section&quot;&gt;서로소 집합&lt;/h1&gt;
-
-&lt;p&gt;&lt;strong&gt;시간복잡도: $O(V + M \log_{2}{V})$&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;# 원소가 속한 집합 찾기
-def find_parent(parent, x):
-    if parent[x] != x:
-        parent[x] = find_parent(parent, parent[x])
-    return parent[x]
-
-# 두 원소가 속한 집합 merge
-def union(parent, a, b):
-    a = find_parent(parent, a)
-    b = find_parent(parent, b)
-    if a &amp;lt; b:
-        parent[b] = a
-    else:
-        parent[a] = b
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;사이클 판별&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;for i in range(num_edges):
-    a, b = map(int, input().split())
-    if find_parent(parent, a) == find_parent(parent, b):
-        cycle = True
-        print(&quot;Cycle&quot;)
-    else:
-        union(parent, a, b)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;minimum-spanning-tree&quot;&gt;크루스칼 알고리즘: Minimum Spanning Tree&lt;/h1&gt;
-
-&lt;p&gt;&lt;strong&gt;시간복잡도: $O(E \log {E})$&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;res = 0
-edges.sort()
-for e in edges:
-    cost, a, b = e
-    # not cycle
-    if find_parent(parent, a) != find_parent(parent, b):
-        union(parent, a, b)
-        res += cost
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;section-1&quot;&gt;위상 정렬&lt;/h1&gt;
-
-&lt;p&gt;&lt;strong&gt;시간복잡도: $O(V + E)$&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;def topological_sort():
-    result = []
-    q = deque()
-
-    # 진입차수가 0인 노드들 큐에 삽입
-    for i in range(1, v+1):
-        if indegree[i] == 0:
-            q.append(i)
-
-    while q:
-        now = q.popleft()
-        result.append(now)
-        for i in graph[now]:
-            indegree[i] -= 1
-            # 진입차수가 0이 된다면
-            if indegree[i] == 0:
-                q.append(i)
-    
-    return result
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Sun, 28 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/data-structure/2021/02/28/GraphTheory.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/data-structure/2021/02/28/GraphTheory.html</guid>
-        
-        <category>python</category>
-        
-        <category>data-structure</category>
-        
-        <category>graph</category>
-        
-        <category>shortest-path</category>
-        
-        
-        <category>Data-Structure</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Gold4 - 사이클 게임</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem20040&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/20040&quot;&gt;백준 20040번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n, m = map(int, input().split())
-parent = [i for i in range(n)]
-
-
-def find_parent(x):
-    if parent[x] != x:
-        parent[x] = find_parent(parent[x])
-    return parent[x]
-
-def union(a, b):
-    a = find_parent(a)
-    b = find_parent(b)
-    if a &amp;lt; b:
-        parent[b] = a 
-    else:
-        parent[a] = b
-
-
-res = 0
-for i in range(1, m+1):
-    a, b = map(int, input().split())
-    if find_parent(a) == find_parent(b):
-        if res == 0:
-            res = i
-    else:
-        union(a, b)
-
-print(res)
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Sun, 28 Feb 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/02/28/BOJ-20040.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/02/28/BOJ-20040.html</guid>
         
         <category>python</category>
         
