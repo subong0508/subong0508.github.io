@@ -174,6 +174,72 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/02/13/BOJ-1260.html">백준 Silver2 - DFS와 BFS</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 1260번 풀이 from collections import deque n, m, v = map(int, input().split()) graph = [[0] * (n+1) for _ in range(n+1)] for _ in range(m): i, j = map(int, input().split()) graph[i][j] = 1 graph[j][i] = 1 visited1 = [False] * (n+1) visited2 = [False] * (n+1) stack1 = []...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 13, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/11/PR-42884.html">프로그래머스 Lv3 - 단속카메라</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>프로그래머스 42884번 풀이 def solution(routes): answer = 0 routes.sort(key=lambda x: x[0]) routes.sort(key=lambda x: x[1]) cameras = [] for r in routes: s, e = r done = False # 거꾸로 보는 것이 더 빠름 for c in cameras[::-1]: if s &lt;= c &lt;= e: done = True break if not...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 11, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/11/BOJ-1209.html">백준 Gold4 - 순회강연</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 2109번 풀이 n = int(input()) arr = [-1] * n for i in range(n): p, d = map(int, input().split()) arr[i] = (p, d) # 강연비순으로 정렬 arr.sort(key=lambda x: x[0]) filled = [False] * 10001 res = 0 while arr: p, d = arr.pop() # 빈 날 있는지 찾아보기 while...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 11, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/02/11/BOJ-11497.html">백준 Silver1 - 통나무 건너뛰기</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -203,109 +269,6 @@
     </section>
     <section class="post-meta">
       <div class="post-date">February 11, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/09/BOJ-1449.html">백준 Silver3 - 수리공 항승</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 1449번
-
-풀이
-
-n, l = map(int, input().split())
-arr = list(map(int, input().split()))
-arr.sort()
-
-cnt = 1
-start = arr[0]-0.5
-for i in range(1, n):
-    end = arr[i]+0.5
-    # 돌려막기 가능
-    if end &lt;= start+l:
-        continue
-    else: # 새로 테이프를 붙여야 한다.
-        cnt += 1
-        start = arr[i]-0.5
-
-print(cnt)
-
-
-</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 9, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/09/BOJ-1339.html">백준 Gold4 - 단어 수학</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 1339번 풀이 n = int(input()) d = {} for _ in range(n): word = input() for i in range(len(word)-1, -1, -1): d[word[i]] = d.get(word[i], 0) + 10 ** (len(word)-i-1) d = sorted(d.items(), key=lambda x: -x[1]) total = 0 num = 9 for ch, cnt in d: total += num...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 9, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/09/BOJ-11399.html">백준 Silver3 - ATM</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 11399번
-
-풀이
-
-n = int(input())
-atm = list(map(int, input().split()))
-atm.sort()
-
-for i in range(1, n):
-    atm[i] += atm[i-1]
-    
-print(sum(atm))
-
-
-그냥 정렬해서 풀면 되는 문제.
-</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 9, 2021</div>
       <div class="post-categories">
       in 
         

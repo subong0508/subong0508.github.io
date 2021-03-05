@@ -174,6 +174,109 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/02/09/BOJ-1449.html">백준 Silver3 - 수리공 항승</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 1449번
+
+풀이
+
+n, l = map(int, input().split())
+arr = list(map(int, input().split()))
+arr.sort()
+
+cnt = 1
+start = arr[0]-0.5
+for i in range(1, n):
+    end = arr[i]+0.5
+    # 돌려막기 가능
+    if end &lt;= start+l:
+        continue
+    else: # 새로 테이프를 붙여야 한다.
+        cnt += 1
+        start = arr[i]-0.5
+
+print(cnt)
+
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 9, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/09/BOJ-1339.html">백준 Gold4 - 단어 수학</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 1339번 풀이 n = int(input()) d = {} for _ in range(n): word = input() for i in range(len(word)-1, -1, -1): d[word[i]] = d.get(word[i], 0) + 10 ** (len(word)-i-1) d = sorted(d.items(), key=lambda x: -x[1]) total = 0 num = 9 for ch, cnt in d: total += num...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 9, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/09/BOJ-11399.html">백준 Silver3 - ATM</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 11399번
+
+풀이
+
+n = int(input())
+atm = list(map(int, input().split()))
+atm.sort()
+
+for i in range(1, n):
+    atm[i] += atm[i-1]
+    
+print(sum(atm))
+
+
+그냥 정렬해서 풀면 되는 문제.
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 9, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/02/09/BOJ-11047.html">백준 Silver1 - 동전 0, 동전 2</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -207,87 +310,6 @@
       in 
         
         <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/08/PR-42578.html">프로그래머스 Lv2 - 위장</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>프로그래머스 42578번
-
-풀이
-
-def solution(clothes):
-    answer = 1
-    d = {}
-    for _, y in clothes:
-        # 아무것도 안입는 수 포함
-        d[y] = d.get(y, 1) + 1
-    for k in d:
-        answer *= d[k]
-    answer -= 1
-    return answer
-
-</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 8, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/06/PR-42888.html">프로그래머스 Lv2 - 오픈채팅방</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>프로그래머스 42888번 풀이 def solution(record): msgs = [] user_d = {} for r in record: lst = r.split() if len(lst) == 2: continue action, uid, name = lst user_d[uid] = name for r in record: lst = r.split() if len(lst) == 2: _, uid = lst msg = user_d[uid] +...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 6, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/data-structure/2021/02/06/Heap.html">Heap with Python</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>힙이란 우선순위큐(Priority Queue)를 이진 트리로 구현한 자료구조 입니다. 힙의 삽입, 삭제 연산은 $O(\log n)$의 시간복잡도를 가집니다. 힙은 파이썬 내장모듈인 heapq를 이용해서 손쉽게 구현할 수 있습니다. import heapq arr = [4, 5, 6, 7, 9, 8, 3, 1, 2] heapq.heapify(arr) print(heapq.nsmallest(3, arr)) # 1 2 3 print(heapq.nlargest(3, arr)) # 7 8...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 6, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Data-Structure">Data-structure</a>
         
       
       </div>
