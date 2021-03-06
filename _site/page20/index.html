@@ -151,6 +151,8 @@
         
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -171,6 +173,72 @@
 
 <div class="wrapper">
 <ul class="post-list">
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/01/31/BOJ-16987.html">백준 Silver2 - 계란으로 계란치기</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 16987번 풀이 n = int(input()) eggs = [] for _ in range(n): s, w = map(int, input().split()) eggs.append([s, w]) cnt = 0 def crush(l, cur, eggs): global cnt # 가장 오른쪽 계란 if l == n: cnt = max(cnt, cur) return if eggs[l][0] &gt; 0: all_broken = True for...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">January 31, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/01/31/BOJ-14888.html">백준 Silver1 - 연산자 끼워넣기</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 14888번 풀이 n = int(input()) arr = list(map(int, input().split())) ops = list(map(int, input().split())) min_val = int(1e9) max_val = -int(1e9) def solution(idx, ops, val): global min_val, max_val if idx == n-1: min_val = min(min_val, val) max_val = max(max_val, val) return for i in range(4): if ops[i] &lt;= 0: continue ops[i]...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">January 31, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/python/2021/01/30/Itertools.html">Itertools 정리</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>내장 라이브러리인 itertools를 이용해서 조합, 순열, 중복순열, Cartesian Product 등을 손쉽게 구현할 수 있다. from itertools import combinations, permutations, combinations_with_replacement, product data = '123' l = combinations(data, 2) for e in l: print(*e) # 12 13 23 l = permutations(data, 2) for e in l: print(*e) # 12 13 21...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">January 30, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Python">Python</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
   
   <li>
     <h2>
@@ -213,72 +281,6 @@
     </section>
   </li>
   
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/01/30/BOJ-14889.html">백준 Silver3 - 스타트와 링크</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 14889번 from itertools import combinations n = int(input()) arr = [[0] * (n+1)] for _ in range(n): arr.append([0] + list(map(int, input().split()))) whole = set(range(1, n+1)) comb = list(combinations(whole, n//2)) # 중복되는 경우 제외 comb = comb[:len(comb)//2] res = int(1e9) for start_ in comb: start = set(start_) link = whole...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">January 30, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/01/29/PR-42839.html">프로그래머스 Lv2 - 소수 찾기</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>프로그래머스 42839번 풀이 from itertools import permutations def is_prime(n): if n &lt;= 1: return False i = 2 while i*i &lt;= n: if n % i == 0: return False i += 1 return True def solution(numbers): s = set() for i in range(1, len(numbers)+1): comb = permutations(numbers, i) for...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">January 29, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/01/29/PR-42842.html">프로그래머스 Lv2 - 카펫</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>프로그래머스 42842번 풀이 def is_right(n, m , brown, yellow): # n: 세로, m: 가로 brown_ = 2*m+2*(n-2) yellow_ = n*m-brown_ return brown_ == brown and yellow_ == yellow def solution(brown, yellow): # a: 세로, b: 가로 total = brown+yellow arr = [] answer = [] # arr: total의 약수 페어를...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">January 29, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
   
 </ul>
 
@@ -294,7 +296,7 @@
 			</a>
 			
 		
-		<span class="page-number">Page 20 of 25</span>
+		<span class="page-number">Page 20 of 26</span>
 		
 		<a class="newer-posts" href="/page21">
       <span class="fa-stack fa-lg">
@@ -334,6 +336,8 @@
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
         

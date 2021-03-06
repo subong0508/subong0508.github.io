@@ -6,9 +6,178 @@
 </description>
     <link>http://subong0508.github.io/</link>
     <atom:link href="http://subong0508.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 05 Mar 2021 16:27:55 +0900</pubDate>
-    <lastBuildDate>Fri, 05 Mar 2021 16:27:55 +0900</lastBuildDate>
+    <pubDate>Sat, 06 Mar 2021 21:43:49 +0900</pubDate>
+    <lastBuildDate>Sat, 06 Mar 2021 21:43:49 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>백준 Gold4 - 세 용액</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem2473&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/2473&quot;&gt;백준 2473번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
+arr = list(map(int, input().split()))
+arr.sort()
+
+arr_minus = [x for x in arr if x &amp;lt;= 0]
+# res1: + + +
+if len(arr_minus) &amp;gt;= 3:
+    res1 = abs(arr_minus[-3]+arr_minus[-2]+arr_minus[-1])
+else:
+    res1 = int(1e10)
+arr_plus = [x for x in arr if x &amp;gt;= 0]
+# res2: - - -
+if len(arr_plus) &amp;gt;= 3:
+    res2 = abs(arr_plus[0]+arr_plus[1]+arr_plus[2])
+else:
+    res2 = int(1e10)
+
+# res3: - - +
+res3 = int(1e10)
+arr_minus = []
+arr_plus = [x for x in arr if x &amp;gt; 0]
+for i in range(n):
+    for j in range(i+1, n):
+        if arr[i] &amp;lt;= 0 and arr[j] &amp;lt;= 0:
+            arr_minus.append(arr[i]+arr[j])
+arr_minus.sort()
+i, j = 0, len(arr_plus)-1
+while i &amp;lt; len(arr_minus) and j &amp;gt;= 0:
+    tmp = arr_minus[i]+arr_plus[j]
+    if abs(tmp) &amp;lt; res3:
+        res3 = abs(tmp)
+        a, b = arr_minus[i], arr_plus[j]
+    if tmp &amp;gt; 0:
+        j -= 1
+    else:
+        i += 1
+
+# res4: + + -
+res4 = int(1e10)
+arr_minus = [x for x in arr if x &amp;lt; 0]
+arr_plus = []
+for i in range(n):
+    for j in range(i+1, n):
+        if arr[i] &amp;gt;= 0 and arr[j] &amp;gt;= 0:
+            arr_plus.append(arr[i]+arr[j])
+arr_plus.sort()
+i, j = 0, len(arr_plus)-1
+while i &amp;lt; len(arr_minus) and j &amp;gt;= 0:
+    tmp = arr_minus[i]+arr_plus[j]
+    if abs(tmp) &amp;lt; res4:
+        res4 = abs(tmp)
+        x, y = arr_minus[i], arr_plus[j]
+    if tmp &amp;gt; 0:
+        j -= 1
+    else:
+        i += 1
+
+min_val = min([res1, res2, res3, res4])
+if min_val == res1:
+    arr_minus = [x for x in arr if x &amp;lt;= 0]
+    print(arr_minus[-3], arr_minus[-2], arr_minus[-1])
+elif min_val == res2:
+    arr_plus = [x for x in arr if x &amp;gt;= 0]
+    print(arr_plus[0], arr_plus[1], arr_plus[2])
+elif min_val == res3:
+    done = False
+    idx1 = idx2 = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            if not done and arr[i] &amp;lt;= 0 and arr[j] &amp;lt;= 0 and arr[i]+arr[j] == a:
+                done = True
+                idx1, idx2 = i, j
+                break
+    print(arr[idx1], arr[idx2], b)
+else:
+    done = False
+    idx1 = idx2 = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            if not done and arr[i] &amp;gt;= 0 and arr[j] &amp;gt;= 0 and arr[i]+arr[j] == y:
+                done = True
+                idx1, idx2 = i, j
+                break
+    print(x, arr[idx1], arr[idx2])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;케이스를 4개로 나누어서 풀었다. 코드가 엄청 길어짐..&lt;/p&gt;
+</description>
+        <pubDate>Sat, 06 Mar 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/03/06/BOJ-2473.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/06/BOJ-2473.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Gold3 - 소수의 연속합</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem1644&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1644&quot;&gt;백준 1644번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
+is_prime = [True for _ in range(n+1)]
+is_prime[1] = False
+i = 2
+while i*i &amp;lt;= n:
+    if is_prime[i]:
+        j = 2
+        while i*j &amp;lt;= n:
+            is_prime[i*j] = False
+            j += 1
+    i += 1
+
+nums = [i for i in range(1, n+1) if is_prime[i]]
+m = len(nums)
+cnt = 0
+total = 0
+i = j = 0
+while i &amp;lt; m:
+    while j &amp;lt; m and total &amp;lt; n:
+        total += nums[j]
+        j += 1
+    if total == n:
+        cnt += 1
+    total -= nums[i]
+    i += 1
+
+print(cnt)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;에라토스테네스의 체 알고리즘 + 투 포인터를 적용하면 풀 수 있는 문제.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 06 Mar 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/03/06/BOJ-1644.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/06/BOJ-1644.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
     
       <item>
         <title>프로그래머스 Lv3 - 보석 쇼핑</title>
@@ -155,6 +324,55 @@ else:
         <pubDate>Fri, 05 Mar 2021 00:00:00 +0900</pubDate>
         <link>http://subong0508.github.io/problem-solving/2021/03/05/BOJ-1806.html</link>
         <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/05/BOJ-1806.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Silver1 - 귀여운 라이언</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem15565&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/15565&quot;&gt;백준 15565번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n, k = map(int, input().split())
+arr = list(map(int, input().split()))
+
+i = j = 0
+cnt = 0
+INF = int(1e9)
+res = INF
+while i &amp;lt; n:
+    while j &amp;lt; n and cnt &amp;lt; k:
+        if arr[j] == 1:
+            cnt += 1
+        j += 1
+    if cnt &amp;gt;= k:
+        res = min(res, j-i)
+    if arr[i] == 1:
+        cnt -= 1
+    i += 1
+
+if res == INF:
+    print(-1)
+else:
+    print(res)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Fri, 05 Mar 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/03/05/BOJ-15565.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/05/BOJ-15565.html</guid>
         
         <category>python</category>
         
@@ -342,238 +560,6 @@ def solution(n, costs):
         <pubDate>Mon, 01 Mar 2021 00:00:00 +0900</pubDate>
         <link>http://subong0508.github.io/problem-solving/2021/03/01/PR-42861.html</link>
         <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/01/PR-42861.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Gold2 - 친구 네트워크</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem4195&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/4195&quot;&gt;백준 4195번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;t = int(input())
-
-
-def solution(f):
-    # 이름: 그룹
-    network = {}
-    # 그룹: 인원수
-    network_inv = {}
-    res = []
-    for i in range(f):
-        f1, f2 = input().split()
-        if f1 not in network and f2 not in network: # 새로운 그룹을 만든다
-            network[f1] = network[f2] = i
-            network_inv[i] = 2
-            res.append(2)
-        elif f1 in network and f2 not in network: # f2를 f1 무리에 넣기
-            network[f2] = network[f1]
-            network_inv[network[f1]] += 1
-            res.append(network_inv[network[f1]])
-        elif f2 in network and f1 not in network: # f1을 f2 무리에 넣기
-            network[f1] = network[f2]
-            network_inv[network[f2]] += 1
-            res.append(network_inv[network[f2]])
-        elif f1 in network and f2 in network and network[f1] != network[f2]:
-            # union
-            network_inv[network[f1]] += network_inv[network[f2]]
-            network_inv[network[f2]] = 0
-            res.append(network_inv[network[f1]])
-            prev = network[f2]
-            for k, v in network.items():
-                if v == prev:
-                    network[k] = network[f1]
-        elif f1 in network and f2 in network and network[f1] == network[f2]:
-            res.append(network_inv[network[f1]])
-    return res
-
-
-res = []
-for _ in range(t):
-    f = int(input())
-    tmp = solution(f)
-    res.append(tmp)
-
-for tmp in res:
-    print(*tmp, sep='\n')
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Mon, 01 Mar 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/03/01/BOJ-4195.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/01/BOJ-4195.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Gold1 - 최종 순위</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem3665&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/3665&quot;&gt;백준 3665번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from collections import deque
-
-t = int(input())
-
-def solution(n, m, ranks, changes):
-    graph = [[0] * (n+1) for _ in range(n+1)]
-    indegrees = [0] * (n+1)
-    for i in range(n):
-        win = ranks[i]
-        for j in range(i+1, n):
-            fail = ranks[j]
-            graph[win][fail] = 1
-            indegrees[fail] += 1
-    
-    for i in range(m):
-        a, b = changes[i]
-        # a -&amp;gt; b =&amp;gt; b -&amp;gt; a
-        if graph[a][b] == 1:
-            graph[b][a] = 1
-            graph[a][b] = 0
-            indegrees[a] += 1
-            indegrees[b] -= 1
-        # b -&amp;gt; a =&amp;gt; a -&amp;gt; b
-        else:
-            graph[a][b] = 1
-            graph[b][a] = 0
-            indegrees[b] += 1
-            indegrees[a] -= 1
-
-    q = deque()
-    for i in range(1, n+1):
-        if indegrees[i] == 0:
-            q.append(i)
-
-    res = []
-    for _ in range(n):
-        if len(q) == 0:
-            return &quot;IMPOSSIBLE&quot;
-        if len(q) &amp;gt; 1:
-            return &quot;?&quot;
-        now = q.popleft()
-        res.append(str(now))
-        for i in range(1, n+1):
-            if graph[now][i] == 1:
-                indegrees[i] -= 1
-                if indegrees[i] == 0:
-                    q.append(i)
-    return ' '.join(res)
-
-
-res = []
-for i in range(t):
-    n = int(input())
-    ranks = list(map(int, input().split()))
-    m = int(input())
-    changes = []
-    for j in range(m):
-        a, b = map(int, input().split())
-        changes.append((a, b))
-    res.append(solution(n, m, ranks, changes))
-
-for r in res:
-    print(r)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;보기 드문 위상정렬 문제… 두번째 푸는 건데도 어렵다.&lt;/p&gt;
-</description>
-        <pubDate>Mon, 01 Mar 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/03/01/BOJ-3665.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/01/BOJ-3665.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Gold2 - 행성 터널</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem2887&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/2887&quot;&gt;백준 2887번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
-coords = []
-parent = [i for i in range(n)]
-for i in range(n):
-    x, y, z = map(int, input().split())
-    coords.append((i, x, y, z))
-
-INF = int(1e9)
-edges = {}
-
-# 가까운 좌표끼리 거리를 계산한다.
-for k in range(1, 4):
-    coords_ = sorted(coords, key=lambda x: x[k])
-    for i in range(1, n):
-        a, x1, y1, z1 = coords_[i-1]
-        b, x2, y2, z2 = coords_[i]
-        d = min([abs(x1-x2), abs(y1-y2), abs(z1-z2)])
-        edges[(a, b)] = min(edges.get((a, b), INF), d)
-
-edges = sorted(edges.items(), key=lambda x: x[1])
-
-def find_parent(x):
-    if parent[x] != x:
-        parent[x] = find_parent(parent[x])
-    return parent[x]
-
-def union(a, b):
-    a = find_parent(a)
-    b = find_parent(b)
-    if a &amp;lt; b:
-        parent[b] = a
-    else:
-        parent[a] = b
-
-res = 0
-for (a, b), c in edges:
-    if find_parent(a) != find_parent(b):
-        union(a, b)
-        res += c
-
-print(res)
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Mon, 01 Mar 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/03/01/BOJ-2887.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/01/BOJ-2887.html</guid>
         
         <category>python</category>
         

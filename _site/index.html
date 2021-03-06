@@ -151,6 +151,8 @@
         
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -171,6 +173,50 @@
 
 <div class="wrapper">
 <ul class="post-list">
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/03/06/BOJ-2473.html">백준 Gold4 - 세 용액</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 2473번 풀이 n = int(input()) arr = list(map(int, input().split())) arr.sort() arr_minus = [x for x in arr if x &lt;= 0] # res1: + + + if len(arr_minus) &gt;= 3: res1 = abs(arr_minus[-3]+arr_minus[-2]+arr_minus[-1]) else: res1 = int(1e10) arr_plus = [x for x in arr if x &gt;= 0] #...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 6, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/03/06/BOJ-1644.html">백준 Gold3 - 소수의 연속합</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 1644번 풀이 n = int(input()) is_prime = [True for _ in range(n+1)] is_prime[1] = False i = 2 while i*i &lt;= n: if is_prime[i]: j = 2 while i*j &lt;= n: is_prime[i*j] = False j += 1 i += 1 nums = [i for i in range(1, n+1) if...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 6, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
   
   <li>
     <h2>
@@ -235,50 +281,6 @@
     </section>
   </li>
   
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/03/02/BOJ-3270.html">백준 Gold5 - 두 용액</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 3270번 풀이 n = int(input()) arr = list(map(int, input().split())) arr.sort() i, j = 0, n-1 min_diff = int(1e10) res = [arr[i], arr[j]] while i &lt; j: if abs(arr[i]+arr[j]) &lt; min_diff: min_diff = abs(arr[i]+arr[j]) res = [arr[i], arr[j]] if arr[i]+arr[j] &gt; 0: j -= 1 else: i += 1 print(*res)...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">March 2, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/03/02/BOJ-2230.html">백준 Gold5 - 수 고르기</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 2230번 풀이 n, m = map(int, input().split()) arr = [] for _ in range(n): arr.append(int(input())) arr.sort() i = j = 0 INF = int(1e10) res = INF while i &lt; n: while j &lt; n and arr[j]-arr[i] &lt; m: j += 1 if j &gt;= n: break res =...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">March 2, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
   
 </ul>
 
@@ -290,7 +292,7 @@
       <i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
     </span>
 		
-		<span class="page-number">Page 1 of 25</span>
+		<span class="page-number">Page 1 of 26</span>
 		
 		<a class="newer-posts" href="/page2">
       <span class="fa-stack fa-lg">
@@ -330,6 +332,8 @@
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
         
