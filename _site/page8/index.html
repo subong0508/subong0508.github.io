@@ -153,6 +153,8 @@
         
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -176,101 +178,101 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/02/19/BOJ-20165.html">백준 Gold5 - 인내의 도미노 장인 호석</a>
+      <a class="post-link" href="/problem-solving/2021/02/21/BOJ-19236.html">백준 Gold3 - 청소년 상어</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 20165번 풀이 n, m, r = map(int, input().split()) domino = [list(map(int, input().split())) for _ in range(n)] domino_origin = [[-1] * m for _ in range(n)] for i in range(n): for j in range(m): domino_origin[i][j] = domino[i][j] attack = [] defence = [] for i in range(2*r): if i %...</p>
+      <p>백준 19236번 풀이 from copy import deepcopy graph = [[-1] * 4 for _ in range(4)] for i in range(4): tmp = list(map(int, input().split())) for j in range(0, 8, 2): graph[i][j // 2] = [tmp[j], tmp[j+1]] moves = {1: [-1, 0], 2: [-1, -1], 3: [0, -1], 4: [1, -1],...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 21, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/21/BOJ-12100.html">백준 Gold2 - 2048(Easy)</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 12100번 풀이 from copy import deepcopy from collections import deque n = int(input()) board = [] for _ in range(n): board.append(list(map(int, input().split()))) def go_up(board): for j in range(n): col = [board[i][j] for i in range(n) if board[i][j] &gt; 0] i = 0 new_col = deque() while i &lt; len(col)-1:...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 21, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/20/BOJ-19591.html">백준 Gold3 - 독특한 계산기</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 19591번 풀이 from collections import deque x = input() n = len(x) pr = {'+': 0, '-': 0, '*': 1, '/': 1} nums = [] ops = [] i = 0 while i &lt; n: j = i while j &lt; n and (j == 0 or x[j] not...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 20, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/20/BOJ-17281.html">백준 Gold4 - ⚾</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 17281번 풀이(시간초과) from itertools import permutations n = int(input()) players = list(range(1, 10)) order = permutations(players, len(players)) order = [o for o in order if o[3] == 1] results = [] for _ in range(n): results.append([-1] + list(map(int, input().split()))) def baseball(c, results): score = 0 idx = 0 inning...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 20, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/19/PR-17679.html">프로그래머스 Lv2 - 프렌즈4블록</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>프로그래머스 17679번 풀이 def erase(m, n, board): s = set() for i in range(m-1): for j in range(n-1): # 이미 빈 상태 if board[i][j] == 0: continue if board[i][j] == board[i+1][j] == board[i][j+1] == board[i+1][j+1]: s |= {(i, j), (i+1, j), (i, j+1), (i+1, j+1)} for i, j in s:...</p>
     </section>
     <section class="post-meta">
       <div class="post-date">February 19, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/19/BOJ-17144.html">백준 Gold5 - 미세먼지 안녕!</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 17144번 풀이 r, c, t = map(int, input().split()) graph = [list(map(int, input().split())) for _ in range(r)] c1 = -1 for i in range(r): if graph[i][0] == -1: c1 = i break c2 = c1+1 dx = [-1, 1, 0, 0] dy = [0, 0, -1, 1] def dust(): q...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 19, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/19/BOJ-15686.html">백준 Gold5 - 치킨 배달</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 15686번 풀이 from itertools import combinations n, m = map(int, input().split()) graph = [] for _ in range(n): graph.append(list(map(int, input().split()))) chickens = [(i, j) for j in range(n) for i in range(n) if graph[i][j] == 2] houses = [(i, j) for j in range(n) for i in range(n) if...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 19, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/18/BOJ-18428.html">백준 Silver1 - 감시 피하기</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 18428번 풀이 from itertools import combinations n = int(input()) graph = [] for _ in range(n): graph.append(input().split()) # teachers ts = set() candidates = [] for i in range(n): for j in range(n): if graph[i][j] == 'T': ts.add((i, j)) elif graph[i][j] == 'X': candidates.append((i, j)) dx = [-1, 1,...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 18, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/18/BOJ-18405.html">백준 Silver1 - 경쟁적 전염</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 18405번 풀이 from collections import deque n, k = map(int, input().split()) graph = [] for _ in range(n): graph.append(list(map(int, input().split()))) s, x, y = map(int, input().split()) dx = [-1, 1, 0, 0] dy = [0, 0, -1, 1] def bfs(graph): cnt = 1 q = [] visited = [[False]...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 18, 2021</div>
       <div class="post-categories">
       in 
         
@@ -296,7 +298,7 @@
 			</a>
 			
 		
-		<span class="page-number">Page 8 of 26</span>
+		<span class="page-number">Page 8 of 27</span>
 		
 		<a class="newer-posts" href="/page9">
       <span class="fa-stack fa-lg">
@@ -336,6 +338,8 @@
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
         
