@@ -6,9 +6,216 @@
 </description>
     <link>http://subong0508.github.io/</link>
     <atom:link href="http://subong0508.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 07 Mar 2021 16:28:33 +0900</pubDate>
-    <lastBuildDate>Sun, 07 Mar 2021 16:28:33 +0900</lastBuildDate>
+    <pubDate>Mon, 08 Mar 2021 11:38:21 +0900</pubDate>
+    <lastBuildDate>Mon, 08 Mar 2021 11:38:21 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>백준 Silver1 - 동전 2</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem2294&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/2294&quot;&gt;백준 2294번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n, k = map(int, input().split())
+coins = set()
+for i in range(n):
+    coins.add(int(input()))
+
+INF = int(1e9)
+money = [INF] * (k+1)
+for c in coins:
+    if c &amp;lt;= k:
+        money[c] = 1 # 동전 1개로 만들 수 있는 금액
+
+for i in range(1, k+1): # 현재 만들고자 하는 금액: i
+    for j in range(1, i):
+        money[i] = min(money[i], money[j] + money[i-j])
+
+if money[k] == INF:
+    print(-1)
+else:
+    print(money[k])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;한 달 전에도 풀었떤 문제인데, 그때는 DP인지도 모르고 DP로 풀었다. 
+풀었던 문제도 다시 보면 새롭다..&lt;/p&gt;
+</description>
+        <pubDate>Mon, 08 Mar 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/03/08/BOJ-2294.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/08/BOJ-2294.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Silver1 - RGB거리</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem1149&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1149&quot;&gt;백준 1149번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;틀린 풀이(시간초과)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
+board = [[0] * 3 for _ in range(n)]
+for i in range(n):
+    board[i] = list(map(int, input().split()))
+
+INF = int(1e9)
+res = INF
+
+def solution(i, prev, val):
+    global res
+    if i == n:
+        res = min(res, val)
+        return
+
+    for j in range(3):
+        if j == prev:
+            continue
+        solution(i+1, j, val+board[i][j])
+
+solution(0, -1, 0)
+
+print(res)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;일반 재귀 함수로 풀었더니 50% 쯤에서 시간 초과가 났다. 
+그런데 생각해보니 2차원 DP로 풀 수 있었다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;올바른 풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
+board = [[0] * 3 for _ in range(n)]
+for i in range(n):
+    board[i] = list(map(int, input().split()))
+
+INF = int(1e9)
+for i in range(1, n):
+    for j in range(3):
+        min_val = -1, INF
+        for k in range(3):
+            if k == j:
+                continue
+            if board[i-1][k] &amp;lt; min_val:
+                min_val = board[i-1][k]
+        board[i][j] += min_val
+
+print(min(board[n-1]))
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Mon, 08 Mar 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/03/08/BOJ-1149.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/08/BOJ-1149.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Silver1 - 카드 구매하기</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem11052&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/11052&quot;&gt;백준 11052번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
+cards = [0] + list(map(int, input().split()))
+money = [0] * (n+1)
+
+# 초기화
+for i in range(1, n+1): 
+    money[i] = cards[i]
+
+for i in range(1, n+1):
+    for j in range(1, i):
+        money[i] = max(money[i], money[j]+money[i-j])
+
+print(money[n])
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Mon, 08 Mar 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/03/08/BOJ-11052.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/08/BOJ-11052.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Silver1 - 쉬운 계단 수</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem10844&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/10844&quot;&gt;백준 10844번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
+arr = [0] + [1] * 9
+
+for i in range(1, n):
+    now = [0] * 10
+    for j in range(10):
+        if j == 0:
+            if i &amp;gt;= 2:
+                now[1] += arr[j]
+        elif j == 9:
+            now[8] += arr[j]
+        else:
+            a, b = j-1, j+1
+            now[a] += arr[j]
+            now[b] += arr[j]
+    arr = now
+
+print(sum(arr) % int(1e9))
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Mon, 08 Mar 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/03/08/BOJ-10844.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/08/BOJ-10844.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
     
       <item>
         <title>백준 Silver3 - 1, 2, 3 더하기</title>
@@ -315,223 +522,6 @@ else:
         <pubDate>Sat, 06 Mar 2021 00:00:00 +0900</pubDate>
         <link>http://subong0508.github.io/problem-solving/2021/03/06/BOJ-2473.html</link>
         <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/06/BOJ-2473.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Gold3 - 소수의 연속합</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem1644&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1644&quot;&gt;백준 1644번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
-is_prime = [True for _ in range(n+1)]
-is_prime[1] = False
-i = 2
-while i*i &amp;lt;= n:
-    if is_prime[i]:
-        j = 2
-        while i*j &amp;lt;= n:
-            is_prime[i*j] = False
-            j += 1
-    i += 1
-
-nums = [i for i in range(1, n+1) if is_prime[i]]
-m = len(nums)
-cnt = 0
-total = 0
-i = j = 0
-while i &amp;lt; m:
-    while j &amp;lt; m and total &amp;lt; n:
-        total += nums[j]
-        j += 1
-    if total == n:
-        cnt += 1
-    total -= nums[i]
-    i += 1
-
-print(cnt)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;에라토스테네스의 체 알고리즘 + 투 포인터를 적용하면 풀 수 있는 문제.&lt;/p&gt;
-</description>
-        <pubDate>Sat, 06 Mar 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/03/06/BOJ-1644.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/06/BOJ-1644.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>프로그래머스 Lv3 - 보석 쇼핑</title>
-        <description>&lt;h3 id=&quot;httpsprogrammerscokrlearncourses30lessons67258&quot;&gt;&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/67258&quot;&gt;프로그래머스 67258번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;def solution(gems):
-    n = len(gems)
-    m = len(set(gems))
-    i = j = 0
-    s = {}
-    cnt = 0
-    answer = [1, n]
-    min_diff = n-1
-    while i &amp;lt; n:
-        while j &amp;lt; n and cnt &amp;lt; m:
-            if gems[j] in s:
-                s[gems[j]] += 1
-            else:
-                cnt += 1
-                s[gems[j]] = 1
-            j += 1
-        if (j-(i+1)) &amp;lt; min_diff and cnt == m:
-            answer = [i+1, j]
-            min_diff = j-(i+1)
-        if s[gems[i]] == 1:
-            cnt -= 1
-            del s[gems[i]]
-        else:
-            s[gems[i]] -= 1
-        i += 1
-    return answer
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Fri, 05 Mar 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/03/05/PR-67258.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/05/PR-67258.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Silver1 - 회전 초밥</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem2531&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/2531&quot;&gt;백준 2531번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from collections import deque
-
-n, d, k, c = map(int, input().split())
-arr = []
-for _ in range(n):
-    arr.append(int(input()))
-
-i = j = 0
-s = deque()
-res = 0
-while i &amp;lt; n:
-    if len(s) == 0:
-        for _ in range(k):
-            s.append(arr[j % n])
-            j += 1
-    else:
-        s.append(arr[j % n])
-        j += 1
-    s_ = set(s)
-    if c in s_:
-        res = max(res, len(s_))
-    else:
-        res = max(res, len(s_)+1)
-    s.popleft()
-    i += 1
-
-print(res)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;위의 방법으로 풀면 $O(KN)$으로 풀 수 있다.&lt;/p&gt;
-</description>
-        <pubDate>Fri, 05 Mar 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/03/05/BOJ-2531.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/05/BOJ-2531.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Gold4 - 부분합</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem1806&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1806&quot;&gt;백준 1806번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n, s = map(int, input().split())
-INF = int(1e9)
-res = INF
-
-arr = list(map(int, input().split()))
-i = j = 0
-total = 0
-while i &amp;lt; n:
-    cnt = j-i
-    while j &amp;lt; n and total &amp;lt; s:
-        total += arr[j]
-        j += 1
-        cnt += 1
-    if total &amp;gt;= s:
-        res = min(res, cnt)
-        total -= arr[i]
-        i += 1
-    else:
-        break
-
-if res == INF:
-    print(0)
-else:
-    print(res)
-&lt;/code&gt;&lt;/pre&gt;
-
-</description>
-        <pubDate>Fri, 05 Mar 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/03/05/BOJ-1806.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/05/BOJ-1806.html</guid>
         
         <category>python</category>
         
