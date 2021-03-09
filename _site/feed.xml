@@ -6,9 +6,174 @@
 </description>
     <link>http://subong0508.github.io/</link>
     <atom:link href="http://subong0508.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 08 Mar 2021 11:38:21 +0900</pubDate>
-    <lastBuildDate>Mon, 08 Mar 2021 11:38:21 +0900</lastBuildDate>
+    <pubDate>Tue, 09 Mar 2021 18:45:31 +0900</pubDate>
+    <lastBuildDate>Tue, 09 Mar 2021 18:45:31 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>프로그래머스 Lv2 - 가장 큰 정사각형 찾기</title>
+        <description>&lt;h3 id=&quot;httpsprogrammerscokrlearncourses30lessons12905&quot;&gt;&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/12905&quot;&gt;프로그래머스 12905번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;def solution(board):
+    answer = board[0][0]
+    n, m = len(board), len(board[0])
+    for j in range(1, m):
+        for i in range(1, n):
+            if board[i][j] == 1:
+                board[i][j] = min([board[i-1][j-1], board[i-1][j], board[i][j-1]])+1
+            answer = max(answer, board[i][j])
+    return answer ** 2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;점화식을 못 찾아서 한참 헤매다가 다른 분의 풀이를 보고서야 이해했다.
+다시 풀어봐야지..&lt;/p&gt;
+</description>
+        <pubDate>Tue, 09 Mar 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/03/09/PR-12905.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/09/PR-12905.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Silver1 - 전깃줄</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem2565&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/2565&quot;&gt;백준 2565번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
+d = {}
+for _ in range(n):
+    k, v = map(int, input().split())
+    d[k] = v
+arr = sorted(d, key=lambda x: d[x])
+
+dp = [0] * n
+for i in range(n):
+    dp[i] = 1
+    for j in range(i):
+        if arr[i] &amp;gt; arr[j]:
+            dp[i] = max(dp[i], dp[j]+1)
+
+print(len(arr)-max(dp))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;가장 긴 증가하는 부분 수열 알고리즘으로 바꿔서 풀 수 있는 문제였다.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 09 Mar 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/03/09/BOJ-2565.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/09/BOJ-2565.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Silver1 - 타일 채우기</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem2133&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/2133&quot;&gt;백준 2133번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
+
+arr = [1, 0, 3]
+for i in range(3, n+1):
+    if i % 2 == 1:
+        arr.append(0)
+    else:
+        tmp = arr[i-2] * 3
+        j = i-4
+        # 새로운 모양이 계속 추가된다.
+        while j &amp;gt;= 0:
+            tmp += arr[j] * 2
+            j -= 2
+        arr.append(tmp)
+
+print(arr[n])
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Tue, 09 Mar 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/03/09/BOJ-2133.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/09/BOJ-2133.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Silver1 - 정수 삼각형</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem1932&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1932&quot;&gt;백준 1932번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
+arr = [[] for _ in range(n)]
+for i in range(n):
+    arr[i] = list(map(int, input().split()))
+
+for i in range(1, n):
+    arr[i][0] += arr[i-1][0]
+    for j in range(1, i):
+        arr[i][j] += max(arr[i-1][j-1], arr[i-1][j])
+    arr[i][-1] += arr[i-1][-1]
+
+print(max(arr[-1]))
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Tue, 09 Mar 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/03/09/BOJ-1932.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/09/BOJ-1932.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
     
       <item>
         <title>백준 Silver1 - 동전 2</title>
@@ -102,7 +267,7 @@ for i in range(n):
 INF = int(1e9)
 for i in range(1, n):
     for j in range(3):
-        min_val = -1, INF
+        min_val = INF
         for k in range(3):
             if k == j:
                 continue
@@ -291,237 +456,6 @@ else:
         <pubDate>Sun, 07 Mar 2021 00:00:00 +0900</pubDate>
         <link>http://subong0508.github.io/problem-solving/2021/03/07/BOJ-1904.html</link>
         <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/07/BOJ-1904.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Silver3 - 피보나치 수 7</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem15624&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/15624&quot;&gt;백준 15624번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
-d = 1000000007
-
-if n == 0:
-    print(0)
-elif n == 1:
-    print(1)
-else:
-    a, b = 0, 1
-    for i in range(2, n+1):
-        a, b = b % d, (a+b) % d
-    print(b % d)
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Sun, 07 Mar 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/03/07/BOJ-15624.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/07/BOJ-15624.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Silver3 - 2xN 타일링</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem11726&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/11726&quot;&gt;백준 11726번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
-
-if n == 1:
-    print(1)
-elif n == 2:
-    print(2)
-else:
-    d = 10007
-    a, b = 1, 2
-    for _ in range(3, n+1):
-        a, b = b % d, (a+b) % d
-    print(b)
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Sun, 07 Mar 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/03/07/BOJ-11726.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/07/BOJ-11726.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Silver2 - 가장 긴 증가하는 부분 수열</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem11053&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/11053&quot;&gt;백준 11053번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
-arr = list(map(int, input().split()))
-
-d = [0] * n
-for i in range(n):
-    d[i] = 1
-    for j in range(i):
-        if arr[i] &amp;gt; arr[j]:
-            d[i] = max(d[i], d[j]+1)
-
-print(max(d))
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;앞에서 계산된 결괏값들의 최댓값을 취한다.&lt;/p&gt;
-</description>
-        <pubDate>Sun, 07 Mar 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/03/07/BOJ-11053.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/07/BOJ-11053.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Gold4 - 세 용액</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem2473&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/2473&quot;&gt;백준 2473번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
-arr = list(map(int, input().split()))
-arr.sort()
-
-arr_minus = [x for x in arr if x &amp;lt;= 0]
-# res1: + + +
-if len(arr_minus) &amp;gt;= 3:
-    res1 = abs(arr_minus[-3]+arr_minus[-2]+arr_minus[-1])
-else:
-    res1 = int(1e10)
-arr_plus = [x for x in arr if x &amp;gt;= 0]
-# res2: - - -
-if len(arr_plus) &amp;gt;= 3:
-    res2 = abs(arr_plus[0]+arr_plus[1]+arr_plus[2])
-else:
-    res2 = int(1e10)
-
-# res3: - - +
-res3 = int(1e10)
-arr_minus = []
-arr_plus = [x for x in arr if x &amp;gt; 0]
-for i in range(n):
-    for j in range(i+1, n):
-        if arr[i] &amp;lt;= 0 and arr[j] &amp;lt;= 0:
-            arr_minus.append(arr[i]+arr[j])
-arr_minus.sort()
-i, j = 0, len(arr_plus)-1
-while i &amp;lt; len(arr_minus) and j &amp;gt;= 0:
-    tmp = arr_minus[i]+arr_plus[j]
-    if abs(tmp) &amp;lt; res3:
-        res3 = abs(tmp)
-        a, b = arr_minus[i], arr_plus[j]
-    if tmp &amp;gt; 0:
-        j -= 1
-    else:
-        i += 1
-
-# res4: + + -
-res4 = int(1e10)
-arr_minus = [x for x in arr if x &amp;lt; 0]
-arr_plus = []
-for i in range(n):
-    for j in range(i+1, n):
-        if arr[i] &amp;gt;= 0 and arr[j] &amp;gt;= 0:
-            arr_plus.append(arr[i]+arr[j])
-arr_plus.sort()
-i, j = 0, len(arr_plus)-1
-while i &amp;lt; len(arr_minus) and j &amp;gt;= 0:
-    tmp = arr_minus[i]+arr_plus[j]
-    if abs(tmp) &amp;lt; res4:
-        res4 = abs(tmp)
-        x, y = arr_minus[i], arr_plus[j]
-    if tmp &amp;gt; 0:
-        j -= 1
-    else:
-        i += 1
-
-min_val = min([res1, res2, res3, res4])
-if min_val == res1:
-    arr_minus = [x for x in arr if x &amp;lt;= 0]
-    print(arr_minus[-3], arr_minus[-2], arr_minus[-1])
-elif min_val == res2:
-    arr_plus = [x for x in arr if x &amp;gt;= 0]
-    print(arr_plus[0], arr_plus[1], arr_plus[2])
-elif min_val == res3:
-    done = False
-    idx1 = idx2 = 0
-    for i in range(n):
-        for j in range(i+1, n):
-            if not done and arr[i] &amp;lt;= 0 and arr[j] &amp;lt;= 0 and arr[i]+arr[j] == a:
-                done = True
-                idx1, idx2 = i, j
-                break
-    print(arr[idx1], arr[idx2], b)
-else:
-    done = False
-    idx1 = idx2 = 0
-    for i in range(n):
-        for j in range(i+1, n):
-            if not done and arr[i] &amp;gt;= 0 and arr[j] &amp;gt;= 0 and arr[i]+arr[j] == y:
-                done = True
-                idx1, idx2 = i, j
-                break
-    print(x, arr[idx1], arr[idx2])
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;케이스를 4개로 나누어서 풀었다. 코드가 엄청 길어짐..&lt;/p&gt;
-</description>
-        <pubDate>Sat, 06 Mar 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/03/06/BOJ-2473.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/06/BOJ-2473.html</guid>
         
         <category>python</category>
         

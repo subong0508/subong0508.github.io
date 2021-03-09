@@ -157,6 +157,8 @@
         
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -180,6 +182,111 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/03/09/PR-12905.html">프로그래머스 Lv2 - 가장 큰 정사각형 찾기</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>프로그래머스 12905번 풀이 def solution(board): answer = board[0][0] n, m = len(board), len(board[0]) for j in range(1, m): for i in range(1, n): if board[i][j] == 1: board[i][j] = min([board[i-1][j-1], board[i-1][j], board[i][j-1]])+1 answer = max(answer, board[i][j]) return answer ** 2 점화식을 못 찾아서 한참 헤매다가 다른 분의 풀이를 보고서야 이해했다....</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 9, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/03/09/BOJ-2565.html">백준 Silver1 - 전깃줄</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 2565번 풀이 n = int(input()) d = {} for _ in range(n): k, v = map(int, input().split()) d[k] = v arr = sorted(d, key=lambda x: d[x]) dp = [0] * n for i in range(n): dp[i] = 1 for j in range(i): if arr[i] &gt; arr[j]: dp[i] = max(dp[i],...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 9, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/03/09/BOJ-2133.html">백준 Silver1 - 타일 채우기</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 2133번 풀이 n = int(input()) arr = [1, 0, 3] for i in range(3, n+1): if i % 2 == 1: arr.append(0) else: tmp = arr[i-2] * 3 j = i-4 # 새로운 모양이 계속 추가된다. while j &gt;= 0: tmp += arr[j] * 2 j -= 2 arr.append(tmp)...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 9, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/03/09/BOJ-1932.html">백준 Silver1 - 정수 삼각형</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 1932번
+
+풀이
+
+n = int(input())
+arr = [[] for _ in range(n)]
+for i in range(n):
+    arr[i] = list(map(int, input().split()))
+
+for i in range(1, n):
+    arr[i][0] += arr[i-1][0]
+    for j in range(1, i):
+        arr[i][j] += max(arr[i-1][j-1], arr[i-1][j])
+    arr[i][-1] += arr[i-1][-1]
+
+print(max(arr[-1]))
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 9, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/03/08/BOJ-2294.html">백준 Silver1 - 동전 2</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -187,112 +294,6 @@
     </section>
     <section class="post-meta">
       <div class="post-date">March 8, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/03/08/BOJ-1149.html">백준 Silver1 - RGB거리</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 1149번 틀린 풀이(시간초과) n = int(input()) board = [[0] * 3 for _ in range(n)] for i in range(n): board[i] = list(map(int, input().split())) INF = int(1e9) res = INF def solution(i, prev, val): global res if i == n: res = min(res, val) return for j in range(3): if...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">March 8, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/03/08/BOJ-11052.html">백준 Silver1 - 카드 구매하기</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 11052번
-
-풀이
-
-n = int(input())
-cards = [0] + list(map(int, input().split()))
-money = [0] * (n+1)
-
-# 초기화
-for i in range(1, n+1): 
-    money[i] = cards[i]
-
-for i in range(1, n+1):
-    for j in range(1, i):
-        money[i] = max(money[i], money[j]+money[i-j])
-
-print(money[n])
-
-</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">March 8, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/03/08/BOJ-10844.html">백준 Silver1 - 쉬운 계단 수</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 10844번 풀이 n = int(input()) arr = [0] + [1] * 9 for i in range(1, n): now = [0] * 10 for j in range(10): if j == 0: if i &gt;= 2: now[1] += arr[j] elif j == 9: now[8] += arr[j] else: a, b = j-1,...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">March 8, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/03/07/BOJ-9095.html">백준 Silver3 - 1, 2, 3 더하기</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 9095번 풀이 t = int(input()) def solution(n): if n == 1: return 1 elif n == 2: return 2 elif n == 3: return 4 else: a, b, c = 1, 2, 4 for _ in range(4, n+1): a, b, c = b, c, a+b+c return c res =...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">March 7, 2021</div>
       <div class="post-categories">
       in 
         
@@ -314,7 +315,7 @@ print(money[n])
       <i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
     </span>
 		
-		<span class="page-number">Page 1 of 28</span>
+		<span class="page-number">Page 1 of 29</span>
 		
 		<a class="newer-posts" href="/page2">
       <span class="fa-stack fa-lg">
@@ -354,6 +355,8 @@ print(money[n])
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
         
