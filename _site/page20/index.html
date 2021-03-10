@@ -182,6 +182,72 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/02/05/PR-43238.html">프로그래머스 Lv3 - 입국심사</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>프로그래머스 43238번 풀이 def check(target, n, times): cnt = 0 for t in times: cnt += target // t return cnt def solution(n, times): l = 1 r = min(times) * n answer = 0 while l &lt;= r: mid = (l + r) // 2 cnt = check(mid, n,...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 5, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/05/BOJ-2110.html">백준 Silver1 - 공유기 설치</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 2110번 풀이 n, c = map(int, input().split()) arr = [0] * n for i in range(n): arr[i] = int(input()) arr.sort() def is_possible(minlen): i = 0 cnt = 1 while i &lt; len(arr): prev = arr[i] j = i+1 while j &lt; len(arr) and (arr[j]-prev) &lt; minlen: j += 1...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 5, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/05/BOJ-16434.html">백준 Gold3 - 드래곤 앤 던전</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 16434번 풀이 n, atk = map(int, input().split()) rooms = [0] * n for i in range(n): t, a, h = map(int, input().split()) rooms[i] = [t, a, h] def fight(maxhp): tmp_atk = atk curhp = maxhp for t, a, h in rooms: if t == 1: num_attacks = h //...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 5, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/02/05/BOJ-1300.html">백준 Gold4 - K번째 수</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -208,72 +274,6 @@
     </h2>
     <section class="post-excerpt" itemprop="description">
       <p>프로그래머스 64062번 풀이 def run_possible(stones, n, k): stones = stones.copy() # (n-1)명이 징검다리를 건넌 후 결과 stones = [max(0, x-n+1) for x in stones] i = 0 while i &lt; len(stones): if stones[i] &gt; 0: i += 1 else: j = i+1 # 0의 연속된 갯수 while j &lt; len(stones)...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 4, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/04/BOJ-7453.html">백준 Gold2 - 합이 0인 네 정수</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 7453번 풀이 n = int(input()) A = [0] * n B = [0] * n C = [0] * n D = [0] * n for i in range(n): a, b, c, d = map(int, input().split()) A[i] = a B[i] = b C[i] = c D[i] = d left...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 4, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/04/BOJ-2343.html">백준 Silver2 - 기타 레슨</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 2343번 풀이 n, m = map(int, input().split()) arr = list(map(int, input().split())) def is_possible(size): total = 0 cnt = 1 for i in range(n): if total + arr[i] &gt; size: cnt += 1 total = arr[i] else: total += arr[i] return cnt &lt;= m l = 1 r = sum(arr)...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 4, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/04/BOJ-1654.html">백준 Silver3 - 랜선 자르기</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 1654번 풀이 k, n = map(int, input().split()) arr = [0] * k for i in range(k): arr[i] = int(input()) def get_num(arr, length): cnt = 0 for a in arr: cnt += a // length return cnt l = 1 r = sum(arr) res = 0 while l &lt;= r:...</p>
     </section>
     <section class="post-meta">
       <div class="post-date">February 4, 2021</div>

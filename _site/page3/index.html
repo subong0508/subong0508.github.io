@@ -182,6 +182,89 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/03/08/BOJ-10844.html">백준 Silver1 - 쉬운 계단 수</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 10844번 풀이 n = int(input()) arr = [0] + [1] * 9 for i in range(1, n): now = [0] * 10 for j in range(10): if j == 0: if i &gt;= 2: now[1] += arr[j] elif j == 9: now[8] += arr[j] else: a, b = j-1,...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 8, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/03/07/BOJ-9095.html">백준 Silver3 - 1, 2, 3 더하기</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 9095번 풀이 t = int(input()) def solution(n): if n == 1: return 1 elif n == 2: return 2 elif n == 3: return 4 else: a, b, c = 1, 2, 4 for _ in range(4, n+1): a, b, c = b, c, a+b+c return c res =...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 7, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/03/07/BOJ-1904.html">백준 Silver3 - 01 타일</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 1904번
+
+풀이
+
+n = int(input())
+
+if n == 1:
+    print(1)
+elif n == 2:
+    print(2)
+else:
+    d = 15746
+    a, b = 1, 2
+    for i in range(3, n+1):
+        a, b = b % d, (a+b) % d
+    print(b)
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 7, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/03/07/BOJ-15624.html">백준 Silver3 - 피보나치 수 7</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -245,90 +328,6 @@ else:
     </section>
     <section class="post-meta">
       <div class="post-date">March 7, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/03/07/BOJ-11053.html">백준 Silver2 - 가장 긴 증가하는 부분 수열</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 11053번
-
-풀이
-
-n = int(input())
-arr = list(map(int, input().split()))
-
-d = [0] * n
-for i in range(n):
-    d[i] = 1
-    for j in range(i):
-        if arr[i] &gt; arr[j]:
-            d[i] = max(d[i], d[j]+1)
-
-print(max(d))
-
-
-앞에서 계산된 결괏값들의 최댓값을 취한다.
-</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">March 7, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/03/06/BOJ-2473.html">백준 Gold4 - 세 용액</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 2473번 풀이 n = int(input()) arr = list(map(int, input().split())) arr.sort() arr_minus = [x for x in arr if x &lt;= 0] # res1: + + + if len(arr_minus) &gt;= 3: res1 = abs(arr_minus[-3]+arr_minus[-2]+arr_minus[-1]) else: res1 = int(1e10) arr_plus = [x for x in arr if x &gt;= 0] #...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">March 6, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/03/06/BOJ-1644.html">백준 Gold3 - 소수의 연속합</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 1644번 풀이 n = int(input()) is_prime = [True for _ in range(n+1)] is_prime[1] = False i = 2 while i*i &lt;= n: if is_prime[i]: j = 2 while i*j &lt;= n: is_prime[i*j] = False j += 1 i += 1 nums = [i for i in range(1, n+1) if...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">March 6, 2021</div>
       <div class="post-categories">
       in 
         

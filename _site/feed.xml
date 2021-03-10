@@ -6,9 +6,161 @@
 </description>
     <link>http://subong0508.github.io/</link>
     <atom:link href="http://subong0508.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 09 Mar 2021 18:45:31 +0900</pubDate>
-    <lastBuildDate>Tue, 09 Mar 2021 18:45:31 +0900</lastBuildDate>
+    <pubDate>Thu, 11 Mar 2021 01:06:29 +0900</pubDate>
+    <lastBuildDate>Thu, 11 Mar 2021 01:06:29 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>백준 Gold3 - 앱</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem7579&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/7579&quot;&gt;백준 7579번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n, m = map(int, input().split())
+memory = [0] + list(map(int, input().split()))
+cost = [0] + list(map(int, input().split()))
+dp = [[0] * 10001 for _ in range(n+1)]
+
+for i in range(1, n+1):
+    for j in range(1, 10001):
+        if cost[i] &amp;lt;= j: # 주어진 코스트를 만족한다면 메모리를 최대화하자
+            dp[i][j] = max(dp[i-1][j], memory[i]+dp[i-1][j-cost[i]])
+        else:
+            dp[i][j] = dp[i-1][j]
+
+for j in range(1, 10001):
+    if dp[n][j] &amp;gt;= m:
+        print(j)
+        break
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;냅색 알고리즘의 응용문제로, 메모리에 대해 코스트를 최소화하는 테이블은 메모리 초과가 난다.
+따라서 코스트에 대해 메모리를 최대화하는 DP 테이블을 만들면 된다.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 10 Mar 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/03/10/BOJ-7579.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/10/BOJ-7579.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Gold5 - 이모티콘</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem14226&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/14226&quot;&gt;백준 14226번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;from collections import deque
+
+s = int(input())
+q = deque()
+q.append((1, 0))
+INF = int(1e9)
+dist = [[-1] * (s+1) for _ in range(s+1)]
+dist[1][0] = 0
+
+while q:
+    now, clip = q.popleft()
+    # 화면에 있는 임티 복사
+    if dist[now][now] == -1:
+        dist[now][now] = dist[now][clip] + 1
+        q.append((now, now))
+    # 클립보드 복사
+    if now+clip &amp;lt;= s and dist[now+clip][clip] == -1:
+        dist[now+clip][clip] = dist[now][clip] + 1
+        q.append((now+clip, clip))
+    # 삭제
+    if now-1 &amp;gt; 0 and dist[now-1][clip] == -1:
+        dist[now-1][clip] = dist[now][clip] + 1
+        q.append((now-1, clip))
+
+res = INF
+for i in range(s+1):
+    if dist[s][i] != -1:
+        res = min(res, dist[s][i])
+
+print(res)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;BFS + 다이나믹 프로그래밍 문제인데, 골드3 정도는 달아야 할 것 같다.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 10 Mar 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/03/10/BOJ-14226.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/10/BOJ-14226.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Gold5 - 평범한 배낭</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem12865&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/12865&quot;&gt;백준 12865번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n, k = map(int, input().split())
+dp = [[0] * (k+1) for _ in range(n+1)]
+ws = [0] * (n+1)
+vs = [0] * (n+1)
+for i in range(1, n+1):
+    w, v  = map(int, input().split())
+    ws[i] = w
+    vs[i] = v
+
+for i in range(1, n+1):
+    for j in range(1, k+1):
+        if ws[i] &amp;lt;= j: # 담을 수 있는 경우
+            dp[i][j] = max(dp[i-1][j], dp[i-1][j-ws[i]]+vs[i])
+        else:
+            dp[i][j] = dp[i-1][j]
+
+print(dp[n][k], sep='\n')
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;이 문제는 Knapsack algorithm의 대표적인 문제로, 최적의 조합을 찾는 문제이다.
+1번부터 n번까지 아이템을 보면서 넣을지/말지를 결정하면 된다.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 10 Mar 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/03/10/BOJ-12865.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/10/BOJ-12865.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
     
       <item>
         <title>프로그래머스 Lv2 - 가장 큰 정사각형 찾기</title>
@@ -28,7 +180,7 @@
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;점화식을 못 찾아서 한참 헤매다가 다른 분의 풀이를 보고서야 이해했다.
-다시 풀어봐야지..&lt;/p&gt;
+다시 풀어봐야지…&lt;/p&gt;
 </description>
         <pubDate>Tue, 09 Mar 2021 00:00:00 +0900</pubDate>
         <link>http://subong0508.github.io/problem-solving/2021/03/09/PR-12905.html</link>
@@ -321,141 +473,6 @@ print(money[n])
         <pubDate>Mon, 08 Mar 2021 00:00:00 +0900</pubDate>
         <link>http://subong0508.github.io/problem-solving/2021/03/08/BOJ-11052.html</link>
         <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/08/BOJ-11052.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Silver1 - 쉬운 계단 수</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem10844&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/10844&quot;&gt;백준 10844번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
-arr = [0] + [1] * 9
-
-for i in range(1, n):
-    now = [0] * 10
-    for j in range(10):
-        if j == 0:
-            if i &amp;gt;= 2:
-                now[1] += arr[j]
-        elif j == 9:
-            now[8] += arr[j]
-        else:
-            a, b = j-1, j+1
-            now[a] += arr[j]
-            now[b] += arr[j]
-    arr = now
-
-print(sum(arr) % int(1e9))
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Mon, 08 Mar 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/03/08/BOJ-10844.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/08/BOJ-10844.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Silver3 - 1, 2, 3 더하기</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem9095&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/9095&quot;&gt;백준 9095번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;t = int(input())
-
-
-def solution(n):
-    if n == 1:
-        return 1
-    elif n == 2:
-        return 2
-    elif n == 3:
-        return 4
-    else:
-        a, b, c = 1, 2, 4
-        for _ in range(4, n+1):
-            a, b, c = b, c, a+b+c
-        return c
-
-
-res = []
-for _ in range(t):
-    n = int(input())
-    r = solution(n)
-    res.append(r)
-
-print(*res, sep='\n')
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Sun, 07 Mar 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/03/07/BOJ-9095.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/07/BOJ-9095.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Silver3 - 01 타일</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem1904&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1904&quot;&gt;백준 1904번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
-
-if n == 1:
-    print(1)
-elif n == 2:
-    print(2)
-else:
-    d = 15746
-    a, b = 1, 2
-    for i in range(3, n+1):
-        a, b = b % d, (a+b) % d
-    print(b)
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Sun, 07 Mar 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/03/07/BOJ-1904.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/07/BOJ-1904.html</guid>
         
         <category>python</category>
         
