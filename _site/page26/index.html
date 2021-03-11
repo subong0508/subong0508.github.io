@@ -159,6 +159,8 @@
         
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -182,6 +184,94 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/01/29/PR-42584.html">프로그래머스 Lv2 - 주식가격</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>프로그래머스 42584번 문제 설명 초 단위로 기록된 주식가격이 담긴 배열 prices가 매개변수로 주어질 때, 가격이 떨어지지 않은 기간은 몇 초인지를 return 하도록 solution 함수를 완성하세요 제한 사항 prices의 각 가격은 1 이상 10,000 이하인 자연수입니다. prices의 길이는 2 이상 100,000 이하입니다. 입출력 예 prices return [1, 2, 3, 2, 3]...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">January 29, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/01/29/BOJ-2615.html">백준 Silver3 - 오목</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 2615번 풀이 from collections import deque board = [] for _ in range(19): board.append(list(map(int, input().split()))) dxs = [-1, 0, 1, 1] dys = [1, 1, 0, 1] def bfs_main(x, y): return bfs(x, y, 0), bfs(x, y, 1), bfs(x, y, 2), bfs(x, y, 3) def bfs(x, y, d): q =...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">January 29, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/01/29/BOJ-16508.html">백준 Silver3 - 전공책</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 16508번 from itertools import combinations t = input() n = int(input()) books = [] for _ in range(n): a, b = input().split() books.append((int(a), b)) def is_possible(books): # 책들의 문자 카운트를 저장해놓음 d = {} for _, b in books: for ch in b: d[ch] = d.get(ch, 0)+1 cnt =...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">January 29, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/01/29/BOJ-14501.html">백준 Silver4 - 퇴사</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 14501번 풀이 n = int(input()) t = [] p = [] for _ in range(n): a, b = map(int, input().split()) t.append(a) p.append(b) res = 0 def get_max(i, cur): global res if i &gt;= n: res = max(res, cur) return # i번째 일을 할 수 있는 경우 if i+t[i] &lt;=...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">January 29, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/01/29/BOJ-1436.html">백준 Silver5 - 영화감독 숌</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -189,94 +279,6 @@
     </section>
     <section class="post-meta">
       <div class="post-date">January 29, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/01/29/BOJ-1065.html">백준 Silver4 - 한수</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 1065번 n = int(input()) def is_han(num): string = str(num) if len(string) &lt;= 2: return True x = int(string[1])-int(string[0]) for i in range(2, len(string)): tmp = int(string[i])-int(string[i-1]) if tmp != x: return False return True cnt = 0 for i in range(1, n+1): if is_han(i): cnt += 1 print(cnt) 1부터...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">January 29, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/01/29/BOJ-1057.html">백준 Silver3 - 토너먼트</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 1057번 n, a, b = map(int, input().split()) arr = [False] * (n+1) arr[a] = True arr[b] = True cnt = 0 match = False while not match: n = len(arr) cnt += 1 tmp = [False] i = 1 while i+1 &lt; n: if arr[i] and arr[i+1]: match =...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">January 29, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/data-structure/2021/01/28/Stack,-Queue.html">스택, 큐 with Python</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>이번 포스팅에서는 스택, 큐에 대한 개념을 알아보고 파이썬으로 간단하게 구현해보겠습니다. 스택 스택은 LIFO(후입선출)의 특성을 가진 자료구조입니다. 시간복잡도는 다음과 같습니다. 삽입: $O(1)$ 삭제: $O(1)$ 파이썬에서는 다른 라이브러리를 쓸 필요없이 기본 자료형인 list를 활용하여 삽입 및 삭제 연산을 수행할 수 있습니다. arr = [1, 2, 3, 4, 5] stack = [] #...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">January 28, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Data-Structure">Data-structure</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/01/28/BOJ-9012.html">백준 Silver4 - 괄호</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 9012번 문제 괄호 문자열(Parenthesis String, PS)은 두 개의 괄호 기호인 ‘(’ 와 ‘)’ 만으로 구성되어 있는 문자열이다. 그 중에서 괄호의 모양이 바르게 구성된 문자열을 올바른 괄호 문자열(Valid PS, VPS)이라고 부른다. 한 쌍의 괄호 기호로 된 “( )” 문자열은 기본 VPS 이라고 부른다. 만일 x 가 VPS 라면 이것을 하나의...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">January 28, 2021</div>
       <div class="post-categories">
       in 
         
@@ -302,7 +304,7 @@
 			</a>
 			
 		
-		<span class="page-number">Page 26 of 29</span>
+		<span class="page-number">Page 26 of 30</span>
 		
 		<a class="newer-posts" href="/page27">
       <span class="fa-stack fa-lg">
@@ -342,6 +344,8 @@
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
         
