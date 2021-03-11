@@ -184,6 +184,28 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/02/28/BOJ-1774.html">백준 Gold4 - 우주신과의 교감</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 1774번 풀이 import math n, m = map(int, input().split()) parent = [i for i in range(n+1)] vertex = [(-1, -1)] for i in range(1, n+1): x, y = map(int, input().split()) vertex.append((x, y)) edges = set() for _ in range(m): x, y = map(int, input().split()) x, y = min(x, y),...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 28, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/02/28/BOJ-1717.html">백준 Gold4 - 집합의 표현</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -254,28 +276,6 @@
     </h2>
     <section class="post-excerpt" itemprop="description">
       <p>프로그래머스 60057번 풀이 def compress(s, n): i = 0 lst = [] while i &lt; len(s): lst.append(s[i:i+n]) i += n string = '' prev = lst[0] cnt = 1 for i in range(1, len(lst)): if lst[i] != prev: string += prev if cnt == 1 else (str(cnt)+prev) prev = lst[i]...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 27, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/27/BOJ-3190.html">백준 Gold5 - 뱀</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 3190번 풀이 n = int(input()) k = int(input()) apples = set() for _ in range(k): x, y = map(int, input().split()) apples.add((x, y)) m = int(input()) times = [] for _ in range(m): t, lr = input().split() times.append((int(t), lr)) def rotate(d, lr): # 왼쪽으로 90도 회전 if lr == 'L':...</p>
     </section>
     <section class="post-meta">
       <div class="post-date">February 27, 2021</div>

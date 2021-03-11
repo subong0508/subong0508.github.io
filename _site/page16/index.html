@@ -184,6 +184,28 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/02/14/BOJ-14502.html">백준 Gold5 - 연구소</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 14502번 풀이 from itertools import combinations from collections import deque n, m = map(int, input().split()) graph = [] for _ in range(n): tmp = list(map(int, input().split())) graph.append(tmp) candidates = [] walls = [] virus = deque() for i in range(n): for j in range(m): if graph[i][j] == 0: candidates.append((i,...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 14, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/02/13/PR-42891.html">프로그래머스 Lv4 - 무지의 먹방 라이브</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -257,28 +279,6 @@
     </section>
     <section class="post-meta">
       <div class="post-date">February 13, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/11/PR-42884.html">프로그래머스 Lv3 - 단속카메라</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>프로그래머스 42884번 풀이 def solution(routes): answer = 0 routes.sort(key=lambda x: x[0]) routes.sort(key=lambda x: x[1]) cameras = [] for r in routes: s, e = r done = False # 거꾸로 보는 것이 더 빠름 for c in cameras[::-1]: if s &lt;= c &lt;= e: done = True break if not...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 11, 2021</div>
       <div class="post-categories">
       in 
         

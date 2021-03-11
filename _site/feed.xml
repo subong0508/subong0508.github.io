@@ -6,8 +6,8 @@
 </description>
     <link>http://subong0508.github.io/</link>
     <atom:link href="http://subong0508.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 11 Mar 2021 16:35:37 +0900</pubDate>
-    <lastBuildDate>Thu, 11 Mar 2021 16:35:37 +0900</lastBuildDate>
+    <pubDate>Thu, 11 Mar 2021 17:12:18 +0900</pubDate>
+    <lastBuildDate>Thu, 11 Mar 2021 17:12:18 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -130,6 +130,59 @@ print(dfs(0, 0))
         <pubDate>Thu, 11 Mar 2021 00:00:00 +0900</pubDate>
         <link>http://subong0508.github.io/problem-solving/2021/03/11/BOJ-1520.html</link>
         <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/11/BOJ-1520.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Gold5 - 관악산 등산</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem14699&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/14699&quot;&gt;백준 14699번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;import sys
+
+sys.setrecursionlimit(100000)
+
+n, m = map(int, input().split())
+heights = [-1] + list(map(int, input().split()))
+graph = [[] for _ in range(n+1)]
+for _ in range(m):
+    i, j = map(int, input().split())
+    if heights[i] &amp;lt; heights[j] and j not in graph[i]:
+        graph[i].append(j)
+    if heights[j] &amp;lt; heights[i] and i not in graph[j]:
+        graph[j].append(i)
+
+dp = [-1] * (n+1)
+def dfs(i):
+    # 한 번 방문한 곳은 다시 방문하지 않는다.
+    if dp[i] != -1:
+        return dp[i]
+    dp[i] = 1
+    for j in graph[i]:
+        dp[i] = max(dp[i], dfs(j)+1)
+    return dp[i]
+
+for i in range(1, n+1):
+    print(dfs(i))
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Thu, 11 Mar 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/03/11/BOJ-14699.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/11/BOJ-14699.html</guid>
         
         <category>python</category>
         
@@ -432,49 +485,6 @@ print(len(arr)-max(dp))
         <pubDate>Tue, 09 Mar 2021 00:00:00 +0900</pubDate>
         <link>http://subong0508.github.io/problem-solving/2021/03/09/BOJ-2565.html</link>
         <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/09/BOJ-2565.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Silver1 - 타일 채우기</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem2133&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/2133&quot;&gt;백준 2133번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
-
-arr = [1, 0, 3]
-for i in range(3, n+1):
-    if i % 2 == 1:
-        arr.append(0)
-    else:
-        tmp = arr[i-2] * 3
-        j = i-4
-        # 새로운 모양이 계속 추가된다.
-        while j &amp;gt;= 0:
-            tmp += arr[j] * 2
-            j -= 2
-        arr.append(tmp)
-
-print(arr[n])
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Tue, 09 Mar 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/03/09/BOJ-2133.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/09/BOJ-2133.html</guid>
         
         <category>python</category>
         

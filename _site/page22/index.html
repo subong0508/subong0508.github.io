@@ -184,6 +184,28 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/02/04/BOJ-7453.html">백준 Gold2 - 합이 0인 네 정수</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 7453번 풀이 n = int(input()) A = [0] * n B = [0] * n C = [0] * n D = [0] * n for i in range(n): a, b, c, d = map(int, input().split()) A[i] = a B[i] = b C[i] = c D[i] = d left...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 4, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/02/04/BOJ-2343.html">백준 Silver2 - 기타 레슨</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -254,45 +276,6 @@
     </h2>
     <section class="post-excerpt" itemprop="description">
       <p>백준 1920번 풀이 n = int(input()) arr = list(map(int, input().split())) m = int(input()) nums = list(map(int, input().split())) arr.sort() def binary_search(num, arr): left = 0 right = len(arr)-1 while left &lt;= right: mid = (left + right) // 2 if arr[mid] == num: return mid elif arr[mid] &gt; num: right =...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 3, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/03/BOJ-1764.html">백준 Silver4 - 듣보잡</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 1764번
-
-n, m = map(int, input().split())
-no_listen = set()
-for _ in range(n):
-    no_listen.add(input())
-no_see = set()
-for _ in range(m):
-    no_see.add(input())
-
-res = no_listen &amp; no_see
-print(len(res))
-res = sorted(res)
-print(*res, sep='\n')
-
-
-이분탐색을 활용할 수도 있겠지만 파이썬의 내장자료형인 set을 통해 더 효율적으로 풀 수 있다.
-</p>
     </section>
     <section class="post-meta">
       <div class="post-date">February 3, 2021</div>
