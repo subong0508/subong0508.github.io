@@ -161,6 +161,8 @@
         
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -181,6 +183,123 @@
 
 <div class="wrapper">
 <ul class="post-list">
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/03/07/BOJ-1904.html">백준 Silver3 - 01 타일</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 1904번
+
+풀이
+
+n = int(input())
+
+if n == 1:
+    print(1)
+elif n == 2:
+    print(2)
+else:
+    d = 15746
+    a, b = 1, 2
+    for i in range(3, n+1):
+        a, b = b % d, (a+b) % d
+    print(b)
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 7, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/03/07/BOJ-15624.html">백준 Silver3 - 피보나치 수 7</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 15624번
+
+풀이
+
+n = int(input())
+d = 1000000007
+
+if n == 0:
+    print(0)
+elif n == 1:
+    print(1)
+else:
+    a, b = 0, 1
+    for i in range(2, n+1):
+        a, b = b % d, (a+b) % d
+    print(b % d)
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 7, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/03/07/BOJ-11726.html">백준 Silver3 - 2xN 타일링</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 11726번
+
+풀이
+
+n = int(input())
+
+if n == 1:
+    print(1)
+elif n == 2:
+    print(2)
+else:
+    d = 10007
+    a, b = 1, 2
+    for _ in range(3, n+1):
+        a, b = b % d, (a+b) % d
+    print(b)
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 7, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
   
   <li>
     <h2>
@@ -241,72 +360,6 @@ print(max(d))
     </section>
   </li>
   
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/03/06/BOJ-1644.html">백준 Gold3 - 소수의 연속합</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 1644번 풀이 n = int(input()) is_prime = [True for _ in range(n+1)] is_prime[1] = False i = 2 while i*i &lt;= n: if is_prime[i]: j = 2 while i*j &lt;= n: is_prime[i*j] = False j += 1 i += 1 nums = [i for i in range(1, n+1) if...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">March 6, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/03/05/PR-67258.html">프로그래머스 Lv3 - 보석 쇼핑</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>프로그래머스 67258번 풀이 def solution(gems): n = len(gems) m = len(set(gems)) i = j = 0 s = {} cnt = 0 answer = [1, n] min_diff = n-1 while i &lt; n: while j &lt; n and cnt &lt; m: if gems[j] in s: s[gems[j]] += 1 else: cnt...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">March 5, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/03/05/BOJ-2531.html">백준 Silver1 - 회전 초밥</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 2531번 풀이 from collections import deque n, d, k, c = map(int, input().split()) arr = [] for _ in range(n): arr.append(int(input())) i = j = 0 s = deque() res = 0 while i &lt; n: if len(s) == 0: for _ in range(k): s.append(arr[j % n]) j +=...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">March 5, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
   
 </ul>
 
@@ -322,7 +375,7 @@ print(max(d))
 			</a>
 			
 		
-		<span class="page-number">Page 5 of 30</span>
+		<span class="page-number">Page 5 of 31</span>
 		
 		<a class="newer-posts" href="/page6">
       <span class="fa-stack fa-lg">
@@ -362,6 +415,8 @@ print(max(d))
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
         

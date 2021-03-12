@@ -161,6 +161,8 @@
         
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -181,6 +183,94 @@
 
 <div class="wrapper">
 <ul class="post-list">
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/11/BOJ-11497.html">백준 Silver1 - 통나무 건너뛰기</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 11497번 풀이 t = int(input()) def solution(n, arr): ans = [-1] * n arr.sort(reverse=True) l, r = 0, n-1 i = 0 while arr: x = arr.pop() if i % 2 == 0: ans[l] = x l += 1 else: ans[r] = x r -= 1 i += 1...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 11, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/11/BOJ-11000.html">백준 Gold5 - 강의실 배정</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 11000번 풀이 import heapq n = int(input()) arr = [-1] * n for i in range(n): s, t = map(int, input().split()) arr[i] = (s, t) heapq.heapify(arr) # 강의가 끝나는 시간만 저장하는 heap h = [heapq.heappop(arr)[1]] while arr: s, t = heapq.heappop(arr) # 강의실을 이어서 쓸 수 있다면 pop 후...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 11, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/09/BOJ-1449.html">백준 Silver3 - 수리공 항승</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 1449번
+
+풀이
+
+n, l = map(int, input().split())
+arr = list(map(int, input().split()))
+arr.sort()
+
+cnt = 1
+start = arr[0]-0.5
+for i in range(1, n):
+    end = arr[i]+0.5
+    # 돌려막기 가능
+    if end &lt;= start+l:
+        continue
+    else: # 새로 테이프를 붙여야 한다.
+        cnt += 1
+        start = arr[i]-0.5
+
+print(cnt)
+
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 9, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
   
   <li>
     <h2>
@@ -238,87 +328,6 @@ print(sum(atm))
     </section>
   </li>
   
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/09/BOJ-11047.html">백준 Silver1 - 동전 0, 동전 2</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 11047번 풀이 n, k = map(int, input().split()) coins = [0] * n for i in range(n): coins[i] = int(input()) cnt = 0 for i in range(n-1, -1, -1): tmp = k // coins[i] cnt += tmp k -= coins[i] * tmp print(cnt) 가장 큰 동전부터 고르면 되는 문제였다. 백준...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 9, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/08/PR-42895.html">프로그래머스 Lv3 - N으로 표현</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>프로그래머스 42895번 풀이 def dfs(N, cur, number, cnt): global answer if cnt &gt; 8: return if cur == number: answer = min(answer, cnt) return for i in range(1, 9): tmp = int(str(N) * i) dfs(N, cur + tmp, number, cnt+i) dfs(N, cur - tmp, number, cnt+i) dfs(N, cur * tmp,...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 8, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/08/PR-42578.html">프로그래머스 Lv2 - 위장</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>프로그래머스 42578번
-
-풀이
-
-def solution(clothes):
-    answer = 1
-    d = {}
-    for _, y in clothes:
-        # 아무것도 안입는 수 포함
-        d[y] = d.get(y, 1) + 1
-    for k in d:
-        answer *= d[k]
-    answer -= 1
-    return answer
-
-</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 8, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
   
 </ul>
 
@@ -334,7 +343,7 @@ def solution(clothes):
 			</a>
 			
 		
-		<span class="page-number">Page 18 of 30</span>
+		<span class="page-number">Page 18 of 31</span>
 		
 		<a class="newer-posts" href="/page19">
       <span class="fa-stack fa-lg">
@@ -374,6 +383,8 @@ def solution(clothes):
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
         

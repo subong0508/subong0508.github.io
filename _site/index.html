@@ -161,6 +161,8 @@
         
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -181,6 +183,93 @@
 
 <div class="wrapper">
 <ul class="post-list">
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/03/12/BOJ-5557.html">백준 Gold5 - 1학년</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 5557번 풀이 n = int(input()) arr = list(map(int, input().split())) dp = [[0] * 21 for _ in range(n-1)] dp[0][arr[0]] = 1 for i in range(1, n-1): num = arr[i] for j in range(21): if dp[i-1][j] != 0: if 0 &lt;= j+num &lt;= 20: dp[i][j+num] += dp[i-1][j] if 0 &lt;=...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 12, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/03/12/BOJ-1937.html">백준 Gold3 - 욕심쟁이 판다</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 1937번 풀이 n = int(input()) graph = [[] for _ in range(n)] for i in range(n): graph[i] = list(map(int, input().split())) dx = [-1, 1, 0, 0] dy = [0, 0, -1, 1] dp = [[-1] * n for _ in range(n)] # 최대한 오래 살 수 있는 날들 def...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 12, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/03/12/BOJ-12015.html">백준 Gold2 - 가장 긴 증가하는 부분 수열 2</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 12015번
+
+풀이
+
+import sys
+from bisect import bisect_left
+
+input = sys.stdin.readline
+
+n = int(input())
+arr = list(map(int, input().split()))
+
+stack = []
+for i in range(n):
+    if not stack or arr[i] &gt; stack[-1]:
+        stack.append(arr[i])
+    else:
+        stack[bisect_left(stack, arr[i])] = arr[i]
+
+print(len(stack))
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 12, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
   
   <li>
     <h2>
@@ -242,72 +331,6 @@ print(dp[n][m])
     </section>
   </li>
   
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/03/11/BOJ-1520.html">백준 Gold4 - 내리막길</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 1520번 풀이 n, m = map(int, input().split()) dx = [-1, 1, 0, 0] dy = [0, 0, -1, 1] graph = [] for _ in range(n): graph.append(list(map(int, input().split()))) dp = [[-1] * m for _ in range(m)] def dfs(x, y): if x == n-1 and y == m-1: return...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">March 11, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/03/11/BOJ-14699.html">백준 Gold5 - 관악산 등산</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 14699번 풀이 import sys sys.setrecursionlimit(100000) n, m = map(int, input().split()) heights = [-1] + list(map(int, input().split())) graph = [[] for _ in range(n+1)] for _ in range(m): i, j = map(int, input().split()) if heights[i] &lt; heights[j] and j not in graph[i]: graph[i].append(j) if heights[j] &lt; heights[i] and i not...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">March 11, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/03/11/BOJ-10942.html">백준 Gold2 - 팰린드롬?</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 10942번 풀이 import sys input = sys.stdin.readline n = int(input()) arr = [-1] + list(map(int, input().split())) m = int(input()) dp = [[0] * (n+1) for _ in range(n+1)] for i in range(1, n+1): dp[i][i] = 1 for i in range(1, n): if arr[i] == arr[i+1]: dp[i][i+1] = 1 i...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">March 11, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
   
 </ul>
 
@@ -319,7 +342,7 @@ print(dp[n][m])
       <i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
     </span>
 		
-		<span class="page-number">Page 1 of 30</span>
+		<span class="page-number">Page 1 of 31</span>
 		
 		<a class="newer-posts" href="/page2">
       <span class="fa-stack fa-lg">
@@ -359,6 +382,8 @@ print(dp[n][m])
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
         

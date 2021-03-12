@@ -161,6 +161,8 @@
         
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -181,6 +183,72 @@
 
 <div class="wrapper">
 <ul class="post-list">
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/19/BOJ-17144.html">백준 Gold5 - 미세먼지 안녕!</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 17144번 풀이 r, c, t = map(int, input().split()) graph = [list(map(int, input().split())) for _ in range(r)] c1 = -1 for i in range(r): if graph[i][0] == -1: c1 = i break c2 = c1+1 dx = [-1, 1, 0, 0] dy = [0, 0, -1, 1] def dust(): q...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 19, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/19/BOJ-15686.html">백준 Gold5 - 치킨 배달</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 15686번 풀이 from itertools import combinations n, m = map(int, input().split()) graph = [] for _ in range(n): graph.append(list(map(int, input().split()))) chickens = [(i, j) for j in range(n) for i in range(n) if graph[i][j] == 2] houses = [(i, j) for j in range(n) for i in range(n) if...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 19, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/18/BOJ-18428.html">백준 Silver1 - 감시 피하기</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 18428번 풀이 from itertools import combinations n = int(input()) graph = [] for _ in range(n): graph.append(input().split()) # teachers ts = set() candidates = [] for i in range(n): for j in range(n): if graph[i][j] == 'T': ts.add((i, j)) elif graph[i][j] == 'X': candidates.append((i, j)) dx = [-1, 1,...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 18, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
   
   <li>
     <h2>
@@ -223,72 +291,6 @@
     </section>
   </li>
   
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/18/BOJ-16234.html">백준 Gold5 - 인구 이동</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 16234번 풀이 from collections import deque n, l, r = map(int, input().split()) graph = [] for _ in range(n): graph.append(list(map(int, input().split()))) dx = [-1, 1, 0, 0] dy = [0, 0, -1, 1] def bfs(x, y, visited): if visited[x][y]: return 0 q = deque([(x, y)]) visited[x][y] = True neighbors...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 18, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/18/BOJ-14888.html">백준 Silver1 - 연산자 끼워넣기</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 14888번 풀이 n = int(input()) arr = list(map(int, input().split())) ops = list(map(int, input().split())) min_val = int(1e9) max_val = -int(1e9) def solution(idx, ops, val): global min_val, max_val if idx == n-1: min_val = min(min_val, val) max_val = max(max_val, val) return for i in range(4): if ops[i] &lt;= 0: continue ops[i]...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 18, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/16/PR-60058.html">프로그래머스 Lv2 - 괄호 변환</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>프로그래머스 60058번 풀이 def is_right(p): stack = [] for ch in p: if ch == '(': stack.append(ch) else: if len(stack) == 0 or stack.pop() != '(': return False return len(stack) == 0 def is_balanced(p): return p.count('(') == p.count(')') def parse(p): u, v = p, '' for i in range(1, len(p)):...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 16, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
   
 </ul>
 
@@ -304,7 +306,7 @@
 			</a>
 			
 		
-		<span class="page-number">Page 13 of 30</span>
+		<span class="page-number">Page 13 of 31</span>
 		
 		<a class="newer-posts" href="/page14">
       <span class="fa-stack fa-lg">
@@ -344,6 +346,8 @@
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
         

@@ -161,6 +161,8 @@
         
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -181,6 +183,72 @@
 
 <div class="wrapper">
 <ul class="post-list">
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/01/30/BOJ-14889.html">백준 Silver3 - 스타트와 링크</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 14889번 from itertools import combinations n = int(input()) arr = [[0] * (n+1)] for _ in range(n): arr.append([0] + list(map(int, input().split()))) whole = set(range(1, n+1)) comb = list(combinations(whole, n//2)) # 중복되는 경우 제외 comb = comb[:len(comb)//2] res = int(1e9) for start_ in comb: start = set(start_) link = whole...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">January 30, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/01/29/PR-42839.html">프로그래머스 Lv2 - 소수 찾기</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>프로그래머스 42839번 풀이 from itertools import permutations def is_prime(n): if n &lt;= 1: return False i = 2 while i*i &lt;= n: if n % i == 0: return False i += 1 return True def solution(numbers): s = set() for i in range(1, len(numbers)+1): comb = permutations(numbers, i) for...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">January 29, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/01/29/PR-42842.html">프로그래머스 Lv2 - 카펫</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>프로그래머스 42842번 풀이 def is_right(n, m , brown, yellow): # n: 세로, m: 가로 brown_ = 2*m+2*(n-2) yellow_ = n*m-brown_ return brown_ == brown and yellow_ == yellow def solution(brown, yellow): # a: 세로, b: 가로 total = brown+yellow arr = [] answer = [] # arr: total의 약수 페어를...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">January 29, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
   
   <li>
     <h2>
@@ -223,72 +291,6 @@
     </section>
   </li>
   
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/01/29/BOJ-2615.html">백준 Silver3 - 오목</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 2615번 풀이 from collections import deque board = [] for _ in range(19): board.append(list(map(int, input().split()))) dxs = [-1, 0, 1, 1] dys = [1, 1, 0, 1] def bfs_main(x, y): return bfs(x, y, 0), bfs(x, y, 1), bfs(x, y, 2), bfs(x, y, 3) def bfs(x, y, d): q =...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">January 29, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/01/29/BOJ-16508.html">백준 Silver3 - 전공책</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 16508번 from itertools import combinations t = input() n = int(input()) books = [] for _ in range(n): a, b = input().split() books.append((int(a), b)) def is_possible(books): # 책들의 문자 카운트를 저장해놓음 d = {} for _, b in books: for ch in b: d[ch] = d.get(ch, 0)+1 cnt =...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">January 29, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/01/29/BOJ-14501.html">백준 Silver4 - 퇴사</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 14501번 풀이 n = int(input()) t = [] p = [] for _ in range(n): a, b = map(int, input().split()) t.append(a) p.append(b) res = 0 def get_max(i, cur): global res if i &gt;= n: res = max(res, cur) return # i번째 일을 할 수 있는 경우 if i+t[i] &lt;=...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">January 29, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
   
 </ul>
 
@@ -304,7 +306,7 @@
 			</a>
 			
 		
-		<span class="page-number">Page 26 of 30</span>
+		<span class="page-number">Page 26 of 31</span>
 		
 		<a class="newer-posts" href="/page27">
       <span class="fa-stack fa-lg">
@@ -344,6 +346,8 @@
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
         

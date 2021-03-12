@@ -161,6 +161,8 @@
         
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -181,6 +183,72 @@
 
 <div class="wrapper">
 <ul class="post-list">
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/03/BOJ-18310.html">백준 Silver3 - 안테나</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 18310번 풀이 n = int(input()) arr = list(map(int, input().split())) arr.sort() def cal_distance(arr, mid): total = 0 for a in arr: total += abs(arr[mid]-a) return total if len(arr) % 2 == 1: mid = len(arr) // 2 else: mid1, mid2 = len(arr)//2-1, len(arr)//2 if cal_distance(arr, mid1) &gt; cal_distance(arr, mid2): mid...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 3, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/03/BOJ-1715.html">백준 Gold4 - 카드 정렬하기</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 1715번 풀이 import heapq n = int(input()) q = [] for i in range(n): a = int(input()) heapq.heappush(q, a) res = 0 while len(q) &gt;= 2: a = heapq.heappop(q) b = heapq.heappop(q) res += a+b heapq.heappush(q, a+b) print(res) 첨에는 그냥 array로 받고 sort해서 deque로 풀었는데 새로운 원소가 더해질 때...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 3, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/03/BOJ-10825.html">백준 Silver4 - 국영수</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 10825번 풀이 n = int(input()) arr = [0] * n for i in range(n): name, kor, eng, mat = input().split() kor, eng, mat = map(int, [kor, eng, mat]) arr[i] = (name, kor, eng, mat) arr = sorted(arr, key=lambda x: x[0]) arr = sorted(arr, key=lambda x: -x[3]) arr = sorted(arr,...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 3, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
   
   <li>
     <h2>
@@ -223,72 +291,6 @@
     </section>
   </li>
   
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/01/31/BOJ-16987.html">백준 Silver2 - 계란으로 계란치기</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 16987번 풀이 n = int(input()) eggs = [] for _ in range(n): s, w = map(int, input().split()) eggs.append([s, w]) cnt = 0 def crush(l, cur, eggs): global cnt # 가장 오른쪽 계란 if l == n: cnt = max(cnt, cur) return if eggs[l][0] &gt; 0: all_broken = True for...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">January 31, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/01/31/BOJ-14888.html">백준 Silver1 - 연산자 끼워넣기</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 14888번 풀이 n = int(input()) arr = list(map(int, input().split())) ops = list(map(int, input().split())) min_val = int(1e9) max_val = -int(1e9) def solution(idx, ops, val): global min_val, max_val if idx == n-1: min_val = min(min_val, val) max_val = max(max_val, val) return for i in range(4): if ops[i] &lt;= 0: continue ops[i]...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">January 31, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/python/2021/01/30/Itertools.html">Itertools 정리</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>내장 라이브러리인 itertools를 이용해서 조합, 순열, 중복순열, Cartesian Product 등을 손쉽게 구현할 수 있다. from itertools import combinations, permutations, combinations_with_replacement, product data = '123' l = combinations(data, 2) for e in l: print(*e) # 12 13 23 l = permutations(data, 2) for e in l: print(*e) # 12 13 21...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">January 30, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Python">Python</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
   
 </ul>
 
@@ -304,7 +306,7 @@
 			</a>
 			
 		
-		<span class="page-number">Page 24 of 30</span>
+		<span class="page-number">Page 24 of 31</span>
 		
 		<a class="newer-posts" href="/page25">
       <span class="fa-stack fa-lg">
@@ -344,6 +346,8 @@
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
         

@@ -161,6 +161,8 @@
         
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -181,6 +183,72 @@
 
 <div class="wrapper">
 <ul class="post-list">
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/03/01/BOJ-3665.html">백준 Gold1 - 최종 순위</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 3665번 풀이 from collections import deque t = int(input()) def solution(n, m, ranks, changes): graph = [[0] * (n+1) for _ in range(n+1)] indegrees = [0] * (n+1) for i in range(n): win = ranks[i] for j in range(i+1, n): fail = ranks[j] graph[win][fail] = 1 indegrees[fail] += 1...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 1, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/03/01/BOJ-2887.html">백준 Gold2 - 행성 터널</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 2887번 풀이 n = int(input()) coords = [] parent = [i for i in range(n)] for i in range(n): x, y, z = map(int, input().split()) coords.append((i, x, y, z)) INF = int(1e9) edges = {} # 가까운 좌표끼리 거리를 계산한다. for k in range(1, 4): coords_ = sorted(coords, key=lambda...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 1, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/03/01/BOJ-2146.html">백준 Gold3 - 다리 만들기</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 2146번 풀이 from collections import deque n = int(input()) graph = [] for _ in range(n): tmp = map(int, input().split()) graph.append(list(tmp)) dx = [-1, 1, 0, 0] dy = [0, 0, -1, 1] def bfs(x, y, val): graph[x][y] = val q = deque() q.appendleft((x, y)) res = [(x, y)]...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 1, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
   
   <li>
     <h2>
@@ -223,72 +291,6 @@
     </section>
   </li>
   
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/03/01/BOJ-10775.html">백준 Gold1 - 공항</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 10775번 풀이 import sys sys.setrecursionlimit(100000) G = int(input()) P = int(input()) def dock(g, d): if g &lt;= 0: return -1 elif g not in d: d[g] = g-1 return g else: res = dock(d[g], d) if res != -1: d[g] = res-1 return res cnt = 0 d =...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">March 1, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/data-structure/2021/02/28/GraphTheory.html">Graph Theory with Python</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>서로소 집합 시간복잡도: $O(V + M \log_{2}{V})$ # 원소가 속한 집합 찾기 def find_parent(parent, x): if parent[x] != x: parent[x] = find_parent(parent, parent[x]) return parent[x] # 두 원소가 속한 집합 merge def union(parent, a, b): a = find_parent(parent, a) b = find_parent(parent, b) if a &lt; b: parent[b] = a...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 28, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Data-Structure">Data-structure</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/28/BOJ-20040.html">백준 Gold4 - 사이클 게임</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 20040번 풀이 n, m = map(int, input().split()) parent = [i for i in range(n)] def find_parent(x): if parent[x] != x: parent[x] = find_parent(parent[x]) return parent[x] def union(a, b): a = find_parent(a) b = find_parent(b) if a &lt; b: parent[b] = a else: parent[a] = b res = 0 for...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 28, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
   
 </ul>
 
@@ -304,7 +306,7 @@
 			</a>
 			
 		
-		<span class="page-number">Page 8 of 30</span>
+		<span class="page-number">Page 8 of 31</span>
 		
 		<a class="newer-posts" href="/page9">
       <span class="fa-stack fa-lg">
@@ -344,6 +346,8 @@
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
         
