@@ -186,6 +186,28 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/02/28/BOJ-1717.html">백준 Gold4 - 집합의 표현</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 1717번 풀이 n, m = map(int, input().split()) parent = [i for i in range(n+1)] def find_parent(x): if parent[x] != x: parent[x] = find_parent(parent[x]) return parent[x] def union(a, b): a = find_parent(a) b = find_parent(b) if a &lt; b: parent[b] = a else: parent[a] = b if __name__=='__main__': import sys...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 28, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/02/28/BOJ-1197.html">백준 Gold4 - 최소 스패닝 트리</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -256,28 +278,6 @@
     </h2>
     <section class="post-excerpt" itemprop="description">
       <p>백준 3190번 풀이 n = int(input()) k = int(input()) apples = set() for _ in range(k): x, y = map(int, input().split()) apples.add((x, y)) m = int(input()) times = [] for _ in range(m): t, lr = input().split() times.append((int(t), lr)) def rotate(d, lr): # 왼쪽으로 90도 회전 if lr == 'L':...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 27, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/27/BOJ-1753.html">백준 Gold5 - 최단경로</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 1753번 풀이 import heapq v, e = map(int, input().split()) k = int(input()) INF = int(1e9) edges = {} for _ in range(e): u, v_, w = map(int, input().split()) edges[(u, v_)] = min(edges.get((u, v_), INF), w) graph = [[] for _ in range(v+1)] for u, v_ in edges: w =...</p>
     </section>
     <section class="post-meta">
       <div class="post-date">February 27, 2021</div>

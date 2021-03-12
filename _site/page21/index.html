@@ -186,6 +186,47 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/02/06/BOJ-1927.html">백준 Silver1 - 최소 힙</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 1927번
+
+풀이
+
+import heapq
+
+n = int(input())
+h = []
+res = []
+for _ in range(n):
+    x = int(input())
+    if x != 0:
+        heapq.heappush(h, x)
+    elif h:
+        res.append(heapq.heappop(h))
+    else:
+        res.append(0)
+print(*res, sep='\n')
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 6, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/02/06/BOJ-1620.html">백준 Silver4 - 나는야 포켓몬 마스터 이다솜</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -295,28 +336,6 @@ print(cnt)
     </h2>
     <section class="post-excerpt" itemprop="description">
       <p>프로그래머스 43238번 풀이 def check(target, n, times): cnt = 0 for t in times: cnt += target // t return cnt def solution(n, times): l = 1 r = min(times) * n answer = 0 while l &lt;= r: mid = (l + r) // 2 cnt = check(mid, n,...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 5, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/05/BOJ-2110.html">백준 Silver1 - 공유기 설치</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 2110번 풀이 n, c = map(int, input().split()) arr = [0] * n for i in range(n): arr[i] = int(input()) arr.sort() def is_possible(minlen): i = 0 cnt = 1 while i &lt; len(arr): prev = arr[i] j = i+1 while j &lt; len(arr) and (arr[j]-prev) &lt; minlen: j += 1...</p>
     </section>
     <section class="post-meta">
       <div class="post-date">February 5, 2021</div>

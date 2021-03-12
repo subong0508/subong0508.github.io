@@ -186,6 +186,28 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/02/04/BOJ-2343.html">백준 Silver2 - 기타 레슨</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 2343번 풀이 n, m = map(int, input().split()) arr = list(map(int, input().split())) def is_possible(size): total = 0 cnt = 1 for i in range(n): if total + arr[i] &gt; size: cnt += 1 total = arr[i] else: total += arr[i] return cnt &lt;= m l = 1 r = sum(arr)...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 4, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/02/04/BOJ-1654.html">백준 Silver3 - 랜선 자르기</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -273,28 +295,6 @@ print(*res, sep='\n')
 
 이분탐색을 활용할 수도 있겠지만 파이썬의 내장자료형인 set을 통해 더 효율적으로 풀 수 있다.
 </p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 3, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/03/PR-42889.html">프로그래머스 Lv1 - 실패율</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>프로그래머스 42889번 def solution(N, stages): d = {i: 0 for i in range(1, N+1)} stages.sort() prev = stages[0] total = len(stages) cnt = 1 for i in range(1, len(stages)): if prev not in d: break if stages[i] == prev: cnt += 1 elif stages[i] != prev: d[prev] = cnt /...</p>
     </section>
     <section class="post-meta">
       <div class="post-date">February 3, 2021</div>

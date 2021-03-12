@@ -186,6 +186,43 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/02/09/BOJ-11399.html">백준 Silver3 - ATM</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 11399번
+
+풀이
+
+n = int(input())
+atm = list(map(int, input().split()))
+atm.sort()
+
+for i in range(1, n):
+    atm[i] += atm[i-1]
+    
+print(sum(atm))
+
+
+그냥 정렬해서 풀면 되는 문제.
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 9, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/02/09/BOJ-11047.html">백준 Silver1 - 동전 0, 동전 2</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -271,47 +308,6 @@ def solution(clothes):
     </h2>
     <section class="post-excerpt" itemprop="description">
       <p>프로그래머스 42888번 풀이 def solution(record): msgs = [] user_d = {} for r in record: lst = r.split() if len(lst) == 2: continue action, uid, name = lst user_d[uid] = name for r in record: lst = r.split() if len(lst) == 2: _, uid = lst msg = user_d[uid] +...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 6, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/06/PR-42626.html">프로그래머스 Lv2 - 더 맵게</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>프로그래머스 42626번
-
-풀이
-
-import heapq
-
-def solution(scoville, K):
-    foods = scoville
-    heapq.heapify(foods)
-    answer = 0
-    while len(foods) &gt;= 2 and foods[0] &lt; K:
-        a, b = heapq.heappop(foods), heapq.heappop(foods)
-        c = a + 2*b
-        heapq.heappush(foods, c)
-        answer += 1
-    if not foods or foods[0] &lt; K:
-        return -1  
-    return answer
-
-</p>
     </section>
     <section class="post-meta">
       <div class="post-date">February 6, 2021</div>

@@ -186,6 +186,28 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/02/13/PR-42891.html">프로그래머스 Lv4 - 무지의 먹방 라이브</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>프로그래머스 42891번 풀이 def solution(food_times, k): ft = [(i+1, t) for i, t in zip(range(len(food_times)), food_times)] # 음식 먹는 시간이 작은 순대로 뒤에 오게 정렬 ft = sorted(ft, key=lambda x: -x[1]) prev = 0 time = 0 answer = -1 while ft: idx, now = ft.pop() # pop 연산을 했으므로...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 13, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/data-structure/2021/02/13/DFS,-BFS.html">DFS, BFS with Python</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -256,28 +278,6 @@
     </h2>
     <section class="post-excerpt" itemprop="description">
       <p>프로그래머스 42884번 풀이 def solution(routes): answer = 0 routes.sort(key=lambda x: x[0]) routes.sort(key=lambda x: x[1]) cameras = [] for r in routes: s, e = r done = False # 거꾸로 보는 것이 더 빠름 for c in cameras[::-1]: if s &lt;= c &lt;= e: done = True break if not...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 11, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/11/BOJ-1209.html">백준 Gold4 - 순회강연</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 2109번 풀이 n = int(input()) arr = [-1] * n for i in range(n): p, d = map(int, input().split()) arr[i] = (p, d) # 강연비순으로 정렬 arr.sort(key=lambda x: x[0]) filled = [False] * 10001 res = 0 while arr: p, d = arr.pop() # 빈 날 있는지 찾아보기 while...</p>
     </section>
     <section class="post-meta">
       <div class="post-date">February 11, 2021</div>
