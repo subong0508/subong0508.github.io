@@ -163,6 +163,8 @@
         
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -183,6 +185,50 @@
 
 <div class="wrapper">
 <ul class="post-list">
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/03/13/BOJ-2629.html">백준 Gold2 - 양팔저울</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 2629번 풀이 n = int(input()) arr = list(map(int, input().split())) m = int(input()) ws = list(map(int, input().split())) dp = [[False] * 40001 for _ in range(n+1)] dp[0][0] = True for i in range(1, n+1): now = arr[i-1] # 현재 추의 무게 for j in range(40001): if dp[i-1][j]: dp[i][j] = True...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 13, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/03/13/BOJ-2342.html">백준 Gold3 - Dance Dance Revolution</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 2342번 풀이 import sys input = sys.stdin.readline arr = list(map(int, input().split())) n = len(arr) # 한 방향(x)에서 다른 방향(y)로 가는 가중치 weights = [ [1, 2, 2, 2, 2], [0, 1, 3, 4, 3], [0, 3, 1, 3, 4], [0, 4, 3, 1, 3], [0, 3, 4, 3, 1]...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 13, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
   
   <li>
     <h2>
@@ -247,90 +293,6 @@
     </section>
   </li>
   
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/03/12/BOJ-12015.html">백준 Gold2 - 가장 긴 증가하는 부분 수열 2</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 12015번
-
-풀이
-
-import sys
-from bisect import bisect_left
-
-input = sys.stdin.readline
-
-n = int(input())
-arr = list(map(int, input().split()))
-
-stack = []
-for i in range(n):
-    if not stack or arr[i] &gt; stack[-1]:
-        stack.append(arr[i])
-    else:
-        stack[bisect_left(stack, arr[i])] = arr[i]
-
-print(len(stack))
-
-</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">March 12, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/03/11/BOJ-9251.html">백준 Gold3 - LCS</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 9251번
-
-풀이
-
-str1 = input()
-str2 = input()
-n = len(str1)
-m = len(str2)
-
-dp = [[0] * (m+1) for _ in range(n+1)]
-for i in range(1, n+1):
-    for j in range(1, m+1):
-        if str1[i-1] == str2[j-1]:
-            dp[i][j] = dp[i-1][j-1]+1
-        else:
-            dp[i][j] = max(dp[i-1][j], dp[i][j-1])
-
-print(dp[n][m])
-
-</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">March 11, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
   
 </ul>
 
@@ -342,7 +304,7 @@ print(dp[n][m])
       <i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
     </span>
 		
-		<span class="page-number">Page 1 of 31</span>
+		<span class="page-number">Page 1 of 32</span>
 		
 		<a class="newer-posts" href="/page2">
       <span class="fa-stack fa-lg">
@@ -382,6 +344,8 @@ print(dp[n][m])
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
         

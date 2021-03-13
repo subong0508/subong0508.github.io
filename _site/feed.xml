@@ -6,9 +6,129 @@
 </description>
     <link>http://subong0508.github.io/</link>
     <atom:link href="http://subong0508.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 12 Mar 2021 21:55:01 +0900</pubDate>
-    <lastBuildDate>Fri, 12 Mar 2021 21:55:01 +0900</lastBuildDate>
+    <pubDate>Sat, 13 Mar 2021 16:00:24 +0900</pubDate>
+    <lastBuildDate>Sat, 13 Mar 2021 16:00:24 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>백준 Gold2 - 양팔저울</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem2629&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/2629&quot;&gt;백준 2629번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
+arr = list(map(int, input().split()))
+m = int(input())
+ws = list(map(int, input().split()))
+
+dp = [[False] * 40001 for _ in range(n+1)]
+dp[0][0] = True
+
+for i in range(1, n+1):
+    now = arr[i-1] # 현재 추의 무게
+    for j in range(40001):
+        if dp[i-1][j]:
+            dp[i][j] = True
+            tmp = [j-now, j+now, now-j, now+j]
+            for t in tmp:
+                if 0 &amp;lt;= t &amp;lt;= 40000:
+                    dp[i][t] = True
+                    
+res = ['N'] * m
+for i in range(m):
+    if dp[n][ws[i]]:
+        res[i] = 'Y'
+
+print(*res)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;결국 구슬의 무게는 나머지 구슬을 더하거나 빼서 만들 수 있으므로 위와 같은 점화식이 나온다.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 13 Mar 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/03/13/BOJ-2629.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/13/BOJ-2629.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Gold3 - Dance Dance Revolution</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem2342&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/2342&quot;&gt;백준 2342번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;import sys
+
+input = sys.stdin.readline
+arr = list(map(int, input().split()))
+n = len(arr)
+
+# 한 방향(x)에서 다른 방향(y)로 가는 가중치
+weights = [
+    [1, 2, 2, 2, 2], 
+    [0, 1, 3, 4, 3],
+    [0, 3, 1, 3, 4],
+    [0, 4, 3, 1, 3],
+    [0, 3, 4, 3, 1]
+]
+
+INF = int(1e9)
+dp = [[[INF for _ in range(5)] for _ in range(5)] for _ in range(n)]
+# 0 -&amp;gt; 첫번째(1, 2, 3, 4)는 무조건 2
+dp[0][0][arr[0]] = 2
+dp[0][arr[0]][0] = 2
+
+for i in range(1, n):
+    step = arr[i]
+    for x in range(5):
+        for y in range(5):
+            if x == y: # x, y가 같은 곳에서는 올 수 없다.
+                continue
+            # x를 이동: x, y -&amp;gt; step, y
+            dp[i][step][y] = min(dp[i][step][y], dp[i-1][x][y]+weights[x][step])
+            # y를 이동: x, y -&amp;gt; x, step
+            dp[i][x][step] = min(dp[i][x][step], dp[i-1][x][y]+weights[y][step])
+
+res = INF
+for i in range(5):
+    res = min(res, dp[n-1][i][0])
+    res = min(res, dp[n-1][0][i])
+
+print(res)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;3차원 DP로 겨우겨우 풀었다.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 13 Mar 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/03/13/BOJ-2342.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/13/BOJ-2342.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
     
       <item>
         <title>백준 Gold5 - 1학년</title>
@@ -376,119 +496,6 @@ for i in range(1, n+1):
         <pubDate>Thu, 11 Mar 2021 00:00:00 +0900</pubDate>
         <link>http://subong0508.github.io/problem-solving/2021/03/11/BOJ-14699.html</link>
         <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/11/BOJ-14699.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Gold2 - 팰린드롬?</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem10942&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/10942&quot;&gt;백준 10942번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;import sys
-
-input = sys.stdin.readline
-
-n = int(input())
-arr = [-1] + list(map(int, input().split()))
-m = int(input())
-
-dp = [[0] * (n+1) for _ in range(n+1)]
-for i in range(1, n+1):
-    dp[i][i] = 1
-
-for i in range(1, n):
-    if arr[i] == arr[i+1]:
-        dp[i][i+1] = 1
-
-i = 1
-diff = 2
-while diff &amp;lt;= n-1:
-    j = i+diff
-    while j &amp;lt;= n:
-        # 시작과 끝이 다르면 아니다.
-        if arr[i] != arr[j]:
-            dp[i][j] = 0
-        # 내부의 문자열이 팰린드롬인가?
-        else:
-            l, r = i+1, j-1
-            dp[i][j] = dp[l][r]
-        i += 1
-        j += 1
-    i = 1
-    diff += 1
-
-query = [-1] * m
-for i in range(m):
-    a, b = map(int, input().split())
-    query[i] = a, b
-
-for a, b in query:
-    print(dp[a][b])
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Thu, 11 Mar 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/03/11/BOJ-10942.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/11/BOJ-10942.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Gold3 - 앱</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem7579&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/7579&quot;&gt;백준 7579번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n, m = map(int, input().split())
-memory = [0] + list(map(int, input().split()))
-cost = [0] + list(map(int, input().split()))
-dp = [[0] * 10001 for _ in range(n+1)]
-
-for i in range(1, n+1):
-    for j in range(1, 10001):
-        if cost[i] &amp;lt;= j: # 주어진 코스트를 만족한다면 메모리를 최대화하자
-            dp[i][j] = max(dp[i-1][j], memory[i]+dp[i-1][j-cost[i]])
-        else:
-            dp[i][j] = dp[i-1][j]
-
-for j in range(1, 10001):
-    if dp[n][j] &amp;gt;= m:
-        print(j)
-        break
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;냅색 알고리즘의 응용문제로, 메모리에 대해 코스트를 최소화하는 테이블은 메모리 초과가 난다.
-따라서 코스트에 대해 메모리를 최대화하는 DP 테이블을 만들면 된다.&lt;/p&gt;
-</description>
-        <pubDate>Wed, 10 Mar 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/03/10/BOJ-7579.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/10/BOJ-7579.html</guid>
         
         <category>python</category>
         

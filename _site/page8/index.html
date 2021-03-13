@@ -163,6 +163,8 @@
         
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -183,6 +185,50 @@
 
 <div class="wrapper">
 <ul class="post-list">
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/03/02/BOJ-11659.html">백준 Silver3 - 구간 합 구하기 4</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 11659번 풀이 n, m = map(int, input().split()) arr = [0] + list(map(int, input().split())) total = 0 arr_sum = [0] * (n+1) for i in range(1, n+1): total += arr[i] arr_sum[i] = total ops = [] for _ in range(m): i, j = map(int, input().split()) ops.append((i, j)) res = []...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 2, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/03/01/PR-42861.html">프로그래머스 Lv3 - 섬 연결하기</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>프로그래머스 42861번 풀이 def find_parent(parent, x): if parent[x] != x: parent[x] = find_parent(parent, parent[x]) return parent[x] def union(parent, a, b): a = find_parent(parent, a) b = find_parent(parent, b) parent[a] = b def solution(n, costs): answer = 0 parent = [i for i in range(n)] costs.sort(key=lambda x: x[2]) for a, b,...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 1, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
   
   <li>
     <h2>
@@ -247,50 +293,6 @@
     </section>
   </li>
   
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/03/01/BOJ-2146.html">백준 Gold3 - 다리 만들기</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 2146번 풀이 from collections import deque n = int(input()) graph = [] for _ in range(n): tmp = map(int, input().split()) graph.append(list(tmp)) dx = [-1, 1, 0, 0] dy = [0, 0, -1, 1] def bfs(x, y, val): graph[x][y] = val q = deque() q.appendleft((x, y)) res = [(x, y)]...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">March 1, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/03/01/BOJ-1976.html">백준 Gold4 - 여행 가자</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 1976번 풀이 n = int(input()) m = int(input()) graph = [[0] * (n+1)] for _ in range(n): tmp = map(int, input().split()) graph.append([0] + list(tmp)) parent = [i for i in range(n+1)] arr = list(map(int, input().split())) edges = [] for i in range(1, n+1): for j in range(1, n+1): if...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">March 1, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
   
 </ul>
 
@@ -306,7 +308,7 @@
 			</a>
 			
 		
-		<span class="page-number">Page 8 of 31</span>
+		<span class="page-number">Page 8 of 32</span>
 		
 		<a class="newer-posts" href="/page9">
       <span class="fa-stack fa-lg">
@@ -346,6 +348,8 @@
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
         

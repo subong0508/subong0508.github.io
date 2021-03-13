@@ -163,6 +163,8 @@
         
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -183,6 +185,50 @@
 
 <div class="wrapper">
 <ul class="post-list">
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/16/PR-60058.html">프로그래머스 Lv2 - 괄호 변환</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>프로그래머스 60058번 풀이 def is_right(p): stack = [] for ch in p: if ch == '(': stack.append(ch) else: if len(stack) == 0 or stack.pop() != '(': return False return len(stack) == 0 def is_balanced(p): return p.count('(') == p.count(')') def parse(p): u, v = p, '' for i in range(1, len(p)):...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 16, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/16/PR-43163.html">프로그래머스 Lv3 - 단어 변환</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>프로그래머스 43163번 풀이 from collections import deque def diff(word1, word2): cnt = 0 for i in range(len(word1)): if word1[i] != word2[i]: cnt += 1 return cnt def solution(begin, target, words): answer = 0 q = deque([(begin, answer)]) visited = set() visited.add(begin) while q: now, ans = q.popleft() if now ==...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 16, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
   
   <li>
     <h2>
@@ -247,50 +293,6 @@
     </section>
   </li>
   
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/14/BOJ-7576.html">백준 Silver1 - 토마토(7576번, 7569번)</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 7576번 틀린 풀이(시간초과) from collections import deque m, n = map(int, input().split()) graph = [] for _ in range(n): tmp = list(map(int, input().split())) graph.append(tmp) dx = [-1, 1, 0, 0] dy = [0, 0, -1, 1] def bfs(x, y): if graph[x][y] != 1: return q = deque([(x, y)]) visited...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 14, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/14/BOJ-2667.html">백준 Silver1 - 단지번호붙이기</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 2667번 풀이 from collections import deque n = int(input()) graph = [] for _ in range(n): tmp = [int(x) for x in input()] graph.append(tmp) total_cnt = 0 res = [] dx = [-1, 1, 0, 0] dy = [0, 0, -1, 1] def bfs(x, y, graph): global total_cnt, res...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 14, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
   
 </ul>
 
@@ -306,7 +308,7 @@
 			</a>
 			
 		
-		<span class="page-number">Page 15 of 31</span>
+		<span class="page-number">Page 15 of 32</span>
 		
 		<a class="newer-posts" href="/page16">
       <span class="fa-stack fa-lg">
@@ -346,6 +348,8 @@
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
         
