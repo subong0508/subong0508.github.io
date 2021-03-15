@@ -6,9 +6,132 @@
 </description>
     <link>http://subong0508.github.io/</link>
     <atom:link href="http://subong0508.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 13 Mar 2021 16:00:24 +0900</pubDate>
-    <lastBuildDate>Sat, 13 Mar 2021 16:00:24 +0900</lastBuildDate>
+    <pubDate>Mon, 15 Mar 2021 23:05:39 +0900</pubDate>
+    <lastBuildDate>Mon, 15 Mar 2021 23:05:39 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>백준 Silver2 - 병사 배치하기</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem18353&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/18353&quot;&gt;백준 18353번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
+arr = list(map(int, input().split()))
+
+dp = [0] * n
+for i in range(n):
+    dp[i] = 1
+    for j in range(i):
+        if arr[i] &amp;lt; arr[j]:
+            dp[i] = max(dp[i], dp[j]+1)
+
+print(n-max(dp))
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Mon, 15 Mar 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/03/15/BOJ-18353.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/15/BOJ-18353.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Silver3 - 1로 만들기</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem1463&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1463&quot;&gt;백준 1463번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
+INF = int(1e9)
+dp = [INF] * (n+1)
+dp[1] = 0
+for i in range(1, n+1):
+    if i % 3 == 0 and 0 &amp;lt;= i // 3 &amp;lt;= n:
+        dp[i] = min(dp[i], dp[i // 3]+1)
+    if i % 2 == 0 and 0 &amp;lt;= i // 2 &amp;lt;= n:
+        dp[i] = min(dp[i], dp[i // 2]+1)
+    if 0 &amp;lt;= i-1 &amp;lt;= n:
+        dp[i] = min(dp[i], dp[i-1]+1)
+
+print(dp[n])
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Mon, 15 Mar 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/03/15/BOJ-1463.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/15/BOJ-1463.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Silver4 - 퇴사</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem14501&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/14501&quot;&gt;백준 14501번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
+ts = [0] * (n+1)
+ps = [0] * (n+1)
+for i in range(1, n+1):
+    t, p = map(int, input().split())
+    ts[i] = t
+    ps[i] = p
+
+dp = [0] * (n+1)
+for i in range(1, n+1):
+    tmp = i+ts[i]-1
+    # i번째 일을 할 수 있는 경우에만
+    if tmp &amp;lt;= n:
+        dp[tmp] = max(dp[tmp], ps[i])
+        for j in range(1, i):
+            dp[tmp] = max(dp[tmp], dp[j]+ps[i])
+        
+print(max(dp))
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Mon, 15 Mar 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/03/15/BOJ-14501.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/15/BOJ-14501.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
     
       <item>
         <title>백준 Gold2 - 양팔저울</title>
@@ -42,7 +165,7 @@ for i in range(m):
 print(*res)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;결국 구슬의 무게는 나머지 구슬을 더하거나 빼서 만들 수 있으므로 위와 같은 점화식이 나온다.&lt;/p&gt;
+&lt;p&gt;결국 구슬의 무게는 추들을 더하거나 빼서 만들어야 하기 때문에 위와 같은 점화식이 나온다.&lt;/p&gt;
 </description>
         <pubDate>Sat, 13 Mar 2021 00:00:00 +0900</pubDate>
         <link>http://subong0508.github.io/problem-solving/2021/03/13/BOJ-2629.html</link>
@@ -348,154 +471,6 @@ print(dp[n][m])
         <pubDate>Thu, 11 Mar 2021 00:00:00 +0900</pubDate>
         <link>http://subong0508.github.io/problem-solving/2021/03/11/BOJ-9251.html</link>
         <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/11/BOJ-9251.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Gold3 - LCS 3</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem1958&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1958&quot;&gt;백준 1958번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;str1 = input()
-str2 = input()
-str3 = input()
-
-l1, l2, l3 = map(len, [str1, str2, str3])
-dp = [[[0 for k in range(l3+1)] for j in range(l2+1)] for i in range(l1+1)]
-
-for i in range(1, l1+1):
-    for j in range(1, l2+1):
-        for k in range(1, l3+1):
-            if str1[i-1] == str2[j-1] == str3[k-1]:
-                dp[i][j][k] = dp[i-1][j-1][k-1]+1
-            else:
-                dp[i][j][k] = max([dp[i-1][j][k], dp[i][j-1][k], dp[i][j][k-1]])
-
-print(dp[l1][l2][l3])
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Thu, 11 Mar 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/03/11/BOJ-1958.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/11/BOJ-1958.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Gold4 - 내리막길</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem1520&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1520&quot;&gt;백준 1520번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n, m = map(int, input().split())
-
-dx = [-1, 1, 0, 0]
-dy = [0, 0, -1, 1]
-
-graph = []
-for _ in range(n):
-    graph.append(list(map(int, input().split())))
-
-dp = [[-1] * m for _ in range(m)]
-
-def dfs(x, y):
-    if x == n-1 and y == m-1:
-        return 1
-    # 방문한 적이 있다면
-    if dp[x][y] != -1:
-        return dp[x][y]
-    dp[x][y] = 0
-    for i in range(4):
-        nx, ny = x+dx[i], y+dy[i]
-        if 0 &amp;lt;= nx &amp;lt; n and 0 &amp;lt;= ny &amp;lt; m and graph[nx][ny] &amp;lt; graph[x][y]:
-            dp[x][y] += dfs(nx, ny)
-    return dp[x][y]
-
-print(dfs(0, 0))
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Thu, 11 Mar 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/03/11/BOJ-1520.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/11/BOJ-1520.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Gold5 - 관악산 등산</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem14699&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/14699&quot;&gt;백준 14699번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;import sys
-
-sys.setrecursionlimit(100000)
-
-n, m = map(int, input().split())
-heights = [-1] + list(map(int, input().split()))
-graph = [[] for _ in range(n+1)]
-for _ in range(m):
-    i, j = map(int, input().split())
-    if heights[i] &amp;lt; heights[j] and j not in graph[i]:
-        graph[i].append(j)
-    if heights[j] &amp;lt; heights[i] and i not in graph[j]:
-        graph[j].append(i)
-
-dp = [-1] * (n+1)
-def dfs(i):
-    # 한 번 방문한 곳은 다시 방문하지 않는다.
-    if dp[i] != -1:
-        return dp[i]
-    dp[i] = 1
-    for j in graph[i]:
-        dp[i] = max(dp[i], dfs(j)+1)
-    return dp[i]
-
-for i in range(1, n+1):
-    print(dfs(i))
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Thu, 11 Mar 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/03/11/BOJ-14699.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/11/BOJ-14699.html</guid>
         
         <category>python</category>
         

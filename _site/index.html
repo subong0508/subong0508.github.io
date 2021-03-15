@@ -188,6 +188,88 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/03/15/BOJ-18353.html">백준 Silver2 - 병사 배치하기</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 18353번
+
+풀이
+
+n = int(input())
+arr = list(map(int, input().split()))
+
+dp = [0] * n
+for i in range(n):
+    dp[i] = 1
+    for j in range(i):
+        if arr[i] &lt; arr[j]:
+            dp[i] = max(dp[i], dp[j]+1)
+
+print(n-max(dp))
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 15, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/03/15/BOJ-1463.html">백준 Silver3 - 1로 만들기</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 1463번 풀이 n = int(input()) INF = int(1e9) dp = [INF] * (n+1) dp[1] = 0 for i in range(1, n+1): if i % 3 == 0 and 0 &lt;= i // 3 &lt;= n: dp[i] = min(dp[i], dp[i // 3]+1) if i % 2 == 0 and 0...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 15, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/03/15/BOJ-14501.html">백준 Silver4 - 퇴사</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 14501번 풀이 n = int(input()) ts = [0] * (n+1) ps = [0] * (n+1) for i in range(1, n+1): t, p = map(int, input().split()) ts[i] = t ps[i] = p dp = [0] * (n+1) for i in range(1, n+1): tmp = i+ts[i]-1 # i번째 일을 할 수...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 15, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/03/13/BOJ-2629.html">백준 Gold2 - 양팔저울</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -217,72 +299,6 @@
     </section>
     <section class="post-meta">
       <div class="post-date">March 13, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/03/12/BOJ-5557.html">백준 Gold5 - 1학년</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 5557번 풀이 n = int(input()) arr = list(map(int, input().split())) dp = [[0] * 21 for _ in range(n-1)] dp[0][arr[0]] = 1 for i in range(1, n-1): num = arr[i] for j in range(21): if dp[i-1][j] != 0: if 0 &lt;= j+num &lt;= 20: dp[i][j+num] += dp[i-1][j] if 0 &lt;=...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">March 12, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/03/12/BOJ-2482.html">백준 Gold4 - 색상환</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 2482번 풀이 n = int(input()) k = int(input()) # 0번째와 n-1번째 모두 넣을수도, 안 넣을수도 있는 dp 테이블 dp1 = [[0] * (n+1) for _ in range(n)] for i in range(n): dp1[i][0] = 1 for i in range(n): dp1[i][1] = i+1 # 0번째와 n-1번째 모두 넣는 테이블 dp2 =...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">March 12, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/03/12/BOJ-1937.html">백준 Gold3 - 욕심쟁이 판다</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 1937번 풀이 n = int(input()) graph = [[] for _ in range(n)] for i in range(n): graph[i] = list(map(int, input().split())) dx = [-1, 1, 0, 0] dy = [0, 0, -1, 1] dp = [[-1] * n for _ in range(n)] # 최대한 오래 살 수 있는 날들 def...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">March 12, 2021</div>
       <div class="post-categories">
       in 
         

@@ -3,13 +3,37 @@
 
   <head>
   
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        TeX: {
+          equationNumbers: {
+            autoNumber: "AMS"
+          }
+        },
+        tex2jax: {
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+      }
+    });
+    MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+          alert("Math Processing Error: "+message[1]);
+        });
+    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+          alert("Math Processing Error: "+message[1]);
+        });
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    
+  
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Data Vision</title>
-  <meta name="description" content="My personal blog for studying; mainly related to data
-">
+  <title>백준 Silver4 - 퇴사</title>
+  <meta name="description" content="백준 14501번">
   
   <meta name="author" content="Jung Jaeeun">
   <meta name="copyright" content="&copy; Jung Jaeeun 2021">
@@ -43,11 +67,10 @@
 
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="My personal blog for studying; mainly related to data
-" />
+  <meta property="og:description" content="백준 14501번" />
   <meta property="og:url" content="http://subong0508.github.io" />
   <meta property="og:site_name" content="Data Vision" />
-  <meta property="og:title" content="Data Vision" />
+  <meta property="og:title" content="백준 Silver4 - 퇴사" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="http://subong0508.github.io/assets/logo.png" />
   <meta property="og:image:type" content="image/png" />
@@ -58,9 +81,8 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Data Vision">
-  <meta name="twitter:description" content="My personal blog for studying; mainly related to data
-">
+  <meta name="twitter:title" content="백준 Silver4 - 퇴사">
+  <meta name="twitter:description" content="백준 14501번">
   <meta name="twitter:image" content="http://subong0508.github.io/assets/logo.png">
   <meta name="twitter:url" content="http://subong0508.github.io">
   
@@ -69,7 +91,7 @@
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://subong0508.github.io/page14/">
+  <link rel="canonical" href="http://subong0508.github.io/problem-solving/2021/03/15/BOJ-14501.html">
   <link rel="alternate" type="application/rss+xml" title="Data Vision" href="http://subong0508.github.io/feed.xml" />
 </head>
 
@@ -172,153 +194,133 @@
 
 
     <div class="page-content">
-        <div class="home">
+        <div class="post">
 
-<div class="site-header-container has-cover" style="background-image: url(/assets/starry-night.jpg);">
-  <div class="scrim has-cover">
-    <header class="site-header">
-      <h1 class="title">Data Vision</h1>
-      <p class="subtitle">My personal blog for studying</p>
+<div class="post-header-container " >
+  <div class="scrim ">
+    <header class="post-header">
+      <h1 class="title">백준 Silver4 - 퇴사</h1>
+      <p class="info">by <strong>Jung Jaeeun</strong></p>
     </header>
   </div>
 </div>
 
 <div class="wrapper">
-<ul class="post-list">
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/19/BOJ-20165.html">백준 Gold5 - 인내의 도미노 장인 호석</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 20165번 풀이 n, m, r = map(int, input().split()) domino = [list(map(int, input().split())) for _ in range(n)] domino_origin = [[-1] * m for _ in range(n)] for i in range(n): for j in range(m): domino_origin[i][j] = domino[i][j] attack = [] defence = [] for i in range(2*r): if i %...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 19, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/19/BOJ-17144.html">백준 Gold5 - 미세먼지 안녕!</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 17144번 풀이 r, c, t = map(int, input().split()) graph = [list(map(int, input().split())) for _ in range(r)] c1 = -1 for i in range(r): if graph[i][0] == -1: c1 = i break c2 = c1+1 dx = [-1, 1, 0, 0] dy = [0, 0, -1, 1] def dust(): q...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 19, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/19/BOJ-15686.html">백준 Gold5 - 치킨 배달</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 15686번 풀이 from itertools import combinations n, m = map(int, input().split()) graph = [] for _ in range(n): graph.append(list(map(int, input().split()))) chickens = [(i, j) for j in range(n) for i in range(n) if graph[i][j] == 2] houses = [(i, j) for j in range(n) for i in range(n) if...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 19, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/18/BOJ-18428.html">백준 Silver1 - 감시 피하기</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 18428번 풀이 from itertools import combinations n = int(input()) graph = [] for _ in range(n): graph.append(input().split()) # teachers ts = set() candidates = [] for i in range(n): for j in range(n): if graph[i][j] == 'T': ts.add((i, j)) elif graph[i][j] == 'X': candidates.append((i, j)) dx = [-1, 1,...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 18, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/18/BOJ-18405.html">백준 Silver1 - 경쟁적 전염</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 18405번 풀이 from collections import deque n, k = map(int, input().split()) graph = [] for _ in range(n): graph.append(list(map(int, input().split()))) s, x, y = map(int, input().split()) dx = [-1, 1, 0, 0] dy = [0, 0, -1, 1] def bfs(graph): cnt = 1 q = [] visited = [[False]...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 18, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  
-</ul>
 
-<nav class="pagination" role="navigation">
-	<p>
+ <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+
+<section class="post-meta">
+  <div class="post-date">March 15, 2021</div>
+  <div class="post-categories">
+  in 
     
+    <a href="/category/Problem-Solving">Problem-solving</a>
+    
+  
+  </div>
+</section>  
+
+<article class="post-content">
+  <h3 id="httpswwwacmicpcnetproblem14501"><a href="https://www.acmicpc.net/problem/14501">백준 14501번</a></h3>
+
+<p><strong>풀이</strong></p>
+
+<pre><code class="language-python3">n = int(input())
+ts = [0] * (n+1)
+ps = [0] * (n+1)
+for i in range(1, n+1):
+    t, p = map(int, input().split())
+    ts[i] = t
+    ps[i] = p
+
+dp = [0] * (n+1)
+for i in range(1, n+1):
+    tmp = i+ts[i]-1
+    # i번째 일을 할 수 있는 경우에만
+    if tmp &lt;= n:
+        dp[tmp] = max(dp[tmp], ps[i])
+        for j in range(1, i):
+            dp[tmp] = max(dp[tmp], dp[j]+ps[i])
+        
+print(max(dp))
+</code></pre>
+
+</article>
+
+
+
+<section class="tags">
+  <strong>Tags:</strong> <a href="/tag/python">python</a>,&nbsp;<a href="/tag/coding-test">coding-test</a>,&nbsp;<a href="/tag/programmers">programmers</a>,&nbsp;<a href="/tag/boj">boj</a>,&nbsp;<a href="/tag/baekjoon">baekjoon</a>
+</section>
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<section class="share">
+  <span>Share: </span>
+  
+    
+    
+    
+    
+    
+    
+    
+  
+</section>
+
+	<section class="post-navigation">
+		<span class="prev-post">
 			
-			<a class="newer-posts" href="/page13">
-				<span class="fa-stack fa-lg">
-					<i class="fa fa-square fa-stack-2x"></i>
-					<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
-				</span>
-			</a>
+				<a href="/problem-solving/2021/03/13/BOJ-2629.html">
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-square fa-stack-2x"></i>
+						<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+					</span>
+					<span class="page-number">백준 Gold2 - 양팔저울</span>
+				</a>
 			
-		
-		<span class="page-number">Page 14 of 32</span>
-		
-		<a class="newer-posts" href="/page15">
-      <span class="fa-stack fa-lg">
-        <i class="fa fa-square fa-stack-2x"></i>
-        <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
-      </span>
-    </a>
-		
-	</p>
-</nav>
+		</span>
+		<span class="next-post">
+			
+				<a href="/problem-solving/2021/03/15/BOJ-1463.html">
+					<span class="page-number">백준 Silver3 - 1로 만들기</span>
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-square fa-stack-2x"></i>
+						<i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
+					</span>
+				</a>
+			
+		</span>
+	</section>
+
+
+
+
+<section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'subong0508-github-io';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
 
 </div>
 </div>
