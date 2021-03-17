@@ -165,6 +165,8 @@
         
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -185,6 +187,50 @@
 
 <div class="wrapper">
 <ul class="post-list">
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/14/BOJ-7576.html">백준 Silver1 - 토마토(7576번, 7569번)</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 7576번 틀린 풀이(시간초과) from collections import deque m, n = map(int, input().split()) graph = [] for _ in range(n): tmp = list(map(int, input().split())) graph.append(tmp) dx = [-1, 1, 0, 0] dy = [0, 0, -1, 1] def bfs(x, y): if graph[x][y] != 1: return q = deque([(x, y)]) visited...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 14, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/14/BOJ-2667.html">백준 Silver1 - 단지번호붙이기</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 2667번 풀이 from collections import deque n = int(input()) graph = [] for _ in range(n): tmp = [int(x) for x in input()] graph.append(tmp) total_cnt = 0 res = [] dx = [-1, 1, 0, 0] dy = [0, 0, -1, 1] def bfs(x, y, graph): global total_cnt, res...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 14, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
   
   <li>
     <h2>
@@ -249,50 +295,6 @@
     </section>
   </li>
   
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/14/BOJ-1697.html">백준 Silver1 - 숨바꼭질, Gold5 - 숨바꼭질 3</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 1697번 풀이 from collections import deque n, k = map(int, input().split()) def bfs(n, k): cnt = 0 q = deque([(n, cnt)]) visited = set() while q: now, cnt = q.popleft() if now == k: return cnt if 0 &lt;= now-1 and (now-1) not in visited: visited.add(now-1) q.append((now-1, cnt+1)) if...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 14, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/14/BOJ-14502.html">백준 Gold5 - 연구소</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 14502번 풀이 from itertools import combinations from collections import deque n, m = map(int, input().split()) graph = [] for _ in range(n): tmp = list(map(int, input().split())) graph.append(tmp) candidates = [] walls = [] virus = deque() for i in range(n): for j in range(m): if graph[i][j] == 0: candidates.append((i,...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 14, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
   
 </ul>
 
@@ -308,7 +310,7 @@
 			</a>
 			
 		
-		<span class="page-number">Page 17 of 32</span>
+		<span class="page-number">Page 17 of 33</span>
 		
 		<a class="newer-posts" href="/page18">
       <span class="fa-stack fa-lg">
@@ -348,6 +350,8 @@
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
         

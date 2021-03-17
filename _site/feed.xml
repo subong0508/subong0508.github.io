@@ -6,9 +6,184 @@
 </description>
     <link>http://subong0508.github.io/</link>
     <atom:link href="http://subong0508.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 15 Mar 2021 23:05:39 +0900</pubDate>
-    <lastBuildDate>Mon, 15 Mar 2021 23:05:39 +0900</lastBuildDate>
+    <pubDate>Wed, 17 Mar 2021 22:35:08 +0900</pubDate>
+    <lastBuildDate>Wed, 17 Mar 2021 22:35:08 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>프로그래머스 Lv3 - 길 찾기 게임</title>
+        <description>&lt;h3 id=&quot;httpsprogrammerscokrlearncourses30lessons42892&quot;&gt;&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/42892&quot;&gt;프로그래머스 42892번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;import sys
+
+sys.setrecursionlimit(10 ** 5)
+
+class Node:
+    def __init__(self, data, x):
+        self.data = data
+        self.x = x
+        self.l = None
+        self.r = None
+        
+pre = []
+post = []
+
+def preorder(node):
+    if node is None:
+        return
+    pre.append(node.data)
+    preorder(node.l)
+    preorder(node.r)
+    
+def postorder(node):
+    if node is None:
+        return
+    postorder(node.l)
+    postorder(node.r)
+    post.append(node.data)
+        
+def solution(nodeinfo):
+    answer = []
+    nodeinfo = [[i+1] + node for i, node in enumerate(nodeinfo)]
+    nodeinfo = sorted(nodeinfo, key=lambda x: (-x[2], x[1]))
+    root = None
+    for node in nodeinfo:
+        if not root:
+            root = Node(node[0], node[1])
+        else:
+            current = root
+            while True:
+                if node[1] &amp;lt; current.x:
+                    if current.l:
+                        current = current.l
+                        continue
+                    else:
+                        current.l = Node(node[0], node[1])
+                        break
+                if node[1] &amp;gt; current.x:
+                    if current.r:
+                        current = current.r
+                        continue
+                    else:
+                        current.r = Node(node[0], node[1])
+                        break
+    preorder(root)
+    answer.append(pre)
+    postorder(root)
+    answer.append(post)
+    return answer
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;직접 구현해야만 풀 수 있는 문제, 다시 풀어봐야지&lt;/p&gt;
+</description>
+        <pubDate>Wed, 17 Mar 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/03/17/PR-42892.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/17/PR-42892.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Silver1 - 트리 순회</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem1991&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1991&quot;&gt;백준 1991번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
+
+
+class Node:
+    def __init__(self, data, l=None, r=None):
+        self.data = data
+        self.l = l 
+        self.r = r
+
+
+def find_node(now, data):
+    if now is None:
+        return None
+    if now.data == data:
+        return now
+    l = find_node(now.l, data)
+    if l is None:
+        return find_node(now.r, data)
+    else:
+        return l
+
+
+root = None
+for i in range(n):
+    data, l, r = input().split()
+    l = Node(l) if l != '.' else None
+    r = Node(r) if r != '.' else None
+    if i == 0:
+        root = Node(data, l, r)
+        continue
+    now = find_node(root, data)
+    now.l = l
+    now.r = r
+
+
+def preorder(node):
+    if node is None:
+        return
+    print(node.data, sep='', end='')
+    preorder(node.l)
+    preorder(node.r)
+
+def inorder(node):
+    if node is None:
+        return 
+    inorder(node.l)
+    print(node.data, sep='', end='')
+    inorder(node.r)
+
+def postorder(node):
+    if node is None:
+        return 
+    postorder(node.l)
+    postorder(node.r)
+    print(node.data, sep='', end='')
+
+
+funcs = [preorder, inorder, postorder]
+for func in funcs:
+    func(root)
+    print()
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Wed, 17 Mar 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/03/17/BOJ-1991.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/17/BOJ-1991.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
     
       <item>
         <title>백준 Silver2 - 병사 배치하기</title>
@@ -387,90 +562,6 @@ print(res)
         <pubDate>Fri, 12 Mar 2021 00:00:00 +0900</pubDate>
         <link>http://subong0508.github.io/problem-solving/2021/03/12/BOJ-1937.html</link>
         <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/12/BOJ-1937.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Gold2 - 가장 긴 증가하는 부분 수열 2</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem12015&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/12015&quot;&gt;백준 12015번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;import sys
-from bisect import bisect_left
-
-input = sys.stdin.readline
-
-n = int(input())
-arr = list(map(int, input().split()))
-
-stack = []
-for i in range(n):
-    if not stack or arr[i] &amp;gt; stack[-1]:
-        stack.append(arr[i])
-    else:
-        stack[bisect_left(stack, arr[i])] = arr[i]
-
-print(len(stack))
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Fri, 12 Mar 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/03/12/BOJ-12015.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/12/BOJ-12015.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Gold3 - LCS</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem9251&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/9251&quot;&gt;백준 9251번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;str1 = input()
-str2 = input()
-n = len(str1)
-m = len(str2)
-
-dp = [[0] * (m+1) for _ in range(n+1)]
-for i in range(1, n+1):
-    for j in range(1, m+1):
-        if str1[i-1] == str2[j-1]:
-            dp[i][j] = dp[i-1][j-1]+1
-        else:
-            dp[i][j] = max(dp[i-1][j], dp[i][j-1])
-
-print(dp[n][m])
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Thu, 11 Mar 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/03/11/BOJ-9251.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/11/BOJ-9251.html</guid>
         
         <category>python</category>
         

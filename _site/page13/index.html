@@ -165,6 +165,8 @@
         
           
         
+          
+        
       </ul>
     </nav>
   </div>
@@ -185,6 +187,50 @@
 
 <div class="wrapper">
 <ul class="post-list">
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/24/PR-60059.html">프로그래머스 Lv3 - 자물쇠와 열쇠</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>프로그래머스 60059번 풀이 import numpy as np def rotate(m, key): key_ = [[0] * m for _ in range(m)] for i in range(m): for j in range(m): key_[j][m-i-1] = key[i][j] return key_ def solution(key, lock): answer = False n = len(lock) m = len(key) keys = [] for i in...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 24, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/problem-solving/2021/02/23/BOJ-13460.html">백준 Gold2 - 구슬탈출 2</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 13460번 풀이 n, m = map(int, input().split()) board = [] for _ in range(n): board.append([ch for ch in input()]) # 공들의 위치 balls = [-1] * 2 for i in range(n): for j in range(m): if board[i][j] == 'R': balls[0] = [i, j] elif board[i][j] == 'B': balls[1] =...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 23, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
   
   <li>
     <h2>
@@ -249,50 +295,6 @@
     </section>
   </li>
   
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/20/BOJ-17281.html">백준 Gold4 - ⚾</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 17281번 풀이(시간초과) from itertools import permutations n = int(input()) players = list(range(1, 10)) order = permutations(players, len(players)) order = [o for o in order if o[3] == 1] results = [] for _ in range(n): results.append([-1] + list(map(int, input().split()))) def baseball(c, results): score = 0 idx = 0 inning...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 20, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/19/PR-17679.html">프로그래머스 Lv2 - 프렌즈4블록</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>프로그래머스 17679번 풀이 def erase(m, n, board): s = set() for i in range(m-1): for j in range(n-1): # 이미 빈 상태 if board[i][j] == 0: continue if board[i][j] == board[i+1][j] == board[i][j+1] == board[i+1][j+1]: s |= {(i, j), (i+1, j), (i, j+1), (i+1, j+1)} for i, j in s:...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 19, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
   
 </ul>
 
@@ -308,7 +310,7 @@
 			</a>
 			
 		
-		<span class="page-number">Page 13 of 32</span>
+		<span class="page-number">Page 13 of 33</span>
 		
 		<a class="newer-posts" href="/page14">
       <span class="fa-stack fa-lg">
@@ -348,6 +350,8 @@
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
         
         
         
