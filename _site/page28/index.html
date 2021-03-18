@@ -190,6 +190,28 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/01/30/BOJ-14889.html">백준 Silver3 - 스타트와 링크</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 14889번 from itertools import combinations n = int(input()) arr = [[0] * (n+1)] for _ in range(n): arr.append([0] + list(map(int, input().split()))) whole = set(range(1, n+1)) comb = list(combinations(whole, n//2)) # 중복되는 경우 제외 comb = comb[:len(comb)//2] res = int(1e9) for start_ in comb: start = set(start_) link = whole...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">January 30, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/01/29/PR-42839.html">프로그래머스 Lv2 - 소수 찾기</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -260,28 +282,6 @@
     </h2>
     <section class="post-excerpt" itemprop="description">
       <p>프로그래머스 42584번 문제 설명 초 단위로 기록된 주식가격이 담긴 배열 prices가 매개변수로 주어질 때, 가격이 떨어지지 않은 기간은 몇 초인지를 return 하도록 solution 함수를 완성하세요 제한 사항 prices의 각 가격은 1 이상 10,000 이하인 자연수입니다. prices의 길이는 2 이상 100,000 이하입니다. 입출력 예 prices return [1, 2, 3, 2, 3]...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">January 29, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/01/29/BOJ-2615.html">백준 Silver3 - 오목</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 2615번 풀이 from collections import deque board = [] for _ in range(19): board.append(list(map(int, input().split()))) dxs = [-1, 0, 1, 1] dys = [1, 1, 0, 1] def bfs_main(x, y): return bfs(x, y, 0), bfs(x, y, 1), bfs(x, y, 2), bfs(x, y, 3) def bfs(x, y, d): q =...</p>
     </section>
     <section class="post-meta">
       <div class="post-date">January 29, 2021</div>

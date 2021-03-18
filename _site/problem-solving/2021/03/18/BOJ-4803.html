@@ -32,8 +32,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>백준 Gold1 - 우수 마을</title>
-  <meta name="description" content="백준 1949번">
+  <title>백준 Gold4 - 트리</title>
+  <meta name="description" content="백준 4803번">
   
   <meta name="author" content="Jung Jaeeun">
   <meta name="copyright" content="&copy; Jung Jaeeun 2021">
@@ -67,10 +67,10 @@
 
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="백준 1949번" />
+  <meta property="og:description" content="백준 4803번" />
   <meta property="og:url" content="http://subong0508.github.io" />
   <meta property="og:site_name" content="Data Vision" />
-  <meta property="og:title" content="백준 Gold1 - 우수 마을" />
+  <meta property="og:title" content="백준 Gold4 - 트리" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="http://subong0508.github.io/assets/logo.png" />
   <meta property="og:image:type" content="image/png" />
@@ -81,8 +81,8 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="백준 Gold1 - 우수 마을">
-  <meta name="twitter:description" content="백준 1949번">
+  <meta name="twitter:title" content="백준 Gold4 - 트리">
+  <meta name="twitter:description" content="백준 4803번">
   <meta name="twitter:image" content="http://subong0508.github.io/assets/logo.png">
   <meta name="twitter:url" content="http://subong0508.github.io">
   
@@ -91,7 +91,7 @@
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://subong0508.github.io/problem-solving/2021/03/18/BOJ-1949.html">
+  <link rel="canonical" href="http://subong0508.github.io/problem-solving/2021/03/18/BOJ-4803.html">
   <link rel="alternate" type="application/rss+xml" title="Data Vision" href="http://subong0508.github.io/feed.xml" />
 </head>
 
@@ -201,7 +201,7 @@
 <div class="post-header-container " >
   <div class="scrim ">
     <header class="post-header">
-      <h1 class="title">백준 Gold1 - 우수 마을</h1>
+      <h1 class="title">백준 Gold4 - 트리</h1>
       <p class="info">by <strong>Jung Jaeeun</strong></p>
     </header>
   </div>
@@ -227,41 +227,55 @@
 </section>  
 
 <article class="post-content">
-  <h3 id="httpswwwacmicpcnetproblem1949"><a href="https://www.acmicpc.net/problem/1949">백준 1949번</a></h3>
+  <h3 id="httpswwwacmicpcnetproblem4803"><a href="https://www.acmicpc.net/problem/4803">백준 4803번</a></h3>
 
 <p><strong>풀이</strong></p>
 
 <pre><code class="language-python3">import sys
 
-sys.setrecursionlimit(10 ** 5)
+input = sys.stdin.readline
 
-n = int(input())
-arr = list(map(int, input().split()))
-graph = [[] for _ in range(n+1)]
-for _ in range(n-1):
-    a, b = map(int, input().split())
-    graph[a].append(b)
-    graph[b].append(a)
+def dfs(now, prev, graph, visited):
+    visited[now] = True
+    for next in graph[now]:
+        if next == prev:
+            continue
+        if visited[next]:
+            return False
+        if not dfs(next, now, graph, visited):
+            return False
+    return True
 
-dp = [[0, 0] for _ in range(n+1)]
-visited = [False] * (n+1)
+def count_tree(n, graph, visited):
+    cnt = 0
+    for i in range(1, n+1):
+        if not visited[i] and dfs(i, 0, graph, visited):
+            cnt += 1
+    return cnt
 
-def dfs(i, dp, visited):
-    dp[i][0] = 0 # 포함하지 않음
-    dp[i][1] = arr[i-1]
-    visited[i] = True
-    for j in graph[i]:
-        if not visited[j]:
-            dfs(j, dp, visited)
-            dp[i][0] = max(dp[i][0]+dp[j][0], dp[i][0]+dp[j][1])
-            dp[i][1] += dp[j][0]
+i = 0
+res = []
+while True:
+    i += 1
+    n, m = map(int, input().split())
+    if n == 0 and m == 0:
+        break
+    graph = [[] for _ in range(n+1)]
+    for _ in range(m):
+        a, b = map(int, input().split())
+        graph[a].append(b)
+        graph[b].append(a)
+    visited = [False] * (n+1)
+    cnt = count_tree(n, graph, visited)
+    if cnt == 0:
+        res.append("Case %d: No trees." % i)
+    elif cnt == 1:
+        res.append("Case %d: There is one tree." % i)
+    else:
+        res.append("Case %d: A forest of %d trees." % (i, cnt))
 
-dfs(1, dp, visited)
-
-print(max(dp[1]))
+print(*res, sep='\n')
 </code></pre>
-
-<p>트리 DP 문제, 다시 풀어봐야 할 것 같다 ㅠ</p>
 
 </article>
 
@@ -293,24 +307,16 @@ print(max(dp[1]))
 	<section class="post-navigation">
 		<span class="prev-post">
 			
-				<a href="/problem-solving/2021/03/17/PR-42892.html">
+				<a href="/problem-solving/2021/03/18/BOJ-1949.html">
 					<span class="fa-stack fa-lg">
 						<i class="fa fa-square fa-stack-2x"></i>
 						<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
 					</span>
-					<span class="page-number">프로그래머스 Lv3 - 길 찾기 게임</span>
+					<span class="page-number">백준 Gold1 - 우수 마을</span>
 				</a>
 			
 		</span>
 		<span class="next-post">
-			
-				<a href="/problem-solving/2021/03/18/BOJ-4803.html">
-					<span class="page-number">백준 Gold4 - 트리</span>
-					<span class="fa-stack fa-lg">
-						<i class="fa fa-square fa-stack-2x"></i>
-						<i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
-					</span>
-				</a>
 			
 		</span>
 	</section>

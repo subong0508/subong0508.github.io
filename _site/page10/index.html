@@ -190,6 +190,28 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/03/01/BOJ-3665.html">백준 Gold1 - 최종 순위</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 3665번 풀이 from collections import deque t = int(input()) def solution(n, m, ranks, changes): graph = [[0] * (n+1) for _ in range(n+1)] indegrees = [0] * (n+1) for i in range(n): win = ranks[i] for j in range(i+1, n): fail = ranks[j] graph[win][fail] = 1 indegrees[fail] += 1...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 1, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/03/01/BOJ-2887.html">백준 Gold2 - 행성 터널</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -260,28 +282,6 @@
     </h2>
     <section class="post-excerpt" itemprop="description">
       <p>백준 1647번 풀이 n, m = map(int, input().split()) parent = [i for i in range(n+1)] edges = [] for _ in range(m): a, b, c = map(int, input().split()) edges.append((a, b, c)) def find_parent(x): if parent[x] != x: parent[x] = find_parent(parent[x]) return parent[x] def union(a, b): a = find_parent(a) b =...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">March 1, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/03/01/BOJ-10775.html">백준 Gold1 - 공항</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 10775번 풀이 import sys sys.setrecursionlimit(100000) G = int(input()) P = int(input()) def dock(g, d): if g &lt;= 0: return -1 elif g not in d: d[g] = g-1 return g else: res = dock(d[g], d) if res != -1: d[g] = res-1 return res cnt = 0 d =...</p>
     </section>
     <section class="post-meta">
       <div class="post-date">March 1, 2021</div>

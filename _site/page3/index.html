@@ -190,6 +190,28 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/03/12/BOJ-2482.html">백준 Gold4 - 색상환</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 2482번 풀이 n = int(input()) k = int(input()) # 0번째와 n-1번째 모두 넣을수도, 안 넣을수도 있는 dp 테이블 dp1 = [[0] * (n+1) for _ in range(n)] for i in range(n): dp1[i][0] = 1 for i in range(n): dp1[i][1] = i+1 # 0번째와 n-1번째 모두 넣는 테이블 dp2 =...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 12, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/03/12/BOJ-1937.html">백준 Gold3 - 욕심쟁이 판다</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -300,28 +322,6 @@ print(dp[n][m])
     </h2>
     <section class="post-excerpt" itemprop="description">
       <p>백준 1958번 풀이 str1 = input() str2 = input() str3 = input() l1, l2, l3 = map(len, [str1, str2, str3]) dp = [[[0 for k in range(l3+1)] for j in range(l2+1)] for i in range(l1+1)] for i in range(1, l1+1): for j in range(1, l2+1): for k in range(1, l3+1):...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">March 11, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/03/11/BOJ-1520.html">백준 Gold4 - 내리막길</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 1520번 풀이 n, m = map(int, input().split()) dx = [-1, 1, 0, 0] dy = [0, 0, -1, 1] graph = [] for _ in range(n): graph.append(list(map(int, input().split()))) dp = [[-1] * m for _ in range(m)] def dfs(x, y): if x == n-1 and y == m-1: return...</p>
     </section>
     <section class="post-meta">
       <div class="post-date">March 11, 2021</div>

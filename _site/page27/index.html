@@ -190,6 +190,28 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/01/31/BOJ-16987.html">백준 Silver2 - 계란으로 계란치기</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 16987번 풀이 n = int(input()) eggs = [] for _ in range(n): s, w = map(int, input().split()) eggs.append([s, w]) cnt = 0 def crush(l, cur, eggs): global cnt # 가장 오른쪽 계란 if l == n: cnt = max(cnt, cur) return if eggs[l][0] &gt; 0: all_broken = True for...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">January 31, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/01/31/BOJ-14888.html">백준 Silver1 - 연산자 끼워넣기</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -260,28 +282,6 @@
     </h2>
     <section class="post-excerpt" itemprop="description">
       <p>백준 15649번 풀이 n, m = map(int, input().split()) arr = [i for i in range(1, n+1)] answer = [] def combinations(arr, s): global answer if len(s) == m: # shallow copy answer.append(s[:]) return for e in arr: if e not in s: s.append(e) combinations(arr, s) s.pop() combinations(arr, []) for a...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">January 30, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/01/30/BOJ-14889.html">백준 Silver3 - 스타트와 링크</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 14889번 from itertools import combinations n = int(input()) arr = [[0] * (n+1)] for _ in range(n): arr.append([0] + list(map(int, input().split()))) whole = set(range(1, n+1)) comb = list(combinations(whole, n//2)) # 중복되는 경우 제외 comb = comb[:len(comb)//2] res = int(1e9) for start_ in comb: start = set(start_) link = whole...</p>
     </section>
     <section class="post-meta">
       <div class="post-date">January 30, 2021</div>

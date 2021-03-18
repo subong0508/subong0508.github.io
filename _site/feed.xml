@@ -6,9 +6,80 @@
 </description>
     <link>http://subong0508.github.io/</link>
     <atom:link href="http://subong0508.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 18 Mar 2021 20:05:50 +0900</pubDate>
-    <lastBuildDate>Thu, 18 Mar 2021 20:05:50 +0900</lastBuildDate>
+    <pubDate>Thu, 18 Mar 2021 23:03:01 +0900</pubDate>
+    <lastBuildDate>Thu, 18 Mar 2021 23:03:01 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>백준 Gold4 - 트리</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem4803&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/4803&quot;&gt;백준 4803번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;import sys
+
+input = sys.stdin.readline
+
+def dfs(now, prev, graph, visited):
+    visited[now] = True
+    for next in graph[now]:
+        if next == prev:
+            continue
+        if visited[next]:
+            return False
+        if not dfs(next, now, graph, visited):
+            return False
+    return True
+
+def count_tree(n, graph, visited):
+    cnt = 0
+    for i in range(1, n+1):
+        if not visited[i] and dfs(i, 0, graph, visited):
+            cnt += 1
+    return cnt
+
+i = 0
+res = []
+while True:
+    i += 1
+    n, m = map(int, input().split())
+    if n == 0 and m == 0:
+        break
+    graph = [[] for _ in range(n+1)]
+    for _ in range(m):
+        a, b = map(int, input().split())
+        graph[a].append(b)
+        graph[b].append(a)
+    visited = [False] * (n+1)
+    cnt = count_tree(n, graph, visited)
+    if cnt == 0:
+        res.append(&quot;Case %d: No trees.&quot; % i)
+    elif cnt == 1:
+        res.append(&quot;Case %d: There is one tree.&quot; % i)
+    else:
+        res.append(&quot;Case %d: A forest of %d trees.&quot; % (i, cnt))
+
+print(*res, sep='\n')
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Thu, 18 Mar 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/03/18/BOJ-4803.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/18/BOJ-4803.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
     
       <item>
         <title>백준 Gold1 - 우수 마을</title>
@@ -511,62 +582,6 @@ print(dp[n-2][arr[n-1]])
         <pubDate>Fri, 12 Mar 2021 00:00:00 +0900</pubDate>
         <link>http://subong0508.github.io/problem-solving/2021/03/12/BOJ-5557.html</link>
         <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/12/BOJ-5557.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Gold4 - 색상환</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem2482&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/2482&quot;&gt;백준 2482번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
-k = int(input())
-
-# 0번째와 n-1번째 모두 넣을수도, 안 넣을수도 있는 dp 테이블
-dp1 = [[0] * (n+1) for _ in range(n)]
-for i in range(n):
-    dp1[i][0] = 1
-for i in range(n):
-    dp1[i][1] = i+1
-
-# 0번째와 n-1번째 모두 넣는 테이블
-dp2 = [[0] * (n+1) for _ in range(n)]
-for i in range(n):
-    dp2[i][0] = 1
-    dp2[i][1] = 1
-
-for i in range(2, n):
-    for j in range(2, n+1):
-        dp1[i][j] = dp1[i-1][j]+dp1[i-2][j-1]
-        # n-1번째 항상 포함
-        if i == n-1:
-            dp2[i][j] = dp2[i-2][j-1]
-        else:
-            dp2[i][j] = dp2[i-1][j]+dp2[i-2][j-1]
-
-for j in range(2, k+1):
-    dp1[n-1][j] -= dp2[n-1][j]
-
-print(dp1[n-1][k] % int(1e9+3))
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Fri, 12 Mar 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/03/12/BOJ-2482.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/12/BOJ-2482.html</guid>
         
         <category>python</category>
         

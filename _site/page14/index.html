@@ -190,6 +190,28 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/02/21/BOJ-12100.html">백준 Gold2 - 2048(Easy)</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 12100번 풀이 from copy import deepcopy from collections import deque n = int(input()) board = [] for _ in range(n): board.append(list(map(int, input().split()))) def go_up(board): for j in range(n): col = [board[i][j] for i in range(n) if board[i][j] &gt; 0] i = 0 new_col = deque() while i &lt; len(col)-1:...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 21, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/02/20/BOJ-19591.html">백준 Gold3 - 독특한 계산기</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -260,28 +282,6 @@
     </h2>
     <section class="post-excerpt" itemprop="description">
       <p>백준 20165번 풀이 n, m, r = map(int, input().split()) domino = [list(map(int, input().split())) for _ in range(n)] domino_origin = [[-1] * m for _ in range(n)] for i in range(n): for j in range(m): domino_origin[i][j] = domino[i][j] attack = [] defence = [] for i in range(2*r): if i %...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 19, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/19/BOJ-17144.html">백준 Gold5 - 미세먼지 안녕!</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 17144번 풀이 r, c, t = map(int, input().split()) graph = [list(map(int, input().split())) for _ in range(r)] c1 = -1 for i in range(r): if graph[i][0] == -1: c1 = i break c2 = c1+1 dx = [-1, 1, 0, 0] dy = [0, 0, -1, 1] def dust(): q...</p>
     </section>
     <section class="post-meta">
       <div class="post-date">February 19, 2021</div>
