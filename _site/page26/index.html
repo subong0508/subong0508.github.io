@@ -190,6 +190,28 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/02/03/BOJ-1715.html">백준 Gold4 - 카드 정렬하기</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 1715번 풀이 import heapq n = int(input()) q = [] for i in range(n): a = int(input()) heapq.heappush(q, a) res = 0 while len(q) &gt;= 2: a = heapq.heappop(q) b = heapq.heappop(q) res += a+b heapq.heappush(q, a+b) print(res) 첨에는 그냥 array로 받고 sort해서 deque로 풀었는데 새로운 원소가 더해질 때...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 3, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/02/03/BOJ-10825.html">백준 Silver4 - 국영수</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -260,28 +282,6 @@
     </h2>
     <section class="post-excerpt" itemprop="description">
       <p>백준 16987번 풀이 n = int(input()) eggs = [] for _ in range(n): s, w = map(int, input().split()) eggs.append([s, w]) cnt = 0 def crush(l, cur, eggs): global cnt # 가장 오른쪽 계란 if l == n: cnt = max(cnt, cur) return if eggs[l][0] &gt; 0: all_broken = True for...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">January 31, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/01/31/BOJ-14888.html">백준 Silver1 - 연산자 끼워넣기</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 14888번 풀이 n = int(input()) arr = list(map(int, input().split())) ops = list(map(int, input().split())) min_val = int(1e9) max_val = -int(1e9) def solution(idx, ops, val): global min_val, max_val if idx == n-1: min_val = min(min_val, val) max_val = max(max_val, val) return for i in range(4): if ops[i] &lt;= 0: continue ops[i]...</p>
     </section>
     <section class="post-meta">
       <div class="post-date">January 31, 2021</div>

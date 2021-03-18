@@ -190,6 +190,28 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/02/05/BOJ-1300.html">백준 Gold4 - K번째 수</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 1300번 풀이 n = int(input()) k = int(input()) l = 0 r = n*n ans = -1 while l &lt;= r: mid = (l + r) // 2 cnt = 0 for i in range(1, n+1): cnt += min(n, mid // i) if cnt &lt; k: l = mid...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 5, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/02/04/PR-64062.html">프로그래머스 Lv3 - 징검다리 건너기</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -260,28 +282,6 @@
     </h2>
     <section class="post-excerpt" itemprop="description">
       <p>백준 1654번 풀이 k, n = map(int, input().split()) arr = [0] * k for i in range(k): arr[i] = int(input()) def get_num(arr, length): cnt = 0 for a in arr: cnt += a // length return cnt l = 1 r = sum(arr) res = 0 while l &lt;= r:...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 4, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/04/BOJ-1072.html">백준 Silver3 - 게임</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 1072번 풀이 x, y = map(int, input().split()) z = int(100 * y / x) l = 1 r = x res = -1 while l &lt;= r: mid = (l + r) // 2 new_z = int(100 * (y+mid) / (x+mid)) if new_z &lt;= z: l = mid +...</p>
     </section>
     <section class="post-meta">
       <div class="post-date">February 4, 2021</div>

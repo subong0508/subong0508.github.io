@@ -190,6 +190,28 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/02/04/BOJ-1072.html">백준 Silver3 - 게임</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 1072번 풀이 x, y = map(int, input().split()) z = int(100 * y / x) l = 1 r = x res = -1 while l &lt;= r: mid = (l + r) // 2 new_z = int(100 * (y+mid) / (x+mid)) if new_z &lt;= z: l = mid +...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 4, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/02/03/BOJ-1920.html">백준 Silver4 - 수 찾기</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -277,28 +299,6 @@ print(*res, sep='\n')
     </h2>
     <section class="post-excerpt" itemprop="description">
       <p>백준 18310번 풀이 n = int(input()) arr = list(map(int, input().split())) arr.sort() def cal_distance(arr, mid): total = 0 for a in arr: total += abs(arr[mid]-a) return total if len(arr) % 2 == 1: mid = len(arr) // 2 else: mid1, mid2 = len(arr)//2-1, len(arr)//2 if cal_distance(arr, mid1) &gt; cal_distance(arr, mid2): mid...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 3, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/03/BOJ-1715.html">백준 Gold4 - 카드 정렬하기</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 1715번 풀이 import heapq n = int(input()) q = [] for i in range(n): a = int(input()) heapq.heappush(q, a) res = 0 while len(q) &gt;= 2: a = heapq.heappop(q) b = heapq.heappop(q) res += a+b heapq.heappush(q, a+b) print(res) 첨에는 그냥 array로 받고 sort해서 deque로 풀었는데 새로운 원소가 더해질 때...</p>
     </section>
     <section class="post-meta">
       <div class="post-date">February 3, 2021</div>

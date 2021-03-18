@@ -190,6 +190,28 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/03/12/BOJ-1937.html">백준 Gold3 - 욕심쟁이 판다</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 1937번 풀이 n = int(input()) graph = [[] for _ in range(n)] for i in range(n): graph[i] = list(map(int, input().split())) dx = [-1, 1, 0, 0] dy = [0, 0, -1, 1] dp = [[-1] * n for _ in range(n)] # 최대한 오래 살 수 있는 날들 def...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 12, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/03/12/BOJ-12015.html">백준 Gold2 - 가장 긴 증가하는 부분 수열 2</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -300,28 +322,6 @@ print(dp[n][m])
     </h2>
     <section class="post-excerpt" itemprop="description">
       <p>백준 1520번 풀이 n, m = map(int, input().split()) dx = [-1, 1, 0, 0] dy = [0, 0, -1, 1] graph = [] for _ in range(n): graph.append(list(map(int, input().split()))) dp = [[-1] * m for _ in range(m)] def dfs(x, y): if x == n-1 and y == m-1: return...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">March 11, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/03/11/BOJ-14699.html">백준 Gold5 - 관악산 등산</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 14699번 풀이 import sys sys.setrecursionlimit(100000) n, m = map(int, input().split()) heights = [-1] + list(map(int, input().split())) graph = [[] for _ in range(n+1)] for _ in range(m): i, j = map(int, input().split()) if heights[i] &lt; heights[j] and j not in graph[i]: graph[i].append(j) if heights[j] &lt; heights[i] and i not...</p>
     </section>
     <section class="post-meta">
       <div class="post-date">March 11, 2021</div>

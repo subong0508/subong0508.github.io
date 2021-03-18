@@ -190,6 +190,28 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/02/08/PR-42895.html">프로그래머스 Lv3 - N으로 표현</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>프로그래머스 42895번 풀이 def dfs(N, cur, number, cnt): global answer if cnt &gt; 8: return if cur == number: answer = min(answer, cnt) return for i in range(1, 9): tmp = int(str(N) * i) dfs(N, cur + tmp, number, cnt+i) dfs(N, cur - tmp, number, cnt+i) dfs(N, cur * tmp,...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 8, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/02/08/PR-42578.html">프로그래머스 Lv2 - 위장</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -301,28 +323,6 @@ def solution(scoville, K):
       in 
         
         <a href="/category/Data-Structure">Data-structure</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/06/BOJ-4358.html">백준 Gold4 - 생태학</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 4358번 풀이 import sys input = sys.stdin.readline d = {} cnt = 0 while True: line = input().rstrip() if not line: break cnt += 1 d[line] = d.get(line, 0) + 1 d = sorted(d.items()) for k, v in d: print("%s %.4f" % (k, 100*v/cnt)) 인풋을 이런식으로 받는 건 못봐서...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 6, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
         
       
       </div>

@@ -190,6 +190,28 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/03/02/BOJ-2230.html">백준 Gold5 - 수 고르기</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 2230번 풀이 n, m = map(int, input().split()) arr = [] for _ in range(n): arr.append(int(input())) arr.sort() i = j = 0 INF = int(1e10) res = INF while i &lt; n: while j &lt; n and arr[j]-arr[i] &lt; m: j += 1 if j &gt;= n: break res =...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 2, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/03/02/BOJ-11659.html">백준 Silver3 - 구간 합 구하기 4</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -260,28 +282,6 @@
     </h2>
     <section class="post-excerpt" itemprop="description">
       <p>백준 3665번 풀이 from collections import deque t = int(input()) def solution(n, m, ranks, changes): graph = [[0] * (n+1) for _ in range(n+1)] indegrees = [0] * (n+1) for i in range(n): win = ranks[i] for j in range(i+1, n): fail = ranks[j] graph[win][fail] = 1 indegrees[fail] += 1...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">March 1, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/03/01/BOJ-2887.html">백준 Gold2 - 행성 터널</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 2887번 풀이 n = int(input()) coords = [] parent = [i for i in range(n)] for i in range(n): x, y, z = map(int, input().split()) coords.append((i, x, y, z)) INF = int(1e9) edges = {} # 가까운 좌표끼리 거리를 계산한다. for k in range(1, 4): coords_ = sorted(coords, key=lambda...</p>
     </section>
     <section class="post-meta">
       <div class="post-date">March 1, 2021</div>

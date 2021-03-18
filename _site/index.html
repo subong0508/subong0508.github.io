@@ -190,6 +190,28 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/03/18/BOJ-1949.html">백준 Gold1 - 우수 마을</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 1949번 풀이 import sys sys.setrecursionlimit(10 ** 5) n = int(input()) arr = list(map(int, input().split())) graph = [[] for _ in range(n+1)] for _ in range(n-1): a, b = map(int, input().split()) graph[a].append(b) graph[b].append(a) dp = [[0, 0] for _ in range(n+1)] visited = [False] * (n+1) def dfs(i, dp, visited):...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 18, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/03/17/PR-42892.html">프로그래머스 Lv3 - 길 찾기 게임</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -276,28 +298,6 @@ print(n-max(dp))
     </h2>
     <section class="post-excerpt" itemprop="description">
       <p>백준 1463번 풀이 n = int(input()) INF = int(1e9) dp = [INF] * (n+1) dp[1] = 0 for i in range(1, n+1): if i % 3 == 0 and 0 &lt;= i // 3 &lt;= n: dp[i] = min(dp[i], dp[i // 3]+1) if i % 2 == 0 and 0...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">March 15, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/03/15/BOJ-14501.html">백준 Silver4 - 퇴사</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 14501번 풀이 n = int(input()) ts = [0] * (n+1) ps = [0] * (n+1) for i in range(1, n+1): t, p = map(int, input().split()) ts[i] = t ps[i] = p dp = [0] * (n+1) for i in range(1, n+1): tmp = i+ts[i]-1 # i번째 일을 할 수...</p>
     </section>
     <section class="post-meta">
       <div class="post-date">March 15, 2021</div>

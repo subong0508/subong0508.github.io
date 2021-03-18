@@ -6,9 +6,66 @@
 </description>
     <link>http://subong0508.github.io/</link>
     <atom:link href="http://subong0508.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 17 Mar 2021 22:35:08 +0900</pubDate>
-    <lastBuildDate>Wed, 17 Mar 2021 22:35:08 +0900</lastBuildDate>
+    <pubDate>Thu, 18 Mar 2021 20:05:50 +0900</pubDate>
+    <lastBuildDate>Thu, 18 Mar 2021 20:05:50 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>백준 Gold1 - 우수 마을</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem1949&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1949&quot;&gt;백준 1949번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;import sys
+
+sys.setrecursionlimit(10 ** 5)
+
+n = int(input())
+arr = list(map(int, input().split()))
+graph = [[] for _ in range(n+1)]
+for _ in range(n-1):
+    a, b = map(int, input().split())
+    graph[a].append(b)
+    graph[b].append(a)
+
+dp = [[0, 0] for _ in range(n+1)]
+visited = [False] * (n+1)
+
+def dfs(i, dp, visited):
+    dp[i][0] = 0 # 포함하지 않음
+    dp[i][1] = arr[i-1]
+    visited[i] = True
+    for j in graph[i]:
+        if not visited[j]:
+            dfs(j, dp, visited)
+            dp[i][0] = max(dp[i][0]+dp[j][0], dp[i][0]+dp[j][1])
+            dp[i][1] += dp[j][0]
+
+dfs(1, dp, visited)
+
+print(max(dp[1]))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;트리 DP 문제, 다시 풀어봐야 할 것 같다 ㅠ&lt;/p&gt;
+</description>
+        <pubDate>Thu, 18 Mar 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/03/18/BOJ-1949.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/18/BOJ-1949.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
     
       <item>
         <title>프로그래머스 Lv3 - 길 찾기 게임</title>
@@ -510,58 +567,6 @@ print(dp1[n-1][k] % int(1e9+3))
         <pubDate>Fri, 12 Mar 2021 00:00:00 +0900</pubDate>
         <link>http://subong0508.github.io/problem-solving/2021/03/12/BOJ-2482.html</link>
         <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/12/BOJ-2482.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Gold3 - 욕심쟁이 판다</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem1937&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1937&quot;&gt;백준 1937번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;n = int(input())
-graph = [[] for _ in range(n)]
-for i in range(n):
-    graph[i] = list(map(int, input().split()))
-
-dx = [-1, 1, 0, 0]
-dy = [0, 0, -1, 1]
-dp = [[-1] * n for _ in range(n)] # 최대한 오래 살 수 있는 날들
-
-def dfs(x, y):
-    if dp[x][y] != -1: # already visited
-        return dp[x][y]
-    dp[x][y] = 1
-    for i in range(4):
-        nx, ny = x+dx[i], y+dy[i]
-        if 0 &amp;lt;= nx &amp;lt; n and 0 &amp;lt;= ny &amp;lt; n and graph[nx][ny] &amp;gt; graph[x][y]:
-            dp[x][y] = max(dp[x][y], dfs(nx, ny)+1)
-    return dp[x][y]
-
-res = 0
-for i in range(n):
-    for j in range(n):
-        res = max(res, dfs(i, j))
-        
-print(res)
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Fri, 12 Mar 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/03/12/BOJ-1937.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/12/BOJ-1937.html</guid>
         
         <category>python</category>
         

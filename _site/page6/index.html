@@ -190,6 +190,28 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/03/08/BOJ-1149.html">백준 Silver1 - RGB거리</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 1149번 틀린 풀이(시간초과) n = int(input()) board = [[0] * 3 for _ in range(n)] for i in range(n): board[i] = list(map(int, input().split())) INF = int(1e9) res = INF def solution(i, prev, val): global res if i == n: res = min(res, val) return for j in range(3): if...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 8, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/03/08/BOJ-11052.html">백준 Silver1 - 카드 구매하기</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -293,45 +315,6 @@ else:
     for i in range(3, n+1):
         a, b = b % d, (a+b) % d
     print(b)
-
-</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">March 7, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/03/07/BOJ-15624.html">백준 Silver3 - 피보나치 수 7</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 15624번
-
-풀이
-
-n = int(input())
-d = 1000000007
-
-if n == 0:
-    print(0)
-elif n == 1:
-    print(1)
-else:
-    a, b = 0, 1
-    for i in range(2, n+1):
-        a, b = b % d, (a+b) % d
-    print(b % d)
 
 </p>
     </section>
