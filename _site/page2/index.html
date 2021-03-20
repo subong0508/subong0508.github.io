@@ -190,6 +190,28 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/03/17/BOJ-1991.html">백준 Silver1 - 트리 순회</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 1991번 풀이 n = int(input()) class Node: def __init__(self, data, l=None, r=None): self.data = data self.l = l self.r = r def find_node(now, data): if now is None: return None if now.data == data: return now l = find_node(now.l, data) if l is None: return find_node(now.r, data) else: return...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 17, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/03/15/BOJ-18353.html">백준 Silver2 - 병사 배치하기</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -276,28 +298,6 @@ print(n-max(dp))
     </h2>
     <section class="post-excerpt" itemprop="description">
       <p>백준 2629번 풀이 n = int(input()) arr = list(map(int, input().split())) m = int(input()) ws = list(map(int, input().split())) dp = [[False] * 40001 for _ in range(n+1)] dp[0][0] = True for i in range(1, n+1): now = arr[i-1] # 현재 추의 무게 for j in range(40001): if dp[i-1][j]: dp[i][j] = True...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">March 13, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/03/13/BOJ-2342.html">백준 Gold3 - Dance Dance Revolution</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 2342번 풀이 import sys input = sys.stdin.readline arr = list(map(int, input().split())) n = len(arr) # 한 방향(x)에서 다른 방향(y)로 가는 가중치 weights = [ [1, 2, 2, 2, 2], [0, 1, 3, 4, 3], [0, 3, 1, 3, 4], [0, 4, 3, 1, 3], [0, 3, 4, 3, 1]...</p>
     </section>
     <section class="post-meta">
       <div class="post-date">March 13, 2021</div>

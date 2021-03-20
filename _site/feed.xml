@@ -6,8 +6,8 @@
 </description>
     <link>http://subong0508.github.io/</link>
     <atom:link href="http://subong0508.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 20 Mar 2021 12:50:27 +0900</pubDate>
-    <lastBuildDate>Sat, 20 Mar 2021 12:50:27 +0900</lastBuildDate>
+    <pubDate>Sat, 20 Mar 2021 14:23:43 +0900</pubDate>
+    <lastBuildDate>Sat, 20 Mar 2021 14:23:43 +0900</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -80,6 +80,81 @@ print(max_level, max_width)
         <pubDate>Sat, 20 Mar 2021 00:00:00 +0900</pubDate>
         <link>http://subong0508.github.io/problem-solving/2021/03/20/BOJ-2250.html</link>
         <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/20/BOJ-2250.html</guid>
+        
+        <category>python</category>
+        
+        <category>coding-test</category>
+        
+        <category>programmers</category>
+        
+        <category>boj</category>
+        
+        <category>baekjoon</category>
+        
+        
+        <category>Problem-Solving</category>
+        
+      </item>
+    
+      <item>
+        <title>백준 Gold1 - 트리의 독립집합</title>
+        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem2213&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/2213&quot;&gt;백준 2213번&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;import sys
+
+input = sys.stdin.readline
+
+n = int(input())
+weights = [0] + list(map(int, input().split()))
+graph = [[] for _ in range(n+1)]
+for i in range(n-1):
+    a, b = map(int, input().split())
+    # 단방향 그래프로 만들어준다.
+    if a &amp;lt; b:
+        graph[a].append(b)
+    else:
+        graph[b].append(a)
+
+dp1 = [[-1, -1] for _ in range(n+1)] # 첫번째 원소는 안넣었을 때, 두번째 원소는 넣었을 때
+visited = [False] * (n+1)
+dp2 = [[[], []] for _ in range(n+1)]
+
+def solution(i, dp1, dp2):
+    if visited[i]:
+        return
+    visited[i] = True
+    dp1[i][0] = 0
+    dp1[i][1] = weights[i]
+    dp2[i][1].append(i)
+    for j in graph[i]:
+        solution(j, dp1, dp2)
+        a, b = dp1[j]
+        if a &amp;lt; b: # 더 큰걸 선택
+            dp1[i][0] += b
+            dp2[i][0] += dp2[j][1]
+        else:
+            dp1[i][0] += a
+            dp2[i][0] += dp2[j][0]
+        dp1[i][1] += a # i번째 원소를 넣을 거면 j번째 원소는 넣으면 안된다
+        dp2[i][1] += dp2[j][0]
+
+solution(1, dp1, dp2)
+
+if dp1[1][0] &amp;lt; dp1[1][1]:
+    print(dp1[1][1])
+    dp2[1][1].sort()
+    print(*dp2[1][1])
+else:
+    print(dp1[1][0])
+    dp2[1][0].sort()
+    print(*dp2[1][0])
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Sat, 20 Mar 2021 00:00:00 +0900</pubDate>
+        <link>http://subong0508.github.io/problem-solving/2021/03/20/BOJ-2213.html</link>
+        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/20/BOJ-2213.html</guid>
         
         <category>python</category>
         
@@ -559,73 +634,6 @@ print(*res)
         <pubDate>Sat, 13 Mar 2021 00:00:00 +0900</pubDate>
         <link>http://subong0508.github.io/problem-solving/2021/03/13/BOJ-2629.html</link>
         <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/13/BOJ-2629.html</guid>
-        
-        <category>python</category>
-        
-        <category>coding-test</category>
-        
-        <category>programmers</category>
-        
-        <category>boj</category>
-        
-        <category>baekjoon</category>
-        
-        
-        <category>Problem-Solving</category>
-        
-      </item>
-    
-      <item>
-        <title>백준 Gold3 - Dance Dance Revolution</title>
-        <description>&lt;h3 id=&quot;httpswwwacmicpcnetproblem2342&quot;&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/2342&quot;&gt;백준 2342번&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;풀이&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python3&quot;&gt;import sys
-
-input = sys.stdin.readline
-arr = list(map(int, input().split()))
-n = len(arr)
-
-# 한 방향(x)에서 다른 방향(y)로 가는 가중치
-weights = [
-    [1, 2, 2, 2, 2], 
-    [0, 1, 3, 4, 3],
-    [0, 3, 1, 3, 4],
-    [0, 4, 3, 1, 3],
-    [0, 3, 4, 3, 1]
-]
-
-INF = int(1e9)
-dp = [[[INF for _ in range(5)] for _ in range(5)] for _ in range(n)]
-# 0 -&amp;gt; 첫번째(1, 2, 3, 4)는 무조건 2
-dp[0][0][arr[0]] = 2
-dp[0][arr[0]][0] = 2
-
-for i in range(1, n):
-    step = arr[i]
-    for x in range(5):
-        for y in range(5):
-            if x == y: # x, y가 같은 곳에서는 올 수 없다.
-                continue
-            # x를 이동: x, y -&amp;gt; step, y
-            dp[i][step][y] = min(dp[i][step][y], dp[i-1][x][y]+weights[x][step])
-            # y를 이동: x, y -&amp;gt; x, step
-            dp[i][x][step] = min(dp[i][x][step], dp[i-1][x][y]+weights[y][step])
-
-res = INF
-for i in range(5):
-    res = min(res, dp[n-1][i][0])
-    res = min(res, dp[n-1][0][i])
-
-print(res)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;3차원 DP로 겨우겨우 풀었다.&lt;/p&gt;
-</description>
-        <pubDate>Sat, 13 Mar 2021 00:00:00 +0900</pubDate>
-        <link>http://subong0508.github.io/problem-solving/2021/03/13/BOJ-2342.html</link>
-        <guid isPermaLink="true">http://subong0508.github.io/problem-solving/2021/03/13/BOJ-2342.html</guid>
         
         <category>python</category>
         

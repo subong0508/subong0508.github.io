@@ -190,6 +190,28 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/02/18/BOJ-18405.html">백준 Silver1 - 경쟁적 전염</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 18405번 풀이 from collections import deque n, k = map(int, input().split()) graph = [] for _ in range(n): graph.append(list(map(int, input().split()))) s, x, y = map(int, input().split()) dx = [-1, 1, 0, 0] dy = [0, 0, -1, 1] def bfs(graph): cnt = 1 q = [] visited = [[False]...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 18, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/02/18/BOJ-18352.html">백준 Silver2 - 특정 거리의 도시 찾기</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -260,28 +282,6 @@
     </h2>
     <section class="post-excerpt" itemprop="description">
       <p>프로그래머스 60058번 풀이 def is_right(p): stack = [] for ch in p: if ch == '(': stack.append(ch) else: if len(stack) == 0 or stack.pop() != '(': return False return len(stack) == 0 def is_balanced(p): return p.count('(') == p.count(')') def parse(p): u, v = p, '' for i in range(1, len(p)):...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 16, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/16/PR-43163.html">프로그래머스 Lv3 - 단어 변환</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>프로그래머스 43163번 풀이 from collections import deque def diff(word1, word2): cnt = 0 for i in range(len(word1)): if word1[i] != word2[i]: cnt += 1 return cnt def solution(begin, target, words): answer = 0 q = deque([(begin, answer)]) visited = set() visited.add(begin) while q: now, ans = q.popleft() if now ==...</p>
     </section>
     <section class="post-meta">
       <div class="post-date">February 16, 2021</div>

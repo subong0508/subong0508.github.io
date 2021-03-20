@@ -190,6 +190,28 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/02/06/PR-42888.html">프로그래머스 Lv2 - 오픈채팅방</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>프로그래머스 42888번 풀이 def solution(record): msgs = [] user_d = {} for r in record: lst = r.split() if len(lst) == 2: continue action, uid, name = lst user_d[uid] = name for r in record: lst = r.split() if len(lst) == 2: _, uid = lst msg = user_d[uid] +...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 6, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/02/06/PR-42626.html">프로그래머스 Lv2 - 더 맵게</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -279,28 +301,6 @@ def solution(scoville, K):
     </h2>
     <section class="post-excerpt" itemprop="description">
       <p>백준 2696번 풀이 import heapq t = int(input()) def get_median(n, arr): # median보다 작은 값들을 저장하는 최대 힙 max_heap = [] median = None # median보다 큰 값들을 저장하는 최소 힙 min_heap = [] res = [] for i in range(1, n+1): if median is None: median = arr[i] res.append(median)...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 6, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/06/BOJ-2075.html">백준 Gold4 - N번째 큰 수</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 2075번 풀이 import heapq n = int(input()) arr = [] for _ in range(n): a = list(map(int, input().split())) arr.append(a) q = [] for i in range(n): for j in range(n): a = arr[i][j] if len(q) &lt; n: heapq.heappush(q, a) # 지금 넣으려는 원소가 힙의 최솟값보다 클 때만 삽입 =&gt;...</p>
     </section>
     <section class="post-meta">
       <div class="post-date">February 6, 2021</div>

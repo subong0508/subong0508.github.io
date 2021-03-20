@@ -190,6 +190,46 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/03/07/BOJ-11053.html">백준 Silver2 - 가장 긴 증가하는 부분 수열</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 11053번
+
+풀이
+
+n = int(input())
+arr = list(map(int, input().split()))
+
+d = [0] * n
+for i in range(n):
+    d[i] = 1
+    for j in range(i):
+        if arr[i] &gt; arr[j]:
+            d[i] = max(d[i], d[j]+1)
+
+print(max(d))
+
+
+앞에서 계산된 결괏값들의 최댓값을 취한다.
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 7, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/03/06/BOJ-2473.html">백준 Gold4 - 세 용액</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -260,28 +300,6 @@
     </h2>
     <section class="post-excerpt" itemprop="description">
       <p>백준 2531번 풀이 from collections import deque n, d, k, c = map(int, input().split()) arr = [] for _ in range(n): arr.append(int(input())) i = j = 0 s = deque() res = 0 while i &lt; n: if len(s) == 0: for _ in range(k): s.append(arr[j % n]) j +=...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">March 5, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/03/05/BOJ-1806.html">백준 Gold4 - 부분합</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 1806번 풀이 n, s = map(int, input().split()) INF = int(1e9) res = INF arr = list(map(int, input().split())) i = j = 0 total = 0 while i &lt; n: cnt = j-i while j &lt; n and total &lt; s: total += arr[j] j += 1 cnt += 1...</p>
     </section>
     <section class="post-meta">
       <div class="post-date">March 5, 2021</div>

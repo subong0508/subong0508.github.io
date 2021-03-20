@@ -190,6 +190,28 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/02/09/BOJ-1339.html">백준 Gold4 - 단어 수학</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 1339번 풀이 n = int(input()) d = {} for _ in range(n): word = input() for i in range(len(word)-1, -1, -1): d[word[i]] = d.get(word[i], 0) + 10 ** (len(word)-i-1) d = sorted(d.items(), key=lambda x: -x[1]) total = 0 num = 9 for ch, cnt in d: total += num...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 9, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/02/09/BOJ-11399.html">백준 Silver3 - ATM</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -293,28 +315,6 @@ def solution(clothes):
     </section>
     <section class="post-meta">
       <div class="post-date">February 8, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/06/PR-42888.html">프로그래머스 Lv2 - 오픈채팅방</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>프로그래머스 42888번 풀이 def solution(record): msgs = [] user_d = {} for r in record: lst = r.split() if len(lst) == 2: continue action, uid, name = lst user_d[uid] = name for r in record: lst = r.split() if len(lst) == 2: _, uid = lst msg = user_d[uid] +...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 6, 2021</div>
       <div class="post-categories">
       in 
         
