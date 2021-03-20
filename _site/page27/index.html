@@ -190,6 +190,28 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/01/31/BOJ-2239.html">백준 Gold4 - 스도쿠</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 2239번 풀이 from copy import deepcopy board = [] for _ in range(9): string = input() tmp = [int(x) for x in string] board.append(tmp) res = [] def is_possible(board, x, y): num = board[x][y] for i in range(9): # 가로로 같은지 if i != y and num == board[x][i]:...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">January 31, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/01/31/BOJ-16987.html">백준 Silver2 - 계란으로 계란치기</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -260,28 +282,6 @@
     </h2>
     <section class="post-excerpt" itemprop="description">
       <p>백준 9663번 n = int(input()) cnt = 0 def nqueen(arr): global cnt # 새로운 행 번호 row = len(arr) if row == n: cnt += 1 return for i in range(n): # 이미 있는 열 if i in arr: continue flag = True # j번째 행, j번째 행에 해당하는 열...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">January 30, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/01/30/BOJ-15649.html">백준 Silver3 - N과 M(1)(2)(3)</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 15649번 풀이 n, m = map(int, input().split()) arr = [i for i in range(1, n+1)] answer = [] def combinations(arr, s): global answer if len(s) == m: # shallow copy answer.append(s[:]) return for e in arr: if e not in s: s.append(e) combinations(arr, s) s.pop() combinations(arr, []) for a...</p>
     </section>
     <section class="post-meta">
       <div class="post-date">January 30, 2021</div>

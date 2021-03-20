@@ -190,6 +190,28 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/03/20/BOJ-2250.html">백준 Gold2 - 트리의 높이와 너비</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 2250번 풀이 import sys input = sys.stdin.readline n = int(input()) # 왼쪽, 오른쪽 노드를 저장해놓는 dict tree = {i: [-1, -1] for i in range(1, n+1)} # 부모를 저장해놓는 배열, root를 구하기 위함 parent = [i for i in range(n+1)] for _ in range(n): par, a, b = map(int,...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 20, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/03/18/BOJ-4803.html">백준 Gold4 - 트리</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -263,44 +285,6 @@
     </section>
     <section class="post-meta">
       <div class="post-date">March 17, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/03/15/BOJ-18353.html">백준 Silver2 - 병사 배치하기</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 18353번
-
-풀이
-
-n = int(input())
-arr = list(map(int, input().split()))
-
-dp = [0] * n
-for i in range(n):
-    dp[i] = 1
-    for j in range(i):
-        if arr[i] &lt; arr[j]:
-            dp[i] = max(dp[i], dp[j]+1)
-
-print(n-max(dp))
-
-</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">March 15, 2021</div>
       <div class="post-categories">
       in 
         

@@ -3,13 +3,37 @@
 
   <head>
   
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        TeX: {
+          equationNumbers: {
+            autoNumber: "AMS"
+          }
+        },
+        tex2jax: {
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+      }
+    });
+    MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+          alert("Math Processing Error: "+message[1]);
+        });
+    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+          alert("Math Processing Error: "+message[1]);
+        });
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    
+  
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Data Vision</title>
-  <meta name="description" content="My personal blog for studying; mainly related to data
-">
+  <title>백준 Gold2 - 트리의 높이와 너비</title>
+  <meta name="description" content="백준 2250번">
   
   <meta name="author" content="Jung Jaeeun">
   <meta name="copyright" content="&copy; Jung Jaeeun 2021">
@@ -43,11 +67,10 @@
 
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="My personal blog for studying; mainly related to data
-" />
+  <meta property="og:description" content="백준 2250번" />
   <meta property="og:url" content="http://subong0508.github.io" />
   <meta property="og:site_name" content="Data Vision" />
-  <meta property="og:title" content="Data Vision" />
+  <meta property="og:title" content="백준 Gold2 - 트리의 높이와 너비" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="http://subong0508.github.io/assets/logo.png" />
   <meta property="og:image:type" content="image/png" />
@@ -58,9 +81,8 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Data Vision">
-  <meta name="twitter:description" content="My personal blog for studying; mainly related to data
-">
+  <meta name="twitter:title" content="백준 Gold2 - 트리의 높이와 너비">
+  <meta name="twitter:description" content="백준 2250번">
   <meta name="twitter:image" content="http://subong0508.github.io/assets/logo.png">
   <meta name="twitter:url" content="http://subong0508.github.io">
   
@@ -69,7 +91,7 @@
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://subong0508.github.io/page11/">
+  <link rel="canonical" href="http://subong0508.github.io/problem-solving/2021/03/20/BOJ-2250.html">
   <link rel="alternate" type="application/rss+xml" title="Data Vision" href="http://subong0508.github.io/feed.xml" />
 </head>
 
@@ -174,153 +196,166 @@
 
 
     <div class="page-content">
-        <div class="home">
+        <div class="post">
 
-<div class="site-header-container has-cover" style="background-image: url(/assets/starry-night.jpg);">
-  <div class="scrim has-cover">
-    <header class="site-header">
-      <h1 class="title">Data Vision</h1>
-      <p class="subtitle">My personal blog for studying</p>
+<div class="post-header-container " >
+  <div class="scrim ">
+    <header class="post-header">
+      <h1 class="title">백준 Gold2 - 트리의 높이와 너비</h1>
+      <p class="info">by <strong>Jung Jaeeun</strong></p>
     </header>
   </div>
 </div>
 
 <div class="wrapper">
-<ul class="post-list">
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/03/01/BOJ-1647.html">백준 Gold4 - 도시 분할 계획</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 1647번 풀이 n, m = map(int, input().split()) parent = [i for i in range(n+1)] edges = [] for _ in range(m): a, b, c = map(int, input().split()) edges.append((a, b, c)) def find_parent(x): if parent[x] != x: parent[x] = find_parent(parent[x]) return parent[x] def union(a, b): a = find_parent(a) b =...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">March 1, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/03/01/BOJ-10775.html">백준 Gold1 - 공항</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 10775번 풀이 import sys sys.setrecursionlimit(100000) G = int(input()) P = int(input()) def dock(g, d): if g &lt;= 0: return -1 elif g not in d: d[g] = g-1 return g else: res = dock(d[g], d) if res != -1: d[g] = res-1 return res cnt = 0 d =...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">March 1, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/data-structure/2021/02/28/GraphTheory.html">Graph Theory with Python</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>서로소 집합 시간복잡도: $O(V + M \log_{2}{V})$ # 원소가 속한 집합 찾기 def find_parent(parent, x): if parent[x] != x: parent[x] = find_parent(parent, parent[x]) return parent[x] # 두 원소가 속한 집합 merge def union(parent, a, b): a = find_parent(parent, a) b = find_parent(parent, b) if a &lt; b: parent[b] = a...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 28, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Data-Structure">Data-structure</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/28/BOJ-20040.html">백준 Gold4 - 사이클 게임</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 20040번 풀이 n, m = map(int, input().split()) parent = [i for i in range(n)] def find_parent(x): if parent[x] != x: parent[x] = find_parent(parent[x]) return parent[x] def union(a, b): a = find_parent(a) b = find_parent(b) if a &lt; b: parent[b] = a else: parent[a] = b res = 0 for...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 28, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/28/BOJ-1774.html">백준 Gold4 - 우주신과의 교감</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 1774번 풀이 import math n, m = map(int, input().split()) parent = [i for i in range(n+1)] vertex = [(-1, -1)] for i in range(1, n+1): x, y = map(int, input().split()) vertex.append((x, y)) edges = set() for _ in range(m): x, y = map(int, input().split()) x, y = min(x, y),...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 28, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  
-</ul>
 
-<nav class="pagination" role="navigation">
-	<p>
+ <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+
+<section class="post-meta">
+  <div class="post-date">March 20, 2021</div>
+  <div class="post-categories">
+  in 
     
+    <a href="/category/Problem-Solving">Problem-solving</a>
+    
+  
+  </div>
+</section>  
+
+<article class="post-content">
+  <h3 id="httpswwwacmicpcnetproblem2250"><a href="https://www.acmicpc.net/problem/2250">백준 2250번</a></h3>
+
+<p><strong>풀이</strong></p>
+
+<pre><code class="language-python3">import sys
+
+input = sys.stdin.readline
+
+n = int(input())
+# 왼쪽, 오른쪽 노드를 저장해놓는 dict
+tree = {i: [-1, -1] for i in range(1, n+1)}
+# 부모를 저장해놓는 배열, root를 구하기 위함
+parent = [i for i in range(n+1)]
+for _ in range(n):
+    par, a, b = map(int, input().split())
+    if a != -1:
+        parent[a] = par
+        tree[par][0] = a
+    if b != -1:
+        parent[b] = par
+        tree[par][1] = b
+
+root = 1
+for i in range(1, n+1):
+    if parent[i] == i:
+        root = i
+        break
+height = 1
+
+def get_height(now, level): # 트리의 높이를 구한다
+    global height
+    height = max(height, level)
+    if tree[now][0] != -1:
+        get_height(tree[now][0], level+1)
+    if tree[now][1] != -1:
+        get_height(tree[now][1], level+1)
+
+get_height(root, 1)
+
+arr = [[-1] * (n+1) for _ in range(height+1)] # 트리 저장하는 배열
+col = 0
+
+def inorder(now, level): # 중위 탐색을 하면서 열번호 찾기
+    global col
+    if tree[now][0] != -1:
+        inorder(tree[now][0], level+1)
+    col += 1
+    arr[level][col] = now
+    if tree[now][1] != -1:
+        inorder(tree[now][1], level+1)
+
+inorder(root, 1)
+
+max_width = 0
+max_level = 1
+for i in range(1, height+1):
+    row = [j for j in range(1, n+1) if arr[i][j] != -1]
+    tmp = max(row)-min(row)+1
+    if tmp &gt; max_width:
+        max_width = tmp
+        max_level = i
+
+print(max_level, max_width)
+</code></pre>
+
+</article>
+
+
+
+<section class="tags">
+  <strong>Tags:</strong> <a href="/tag/python">python</a>,&nbsp;<a href="/tag/coding-test">coding-test</a>,&nbsp;<a href="/tag/programmers">programmers</a>,&nbsp;<a href="/tag/boj">boj</a>,&nbsp;<a href="/tag/baekjoon">baekjoon</a>
+</section>
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<section class="share">
+  <span>Share: </span>
+  
+    
+    
+    
+    
+    
+    
+    
+  
+</section>
+
+	<section class="post-navigation">
+		<span class="prev-post">
 			
-			<a class="newer-posts" href="/page10">
-				<span class="fa-stack fa-lg">
-					<i class="fa fa-square fa-stack-2x"></i>
-					<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
-				</span>
-			</a>
+				<a href="/problem-solving/2021/03/18/BOJ-4803.html">
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-square fa-stack-2x"></i>
+						<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+					</span>
+					<span class="page-number">백준 Gold4 - 트리</span>
+				</a>
 			
-		
-		<span class="page-number">Page 11 of 33</span>
-		
-		<a class="newer-posts" href="/page12">
-      <span class="fa-stack fa-lg">
-        <i class="fa fa-square fa-stack-2x"></i>
-        <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
-      </span>
-    </a>
-		
-	</p>
-</nav>
+		</span>
+		<span class="next-post">
+			
+		</span>
+	</section>
+
+
+
+
+<section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'subong0508-github-io';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
 
 </div>
 </div>

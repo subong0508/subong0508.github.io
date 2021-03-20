@@ -190,6 +190,28 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/02/18/BOJ-18352.html">백준 Silver2 - 특정 거리의 도시 찾기</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 18352번 풀이 from collections import deque n, m, k, x = map(int, input().split()) graph = [[] for _ in range(n+1)] for _ in range(m): i, j = map(int, input().split()) graph[i].append(j) res = [] def bfs(start): global res cnt = 0 q = deque([(start, cnt)]) visited = [False] * (1+n)...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 18, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/02/18/BOJ-16234.html">백준 Gold5 - 인구 이동</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -260,28 +282,6 @@
     </h2>
     <section class="post-excerpt" itemprop="description">
       <p>프로그래머스 43163번 풀이 from collections import deque def diff(word1, word2): cnt = 0 for i in range(len(word1)): if word1[i] != word2[i]: cnt += 1 return cnt def solution(begin, target, words): answer = 0 q = deque([(begin, answer)]) visited = set() visited.add(begin) while q: now, ans = q.popleft() if now ==...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 16, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/16/BOJ-7562.html">백준 Silver2 - 나이트의 이동</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 7562번 풀이 from collections import deque t = int(input()) res = [] dx = [-2, -2, -1, -1, 1, 1, 2, 2] dy = [-1, 1, -2, 2, -2, 2, -1, 1] def solve(n, src, dest): cnt = 0 q = deque([(src[0], src[1], cnt)]) visited = set() visited.add(src) while...</p>
     </section>
     <section class="post-meta">
       <div class="post-date">February 16, 2021</div>

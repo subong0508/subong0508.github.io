@@ -190,6 +190,28 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/03/06/BOJ-2473.html">백준 Gold4 - 세 용액</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>백준 2473번 풀이 n = int(input()) arr = list(map(int, input().split())) arr.sort() arr_minus = [x for x in arr if x &lt;= 0] # res1: + + + if len(arr_minus) &gt;= 3: res1 = abs(arr_minus[-3]+arr_minus[-2]+arr_minus[-1]) else: res1 = int(1e10) arr_plus = [x for x in arr if x &gt;= 0] #...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 6, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/problem-solving/2021/03/06/BOJ-1644.html">백준 Gold3 - 소수의 연속합</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -260,28 +282,6 @@
     </h2>
     <section class="post-excerpt" itemprop="description">
       <p>백준 1806번 풀이 n, s = map(int, input().split()) INF = int(1e9) res = INF arr = list(map(int, input().split())) i = j = 0 total = 0 while i &lt; n: cnt = j-i while j &lt; n and total &lt; s: total += arr[j] j += 1 cnt += 1...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">March 5, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/03/05/BOJ-15565.html">백준 Silver1 - 귀여운 라이언</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 15565번 풀이 n, k = map(int, input().split()) arr = list(map(int, input().split())) i = j = 0 cnt = 0 INF = int(1e9) res = INF while i &lt; n: while j &lt; n and cnt &lt; k: if arr[j] == 1: cnt += 1 j += 1 if cnt...</p>
     </section>
     <section class="post-meta">
       <div class="post-date">March 5, 2021</div>

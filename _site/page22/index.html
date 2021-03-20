@@ -190,6 +190,47 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/problem-solving/2021/02/06/PR-42626.html">프로그래머스 Lv2 - 더 맵게</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>프로그래머스 42626번
+
+풀이
+
+import heapq
+
+def solution(scoville, K):
+    foods = scoville
+    heapq.heapify(foods)
+    answer = 0
+    while len(foods) &gt;= 2 and foods[0] &lt; K:
+        a, b = heapq.heappop(foods), heapq.heappop(foods)
+        c = a + 2*b
+        heapq.heappush(foods, c)
+        answer += 1
+    if not foods or foods[0] &lt; K:
+        return -1  
+    return answer
+
+</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 6, 2021</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Problem-Solving">Problem-solving</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/data-structure/2021/02/06/Heap.html">Heap with Python</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
@@ -260,47 +301,6 @@
     </h2>
     <section class="post-excerpt" itemprop="description">
       <p>백준 2075번 풀이 import heapq n = int(input()) arr = [] for _ in range(n): a = list(map(int, input().split())) arr.append(a) q = [] for i in range(n): for j in range(n): a = arr[i][j] if len(q) &lt; n: heapq.heappush(q, a) # 지금 넣으려는 원소가 힙의 최솟값보다 클 때만 삽입 =&gt;...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 6, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/02/06/BOJ-1927.html">백준 Silver1 - 최소 힙</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 1927번
-
-풀이
-
-import heapq
-
-n = int(input())
-h = []
-res = []
-for _ in range(n):
-    x = int(input())
-    if x != 0:
-        heapq.heappush(h, x)
-    elif h:
-        res.append(heapq.heappop(h))
-    else:
-        res.append(0)
-print(*res, sep='\n')
-
-</p>
     </section>
     <section class="post-meta">
       <div class="post-date">February 6, 2021</div>
