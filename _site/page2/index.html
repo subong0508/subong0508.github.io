@@ -105,68 +105,6 @@
         
           
         
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
       </ul>
     </nav>
   </div>
@@ -190,17 +128,17 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/03/17/BOJ-1991.html">백준 Silver1 - 트리 순회</a>
+      <a class="post-link" href="/python/2021/01/30/Itertools.html">Itertools 정리</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 1991번 풀이 n = int(input()) class Node: def __init__(self, data, l=None, r=None): self.data = data self.l = l self.r = r def find_node(now, data): if now is None: return None if now.data == data: return now l = find_node(now.l, data) if l is None: return find_node(now.r, data) else: return...</p>
+      <p>내장 라이브러리인 itertools를 이용해서 조합, 순열, 중복순열, Cartesian Product 등을 손쉽게 구현할 수 있다. from itertools import combinations, permutations, combinations_with_replacement, product data = '123' l = combinations(data, 2) for e in l: print(*e) # 12 13 23 l = permutations(data, 2) for e in l: print(*e) # 12 13 21...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">March 17, 2021</div>
+      <div class="post-date">January 30, 2021</div>
       <div class="post-categories">
       in 
         
-        <a href="/category/Problem-Solving">Problem-solving</a>
+        <a href="/category/Python">Python</a>
         
       
       </div>
@@ -212,33 +150,17 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/03/15/BOJ-18353.html">백준 Silver2 - 병사 배치하기</a>
+      <a class="post-link" href="/data%20structure/2021/01/28/Stack,-Queue.html">스택, 큐 with Python</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 18353번
-
-풀이
-
-n = int(input())
-arr = list(map(int, input().split()))
-
-dp = [0] * n
-for i in range(n):
-    dp[i] = 1
-    for j in range(i):
-        if arr[i] &lt; arr[j]:
-            dp[i] = max(dp[i], dp[j]+1)
-
-print(n-max(dp))
-
-</p>
+      <p>이번 포스팅에서는 스택, 큐에 대한 개념을 알아보고 파이썬으로 간단하게 구현해보겠습니다. 스택 스택은 LIFO(후입선출)의 특성을 가진 자료구조입니다. 시간복잡도는 다음과 같습니다. 삽입: $O(1)$ 삭제: $O(1)$ 파이썬에서는 다른 라이브러리를 쓸 필요없이 기본 자료형인 list를 활용하여 삽입 및 삭제 연산을 수행할 수 있습니다. arr = [1, 2, 3, 4, 5] stack = [] #...</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">March 15, 2021</div>
+      <div class="post-date">January 28, 2021</div>
       <div class="post-categories">
       in 
         
-        <a href="/category/Problem-Solving">Problem-solving</a>
+        <a href="/category/Data structure">Data structure</a>
         
       
       </div>
@@ -250,61 +172,17 @@ print(n-max(dp))
   
   <li>
     <h2>
-      <a class="post-link" href="/problem-solving/2021/03/15/BOJ-1463.html">백준 Silver3 - 1로 만들기</a>
+      <a class="post-link" href="/machine%20learning/2020/12/22/from-Variational-Inference-to-VAE.html">from Variational Inference to VAE</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>백준 1463번 풀이 n = int(input()) INF = int(1e9) dp = [INF] * (n+1) dp[1] = 0 for i in range(1, n+1): if i % 3 == 0 and 0 &lt;= i // 3 &lt;= n: dp[i] = min(dp[i], dp[i // 3]+1) if i % 2 == 0 and 0...</p>
+      <p>이번 포스팅에서는 Bayesian의 중요한 토픽인 Variational Inference부터 그와 연관된 Variational Auto-encoder까지 알아보려고 한다. Bayesian Framework 먼저, 베이지안의 기본적인 사고방식부터 알고 가자. 빈도론자와 베이지안의 가장 큰 차이점은 우리가 추정하고자하는 parameter를 확률변수로 보냐/아니냐이다. 빈도론자는 고정된 상수라고 보고 베이지안은 어떤 확률분포를 따르는 확률변수라고 생각한다. 예를 들어, 우리나라 사람들의 키를 수집한 데이터가 있다고 가정하자....</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">March 15, 2021</div>
+      <div class="post-date">December 22, 2020</div>
       <div class="post-categories">
       in 
         
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/03/15/BOJ-14501.html">백준 Silver4 - 퇴사</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 14501번 풀이 n = int(input()) ts = [0] * (n+1) ps = [0] * (n+1) for i in range(1, n+1): t, p = map(int, input().split()) ts[i] = t ps[i] = p dp = [0] * (n+1) for i in range(1, n+1): tmp = i+ts[i]-1 # i번째 일을 할 수...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">March 15, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/problem-solving/2021/03/13/BOJ-2629.html">백준 Gold2 - 양팔저울</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>백준 2629번 풀이 n = int(input()) arr = list(map(int, input().split())) m = int(input()) ws = list(map(int, input().split())) dp = [[False] * 40001 for _ in range(n+1)] dp[0][0] = True for i in range(1, n+1): now = arr[i-1] # 현재 추의 무게 for j in range(40001): if dp[i-1][j]: dp[i][j] = True...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">March 13, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Problem-Solving">Problem-solving</a>
+        <a href="/category/Machine Learning">Machine learning</a>
         
       
       </div>
@@ -326,14 +204,12 @@ print(n-max(dp))
       </a>
 			
 		
-		<span class="page-number">Page 2 of 33</span>
+		<span class="page-number">Page 2 of 2</span>
 		
-		<a class="newer-posts" href="/page3">
-      <span class="fa-stack fa-lg">
-        <i class="fa fa-square fa-stack-2x"></i>
-        <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
-      </span>
-    </a>
+		<span class="fa-stack fa-lg">
+      <i class="fa fa-square fa-stack-2x"></i>
+      <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
+    </span>
 		
 	</p>
 </nav>
@@ -366,68 +242,6 @@ print(n-max(dp))
         
         
           <li class="nav-link"><a href="/posts/">Posts</a>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         
         

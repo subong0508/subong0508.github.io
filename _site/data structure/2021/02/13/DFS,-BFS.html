@@ -3,13 +3,37 @@
 
   <head>
   
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        TeX: {
+          equationNumbers: {
+            autoNumber: "AMS"
+          }
+        },
+        tex2jax: {
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+      }
+    });
+    MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+          alert("Math Processing Error: "+message[1]);
+        });
+    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+          alert("Math Processing Error: "+message[1]);
+        });
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    
+  
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Data Vision</title>
-  <meta name="description" content="My personal blog for studying; mainly related to data
-">
+  <title>DFS, BFS with Python</title>
+  <meta name="description" content="DFS(깊이 우선 탐색)">
   
   <meta name="author" content="Jung Jaeeun">
   <meta name="copyright" content="&copy; Jung Jaeeun 2021">
@@ -43,11 +67,10 @@
 
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="My personal blog for studying; mainly related to data
-" />
+  <meta property="og:description" content="DFS(깊이 우선 탐색)" />
   <meta property="og:url" content="http://subong0508.github.io" />
   <meta property="og:site_name" content="Data Vision" />
-  <meta property="og:title" content="Data Vision" />
+  <meta property="og:title" content="DFS, BFS with Python" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="http://subong0508.github.io/assets/logo.png" />
   <meta property="og:image:type" content="image/png" />
@@ -58,9 +81,8 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Data Vision">
-  <meta name="twitter:description" content="My personal blog for studying; mainly related to data
-">
+  <meta name="twitter:title" content="DFS, BFS with Python">
+  <meta name="twitter:description" content="DFS(깊이 우선 탐색)">
   <meta name="twitter:image" content="http://subong0508.github.io/assets/logo.png">
   <meta name="twitter:url" content="http://subong0508.github.io">
   
@@ -69,7 +91,7 @@
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://subong0508.github.io/">
+  <link rel="canonical" href="http://subong0508.github.io/data%20structure/2021/02/13/DFS,-BFS.html">
   <link rel="alternate" type="application/rss+xml" title="Data Vision" href="http://subong0508.github.io/feed.xml" />
 </head>
 
@@ -112,149 +134,179 @@
 
 
     <div class="page-content">
-        <div class="home">
+        <div class="post">
 
-<div class="site-header-container has-cover" style="background-image: url(/assets/starry-night.jpg);">
-  <div class="scrim has-cover">
-    <header class="site-header">
-      <h1 class="title">Data Vision</h1>
-      <p class="subtitle">My personal blog for studying</p>
+<div class="post-header-container " >
+  <div class="scrim ">
+    <header class="post-header">
+      <h1 class="title">DFS, BFS with Python</h1>
+      <p class="info">by <strong>Jung Jaeeun</strong></p>
     </header>
   </div>
 </div>
 
 <div class="wrapper">
-<ul class="post-list">
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/data%20structure/2021/02/28/GraphTheory.html">Graph Theory with Python</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>서로소 집합 시간복잡도: $O(V + M \log_{2}{V})$ # 원소가 속한 집합 찾기 def find_parent(parent, x): if parent[x] != x: parent[x] = find_parent(parent, parent[x]) return parent[x] # 두 원소가 속한 집합 merge def union(parent, a, b): a = find_parent(parent, a) b = find_parent(parent, b) if a &lt; b: parent[b] = a...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 28, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Data structure">Data structure</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/data%20structure/2021/02/27/ShortestPath.html">Shortest Path with Python</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>오늘은 파이썬을 이용해 weighted graph(가중치가 있는 그래프)에서 최단 경로를 찾는 방법을 알아보겠습니다. 가중치가 없는 그래프라면 BFS를 통해 최단 경로를 손쉽게 구할 수 있습니다. 다익스트라 알고리즘 다익스트라 알고리즘은 한 노드에서 다른 노드로 가는 각각의 최단 경로를 구해주는 알고리즘입니다. 다익스트라는 기본적으로 그리디 알고리즘의 한 종류로, 방문하지 않은 노드 중 가장 가까운 노드를...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 27, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Data structure">Data structure</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/data%20structure/2021/02/13/DFS,-BFS.html">DFS, BFS with Python</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>DFS(깊이 우선 탐색) Depth-First Search의 약자로, 그래프에서 깊은 부분을 우선적으로 탐색하는 알고리즘이다. 그래프는 노드(Node)/정점(Vertex)과 간선(Edge)로 구성되는데 그래프를 표현하는 방법으로는 인접 행렬, 인접 리스트가 있다. 인접 행렬은 NxN 행렬을 만들어서 i번째 노드에서 j번째 노드로 갈 수 있다면 1을 표시, 갈 수 없다면 0을 표시하는 것이 일반적이다. 인접 리스트의 i번째 원소는 i번째...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 13, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Data structure">Data structure</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/data%20structure/2021/02/06/Heap.html">Heap with Python</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>힙이란 우선순위큐(Priority Queue)를 이진 트리로 구현한 자료구조 입니다. 힙의 삽입, 삭제 연산은 $O(\log n)$의 시간복잡도를 가집니다. 힙은 파이썬 내장모듈인 heapq를 이용해서 손쉽게 구현할 수 있습니다. import heapq arr = [4, 5, 6, 7, 9, 8, 3, 1, 2] heapq.heapify(arr) print(heapq.nsmallest(3, arr)) # 1 2 3 print(heapq.nlargest(3, arr)) # 7 8...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 6, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Data structure">Data structure</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/data%20structure/2021/02/02/Sorting.html">정렬 with Python</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>이번 포스팅에서는 여러 정렬 기법에 대해 알아보고 파이썬으로 간단하게 구현해보겠습니다. 선택 정렬(Selection Sort) 선택 정렬은 한마디로 Priority Queue with Unsorted Array라고 할 수 있습니다. 우선순위 큐가 하나 있다고 가정해봅시다. 데이터를 삽입할 때는 항상 끝에 삽입하고, pop 연산을 오름차순/내림차순으로 수행합니다. 또한 시간복잡도는 $O(n^2)$ 입니다. array = [7, 5, 9, 0, 3,...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 2, 2021</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Data structure">Data structure</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  
-</ul>
 
-<nav class="pagination" role="navigation">
-	<p>
+ <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+
+<section class="post-meta">
+  <div class="post-date">February 13, 2021</div>
+  <div class="post-categories">
+  in 
     
-		<span class="fa-stack fa-lg">
-      <i class="fa fa-square fa-stack-2x"></i>
-      <i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
-    </span>
-		
-		<span class="page-number">Page 1 of 2</span>
-		
-		<a class="newer-posts" href="/page2">
-      <span class="fa-stack fa-lg">
-        <i class="fa fa-square fa-stack-2x"></i>
-        <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
-      </span>
-    </a>
-		
-	</p>
-</nav>
+    <a href="/category/Data structure">Data structure</a>
+    
+  
+  </div>
+</section>  
+
+<article class="post-content">
+  <h1 id="dfs--">DFS(깊이 우선 탐색)</h1>
+
+<p><strong>Depth-First Search</strong>의 약자로, 그래프에서 깊은 부분을 우선적으로 탐색하는 알고리즘이다.</p>
+
+<p>그래프는 노드(Node)/정점(Vertex)과 간선(Edge)로 구성되는데 그래프를 표현하는 방법으로는 <strong>인접 행렬, 인접 리스트</strong>가 있다.
+인접 행렬은 NxN 행렬을 만들어서 i번째 노드에서 j번째 노드로 갈 수 있다면 1을 표시, 갈 수 없다면 0을 표시하는 것이 일반적이다.
+인접 리스트의 i번째 원소는 i번째 노드에서 갈 수 있는 노드들을 담고 있다.</p>
+
+<p>DFS를 파이썬으로 나타낸 코드는 다음과 같다. 시간복잡도는 인접 리스트로 나타냈을 때 $O(V + E)$에 해당한다. (인접 행렬은 $O(V^{2})$)</p>
+
+<pre><code class="language-python3"># 인접 리스트
+graph = [
+    [1, 2],
+    [0, 3],
+    [0],
+    [3]
+]
+# 방문 여부
+visited = [False] * len(graph)
+stack = []
+
+
+def dfs(i, visited, stack):
+    stack.append(i)
+    visited[i] = True
+    for j in graph[i]:
+        if not visited[j]:
+            dfs(j, visited, stack)
+
+
+dfs(0, visited, stack)
+print(*stack) # 0 1 3 2
+</code></pre>
+
+<h1 id="bfs--">BFS(너비 우선 탐색)</h1>
+
+<p>BFS를 수행할 때는 선입선출의 특성을 띠는 큐 자료구조를 사용한다. BFS의 중요한 특징은 한 노드에서 다른 노드로 가는 최단거리를 항상 구한다는 것이다.</p>
+
+<p>BFS를 파이썬으로 나타낸 코드는 다음과 같다. 시간복잡도는 인접 리스트로 나타냈을 때 $O(V + E)$에 해당한다. (인접 행렬은 $O(V^{2})$)</p>
+
+<pre><code class="language-python3">from collections import deque
+
+
+# 인접 리스트
+graph = [
+    [1, 2],
+    [0, 3],
+    [0],
+    [3]
+]
+# 방문 여부
+visited = [False] * len(graph)
+stack = []
+
+
+def bfs(start, visited, stack):
+    q = deque([start])
+    while q:
+        now = q.popleft()
+        visited[now] = True
+        stack.append(now)
+        for j in graph[now]:
+            if not visited[j]:
+                q.append(j)
+    
+
+bfs(0, visited, stack)
+print(*stack) # 0 1 2 3
+</code></pre>
+
+</article>
+
+
+
+<section class="tags">
+  <strong>Tags:</strong> <a href="/tag/graph">graph</a>,&nbsp;<a href="/tag/dfs">dfs</a>,&nbsp;<a href="/tag/bfs">bfs</a>,&nbsp;<a href="/tag/python">python</a>,&nbsp;<a href="/tag/data-structure">data-structure</a>
+</section>
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<section class="share">
+  <span>Share: </span>
+  
+    
+    
+    
+    
+    
+    
+    
+  
+</section>
+
+	<section class="post-navigation">
+		<span class="prev-post">
+			
+				<a href="/data%20structure/2021/02/06/Heap.html">
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-square fa-stack-2x"></i>
+						<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+					</span>
+					<span class="page-number">Heap with Python</span>
+				</a>
+			
+		</span>
+		<span class="next-post">
+			
+				<a href="/data%20structure/2021/02/27/ShortestPath.html">
+					<span class="page-number">Shortest Path with Python</span>
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-square fa-stack-2x"></i>
+						<i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
+					</span>
+				</a>
+			
+		</span>
+	</section>
+
+
+
+
+<section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'subong0508-github-io';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
 
 </div>
 </div>

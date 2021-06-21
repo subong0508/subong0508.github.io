@@ -3,7 +3,7 @@ layout: post
 title: Shortest Path with Python
 date:  2021-2-27
 author: Jung Jaeeun
-categories: Data-Structure
+category: Data structure
 tags: python data-structure graph shortest-path
 use_math: true
 commtents: true

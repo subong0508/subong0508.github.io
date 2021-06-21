@@ -32,8 +32,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Itertools 정리</title>
-  <meta name="description" content="내장 라이브러리인 itertools를 이용해서 조합, 순열, 중복순열, Cartesian Product 등을 손쉽게 구현할 수 있다.">
+  <title>정렬 with Python</title>
+  <meta name="description" content="이번 포스팅에서는 여러 정렬 기법에 대해 알아보고 파이썬으로 간단하게 구현해보겠습니다.">
   
   <meta name="author" content="Jung Jaeeun">
   <meta name="copyright" content="&copy; Jung Jaeeun 2021">
@@ -67,10 +67,10 @@
 
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="내장 라이브러리인 itertools를 이용해서 조합, 순열, 중복순열, Cartesian Product 등을 손쉽게 구현할 수 있다." />
+  <meta property="og:description" content="이번 포스팅에서는 여러 정렬 기법에 대해 알아보고 파이썬으로 간단하게 구현해보겠습니다." />
   <meta property="og:url" content="http://subong0508.github.io" />
   <meta property="og:site_name" content="Data Vision" />
-  <meta property="og:title" content="Itertools 정리" />
+  <meta property="og:title" content="정렬 with Python" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="http://subong0508.github.io/assets/logo.png" />
   <meta property="og:image:type" content="image/png" />
@@ -81,8 +81,8 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Itertools 정리">
-  <meta name="twitter:description" content="내장 라이브러리인 itertools를 이용해서 조합, 순열, 중복순열, Cartesian Product 등을 손쉽게 구현할 수 있다.">
+  <meta name="twitter:title" content="정렬 with Python">
+  <meta name="twitter:description" content="이번 포스팅에서는 여러 정렬 기법에 대해 알아보고 파이썬으로 간단하게 구현해보겠습니다.">
   <meta name="twitter:image" content="http://subong0508.github.io/assets/logo.png">
   <meta name="twitter:url" content="http://subong0508.github.io">
   
@@ -91,7 +91,7 @@
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://subong0508.github.io/python/2021/01/30/Itertools.html">
+  <link rel="canonical" href="http://subong0508.github.io/data%20structure/2021/02/02/Sorting.html">
   <link rel="alternate" type="application/rss+xml" title="Data Vision" href="http://subong0508.github.io/feed.xml" />
 </head>
 
@@ -139,7 +139,7 @@
 <div class="post-header-container " >
   <div class="scrim ">
     <header class="post-header">
-      <h1 class="title">Itertools 정리</h1>
+      <h1 class="title">정렬 with Python</h1>
       <p class="info">by <strong>Jung Jaeeun</strong></p>
     </header>
   </div>
@@ -154,37 +154,132 @@
  
 
 <section class="post-meta">
-  <div class="post-date">January 30, 2021</div>
+  <div class="post-date">February 2, 2021</div>
   <div class="post-categories">
   in 
     
-    <a href="/category/Python">Python</a>
+    <a href="/category/Data structure">Data structure</a>
     
   
   </div>
 </section>  
 
 <article class="post-content">
-  <p>내장 라이브러리인 <code class="highlighter-rouge">itertools</code>를 이용해서 조합, 순열, 중복순열, Cartesian Product 등을 손쉽게 구현할 수 있다.</p>
+  <p>이번 포스팅에서는 여러 정렬 기법에 대해 알아보고 파이썬으로 간단하게 구현해보겠습니다.</p>
 
-<pre><code class="language-python3">from itertools import combinations, permutations, combinations_with_replacement, product
+<h2 id="selection-sort">선택 정렬(Selection Sort)</h2>
 
-data = '123'
-l = combinations(data, 2)
-for e in l:
-    print(*e) # 12 13 23
+<p>선택 정렬은 한마디로 <strong>Priority Queue with Unsorted Array</strong>라고 할 수 있습니다.
+우선순위 큐가 하나 있다고 가정해봅시다. 데이터를 삽입할 때는 항상 끝에 삽입하고,
+<code class="highlighter-rouge">pop</code> 연산을 오름차순/내림차순으로 수행합니다. 또한 시간복잡도는 $O(n^2)$ 입니다.</p>
 
-l = permutations(data, 2)
-for e in l:
-    print(*e) # 12 13 21 23 31 32
+<pre><code class="language-python3">array = [7, 5, 9, 0, 3, 1, 6, 2, 4, 8]
 
-l = combinations_with_replacement(data, 2)
-for e in l:
-    print(*e) # 11 12 13 22 23 33
+for i in range(len(array)):
+    min_idx = i
+    for j in range(i+1, len(array)):
+        if array[j] &lt; array[min_idx]:
+            min_idx = j
+    # swap
+    array[min_idx], array[i] = array[i], array[min_idx]
 
-l = product(data, repeat=2)
-for e in l:
-    print(*e) # 11 12 13 21 22 23 31 32 33
+print(array)
+</code></pre>
+
+<h2 id="insertion-sort">삽입 정렬(Insertion Sort)</h2>
+
+<p>삽입 정렬은 선택 정렬과 반대로 <strong>Sorted Array</strong>로 구현된 우선순위 큐입니다. 최악의 경우 시간복잡도는 선택 정렬과 동일하게 $O(n^2)$이지만 이미 정렬된 경우에는 $O(n)$에 가까울 정도로 빠릅니다.</p>
+
+<pre><code class="language-python3">array = [7, 5, 9, 0, 3, 1, 6, 2, 4, 8]
+
+for i in range(len(array)-1):
+    j = i+1
+    while j &gt;= 1 and array[j] &lt; array[j-1]:
+        # swap
+        array[j-1], array[j] = array[j], array[j-1]
+        j -= 1
+
+print(array)
+</code></pre>
+
+<h2 id="heap-sort">힙 정렬(Heap Sort)</h2>
+
+<p>힙 정렬은 이름과 같이 힙을 이용하여 정렬하는 방법입니다. 시간복잡도는 $O(n\log n)$에 해당합니다.</p>
+
+<pre><code class="language-python3">import heapq
+
+array = [7, 5, 9, 0, 3, 1, 6, 2, 4, 8]
+
+def heap_sort(arr):
+    q = []
+    for a in arr:
+        heapq.heappush(q, a)
+    arr = []
+    while q:
+        arr.append(heapq.heappop(q))
+    return arr
+
+print(heap_sort(array))
+</code></pre>
+
+<h2 id="quick-sort">퀵 솔트(Quick Sort)</h2>
+
+<p>퀵 솔트란 하나의 피봇을 정해서 피봇보다 작은 값들 - 피봇 - 피봇보다 큰 값들 순으로 오도록 하는 알고리즘입니다. 퀵 솔트의 구현에서는 대부분 재귀함수를 사용합니다. 시간 복잡도는 보통 $O(n \log n)$이지만 최악의 경우엔 $O(n^2)$이 되기도 합니다.</p>
+
+<pre><code class="language-python3">array = [7, 5, 9, 0, 3, 1, 6, 2, 4, 8]
+
+def quick_sort(array):
+    if len(array) &lt;= 1:
+        return array
+
+    pivot = array[0]
+    array = array[1:]
+
+    left_partition = [x for x in array if x &lt;= pivot]
+    right_partition = [x for x in array if x &gt; pivot]
+
+    return quick_sort(left_partition) + [pivot] + quick_sort(right_partition)
+
+print(quick_sort(array))
+</code></pre>
+
+<h2 id="merge-sort">합병 정렬(Merge Sort)</h2>
+
+<p>마지막으로 살펴볼 정렬 기법은 합병 정렬입니다. 합병 정렬은 어떤 경우에도 $O(n \log n)$의 성능을 보장하지만 대부분의 경우에 퀵 정렬보다 느리다고 합니다. 또한 합병 정렬은 <strong>Divide and Conquer</strong>의 대표적인 알고리즘 중 하나입니다.</p>
+
+<pre><code class="language-python3">array = [7, 5, 9, 0, 3, 1, 6, 2, 4, 8]
+
+def merge(lst1, lst2):
+    n1, n2 = len(lst1), len(lst2)
+    i = j = 0
+    lst = []
+    while i &lt; n1 and j &lt; n2:
+        if lst1[i] &lt; lst2[j]:
+            lst.append(lst1[i])
+            i += 1
+        else:
+            lst.append(lst2[j])
+            j += 1
+
+    while i &lt; n1:
+        lst.append(lst1[i])
+        i += 1
+    
+    while j &lt; n2:
+        lst.append(lst2[j])
+        j += 1
+
+    return lst
+
+def merge_sort(arr):
+    if len(arr) &lt;= 1:
+        return arr
+    mid = len(arr) // 2
+    left = merge_sort(arr[:mid])
+    right = merge_sort(arr[mid:])
+    return merge(left, right)
+
+print(merge_sort(array))
 </code></pre>
 
 </article>
@@ -192,7 +287,7 @@ for e in l:
 
 
 <section class="tags">
-  <strong>Tags:</strong> <a href="/tag/python">python</a>,&nbsp;<a href="/tag/coding-test">coding-test</a>
+  <strong>Tags:</strong> <a href="/tag/sorting">sorting</a>,&nbsp;<a href="/tag/python">python</a>,&nbsp;<a href="/tag/data-structure">data-structure</a>
 </section>
 
 
@@ -217,19 +312,19 @@ for e in l:
 	<section class="post-navigation">
 		<span class="prev-post">
 			
-				<a href="/data%20structure/2021/01/28/Stack,-Queue.html">
+				<a href="/python/2021/01/30/Itertools.html">
 					<span class="fa-stack fa-lg">
 						<i class="fa fa-square fa-stack-2x"></i>
 						<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
 					</span>
-					<span class="page-number">스택, 큐 with Python</span>
+					<span class="page-number">Itertools 정리</span>
 				</a>
 			
 		</span>
 		<span class="next-post">
 			
-				<a href="/data%20structure/2021/02/02/Sorting.html">
-					<span class="page-number">정렬 with Python</span>
+				<a href="/data%20structure/2021/02/06/Heap.html">
+					<span class="page-number">Heap with Python</span>
 					<span class="fa-stack fa-lg">
 						<i class="fa fa-square fa-stack-2x"></i>
 						<i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>

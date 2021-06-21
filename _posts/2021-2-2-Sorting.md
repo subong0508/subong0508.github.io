@@ -3,7 +3,7 @@ layout: post
 title: 정렬 with Python
 date:  2021-2-2
 author: Jung Jaeeun
-categories: Data-Structure
+category: Data structure
 tags: sorting python data-structure
 use_math: true
 commtents: true
