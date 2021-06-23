@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        TeX: {
+          equationNumbers: {
+            autoNumber: "AMS"
+          }
+        },
+        tex2jax: {
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+      }
+    });
+    MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+          alert("Math Processing Error: "+message[1]);
+        });
+    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+          alert("Math Processing Error: "+message[1]);
+        });
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    
+  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Hive Basic Commands</title>
+  <meta name="description" content="1. Create Database, Table">
+  
+  <meta name="author" content="Jung Jaeeun">
+  <meta name="copyright" content="&copy; Jung Jaeeun 2021">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/monokai_sublime.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="1. Create Database, Table" />
+  <meta property="og:url" content="http://subong0508.github.io" />
+  <meta property="og:site_name" content="Data Vision" />
+  <meta property="og:title" content="Hive Basic Commands" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://subong0508.github.io/assets/logo.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Hive Basic Commands">
+  <meta name="twitter:description" content="1. Create Database, Table">
+  <meta name="twitter:image" content="http://subong0508.github.io/assets/logo.png">
+  <meta name="twitter:url" content="http://subong0508.github.io">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://subong0508.github.io/hive/2021/06/23/Hive-Sec02.html">
+  <link rel="alternate" type="application/rss+xml" title="Data Vision" href="http://subong0508.github.io/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="Data Vision">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/posts/">Posts</a>
+          
+        
+          
+        
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container " >
+  <div class="scrim ">
+    <header class="post-header">
+      <h1 class="title">Hive Basic Commands</h1>
+      <p class="info">by <strong>Jung Jaeeun</strong></p>
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+ <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+
+<section class="post-meta">
+  <div class="post-date">June 23, 2021</div>
+  <div class="post-categories">
+  in 
+    
+    <a href="/category/Hive">Hive</a>
+    
+  
+  </div>
+</section>  
+
+<article class="post-content">
+  <h2 id="create-database-table">1. Create Database, Table</h2>
+
+<p>하이브에서 데이터베이스를 만든다는 것은 실제 데이터를 저장하는 것이 아니라 테이블의 스키마를 설정하는 것이다. 해당 정보는 metastore에 저장된다.</p>
+
+<p><code class="highlighter-rouge">CREATE DATABASE</code>, <code class="highlighter-rouge">CREATE DATABASE IF NOT EXISTS</code>를 활용하여 데이터베이스를 만들 수 있다.</p>
+
+<div class="language-sql highlighter-rouge"><pre class="highlight"><code><span class="k">create</span> <span class="k">database</span> <span class="n">d1</span><span class="p">;</span>
+<span class="o">#</span> <span class="n">ignored</span>
+<span class="k">create</span> <span class="k">database</span> <span class="n">if</span> <span class="k">not</span> <span class="k">exists</span> <span class="n">d1</span><span class="p">;</span>
+<span class="o">#</span> <span class="n">error</span>
+<span class="k">create</span> <span class="k">database</span> <span class="n">d1</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>또는 comment, properties 같은 정보를 설정하면서 데이터베이스를 만들 수 있다.</p>
+
+<div class="language-sql highlighter-rouge"><pre class="highlight"><code><span class="o">#</span> <span class="k">comment</span>
+<span class="k">create</span> <span class="k">database</span> <span class="n">if</span> <span class="k">not</span> <span class="k">exists</span> <span class="n">d2</span> <span class="k">comment</span> <span class="s1">'this is d2'</span><span class="p">;</span>
+<span class="o">#</span> <span class="k">database</span> <span class="n">properties</span>
+<span class="k">create</span> <span class="k">database</span> <span class="n">if</span> <span class="k">not</span> <span class="k">exists</span> <span class="n">d3</span> <span class="k">with</span> <span class="n">db</span> <span class="n">properties</span><span class="p">(</span><span class="s1">'creator'</span><span class="o">=</span><span class="s1">'jaeeun'</span><span class="p">,</span> <span class="s1">'date'</span><span class="o">=</span><span class="s1">'2021-06-23'</span><span class="p">);</span>
+<span class="o">#</span> <span class="err">확인</span>
+<span class="k">describe</span> <span class="k">database</span> <span class="n">extended</span> <span class="n">d2</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">USE {database}</code>를 통해 데이터베이스에 접근하여 테이블을 생성하거나 조작할 수 있다.</p>
+
+<p>하이브에는 <strong>internal, external</strong> 두 종류의 테이블이 존재한다. 전자의 경우 하이브가 테이블의 유일한 소유자가 되는 반면 후자에는 하이브가 metastore만 소유하고 실제 데이터는 HDFS가 관리한다. 따라서 DROP을 사용했을 때 external table은 metastore(table definition)만 사라지고 internal table은 metastore, 실제 데이터가 모두 사라진다. 기본값은 internal table이다.</p>
+
+<p><code class="highlighter-rouge">CREATE TABLE</code>, <code class="highlighter-rouge">CREATE EXTERNAL TABLE</code>을 통해 테이블을 생성한다.</p>
+
+<p><br /> <img src="/img/hive/7.png" alt="img" /> <br /></p>
+
+<p>위와 같은 데이터를 저장하고 싶다면</p>
+
+<div class="language-sql highlighter-rouge"><pre class="highlight"><code><span class="k">create</span> <span class="k">table</span> <span class="n">if</span> <span class="k">not</span> <span class="k">exists</span> <span class="n">table1</span><span class="p">(</span><span class="n">col1</span> <span class="n">int</span><span class="p">,</span><span class="n">col2</span> <span class="n">array</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="p">,</span><span class="n">col3</span> <span class="n">string</span><span class="p">,</span><span class="n">col4</span> <span class="n">int</span><span class="p">)</span> 
+<span class="k">row</span> <span class="n">format</span> <span class="n">delimited</span> <span class="n">fields</span> <span class="n">terminated</span> <span class="k">by</span> <span class="s1">','</span> 
+<span class="n">collection</span> <span class="n">items</span> <span class="n">terminated</span> <span class="k">by</span> <span class="s1">':'</span> 
+<span class="n">lines</span> <span class="n">terminated</span> <span class="k">by</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span> 
+<span class="n">stored</span> <span class="k">as</span> <span class="n">textfile</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>와 같은 쿼리를 사용하면 된다.</p>
+
+<p>테이블은 기본적으로 /user/hive/warehouse 디렉토리에 저장되는데, 이를 바꾸고 싶다면 <code class="highlighter-rouge">location '{dir}'</code>을 뒤에 붙여준다.</p>
+
+<h2 id="load-data">2. Load Data</h2>
+
+<p>이렇게 테이블 포맷을 설정해준 다음, <code class="highlighter-rouge">load data inpath</code>를 사용하여 테이블에 데이터를 로딩한다. 만약 파일이 HDFS가 아닌 로컬에 존재한다면 <code class="highlighter-rouge">load data local inpath</code>를 사용한다.</p>
+
+<div class="language-sql highlighter-rouge"><pre class="highlight"><code><span class="k">load</span> <span class="k">data</span> <span class="n">inpath</span> <span class="s1">'/home/ubuntu/table1.txt'</span> <span class="k">into</span> <span class="k">table</span> <span class="n">table1</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">into table</code>은 테이블에 데이터가 존재한다면 append 하는 방식으로 동작한다. <code class="highlighter-rouge">overwrite table</code>은 테이블에 있는 기존 데이터를 지우고 새롭게 데이터를 쓴다.</p>
+
+<h2 id="insert-statement">3. Insert Statement</h2>
+
+<p><br /> <img src="/img/hive/9.png" alt="img" /> <br /></p>
+
+<p>이런 테이블을 만들었다고 가정하자.</p>
+
+<div class="language-sql highlighter-rouge"><pre class="highlight"><code><span class="k">create</span> <span class="k">table</span> <span class="n">tab</span> <span class="p">(</span><span class="n">col1</span> <span class="n">int</span><span class="p">,</span> <span class="n">col2</span> <span class="n">string</span><span class="p">,</span> <span class="n">col3</span> <span class="n">string</span><span class="p">)</span> <span class="n">stored</span> <span class="k">as</span> <span class="n">textfile</span><span class="p">;</span>
+<span class="k">insert</span> <span class="k">into</span> <span class="k">table</span> <span class="n">tab</span> <span class="k">select</span> <span class="n">col1</span><span class="p">,</span> <span class="n">col2</span><span class="p">,</span> <span class="n">col3</span> <span class="k">from</span> <span class="n">emp_tab</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>결과는 다음과 같다.</p>
+
+<p><br /> <img src="/img/hive/10.png" alt="img" /> <br /></p>
+
+<div class="language-sql highlighter-rouge"><pre class="highlight"><code><span class="k">insert</span> <span class="n">overwrite</span> <span class="k">table</span> <span class="n">tab</span> <span class="k">select</span> <span class="n">col1</span><span class="p">,</span> <span class="n">col2</span><span class="p">,</span> <span class="n">col3</span> <span class="k">from</span> <span class="n">emp_tab</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>이 쿼리를 사용하면 모든 데이터를 지우고 새로 데이터를 삽입한다.</p>
+
+<h3 id="multi-insert">3-1. Multi Insert</h3>
+
+<p>개발자를 위한 테이블과 매니저를 위한 테이블이 따로 존재하는 상황을 생각해보자.</p>
+
+<div class="language-sql highlighter-rouge"><pre class="highlight"><code><span class="k">from</span> <span class="n">emp_tab</span> <span class="k">insert</span> <span class="k">into</span> <span class="n">developer_tab</span> <span class="k">select</span> <span class="n">col1</span><span class="p">,</span> <span class="n">col2</span><span class="p">,</span> <span class="n">col3</span> <span class="k">where</span> <span class="n">col3</span> <span class="o">=</span> <span class="s1">'Developer'</span><span class="p">;</span>
+<span class="k">from</span> <span class="n">emp_tab</span> <span class="k">insert</span> <span class="k">into</span> <span class="n">manager_tab</span> <span class="k">select</span> <span class="n">col1</span><span class="p">,</span> <span class="n">col2</span><span class="p">,</span> <span class="n">col3</span> <span class="k">where</span> <span class="n">col3</span> <span class="o">=</span> <span class="s1">'Mgr'</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<h2 id="alter-table">4. Alter Table</h2>
+
+<p>테이블의 스키마를 변경하기 위해 사용한다.</p>
+
+<div class="language-sql highlighter-rouge"><pre class="highlight"><code><span class="o">#</span> <span class="err">컬럼</span> <span class="err">추가</span>
+<span class="k">alter</span> <span class="k">table</span> <span class="n">tab</span> <span class="k">add</span> <span class="n">columns</span> <span class="p">(</span><span class="n">col4</span> <span class="n">string</span><span class="p">,</span> <span class="n">col5</span> <span class="n">int</span><span class="p">);</span>
+<span class="o">#</span> <span class="err">컬럼</span> <span class="err">이름</span><span class="p">,</span> <span class="err">순서</span> <span class="err">변경</span>
+<span class="k">alter</span> <span class="k">table</span> <span class="n">tab</span> <span class="n">change</span> <span class="n">col1</span> <span class="n">col1</span> <span class="n">int</span> <span class="k">after</span> <span class="n">col3</span><span class="p">;</span>
+<span class="o">#</span> <span class="err">테이블</span> <span class="err">이름</span> <span class="err">변경</span>
+<span class="k">alter</span> <span class="k">table</span> <span class="n">tab</span> <span class="k">rename</span> <span class="k">to</span> <span class="n">tab1</span><span class="p">;</span>
+<span class="o">#</span> <span class="err">컬럼</span> <span class="k">replace</span>
+<span class="k">alter</span> <span class="k">table</span> <span class="n">tab1</span> <span class="k">replace</span> <span class="n">columns</span> <span class="p">(</span><span class="n">id</span> <span class="n">int</span><span class="p">,</span> <span class="n">name</span> <span class="n">string</span><span class="p">);</span>
+<span class="o">#</span> <span class="k">table</span> <span class="n">properties</span> <span class="err">변경</span>
+<span class="k">alter</span> <span class="k">table</span> <span class="n">tab1</span> <span class="k">set</span> <span class="n">tblproperties</span> <span class="p">(</span><span class="s1">'auto.perge'</span><span class="o">=</span><span class="s1">'true'</span><span class="p">);</span>
+<span class="o">#</span> <span class="err">확인</span>
+<span class="k">desc</span> <span class="n">formatted</span> <span class="n">tab1</span><span class="p">;</span>
+<span class="o">#</span> <span class="err">파일</span> <span class="err">포맷</span> <span class="err">변경</span>
+<span class="k">alter</span> <span class="k">table</span> <span class="n">tab1</span> <span class="k">set</span> <span class="n">fileformat</span> <span class="n">avro</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<h2 id="sorting">5. Sorting</h2>
+
+<div class="language-sql highlighter-rouge"><pre class="highlight"><code><span class="o">#</span> <span class="k">ORDER</span> <span class="k">BY</span>
+<span class="k">select</span> <span class="n">col2</span> <span class="k">from</span> <span class="n">tab</span> <span class="k">order</span> <span class="k">by</span> <span class="n">col2</span><span class="p">;</span>
+<span class="o">#</span> <span class="n">SORT</span> <span class="k">BY</span>
+<span class="k">select</span> <span class="n">col2</span> <span class="k">from</span> <span class="n">tab</span> <span class="n">sort</span> <span class="k">by</span> <span class="n">col2</span><span class="p">;</span>
+<span class="o">#</span> <span class="n">DISTRIBUTE</span> <span class="k">BY</span>
+<span class="k">select</span> <span class="n">col2</span> <span class="k">from</span> <span class="n">tab</span> <span class="n">distribute</span> <span class="k">by</span> <span class="n">col2</span><span class="p">;</span>
+<span class="o">#</span> <span class="k">CLUSTER</span> <span class="k">BY</span>
+<span class="k">select</span> <span class="n">col2</span> <span class="k">from</span> <span class="n">tab</span> <span class="k">cluster</span> <span class="k">by</span> <span class="n">col2</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">ORDER BY</code>: 데이터를 fully sort 하기 위해 <strong>single reducer</strong>를 사용한다. 따라서 데이터 크기가 매우 클 때는 <code class="highlighter-rouge">LIMIT</code>을 사용해야 한다.</li>
+  <li><code class="highlighter-rouge">SORT BY</code>: 여러 개의 reducer를 사용한다. 일반적으로 full sort가 되지 않는다.</li>
+  <li><code class="highlighter-rouge">DISTRIBUTE BY</code>: 겹치지 않는 데이터로 나눈다. 정렬을 하지 않는다. 정렬을 하고 싶다면 <code class="highlighter-rouge">distribute by col2 sort by col2</code>와 같이 쿼리를 작성해야 한다.</li>
+  <li><code class="highlighter-rouge">CLUSTER BY</code>: <code class="highlighter-rouge">DISTRIBUTE BY</code>, <code class="highlighter-rouge">SORT BY</code>의 combination이다.</li>
+</ul>
+
+</article>
+
+
+
+<section class="tags">
+  <strong>Tags:</strong> <a href="/tag/Hive">Hive</a>
+</section>
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<section class="share">
+  <span>Share: </span>
+  
+    
+    
+    
+    
+    
+    
+    
+  
+</section>
+
+	<section class="post-navigation">
+		<span class="prev-post">
+			
+				<a href="/machine%20learning/2021/06/23/Imbalanced-Classification.html">
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-square fa-stack-2x"></i>
+						<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+					</span>
+					<span class="page-number">Imbalanced Data Classification</span>
+				</a>
+			
+		</span>
+		<span class="next-post">
+			
+		</span>
+	</section>
+
+
+
+
+<section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'subong0508-github-io';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">Data Vision</h3>
+
+    <div class="site-navigation">
+      
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/about/">About</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/posts/">Posts</a>
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:subong0508@naver.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">subong0508@naver.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://github.com/subong0508" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">subong0508</span>
+            </a>
+          </li>
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">My personal blog for studying; mainly related to data
+</p>
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+  // Syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+
+
+});
+
+</script>
+
+
+
+
+  </body>
+
+</html>
